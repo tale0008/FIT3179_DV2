@@ -1,0 +1,241 @@
+code,country,genre,stories
+au,Australia,adventure,1837
+au,Australia,anthropomorphic-funny animals,2687
+au,Australia,children,236
+au,Australia,crime,644
+au,Australia,detective-mystery,412
+au,Australia,fantasy,735
+au,Australia,horror-suspense,3119
+au,Australia,humor,3422
+au,Australia,non-fiction,851
+au,Australia,other,2764
+au,Australia,romance,3300
+au,Australia,science fiction,1768
+au,Australia,superhero,4828
+au,Australia,teen,729
+au,Australia,war,996
+au,Australia,western-frontier,3984
+be,Belgium,adventure,13886
+be,Belgium,anthropomorphic-funny animals,5907
+be,Belgium,children,2638
+be,Belgium,crime,573
+be,Belgium,detective-mystery,2391
+be,Belgium,fantasy,3277
+be,Belgium,horror-suspense,377
+be,Belgium,humor,18786
+be,Belgium,non-fiction,400
+be,Belgium,other,11524
+be,Belgium,romance,106
+be,Belgium,science fiction,2433
+be,Belgium,superhero,1209
+be,Belgium,teen,190
+be,Belgium,war,1755
+be,Belgium,western-frontier,4007
+br,Brazil,adventure,353
+br,Brazil,anthropomorphic-funny animals,863
+br,Brazil,children,204
+br,Brazil,crime,585
+br,Brazil,detective-mystery,103
+br,Brazil,fantasy,633
+br,Brazil,horror-suspense,377
+br,Brazil,humor,662
+br,Brazil,non-fiction,63
+br,Brazil,other,1085
+br,Brazil,romance,17
+br,Brazil,science fiction,509
+br,Brazil,superhero,9613
+br,Brazil,teen,12
+br,Brazil,war,99
+br,Brazil,western-frontier,67
+ca,Canada,adventure,2027
+ca,Canada,anthropomorphic-funny animals,1384
+ca,Canada,children,904
+ca,Canada,crime,481
+ca,Canada,detective-mystery,556
+ca,Canada,fantasy,1676
+ca,Canada,horror-suspense,1232
+ca,Canada,humor,7770
+ca,Canada,non-fiction,1123
+ca,Canada,other,8192
+ca,Canada,romance,1124
+ca,Canada,science fiction,3051
+ca,Canada,superhero,4450
+ca,Canada,teen,1324
+ca,Canada,war,1202
+ca,Canada,western-frontier,1526
+de,Germany,adventure,4605
+de,Germany,anthropomorphic-funny animals,2100
+de,Germany,children,322
+de,Germany,crime,1236
+de,Germany,detective-mystery,723
+de,Germany,fantasy,3013
+de,Germany,horror-suspense,4248
+de,Germany,humor,8317
+de,Germany,non-fiction,382
+de,Germany,other,7368
+de,Germany,romance,67
+de,Germany,science fiction,5250
+de,Germany,superhero,32077
+de,Germany,teen,226
+de,Germany,war,567
+de,Germany,western-frontier,2568
+dk,Denmark,adventure,1220
+dk,Denmark,anthropomorphic-funny animals,3129
+dk,Denmark,children,152
+dk,Denmark,crime,92
+dk,Denmark,detective-mystery,262
+dk,Denmark,fantasy,686
+dk,Denmark,horror-suspense,679
+dk,Denmark,humor,1376
+dk,Denmark,non-fiction,97
+dk,Denmark,other,1282
+dk,Denmark,romance,294
+dk,Denmark,science fiction,612
+dk,Denmark,superhero,1220
+dk,Denmark,teen,47
+dk,Denmark,war,298
+dk,Denmark,western-frontier,942
+es,Spain,adventure,2418
+es,Spain,anthropomorphic-funny animals,1478
+es,Spain,children,103
+es,Spain,crime,806
+es,Spain,detective-mystery,1103
+es,Spain,fantasy,3679
+es,Spain,horror-suspense,3765
+es,Spain,humor,7435
+es,Spain,non-fiction,134
+es,Spain,other,5400
+es,Spain,romance,6879
+es,Spain,science fiction,3666
+es,Spain,superhero,9995
+es,Spain,teen,69
+es,Spain,war,218
+es,Spain,western-frontier,1096
+fr,France,adventure,8643
+fr,France,anthropomorphic-funny animals,13325
+fr,France,children,495
+fr,France,crime,1424
+fr,France,detective-mystery,2318
+fr,France,fantasy,5736
+fr,France,horror-suspense,6076
+fr,France,humor,24663
+fr,France,non-fiction,1390
+fr,France,other,22479
+fr,France,romance,1987
+fr,France,science fiction,11013
+fr,France,superhero,44142
+fr,France,teen,203
+fr,France,war,2424
+fr,France,western-frontier,4137
+gb,United Kingdom,adventure,15108
+gb,United Kingdom,anthropomorphic-funny animals,6110
+gb,United Kingdom,children,4859
+gb,United Kingdom,crime,4717
+gb,United Kingdom,detective-mystery,12934
+gb,United Kingdom,fantasy,10113
+gb,United Kingdom,horror-suspense,7538
+gb,United Kingdom,humor,36451
+gb,United Kingdom,non-fiction,6430
+gb,United Kingdom,other,23559
+gb,United Kingdom,romance,20389
+gb,United Kingdom,science fiction,48727
+gb,United Kingdom,superhero,17604
+gb,United Kingdom,teen,5377
+gb,United Kingdom,war,28230
+gb,United Kingdom,western-frontier,15194
+it,Italy,adventure,14483
+it,Italy,anthropomorphic-funny animals,12728
+it,Italy,children,238
+it,Italy,crime,4859
+it,Italy,detective-mystery,3419
+it,Italy,fantasy,3276
+it,Italy,horror-suspense,5056
+it,Italy,humor,14424
+it,Italy,non-fiction,6192
+it,Italy,other,12078
+it,Italy,romance,102
+it,Italy,science fiction,6237
+it,Italy,superhero,10379
+it,Italy,teen,76
+it,Italy,war,3172
+it,Italy,western-frontier,18149
+jp,Japan,adventure,1912
+jp,Japan,anthropomorphic-funny animals,104
+jp,Japan,children,57
+jp,Japan,crime,29
+jp,Japan,detective-mystery,992
+jp,Japan,fantasy,3955
+jp,Japan,horror-suspense,63
+jp,Japan,humor,4915
+jp,Japan,non-fiction,66
+jp,Japan,other,6356
+jp,Japan,romance,2003
+jp,Japan,science fiction,2255
+jp,Japan,superhero,509
+jp,Japan,teen,2915
+jp,Japan,war,42
+jp,Japan,western-frontier,36
+nl,Netherlands,adventure,13248
+nl,Netherlands,anthropomorphic-funny animals,25102
+nl,Netherlands,children,9234
+nl,Netherlands,crime,1425
+nl,Netherlands,detective-mystery,2444
+nl,Netherlands,fantasy,5646
+nl,Netherlands,horror-suspense,1604
+nl,Netherlands,humor,90660
+nl,Netherlands,non-fiction,995
+nl,Netherlands,other,40363
+nl,Netherlands,romance,1988
+nl,Netherlands,science fiction,5368
+nl,Netherlands,superhero,6997
+nl,Netherlands,teen,24032
+nl,Netherlands,war,4701
+nl,Netherlands,western-frontier,7310
+no,Norway,adventure,14392
+no,Norway,anthropomorphic-funny animals,75236
+no,Norway,children,4740
+no,Norway,crime,1297
+no,Norway,detective-mystery,4244
+no,Norway,fantasy,4253
+no,Norway,horror-suspense,1420
+no,Norway,humor,94421
+no,Norway,non-fiction,2428
+no,Norway,other,33391
+no,Norway,romance,5157
+no,Norway,science fiction,3214
+no,Norway,superhero,8895
+no,Norway,teen,3782
+no,Norway,war,9392
+no,Norway,western-frontier,22810
+se,Sweden,adventure,4371
+se,Sweden,anthropomorphic-funny animals,6244
+se,Sweden,children,769
+se,Sweden,crime,605
+se,Sweden,detective-mystery,1189
+se,Sweden,fantasy,1315
+se,Sweden,horror-suspense,1229
+se,Sweden,humor,15500
+se,Sweden,non-fiction,1309
+se,Sweden,other,12150
+se,Sweden,romance,215
+se,Sweden,science fiction,2259
+se,Sweden,superhero,5020
+se,Sweden,teen,702
+se,Sweden,war,860
+se,Sweden,western-frontier,2473
+us,United States,adventure,96253
+us,United States,anthropomorphic-funny animals,117054
+us,United States,children,72860
+us,United States,crime,34180
+us,United States,detective-mystery,22854
+us,United States,fantasy,106373
+us,United States,horror-suspense,98529
+us,United States,humor,442695
+us,United States,non-fiction,46385
+us,United States,other,236364
+us,United States,romance,43673
+us,United States,science fiction,140604
+us,United States,superhero,594153
+us,United States,teen,139404
+us,United States,war,41851
+us,United States,western-frontier,51233

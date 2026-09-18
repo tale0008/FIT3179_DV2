@@ -1,0 +1,1387 @@
+code,country,year,series
+au,Australia,1933,1
+au,Australia,1937,2
+au,Australia,1938,1
+au,Australia,1939,2
+au,Australia,1940,4
+au,Australia,1941,15
+au,Australia,1942,15
+au,Australia,1943,11
+au,Australia,1944,29
+au,Australia,1945,26
+au,Australia,1946,33
+au,Australia,1947,19
+au,Australia,1948,23
+au,Australia,1949,30
+au,Australia,1950,52
+au,Australia,1951,46
+au,Australia,1952,42
+au,Australia,1953,58
+au,Australia,1954,43
+au,Australia,1955,85
+au,Australia,1956,62
+au,Australia,1957,39
+au,Australia,1958,29
+au,Australia,1959,21
+au,Australia,1960,16
+au,Australia,1961,47
+au,Australia,1962,7
+au,Australia,1963,7
+au,Australia,1964,8
+au,Australia,1965,21
+au,Australia,1966,11
+au,Australia,1967,10
+au,Australia,1968,4
+au,Australia,1969,3
+au,Australia,1970,16
+au,Australia,1971,15
+au,Australia,1972,14
+au,Australia,1973,11
+au,Australia,1974,14
+au,Australia,1975,44
+au,Australia,1976,45
+au,Australia,1977,42
+au,Australia,1978,50
+au,Australia,1979,27
+au,Australia,1980,46
+au,Australia,1981,53
+au,Australia,1982,109
+au,Australia,1983,62
+au,Australia,1984,70
+au,Australia,1985,21
+au,Australia,1986,4
+au,Australia,1987,17
+au,Australia,1988,9
+au,Australia,1989,8
+au,Australia,1990,5
+au,Australia,1991,1
+au,Australia,1992,4
+au,Australia,1993,5
+au,Australia,1994,6
+au,Australia,1995,12
+au,Australia,1996,5
+au,Australia,1997,5
+au,Australia,1998,5
+au,Australia,1999,2
+au,Australia,2000,3
+au,Australia,2001,4
+au,Australia,2002,6
+au,Australia,2003,1
+au,Australia,2004,6
+au,Australia,2005,2
+au,Australia,2006,3
+au,Australia,2007,4
+au,Australia,2008,4
+au,Australia,2009,5
+au,Australia,2010,7
+au,Australia,2011,7
+au,Australia,2012,5
+au,Australia,2013,6
+au,Australia,2014,8
+au,Australia,2015,5
+au,Australia,2016,8
+au,Australia,2017,11
+au,Australia,2018,6
+au,Australia,2019,3
+au,Australia,2020,2
+au,Australia,2021,7
+au,Australia,2022,5
+au,Australia,2024,7
+au,Australia,2025,1
+au,Australia,2026,1
+be,Belgium,1930,2
+be,Belgium,1934,1
+be,Belgium,1935,1
+be,Belgium,1936,3
+be,Belgium,1937,2
+be,Belgium,1938,3
+be,Belgium,1940,1
+be,Belgium,1941,2
+be,Belgium,1942,2
+be,Belgium,1943,5
+be,Belgium,1944,5
+be,Belgium,1945,9
+be,Belgium,1946,18
+be,Belgium,1947,3
+be,Belgium,1948,17
+be,Belgium,1949,7
+be,Belgium,1950,10
+be,Belgium,1951,5
+be,Belgium,1952,6
+be,Belgium,1953,3
+be,Belgium,1954,10
+be,Belgium,1955,11
+be,Belgium,1956,13
+be,Belgium,1957,5
+be,Belgium,1958,4
+be,Belgium,1959,10
+be,Belgium,1960,16
+be,Belgium,1961,16
+be,Belgium,1962,10
+be,Belgium,1963,9
+be,Belgium,1964,6
+be,Belgium,1965,15
+be,Belgium,1966,11
+be,Belgium,1967,12
+be,Belgium,1968,9
+be,Belgium,1969,14
+be,Belgium,1970,8
+be,Belgium,1971,8
+be,Belgium,1972,16
+be,Belgium,1973,32
+be,Belgium,1974,28
+be,Belgium,1975,20
+be,Belgium,1976,18
+be,Belgium,1977,36
+be,Belgium,1978,61
+be,Belgium,1979,53
+be,Belgium,1980,63
+be,Belgium,1981,100
+be,Belgium,1982,77
+be,Belgium,1983,68
+be,Belgium,1984,86
+be,Belgium,1985,96
+be,Belgium,1986,119
+be,Belgium,1987,106
+be,Belgium,1988,88
+be,Belgium,1989,92
+be,Belgium,1990,121
+be,Belgium,1991,121
+be,Belgium,1992,86
+be,Belgium,1993,88
+be,Belgium,1994,90
+be,Belgium,1995,97
+be,Belgium,1996,117
+be,Belgium,1997,110
+be,Belgium,1998,87
+be,Belgium,1999,112
+be,Belgium,2000,122
+be,Belgium,2001,129
+be,Belgium,2002,118
+be,Belgium,2003,140
+be,Belgium,2004,178
+be,Belgium,2005,204
+be,Belgium,2006,206
+be,Belgium,2007,267
+be,Belgium,2008,263
+be,Belgium,2009,259
+be,Belgium,2010,277
+be,Belgium,2011,303
+be,Belgium,2012,300
+be,Belgium,2013,336
+be,Belgium,2014,276
+be,Belgium,2015,244
+be,Belgium,2016,254
+be,Belgium,2017,266
+be,Belgium,2018,310
+be,Belgium,2019,249
+be,Belgium,2020,245
+be,Belgium,2021,311
+be,Belgium,2022,231
+be,Belgium,2023,252
+be,Belgium,2024,194
+be,Belgium,2025,207
+be,Belgium,2026,138
+br,Brazil,1934,2
+br,Brazil,1935,1
+br,Brazil,1937,2
+br,Brazil,1938,1
+br,Brazil,1939,2
+br,Brazil,1940,4
+br,Brazil,1941,2
+br,Brazil,1942,3
+br,Brazil,1946,2
+br,Brazil,1947,3
+br,Brazil,1948,6
+br,Brazil,1949,9
+br,Brazil,1950,9
+br,Brazil,1951,6
+br,Brazil,1952,6
+br,Brazil,1953,16
+br,Brazil,1954,16
+br,Brazil,1955,17
+br,Brazil,1956,16
+br,Brazil,1957,9
+br,Brazil,1958,10
+br,Brazil,1959,11
+br,Brazil,1960,14
+br,Brazil,1961,12
+br,Brazil,1962,3
+br,Brazil,1963,3
+br,Brazil,1964,4
+br,Brazil,1965,10
+br,Brazil,1966,16
+br,Brazil,1967,34
+br,Brazil,1968,30
+br,Brazil,1969,29
+br,Brazil,1970,16
+br,Brazil,1971,9
+br,Brazil,1972,21
+br,Brazil,1973,42
+br,Brazil,1974,19
+br,Brazil,1975,41
+br,Brazil,1976,44
+br,Brazil,1977,34
+br,Brazil,1978,25
+br,Brazil,1979,42
+br,Brazil,1980,28
+br,Brazil,1981,30
+br,Brazil,1982,39
+br,Brazil,1983,18
+br,Brazil,1984,21
+br,Brazil,1985,21
+br,Brazil,1986,33
+br,Brazil,1987,69
+br,Brazil,1988,60
+br,Brazil,1989,68
+br,Brazil,1990,62
+br,Brazil,1991,78
+br,Brazil,1992,55
+br,Brazil,1993,45
+br,Brazil,1994,50
+br,Brazil,1995,38
+br,Brazil,1996,58
+br,Brazil,1997,69
+br,Brazil,1998,93
+br,Brazil,1999,65
+br,Brazil,2000,43
+br,Brazil,2001,66
+br,Brazil,2002,113
+br,Brazil,2003,126
+br,Brazil,2004,101
+br,Brazil,2005,110
+br,Brazil,2006,140
+br,Brazil,2007,225
+br,Brazil,2008,130
+br,Brazil,2009,123
+br,Brazil,2010,137
+br,Brazil,2011,145
+br,Brazil,2012,167
+br,Brazil,2013,177
+br,Brazil,2014,196
+br,Brazil,2015,270
+br,Brazil,2016,307
+br,Brazil,2017,310
+br,Brazil,2018,289
+br,Brazil,2019,327
+br,Brazil,2020,282
+br,Brazil,2021,317
+br,Brazil,2022,331
+br,Brazil,2023,243
+br,Brazil,2024,24
+br,Brazil,2025,14
+br,Brazil,2026,6
+ca,Canada,1933,1
+ca,Canada,1934,1
+ca,Canada,1939,1
+ca,Canada,1941,21
+ca,Canada,1942,12
+ca,Canada,1943,7
+ca,Canada,1944,8
+ca,Canada,1945,25
+ca,Canada,1946,33
+ca,Canada,1947,11
+ca,Canada,1948,126
+ca,Canada,1949,155
+ca,Canada,1950,202
+ca,Canada,1951,75
+ca,Canada,1952,30
+ca,Canada,1953,16
+ca,Canada,1954,2
+ca,Canada,1955,1
+ca,Canada,1959,1
+ca,Canada,1960,1
+ca,Canada,1961,1
+ca,Canada,1962,2
+ca,Canada,1963,3
+ca,Canada,1965,6
+ca,Canada,1966,5
+ca,Canada,1967,7
+ca,Canada,1968,8
+ca,Canada,1969,12
+ca,Canada,1970,17
+ca,Canada,1971,14
+ca,Canada,1972,24
+ca,Canada,1973,19
+ca,Canada,1974,13
+ca,Canada,1975,17
+ca,Canada,1976,22
+ca,Canada,1977,30
+ca,Canada,1978,30
+ca,Canada,1979,19
+ca,Canada,1980,22
+ca,Canada,1981,29
+ca,Canada,1982,25
+ca,Canada,1983,17
+ca,Canada,1984,20
+ca,Canada,1985,45
+ca,Canada,1986,34
+ca,Canada,1987,42
+ca,Canada,1988,35
+ca,Canada,1989,42
+ca,Canada,1990,40
+ca,Canada,1991,36
+ca,Canada,1992,31
+ca,Canada,1993,34
+ca,Canada,1994,34
+ca,Canada,1995,49
+ca,Canada,1996,46
+ca,Canada,1997,41
+ca,Canada,1998,82
+ca,Canada,1999,50
+ca,Canada,2000,46
+ca,Canada,2001,47
+ca,Canada,2002,64
+ca,Canada,2003,51
+ca,Canada,2004,56
+ca,Canada,2005,75
+ca,Canada,2006,77
+ca,Canada,2007,82
+ca,Canada,2008,82
+ca,Canada,2009,96
+ca,Canada,2010,96
+ca,Canada,2011,92
+ca,Canada,2012,91
+ca,Canada,2013,98
+ca,Canada,2014,115
+ca,Canada,2015,113
+ca,Canada,2016,140
+ca,Canada,2017,157
+ca,Canada,2018,140
+ca,Canada,2019,153
+ca,Canada,2020,87
+ca,Canada,2021,111
+ca,Canada,2022,115
+ca,Canada,2023,88
+ca,Canada,2024,57
+ca,Canada,2025,54
+ca,Canada,2026,25
+dk,Denmark,1930,1
+dk,Denmark,1932,2
+dk,Denmark,1934,1
+dk,Denmark,1935,3
+dk,Denmark,1936,1
+dk,Denmark,1938,2
+dk,Denmark,1939,1
+dk,Denmark,1940,2
+dk,Denmark,1941,4
+dk,Denmark,1942,3
+dk,Denmark,1943,2
+dk,Denmark,1944,1
+dk,Denmark,1948,7
+dk,Denmark,1949,6
+dk,Denmark,1950,5
+dk,Denmark,1951,3
+dk,Denmark,1952,9
+dk,Denmark,1953,6
+dk,Denmark,1954,4
+dk,Denmark,1955,7
+dk,Denmark,1956,5
+dk,Denmark,1957,8
+dk,Denmark,1958,4
+dk,Denmark,1959,6
+dk,Denmark,1960,6
+dk,Denmark,1961,4
+dk,Denmark,1962,13
+dk,Denmark,1963,6
+dk,Denmark,1964,6
+dk,Denmark,1965,12
+dk,Denmark,1966,23
+dk,Denmark,1967,23
+dk,Denmark,1968,24
+dk,Denmark,1969,23
+dk,Denmark,1970,17
+dk,Denmark,1971,30
+dk,Denmark,1972,42
+dk,Denmark,1973,43
+dk,Denmark,1974,24
+dk,Denmark,1975,32
+dk,Denmark,1976,34
+dk,Denmark,1977,50
+dk,Denmark,1978,55
+dk,Denmark,1979,59
+dk,Denmark,1980,51
+dk,Denmark,1981,50
+dk,Denmark,1982,50
+dk,Denmark,1983,69
+dk,Denmark,1984,67
+dk,Denmark,1985,73
+dk,Denmark,1986,70
+dk,Denmark,1987,81
+dk,Denmark,1988,90
+dk,Denmark,1989,60
+dk,Denmark,1990,43
+dk,Denmark,1991,60
+dk,Denmark,1992,38
+dk,Denmark,1993,40
+dk,Denmark,1994,49
+dk,Denmark,1995,41
+dk,Denmark,1996,37
+dk,Denmark,1997,53
+dk,Denmark,1998,31
+dk,Denmark,1999,28
+dk,Denmark,2000,23
+dk,Denmark,2001,21
+dk,Denmark,2002,16
+dk,Denmark,2003,26
+dk,Denmark,2004,29
+dk,Denmark,2005,30
+dk,Denmark,2006,22
+dk,Denmark,2007,18
+dk,Denmark,2008,24
+dk,Denmark,2009,18
+dk,Denmark,2010,30
+dk,Denmark,2011,34
+dk,Denmark,2012,19
+dk,Denmark,2013,16
+dk,Denmark,2014,21
+dk,Denmark,2015,27
+dk,Denmark,2016,30
+dk,Denmark,2017,32
+dk,Denmark,2018,20
+dk,Denmark,2019,15
+dk,Denmark,2020,9
+dk,Denmark,2021,16
+dk,Denmark,2022,15
+dk,Denmark,2023,7
+dk,Denmark,2024,12
+dk,Denmark,2025,11
+dk,Denmark,2026,3
+fr,France,1930,8
+fr,France,1931,8
+fr,France,1932,10
+fr,France,1933,7
+fr,France,1934,8
+fr,France,1935,7
+fr,France,1936,17
+fr,France,1937,20
+fr,France,1938,17
+fr,France,1939,9
+fr,France,1940,8
+fr,France,1941,10
+fr,France,1942,4
+fr,France,1943,7
+fr,France,1944,4
+fr,France,1945,11
+fr,France,1946,29
+fr,France,1947,23
+fr,France,1948,25
+fr,France,1949,17
+fr,France,1950,31
+fr,France,1951,16
+fr,France,1952,28
+fr,France,1953,32
+fr,France,1954,38
+fr,France,1955,26
+fr,France,1956,37
+fr,France,1957,40
+fr,France,1958,55
+fr,France,1959,46
+fr,France,1960,37
+fr,France,1961,52
+fr,France,1962,45
+fr,France,1963,49
+fr,France,1964,50
+fr,France,1965,46
+fr,France,1966,57
+fr,France,1967,82
+fr,France,1968,76
+fr,France,1969,51
+fr,France,1970,97
+fr,France,1971,61
+fr,France,1972,92
+fr,France,1973,113
+fr,France,1974,140
+fr,France,1975,126
+fr,France,1976,158
+fr,France,1977,195
+fr,France,1978,199
+fr,France,1979,249
+fr,France,1980,265
+fr,France,1981,247
+fr,France,1982,248
+fr,France,1983,262
+fr,France,1984,237
+fr,France,1985,262
+fr,France,1986,246
+fr,France,1987,254
+fr,France,1988,224
+fr,France,1989,274
+fr,France,1990,247
+fr,France,1991,216
+fr,France,1992,213
+fr,France,1993,198
+fr,France,1994,180
+fr,France,1995,246
+fr,France,1996,314
+fr,France,1997,338
+fr,France,1998,322
+fr,France,1999,428
+fr,France,2000,501
+fr,France,2001,544
+fr,France,2002,579
+fr,France,2003,619
+fr,France,2004,725
+fr,France,2005,844
+fr,France,2006,1069
+fr,France,2007,1074
+fr,France,2008,1140
+fr,France,2009,1170
+fr,France,2010,1277
+fr,France,2011,1364
+fr,France,2012,1402
+fr,France,2013,1310
+fr,France,2014,1269
+fr,France,2015,1324
+fr,France,2016,1354
+fr,France,2017,1365
+fr,France,2018,1414
+fr,France,2019,1399
+fr,France,2020,1139
+fr,France,2021,1306
+fr,France,2022,1339
+fr,France,2023,1031
+fr,France,2024,677
+fr,France,2025,500
+fr,France,2026,110
+de,Germany,1930,3
+de,Germany,1931,5
+de,Germany,1932,1
+de,Germany,1933,3
+de,Germany,1934,4
+de,Germany,1935,4
+de,Germany,1936,4
+de,Germany,1937,7
+de,Germany,1938,1
+de,Germany,1939,3
+de,Germany,1940,4
+de,Germany,1941,6
+de,Germany,1942,1
+de,Germany,1943,1
+de,Germany,1945,1
+de,Germany,1946,6
+de,Germany,1947,8
+de,Germany,1948,8
+de,Germany,1949,7
+de,Germany,1950,20
+de,Germany,1951,13
+de,Germany,1952,13
+de,Germany,1953,57
+de,Germany,1954,49
+de,Germany,1955,29
+de,Germany,1956,14
+de,Germany,1957,22
+de,Germany,1958,18
+de,Germany,1959,13
+de,Germany,1960,22
+de,Germany,1961,14
+de,Germany,1962,19
+de,Germany,1963,19
+de,Germany,1964,24
+de,Germany,1965,16
+de,Germany,1966,25
+de,Germany,1967,35
+de,Germany,1968,43
+de,Germany,1969,36
+de,Germany,1970,46
+de,Germany,1971,68
+de,Germany,1972,98
+de,Germany,1973,86
+de,Germany,1974,98
+de,Germany,1975,113
+de,Germany,1976,105
+de,Germany,1977,94
+de,Germany,1978,136
+de,Germany,1979,128
+de,Germany,1980,145
+de,Germany,1981,169
+de,Germany,1982,169
+de,Germany,1983,181
+de,Germany,1984,178
+de,Germany,1985,190
+de,Germany,1986,200
+de,Germany,1987,241
+de,Germany,1988,270
+de,Germany,1989,299
+de,Germany,1990,281
+de,Germany,1991,286
+de,Germany,1992,297
+de,Germany,1993,244
+de,Germany,1994,268
+de,Germany,1995,256
+de,Germany,1996,242
+de,Germany,1997,259
+de,Germany,1998,296
+de,Germany,1999,344
+de,Germany,2000,373
+de,Germany,2001,419
+de,Germany,2002,406
+de,Germany,2003,391
+de,Germany,2004,374
+de,Germany,2005,419
+de,Germany,2006,438
+de,Germany,2007,445
+de,Germany,2008,478
+de,Germany,2009,443
+de,Germany,2010,602
+de,Germany,2011,618
+de,Germany,2012,661
+de,Germany,2013,741
+de,Germany,2014,712
+de,Germany,2015,737
+de,Germany,2016,883
+de,Germany,2017,823
+de,Germany,2018,787
+de,Germany,2019,800
+de,Germany,2020,792
+de,Germany,2021,822
+de,Germany,2022,1048
+de,Germany,2023,933
+de,Germany,2024,994
+de,Germany,2025,1055
+de,Germany,2026,773
+it,Italy,1932,1
+it,Italy,1933,3
+it,Italy,1934,4
+it,Italy,1935,13
+it,Italy,1936,5
+it,Italy,1937,8
+it,Italy,1938,3
+it,Italy,1939,7
+it,Italy,1940,6
+it,Italy,1941,4
+it,Italy,1943,2
+it,Italy,1945,4
+it,Italy,1946,7
+it,Italy,1947,3
+it,Italy,1948,13
+it,Italy,1949,12
+it,Italy,1950,9
+it,Italy,1951,11
+it,Italy,1952,18
+it,Italy,1953,11
+it,Italy,1954,13
+it,Italy,1955,11
+it,Italy,1956,7
+it,Italy,1957,11
+it,Italy,1958,7
+it,Italy,1959,5
+it,Italy,1960,8
+it,Italy,1961,7
+it,Italy,1962,14
+it,Italy,1963,15
+it,Italy,1964,11
+it,Italy,1965,31
+it,Italy,1966,20
+it,Italy,1967,30
+it,Italy,1968,23
+it,Italy,1969,34
+it,Italy,1970,28
+it,Italy,1971,35
+it,Italy,1972,51
+it,Italy,1973,40
+it,Italy,1974,45
+it,Italy,1975,51
+it,Italy,1976,53
+it,Italy,1977,52
+it,Italy,1978,44
+it,Italy,1979,38
+it,Italy,1980,36
+it,Italy,1981,40
+it,Italy,1982,34
+it,Italy,1983,37
+it,Italy,1984,55
+it,Italy,1985,28
+it,Italy,1986,36
+it,Italy,1987,44
+it,Italy,1988,43
+it,Italy,1989,59
+it,Italy,1990,70
+it,Italy,1991,67
+it,Italy,1992,65
+it,Italy,1993,54
+it,Italy,1994,112
+it,Italy,1995,79
+it,Italy,1996,56
+it,Italy,1997,49
+it,Italy,1998,62
+it,Italy,1999,40
+it,Italy,2000,64
+it,Italy,2001,46
+it,Italy,2002,42
+it,Italy,2003,45
+it,Italy,2004,54
+it,Italy,2005,58
+it,Italy,2006,62
+it,Italy,2007,56
+it,Italy,2008,51
+it,Italy,2009,52
+it,Italy,2010,53
+it,Italy,2011,53
+it,Italy,2012,48
+it,Italy,2013,66
+it,Italy,2014,60
+it,Italy,2015,43
+it,Italy,2016,47
+it,Italy,2017,58
+it,Italy,2018,38
+it,Italy,2019,43
+it,Italy,2020,39
+it,Italy,2021,28
+it,Italy,2022,27
+it,Italy,2023,16
+it,Italy,2024,13
+it,Italy,2025,19
+it,Italy,2026,8
+jp,Japan,1946,9
+jp,Japan,1948,1
+jp,Japan,1949,3
+jp,Japan,1950,1
+jp,Japan,1953,2
+jp,Japan,1954,1
+jp,Japan,1955,3
+jp,Japan,1956,4
+jp,Japan,1958,1
+jp,Japan,1959,4
+jp,Japan,1960,3
+jp,Japan,1961,1
+jp,Japan,1962,2
+jp,Japan,1963,4
+jp,Japan,1964,3
+jp,Japan,1965,5
+jp,Japan,1966,7
+jp,Japan,1967,15
+jp,Japan,1968,24
+jp,Japan,1969,12
+jp,Japan,1970,12
+jp,Japan,1971,8
+jp,Japan,1972,13
+jp,Japan,1973,6
+jp,Japan,1974,10
+jp,Japan,1975,17
+jp,Japan,1976,14
+jp,Japan,1977,12
+jp,Japan,1978,18
+jp,Japan,1979,17
+jp,Japan,1980,20
+jp,Japan,1981,16
+jp,Japan,1982,19
+jp,Japan,1983,23
+jp,Japan,1984,13
+jp,Japan,1985,24
+jp,Japan,1986,40
+jp,Japan,1987,24
+jp,Japan,1988,32
+jp,Japan,1989,35
+jp,Japan,1990,25
+jp,Japan,1991,37
+jp,Japan,1992,43
+jp,Japan,1993,30
+jp,Japan,1994,41
+jp,Japan,1995,38
+jp,Japan,1996,43
+jp,Japan,1997,46
+jp,Japan,1998,46
+jp,Japan,1999,47
+jp,Japan,2000,64
+jp,Japan,2001,54
+jp,Japan,2002,62
+jp,Japan,2003,56
+jp,Japan,2004,69
+jp,Japan,2005,66
+jp,Japan,2006,57
+jp,Japan,2007,54
+jp,Japan,2008,74
+jp,Japan,2009,71
+jp,Japan,2010,46
+jp,Japan,2011,83
+jp,Japan,2012,84
+jp,Japan,2013,93
+jp,Japan,2014,111
+jp,Japan,2015,111
+jp,Japan,2016,125
+jp,Japan,2017,140
+jp,Japan,2018,184
+jp,Japan,2019,292
+jp,Japan,2020,291
+jp,Japan,2021,227
+jp,Japan,2022,192
+jp,Japan,2023,99
+jp,Japan,2024,31
+jp,Japan,2025,7
+nl,Netherlands,1930,1
+nl,Netherlands,1932,1
+nl,Netherlands,1934,1
+nl,Netherlands,1935,1
+nl,Netherlands,1936,3
+nl,Netherlands,1937,2
+nl,Netherlands,1938,2
+nl,Netherlands,1940,1
+nl,Netherlands,1941,3
+nl,Netherlands,1942,4
+nl,Netherlands,1943,1
+nl,Netherlands,1944,1
+nl,Netherlands,1945,5
+nl,Netherlands,1946,7
+nl,Netherlands,1947,13
+nl,Netherlands,1948,18
+nl,Netherlands,1949,7
+nl,Netherlands,1950,6
+nl,Netherlands,1951,3
+nl,Netherlands,1952,11
+nl,Netherlands,1953,7
+nl,Netherlands,1954,5
+nl,Netherlands,1955,12
+nl,Netherlands,1956,6
+nl,Netherlands,1957,9
+nl,Netherlands,1958,2
+nl,Netherlands,1959,8
+nl,Netherlands,1960,6
+nl,Netherlands,1961,11
+nl,Netherlands,1962,14
+nl,Netherlands,1963,20
+nl,Netherlands,1964,12
+nl,Netherlands,1965,22
+nl,Netherlands,1966,21
+nl,Netherlands,1967,29
+nl,Netherlands,1968,31
+nl,Netherlands,1969,26
+nl,Netherlands,1970,60
+nl,Netherlands,1971,48
+nl,Netherlands,1972,87
+nl,Netherlands,1973,101
+nl,Netherlands,1974,66
+nl,Netherlands,1975,82
+nl,Netherlands,1976,99
+nl,Netherlands,1977,86
+nl,Netherlands,1978,88
+nl,Netherlands,1979,136
+nl,Netherlands,1980,150
+nl,Netherlands,1981,150
+nl,Netherlands,1982,146
+nl,Netherlands,1983,150
+nl,Netherlands,1984,154
+nl,Netherlands,1985,117
+nl,Netherlands,1986,104
+nl,Netherlands,1987,91
+nl,Netherlands,1988,79
+nl,Netherlands,1989,96
+nl,Netherlands,1990,107
+nl,Netherlands,1991,104
+nl,Netherlands,1992,124
+nl,Netherlands,1993,93
+nl,Netherlands,1994,117
+nl,Netherlands,1995,109
+nl,Netherlands,1996,121
+nl,Netherlands,1997,91
+nl,Netherlands,1998,104
+nl,Netherlands,1999,116
+nl,Netherlands,2000,93
+nl,Netherlands,2001,118
+nl,Netherlands,2002,129
+nl,Netherlands,2003,132
+nl,Netherlands,2004,121
+nl,Netherlands,2005,124
+nl,Netherlands,2006,167
+nl,Netherlands,2007,144
+nl,Netherlands,2008,124
+nl,Netherlands,2009,153
+nl,Netherlands,2010,186
+nl,Netherlands,2011,189
+nl,Netherlands,2012,156
+nl,Netherlands,2013,203
+nl,Netherlands,2014,203
+nl,Netherlands,2015,214
+nl,Netherlands,2016,177
+nl,Netherlands,2017,149
+nl,Netherlands,2018,222
+nl,Netherlands,2019,191
+nl,Netherlands,2020,175
+nl,Netherlands,2021,196
+nl,Netherlands,2022,195
+nl,Netherlands,2023,146
+nl,Netherlands,2024,177
+nl,Netherlands,2025,156
+nl,Netherlands,2026,114
+no,Norway,1930,4
+no,Norway,1931,2
+no,Norway,1932,1
+no,Norway,1933,2
+no,Norway,1935,3
+no,Norway,1936,1
+no,Norway,1937,1
+no,Norway,1938,4
+no,Norway,1940,4
+no,Norway,1941,5
+no,Norway,1942,4
+no,Norway,1943,4
+no,Norway,1944,1
+no,Norway,1945,4
+no,Norway,1946,5
+no,Norway,1947,2
+no,Norway,1948,2
+no,Norway,1949,1
+no,Norway,1950,4
+no,Norway,1951,2
+no,Norway,1952,7
+no,Norway,1953,8
+no,Norway,1954,8
+no,Norway,1955,7
+no,Norway,1956,4
+no,Norway,1957,14
+no,Norway,1958,8
+no,Norway,1959,13
+no,Norway,1960,5
+no,Norway,1961,8
+no,Norway,1962,15
+no,Norway,1963,16
+no,Norway,1964,24
+no,Norway,1965,21
+no,Norway,1966,20
+no,Norway,1967,19
+no,Norway,1968,40
+no,Norway,1969,32
+no,Norway,1970,21
+no,Norway,1971,27
+no,Norway,1972,35
+no,Norway,1973,64
+no,Norway,1974,41
+no,Norway,1975,28
+no,Norway,1976,22
+no,Norway,1977,59
+no,Norway,1978,48
+no,Norway,1979,54
+no,Norway,1980,66
+no,Norway,1981,41
+no,Norway,1982,50
+no,Norway,1983,45
+no,Norway,1984,69
+no,Norway,1985,70
+no,Norway,1986,96
+no,Norway,1987,85
+no,Norway,1988,101
+no,Norway,1989,74
+no,Norway,1990,82
+no,Norway,1991,71
+no,Norway,1992,59
+no,Norway,1993,83
+no,Norway,1994,48
+no,Norway,1995,42
+no,Norway,1996,46
+no,Norway,1997,58
+no,Norway,1998,74
+no,Norway,1999,60
+no,Norway,2000,54
+no,Norway,2001,70
+no,Norway,2002,83
+no,Norway,2003,88
+no,Norway,2004,79
+no,Norway,2005,86
+no,Norway,2006,110
+no,Norway,2007,116
+no,Norway,2008,115
+no,Norway,2009,101
+no,Norway,2010,91
+no,Norway,2011,89
+no,Norway,2012,78
+no,Norway,2013,67
+no,Norway,2014,85
+no,Norway,2015,70
+no,Norway,2016,83
+no,Norway,2017,109
+no,Norway,2018,94
+no,Norway,2019,116
+no,Norway,2020,114
+no,Norway,2021,98
+no,Norway,2022,83
+no,Norway,2023,78
+no,Norway,2024,64
+no,Norway,2025,62
+no,Norway,2026,43
+es,Spain,1930,2
+es,Spain,1931,1
+es,Spain,1932,3
+es,Spain,1933,1
+es,Spain,1934,1
+es,Spain,1935,6
+es,Spain,1936,3
+es,Spain,1937,2
+es,Spain,1938,2
+es,Spain,1939,4
+es,Spain,1940,3
+es,Spain,1941,6
+es,Spain,1942,7
+es,Spain,1943,7
+es,Spain,1944,9
+es,Spain,1945,11
+es,Spain,1946,10
+es,Spain,1947,21
+es,Spain,1948,8
+es,Spain,1949,19
+es,Spain,1950,18
+es,Spain,1951,21
+es,Spain,1952,16
+es,Spain,1953,12
+es,Spain,1954,10
+es,Spain,1955,15
+es,Spain,1956,18
+es,Spain,1957,20
+es,Spain,1958,32
+es,Spain,1959,29
+es,Spain,1960,28
+es,Spain,1961,33
+es,Spain,1962,33
+es,Spain,1963,22
+es,Spain,1964,32
+es,Spain,1965,32
+es,Spain,1966,17
+es,Spain,1967,15
+es,Spain,1968,24
+es,Spain,1969,22
+es,Spain,1970,35
+es,Spain,1971,26
+es,Spain,1972,27
+es,Spain,1973,26
+es,Spain,1974,42
+es,Spain,1975,29
+es,Spain,1976,33
+es,Spain,1977,50
+es,Spain,1978,50
+es,Spain,1979,35
+es,Spain,1980,57
+es,Spain,1981,78
+es,Spain,1982,31
+es,Spain,1983,53
+es,Spain,1984,47
+es,Spain,1985,27
+es,Spain,1986,35
+es,Spain,1987,62
+es,Spain,1988,61
+es,Spain,1989,61
+es,Spain,1990,77
+es,Spain,1991,60
+es,Spain,1992,53
+es,Spain,1993,68
+es,Spain,1994,75
+es,Spain,1995,75
+es,Spain,1996,115
+es,Spain,1997,93
+es,Spain,1998,95
+es,Spain,1999,74
+es,Spain,2000,71
+es,Spain,2001,76
+es,Spain,2002,74
+es,Spain,2003,89
+es,Spain,2004,86
+es,Spain,2005,163
+es,Spain,2006,163
+es,Spain,2007,160
+es,Spain,2008,164
+es,Spain,2009,157
+es,Spain,2010,153
+es,Spain,2011,124
+es,Spain,2012,210
+es,Spain,2013,215
+es,Spain,2014,251
+es,Spain,2015,173
+es,Spain,2016,136
+es,Spain,2017,108
+es,Spain,2018,118
+es,Spain,2019,113
+es,Spain,2020,104
+es,Spain,2021,98
+es,Spain,2022,69
+es,Spain,2023,46
+es,Spain,2024,40
+es,Spain,2025,66
+es,Spain,2026,6
+se,Sweden,1930,3
+se,Sweden,1931,3
+se,Sweden,1932,1
+se,Sweden,1934,3
+se,Sweden,1935,3
+se,Sweden,1936,6
+se,Sweden,1937,5
+se,Sweden,1938,1
+se,Sweden,1939,3
+se,Sweden,1940,1
+se,Sweden,1941,6
+se,Sweden,1942,9
+se,Sweden,1943,10
+se,Sweden,1944,12
+se,Sweden,1945,9
+se,Sweden,1946,5
+se,Sweden,1947,6
+se,Sweden,1948,12
+se,Sweden,1949,14
+se,Sweden,1950,14
+se,Sweden,1951,15
+se,Sweden,1952,11
+se,Sweden,1953,18
+se,Sweden,1954,22
+se,Sweden,1955,12
+se,Sweden,1956,18
+se,Sweden,1957,16
+se,Sweden,1958,23
+se,Sweden,1959,17
+se,Sweden,1960,29
+se,Sweden,1961,11
+se,Sweden,1962,34
+se,Sweden,1963,29
+se,Sweden,1964,27
+se,Sweden,1965,24
+se,Sweden,1966,25
+se,Sweden,1967,48
+se,Sweden,1968,30
+se,Sweden,1969,52
+se,Sweden,1970,52
+se,Sweden,1971,59
+se,Sweden,1972,57
+se,Sweden,1973,91
+se,Sweden,1974,76
+se,Sweden,1975,78
+se,Sweden,1976,60
+se,Sweden,1977,67
+se,Sweden,1978,55
+se,Sweden,1979,92
+se,Sweden,1980,96
+se,Sweden,1981,72
+se,Sweden,1982,90
+se,Sweden,1983,105
+se,Sweden,1984,85
+se,Sweden,1985,100
+se,Sweden,1986,105
+se,Sweden,1987,107
+se,Sweden,1988,128
+se,Sweden,1989,132
+se,Sweden,1990,130
+se,Sweden,1991,90
+se,Sweden,1992,112
+se,Sweden,1993,100
+se,Sweden,1994,80
+se,Sweden,1995,60
+se,Sweden,1996,85
+se,Sweden,1997,112
+se,Sweden,1998,93
+se,Sweden,1999,93
+se,Sweden,2000,93
+se,Sweden,2001,81
+se,Sweden,2002,74
+se,Sweden,2003,62
+se,Sweden,2004,85
+se,Sweden,2005,102
+se,Sweden,2006,102
+se,Sweden,2007,74
+se,Sweden,2008,96
+se,Sweden,2009,71
+se,Sweden,2010,79
+se,Sweden,2011,82
+se,Sweden,2012,59
+se,Sweden,2013,58
+se,Sweden,2014,69
+se,Sweden,2015,85
+se,Sweden,2016,73
+se,Sweden,2017,79
+se,Sweden,2018,68
+se,Sweden,2019,63
+se,Sweden,2020,71
+se,Sweden,2021,78
+se,Sweden,2022,53
+se,Sweden,2023,51
+se,Sweden,2024,26
+se,Sweden,2025,25
+se,Sweden,2026,8
+gb,United Kingdom,1930,6
+gb,United Kingdom,1931,9
+gb,United Kingdom,1932,2
+gb,United Kingdom,1933,9
+gb,United Kingdom,1934,8
+gb,United Kingdom,1935,6
+gb,United Kingdom,1936,8
+gb,United Kingdom,1937,6
+gb,United Kingdom,1938,13
+gb,United Kingdom,1939,10
+gb,United Kingdom,1940,21
+gb,United Kingdom,1941,8
+gb,United Kingdom,1942,7
+gb,United Kingdom,1943,11
+gb,United Kingdom,1944,32
+gb,United Kingdom,1945,27
+gb,United Kingdom,1946,75
+gb,United Kingdom,1947,97
+gb,United Kingdom,1948,151
+gb,United Kingdom,1949,135
+gb,United Kingdom,1950,127
+gb,United Kingdom,1951,137
+gb,United Kingdom,1952,87
+gb,United Kingdom,1953,114
+gb,United Kingdom,1954,75
+gb,United Kingdom,1955,70
+gb,United Kingdom,1956,64
+gb,United Kingdom,1957,43
+gb,United Kingdom,1958,37
+gb,United Kingdom,1959,67
+gb,United Kingdom,1960,50
+gb,United Kingdom,1961,45
+gb,United Kingdom,1962,50
+gb,United Kingdom,1963,54
+gb,United Kingdom,1964,43
+gb,United Kingdom,1965,58
+gb,United Kingdom,1966,53
+gb,United Kingdom,1967,73
+gb,United Kingdom,1968,52
+gb,United Kingdom,1969,44
+gb,United Kingdom,1970,42
+gb,United Kingdom,1971,57
+gb,United Kingdom,1972,71
+gb,United Kingdom,1973,76
+gb,United Kingdom,1974,57
+gb,United Kingdom,1975,74
+gb,United Kingdom,1976,75
+gb,United Kingdom,1977,71
+gb,United Kingdom,1978,79
+gb,United Kingdom,1979,122
+gb,United Kingdom,1980,93
+gb,United Kingdom,1981,86
+gb,United Kingdom,1982,86
+gb,United Kingdom,1983,77
+gb,United Kingdom,1984,69
+gb,United Kingdom,1985,66
+gb,United Kingdom,1986,77
+gb,United Kingdom,1987,91
+gb,United Kingdom,1988,97
+gb,United Kingdom,1989,91
+gb,United Kingdom,1990,88
+gb,United Kingdom,1991,85
+gb,United Kingdom,1992,108
+gb,United Kingdom,1993,97
+gb,United Kingdom,1994,79
+gb,United Kingdom,1995,61
+gb,United Kingdom,1996,45
+gb,United Kingdom,1997,53
+gb,United Kingdom,1998,47
+gb,United Kingdom,1999,31
+gb,United Kingdom,2000,36
+gb,United Kingdom,2001,33
+gb,United Kingdom,2002,46
+gb,United Kingdom,2003,50
+gb,United Kingdom,2004,51
+gb,United Kingdom,2005,93
+gb,United Kingdom,2006,80
+gb,United Kingdom,2007,114
+gb,United Kingdom,2008,118
+gb,United Kingdom,2009,116
+gb,United Kingdom,2010,90
+gb,United Kingdom,2011,109
+gb,United Kingdom,2012,123
+gb,United Kingdom,2013,141
+gb,United Kingdom,2014,173
+gb,United Kingdom,2015,169
+gb,United Kingdom,2016,216
+gb,United Kingdom,2017,244
+gb,United Kingdom,2018,276
+gb,United Kingdom,2019,189
+gb,United Kingdom,2020,134
+gb,United Kingdom,2021,166
+gb,United Kingdom,2022,194
+gb,United Kingdom,2023,206
+gb,United Kingdom,2024,211
+gb,United Kingdom,2025,159
+gb,United Kingdom,2026,62
+us,United States,1930,17
+us,United States,1931,22
+us,United States,1932,19
+us,United States,1933,20
+us,United States,1934,25
+us,United States,1935,24
+us,United States,1936,25
+us,United States,1937,31
+us,United States,1938,31
+us,United States,1939,48
+us,United States,1940,106
+us,United States,1941,104
+us,United States,1942,148
+us,United States,1943,95
+us,United States,1944,146
+us,United States,1945,189
+us,United States,1946,159
+us,United States,1947,143
+us,United States,1948,226
+us,United States,1949,319
+us,United States,1950,369
+us,United States,1951,260
+us,United States,1952,336
+us,United States,1953,291
+us,United States,1954,287
+us,United States,1955,326
+us,United States,1956,190
+us,United States,1957,220
+us,United States,1958,261
+us,United States,1959,120
+us,United States,1960,105
+us,United States,1961,105
+us,United States,1962,244
+us,United States,1963,213
+us,United States,1964,167
+us,United States,1965,175
+us,United States,1966,193
+us,United States,1967,207
+us,United States,1968,163
+us,United States,1969,214
+us,United States,1970,201
+us,United States,1971,269
+us,United States,1972,331
+us,United States,1973,297
+us,United States,1974,292
+us,United States,1975,298
+us,United States,1976,266
+us,United States,1977,350
+us,United States,1978,287
+us,United States,1979,299
+us,United States,1980,262
+us,United States,1981,249
+us,United States,1982,317
+us,United States,1983,334
+us,United States,1984,473
+us,United States,1985,423
+us,United States,1986,694
+us,United States,1987,864
+us,United States,1988,692
+us,United States,1989,810
+us,United States,1990,949
+us,United States,1991,1187
+us,United States,1992,1355
+us,United States,1993,1589
+us,United States,1994,1502
+us,United States,1995,1643
+us,United States,1996,1547
+us,United States,1997,1550
+us,United States,1998,1359
+us,United States,1999,1233
+us,United States,2000,1184
+us,United States,2001,1074
+us,United States,2002,1236
+us,United States,2003,1400
+us,United States,2004,1465
+us,United States,2005,1709
+us,United States,2006,1835
+us,United States,2007,1948
+us,United States,2008,2172
+us,United States,2009,2273
+us,United States,2010,2426
+us,United States,2011,2517
+us,United States,2012,2048
+us,United States,2013,2033
+us,United States,2014,2334
+us,United States,2015,2400
+us,United States,2016,2535
+us,United States,2017,2647
+us,United States,2018,3066
+us,United States,2019,3132
+us,United States,2020,2658
+us,United States,2021,2969
+us,United States,2022,3308
+us,United States,2023,2811
+us,United States,2024,2833
+us,United States,2025,2788
+us,United States,2026,1719

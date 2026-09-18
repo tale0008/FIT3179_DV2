@@ -1,0 +1,167 @@
+origin_code,origin,target_code,target,reprints
+us,United States,fr,France,70899
+us,United States,de,Germany,61775
+us,United States,gb,United Kingdom,59413
+us,United States,no,Norway,36599
+us,United States,es,Spain,25407
+us,United States,br,Brazil,23471
+us,United States,au,Australia,22645
+us,United States,nl,Netherlands,17517
+us,United States,mx,Mexico,16688
+us,United States,it,Italy,16291
+us,United States,se,Sweden,15819
+fr,France,de,Germany,13359
+us,United States,ca,Canada,12118
+gb,United Kingdom,no,Norway,10909
+jp,Japan,us,United States,10244
+be,Belgium,de,Germany,8447
+it,Italy,no,Norway,8114
+gb,United Kingdom,nl,Netherlands,8099
+gb,United Kingdom,us,United States,7677
+se,Sweden,no,Norway,6631
+fr,France,be,Belgium,6462
+fr,France,nl,Netherlands,6325
+fr,France,no,Norway,4637
+nl,Netherlands,no,Norway,4469
+us,United States,dk,Denmark,4186
+be,Belgium,no,Norway,3589
+dk,Denmark,no,Norway,3551
+be,Belgium,nl,Netherlands,3369
+it,Italy,fr,France,3195
+fr,France,us,United States,3099
+be,Belgium,fr,France,2949
+fr,France,it,Italy,2859
+gb,United Kingdom,fr,France,2835
+gb,United Kingdom,de,Germany,2577
+be,Belgium,it,Italy,2504
+us,United States,fi,Finland,2475
+us,United States,pt,Portugal,2293
+us,United States,pl,Poland,2239
+fr,France,se,Sweden,2081
+us,United States,ru,Russian Federation,1723
+be,Belgium,se,Sweden,1716
+us,United States,bg,Bulgaria,1638
+gb,United Kingdom,se,Sweden,1458
+jp,Japan,de,Germany,1424
+fr,France,es,Spain,1392
+it,Italy,de,Germany,1372
+us,United States,gr,Greece,1364
+es,Spain,de,Germany,1305
+gb,United Kingdom,it,Italy,1281
+it,Italy,us,United States,1275
+be,Belgium,dk,Denmark,1274
+be,Belgium,es,Spain,1217
+no,Norway,se,Sweden,1200
+ar,Argentina,it,Italy,1191
+us,United States,be,Belgium,1154
+be,Belgium,fi,Finland,1119
+ca,Canada,us,United States,1095
+fr,France,dk,Denmark,1094
+de,Germany,no,Norway,1025
+de,Germany,nl,Netherlands,1022
+es,Spain,fr,France,978
+nl,Netherlands,be,Belgium,972
+fr,France,gb,United Kingdom,922
+gb,United Kingdom,es,Spain,904
+us,United States,yu,Yugoslavia (1918-1991),895
+it,Italy,es,Spain,890
+it,Italy,se,Sweden,871
+fr,France,pl,Poland,861
+no,Norway,fi,Finland,809
+es,Spain,us,United States,774
+be,Belgium,ch,Switzerland,765
+be,Belgium,pt,Portugal,762
+es,Spain,gb,United Kingdom,755
+fr,France,pt,Portugal,715
+dk,Denmark,us,United States,685
+gb,United Kingdom,dk,Denmark,682
+it,Italy,nl,Netherlands,636
+nl,Netherlands,de,Germany,621
+jp,Japan,fr,France,614
+be,Belgium,gb,United Kingdom,566
+fr,France,fi,Finland,566
+es,Spain,nl,Netherlands,563
+be,Belgium,us,United States,555
+be,Belgium,pl,Poland,545
+it,Italy,hr,Croatia (Hrvatska),509
+es,Spain,it,Italy,504
+es,Spain,no,Norway,502
+dk,Denmark,se,Sweden,491
+se,Sweden,dk,Denmark,436
+se,Sweden,fi,Finland,432
+us,United States,lb,Lebanon,416
+se,Sweden,de,Germany,411
+dk,Denmark,nl,Netherlands,399
+de,Germany,fr,France,393
+es,Spain,se,Sweden,384
+se,Sweden,au,Australia,367
+us,United States,tr,Turkey,365
+jp,Japan,se,Sweden,346
+de,Germany,us,United States,339
+nl,Netherlands,us,United States,326
+ch,Switzerland,nl,Netherlands,318
+jp,Japan,es,Spain,314
+jp,Japan,it,Italy,304
+us,United States,hu,Hungary,302
+it,Italy,be,Belgium,291
+ch,Switzerland,de,Germany,289
+ar,Argentina,es,Spain,274
+gb,United Kingdom,pt,Portugal,273
+gb,United Kingdom,au,Australia,270
+no,Norway,us,United States,243
+se,Sweden,gb,United Kingdom,240
+us,United States,ar,Argentina,237
+it,Italy,dk,Denmark,228
+de,Germany,se,Sweden,225
+gb,United Kingdom,ch,Switzerland,223
+us,United States,in,India,223
+it,Italy,bg,Bulgaria,222
+de,Germany,fi,Finland,218
+fr,France,ca,Canada,202
+us,United States,cl,Chile,198
+no,Norway,dk,Denmark,192
+nl,Netherlands,dk,Denmark,189
+us,United States,ph,Philippines,186
+dk,Denmark,it,Italy,182
+es,Spain,au,Australia,181
+us,United States,co,Colombia,178
+nl,Netherlands,gb,United Kingdom,177
+fr,France,hu,Hungary,175
+jp,Japan,ch,Switzerland,172
+ca,Canada,de,Germany,171
+nl,Netherlands,se,Sweden,171
+gb,United Kingdom,fi,Finland,170
+it,Italy,pt,Portugal,167
+fr,France,ch,Switzerland,165
+de,Germany,es,Spain,155
+it,Italy,fi,Finland,153
+se,Sweden,nl,Netherlands,151
+yu,Yugoslavia (1918-1991),rs,Serbia,147
+fr,France,bg,Bulgaria,145
+ca,Canada,no,Norway,141
+de,Germany,bg,Bulgaria,136
+us,United States,jp,Japan,136
+ca,Canada,se,Sweden,135
+nl,Netherlands,fr,France,129
+ch,Switzerland,us,United States,126
+no,Norway,de,Germany,125
+nl,Netherlands,it,Italy,123
+de,Germany,it,Italy,118
+se,Sweden,us,United States,117
+ar,Argentina,us,United States,115
+dk,Denmark,de,Germany,114
+es,Spain,dk,Denmark,114
+ca,Canada,fr,France,112
+us,United States,hr,Croatia (Hrvatska),112
+jp,Japan,ca,Canada,110
+ar,Argentina,de,Germany,107
+ar,Argentina,fi,Finland,106
+fr,France,hr,Croatia (Hrvatska),104
+ca,Canada,es,Spain,102
+au,Australia,us,United States,101
+es,Spain,pt,Portugal,101
+gb,United Kingdom,bg,Bulgaria,101
+ca,Canada,nl,Netherlands,100
+gb,United Kingdom,br,Brazil,100
+it,Italy,br,Brazil,100
+jp,Japan,gb,United Kingdom,100
