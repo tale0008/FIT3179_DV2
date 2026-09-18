@@ -1,0 +1,80 @@
+┌═════════════════════════════════════════┐
+│ TITLE (full width)                      │
+│ "Australia reads comics.                │
+│  Australia doesn't make them."          │
+│ ┌─────────────────┐                     │
+│ │ standfirst, 3 ln│   (text in 1 col    │
+│ │ author · date   │    width only)      │
+│ └─────────────────┘                     │
+╞═════════════════════════════════════════╡
+│ §1  WHO MAKES COMICS?        (full w.)  │
+│ ┌────────────────┬────────────────────┐ │
+│ │ LEAD TEXT      │ M1 world           │ │
+│ │ ~120 words     │ choropleth         │ │
+│ │                │ output per capita  │ │
+│ └────────────────┴────────────────────┘ │
+│ ┌────────────────┬────────────────────┐ │
+│ │ C1 ridgeline   │ C2 heatmap matrix  │ │
+│ │ pub years by   │ country × genre    │ │
+│ │ country        │                    │ │
+│ │ caption 30w    │ caption 30w        │ │
+│ └────────────────┴────────────────────┘ │
+╞═════════════════════════════════════════╡
+│ §2  JAPAN: A COUNTRY THAT FEEDS ITSELF  │
+│ ┌────────────────┬────────────────────┐ │
+│ │ LEAD TEXT      │ C3 line: ¥ market  │ │
+│ │                │ print vs digital   │ │
+│ └────────────────┴────────────────────┘ │
+│ ┌─────────────────────────────────────┐ │
+│ │ M2 SMALL MULTIPLES (full width)     │ │
+│ │ prefecture choropleth × 6 decades   │ │
+│ │ ▢ ▢ ▢ ▢ ▢ ▢                         │ │
+│ └─────────────────────────────────────┘ │
+│ ┌────────────────┬────────────────────┐ │
+│ │ C4 streamgraph │ C5 radial arc      │ │
+│ │ demographic    │ demographic mix    │ │
+│ │ share over time│ current year       │ │
+│ └────────────────┴────────────────────┘ │
+╞═════════════════════════════════════════╡
+│ §3  THE UNITED STATES                   │
+│ ┌────────────────┬────────────────────┐ │
+│ │ M3 state       │ LEAD TEXT          │ │
+│ │ choropleth     │ (text right this   │ │
+│ │ creator origins│  time, alternates) │ │
+│ └────────────────┴────────────────────┘ │
+│ ┌────────────────┬────────────────────┐ │
+│ │ C6 slope graph │ ANNOTATION TEXT    │ │
+│ │ publisher rank │ + callout notes    │ │
+│ │ 2015 vs 2025   │                    │ │
+│ └────────────────┴────────────────────┘ │
+╞═════════════════════════════════════════╡
+│ §4  AUSTRALIA          (tallest)        │
+│ ┌────────────────┬────────────────────┐ │
+│ │ LEAD TEXT      │ C7 WAFFLE          │ │
+│ │ the argument   │ imported vs local  │ │
+│ │                │ ← money chart      │ │
+│ └────────────────┴────────────────────┘ │
+│ ┌─────────────────────────────────────┐ │
+│ │ C8 HORIZON CHART (full width)       │ │
+│ │ AU output 1930–2026                 │ │
+│ │   ▲1940 import ban  ▲1959 lifted    │ │
+│ └─────────────────────────────────────┘ │
+│ ┌────────────────┬────────────────────┐ │
+│ │ M4 flow map    │ M5 prop. symbol    │ │
+│ │ US→AU reprints │ cons + festivals   │ │
+│ └────────────────┴────────────────────┘ │
+│ ┌────────────────┬────────────────────┐ │
+│ │ M6 AU state    │ TEXT + caption     │ │
+│ │ Google Trends  │                    │ │
+│ └────────────────┴────────────────────┘ │
+╞═════════════════════════════════════════╡
+│ §5  CAN WE GROW THEM AT HOME?           │
+│ ┌────────────────┬────────────────────┐ │
+│ │ C9 jittered    │ CLOSING TEXT       │ │
+│ │ strip plot     │                    │ │
+│ └────────────────┴────────────────────┘ │
+│ ┌─────────────────────────────────────┐ │
+│ │ METADATA BAR: sources · author ·    │ │
+│ │ date · licence · AI acknowledgement │ │
+│ └─────────────────────────────────────┘ │
+└═════════════════════════════════════════┘
