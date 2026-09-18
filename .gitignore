@@ -1,0 +1,5 @@
+gcd.db
+gcd.db-journal
+gcd_dump.sql
+*.sqlite3
+/raw-data/
