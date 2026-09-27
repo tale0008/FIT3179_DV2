@@ -1,0 +1,69 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Comics published per million people",
+    "subtitle": [
+      "Issues indexed in the Grand Comics Database, normalised by population.",
+      "Coverage reflects volunteer indexing effort as well as real output."
+    ],
+    "anchor": "start",
+    "fontSize": 16,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#666"
+  },
+  "width": "container",
+  "height": 340,
+  "projection": {"type": "equalEarth"},
+  "layer": [
+    {
+      "data": {
+        "url": "https://cdn.jsdelivr.net/npm/vega-datasets@2/data/world-110m.json",
+        "format": {"type": "topojson", "feature": "countries"}
+      },
+      "mark": {"type": "geoshape", "fill": "#f0f0f0", "stroke": "#ffffff", "strokeWidth": 0.4}
+    },
+    {
+      "data": {
+        "url": "https://cdn.jsdelivr.net/npm/vega-datasets@2/data/world-110m.json",
+        "format": {"type": "topojson", "feature": "countries"}
+      },
+      "transform": [
+        {
+          "lookup": "id",
+          "from": {
+            "data": {"url": "data/country_map.csv"},
+            "key": "iso_n3",
+            "fields": ["country", "issues", "series", "population", "issues_per_million"]
+          }
+        },
+        {"filter": "isValid(datum.issues_per_million)"}
+      ],
+      "mark": {"type": "geoshape", "stroke": "#ffffff", "strokeWidth": 0.4},
+      "encoding": {
+        "color": {
+          "field": "issues_per_million",
+          "type": "quantitative",
+          "scale": {"type": "log", "scheme": "yellowgnbu"},
+          "legend": {
+            "title": ["Issues per", "million people"],
+            "orient": "bottom-left",
+            "format": ".0f",
+            "titleFontSize": 10,
+            "labelFontSize": 9
+          }
+        },
+        "tooltip": [
+          {"field": "country", "type": "nominal", "title": "Country"},
+          {"field": "issues_per_million", "type": "quantitative", "title": "Per million", "format": ",.0f"},
+          {"field": "issues", "type": "quantitative", "title": "Issues indexed", "format": ","},
+          {"field": "series", "type": "quantitative", "title": "Series", "format": ","},
+          {"field": "population", "type": "quantitative", "title": "Population", "format": ","}
+        ]
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "font": "Inter, system-ui, sans-serif"
+  }
+}
