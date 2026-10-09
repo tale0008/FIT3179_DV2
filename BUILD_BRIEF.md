@@ -183,9 +183,10 @@ Text alternates to the right in this section.
 ### §4 Australia (the tallest section, visually the centre of the page)
 
 * Row 1, L: lead text. "Australia is one of the world's great importers of comics. Of the Australian comic issues in the database, 17.5% are reprints of foreign comics and just 0.7% are reprints of Australian ones: twenty-five imported reprints for every local one. Only Norway and Canada import a larger share. Meanwhile Australian sales of graphic novels more than doubled between 2020 and 2023."
-* Row 1, R: placeholder **C7a** "The gap: what Australia buys vs what it makes" · Indexed two-series chart, 2020 = 100 · Sources: NielsenIQ BookScan via Australian Publishers Association report (Splatt, 2024) plus Grand Comics Database · Annotation: "Sales up about 2.5 times, local output flat" · 320 px
-* Row 2, L: placeholder **C7** "Whose comics are Australia's comics?" · Waffle chart · Source: Grand Comics Database · Annotation: "17.5% foreign reprints vs 0.7% domestic" · 320 px
-* Row 2, R: caption and comparison text placeholder. "Australia vs Japan: 250 times the share of imported reprints."
+* Row 1, L (continued): comparison figure beneath the lead text. "Australia vs Japan: 250 times the share of imported reprints."
+* Row 1, R: placeholder **C7** "Whose comics are Australia's comics?" · Waffle chart · Source: Grand Comics Database · Annotation: "17.5% foreign reprints vs 0.7% domestic" · 320 px, with caption placeholder beneath. (Matches the sketch: the waffle is the section's main chart.)
+* Row 2, L: placeholder **C7a** "The gap: what Australia buys vs what it makes" · Indexed two-series chart, 2020 = 100 · Sources: NielsenIQ BookScan via Australian Publishers Association report (Splatt, 2024) plus Grand Comics Database · Annotation: "Sales up about 2.5 times, local output flat" · 320 px. Not in the sketch; an extra row added after it.
+* Row 2, R: text placeholder for C7a.
 * Row 3, FULL: placeholder **C8** "Eighty years of Australian comics" · Horizon chart · Source: Grand Comics Database · Annotations: "1940: wartime import ban, new series jump from 2 to 83", "1959: American comics return", "1980: second reprint boom" · 220 px. Add a one-column caption placeholder beneath it.
 * Row 4, L: placeholder **M4** "How American comics reached Australia" · Flow map · Source: Grand Comics Database reprint records · Annotation: "22,645 documented US to Australia reprint links" · 320 px
 * Row 4, R: placeholder **M5** "Where Australian fans gather" · Proportional symbol map of conventions and comic festivals by city · Sources: convention attendance figures plus city coordinates · Annotation: "SMASH! Sydney: 53,071 attendees in 2026" · 320 px
@@ -204,6 +205,7 @@ This is marked under the storytelling criterion, so make it complete and well fo
 * **Author:** Thisum Patabadige
 * **Date:** October 2026
 * **Unit:** FIT3179 Data Visualisation, Monash University
+* **Licence:** GCD-derived data under CC BY-SA 4.0; licence for the rest of the page is the student's choice (the sketch lists a licence in the metadata bar).
 * **Data sources**, each with a link:
   * Grand Comics Database (comics.org), licensed CC BY-SA 4.0. The credit must name "Grand Comics Database" and link to comics.org.
   * World Bank population data (used in M1)

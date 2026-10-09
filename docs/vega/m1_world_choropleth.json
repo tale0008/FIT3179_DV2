@@ -43,7 +43,7 @@
         "color": {
           "field": "issues_per_million",
           "type": "quantitative",
-          "scale": {"type": "log", "scheme": "yellowgnbu"},
+          "scale": {"type": "log", "scheme": "yellowgreenblue"},
           "legend": {
             "title": ["Issues per", "million people"],
             "orient": "bottom-left",

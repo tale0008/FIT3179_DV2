@@ -4,3 +4,6 @@ gcd_dump.sql
 *.sqlite3
 /raw-data/
 cmd output.txt
+*.dll
+*.def
+__pycache__/

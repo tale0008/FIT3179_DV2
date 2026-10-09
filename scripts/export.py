@@ -9,7 +9,7 @@ import os
 from collections import defaultdict
 
 DB_PATH = r"C:\Personal\Code\UNI\Sem 7\FIT3179 Data Visualisation\A2\Repo\FIT3179_DV2\gcd.db"
-OUT_DIR = r"C:\Personal\Code\UNI\Sem 7\FIT3179 Data Visualisation\A2\Repo\FIT3179_DV2\gcd export"
+OUT_DIR = os.path.join(os.path.dirname(__file__), "..", "docs", "data")
 
 os.makedirs(OUT_DIR, exist_ok=True)
 conn = sqlite3.connect(DB_PATH)
