@@ -1,33 +1,72 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Every country has its own genre",
-    "subtitle": "Share of a country's indexed stories by genre. Stories can carry more than one genre tag.",
+    "text": "Every country has its favourite genre",
+    "subtitle": [
+      "Share of each country's indexed stories by genre.",
+      "A story can carry more than one genre tag."
+    ],
     "anchor": "start",
     "fontSize": 16,
     "subtitleFontSize": 11,
     "subtitleColor": "#666"
   },
-  "data": {"url": "data/country_genre.csv"},
+  "data": {
+    "url": "data/country_genre.csv"
+  },
   "transform": [
     {
-      "joinaggregate": [{"op": "sum", "field": "stories", "as": "country_total"}],
-      "groupby": ["country"]
+      "joinaggregate": [
+        {
+          "op": "sum",
+          "field": "stories",
+          "as": "country_total"
+        }
+      ],
+      "groupby": [
+        "country"
+      ]
     },
-    {"calculate": "datum.stories / datum.country_total", "as": "share"},
     {
-      "joinaggregate": [{"op": "sum", "field": "stories", "as": "genre_total"}],
-      "groupby": ["genre"]
+      "calculate": "datum.stories / datum.country_total",
+      "as": "share"
+    },
+    {
+      "filter": "datum.genre !== 'other'"
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "sum",
+          "field": "stories",
+          "as": "genre_total"
+        }
+      ],
+      "groupby": [
+        "genre"
+      ]
     }
   ],
   "width": "container",
-  "height": 300,
-  "mark": {"type": "rect", "stroke": "#ffffff", "strokeWidth": 1},
+  "height": 320,
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "mark": {
+    "type": "rect",
+    "stroke": "#ffffff",
+    "strokeWidth": 1
+  },
   "encoding": {
     "x": {
       "field": "genre",
       "type": "nominal",
-      "sort": {"op": "max", "field": "genre_total", "order": "descending"},
+      "sort": {
+        "field": "genre_total",
+        "op": "max",
+        "order": "descending"
+      },
       "axis": {
         "title": null,
         "labelAngle": -45,
@@ -40,32 +79,66 @@
     "y": {
       "field": "country",
       "type": "nominal",
-      "sort": {"op": "max", "field": "country_total", "order": "descending"},
-      "axis": {"title": null, "labelFontSize": 10, "domain": false, "ticks": false}
+      "sort": {
+        "field": "country_total",
+        "op": "max",
+        "order": "descending"
+      },
+      "axis": {
+        "title": null,
+        "labelFontSize": 10,
+        "domain": false,
+        "ticks": false,
+        "labelFontWeight": {
+          "expr": "indexof(['Australia','Japan','United States'], datum.value) >= 0 ? 'bold' : 'normal'"
+        }
+      }
     },
     "color": {
       "field": "share",
       "type": "quantitative",
-      "scale": {"scheme": "purples", "type": "sqrt"},
+      "scale": {
+        "scheme": "purples",
+        "type": "sqrt"
+      },
       "legend": {
         "title": "Share of country's stories",
         "format": ".0%",
         "orient": "top",
         "direction": "horizontal",
-        "gradientLength": 160,
+        "gradientLength": 140,
         "titleFontSize": 10,
         "labelFontSize": 9
       }
     },
     "tooltip": [
-      {"field": "country", "type": "nominal", "title": "Country"},
-      {"field": "genre", "type": "nominal", "title": "Genre"},
-      {"field": "share", "type": "quantitative", "title": "Share", "format": ".1%"},
-      {"field": "stories", "type": "quantitative", "title": "Stories", "format": ","}
+      {
+        "field": "country",
+        "type": "nominal",
+        "title": "Country"
+      },
+      {
+        "field": "genre",
+        "type": "nominal",
+        "title": "Genre"
+      },
+      {
+        "field": "share",
+        "type": "quantitative",
+        "title": "Share of stories",
+        "format": ".1%"
+      },
+      {
+        "field": "stories",
+        "type": "quantitative",
+        "title": "Stories",
+        "format": ","
+      }
     ]
   },
   "config": {
-    "view": {"stroke": null},
-    "font": "Inter, system-ui, sans-serif"
+    "view": {
+      "stroke": null
+    }
   }
 }

@@ -1,94 +1,208 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "When each country made comics",
-    "subtitle": "New series started per year, 1930-2026. Uncertain start years excluded.",
+    "text": "When each country made its comics",
+    "subtitle": [
+      "New series started per year, smoothed over five years and scaled to each country's own peak.",
+      "Australia, Japan and the United States in colour, other countries in grey. Uncertain start years excluded."
+    ],
     "anchor": "start",
     "fontSize": 16,
     "subtitleFontSize": 11,
     "subtitleColor": "#666"
   },
-  "data": {"url": "data/country_year.csv"},
+  "data": {
+    "url": "data/country_year.csv"
+  },
   "transform": [
     {
       "impute": "series",
       "key": "year",
-      "keyvals": {"start": 1930, "stop": 2027, "step": 1},
-      "groupby": ["country"],
+      "keyvals": {
+        "start": 1930,
+        "stop": 2027,
+        "step": 1
+      },
+      "groupby": [
+        "country"
+      ],
       "value": 0
     },
     {
-      "window": [{"op": "mean", "field": "series", "as": "smoothed"}],
-      "frame": [-2, 2],
-      "groupby": ["country"],
-      "sort": [{"field": "year"}]
+      "window": [
+        {
+          "op": "mean",
+          "field": "series",
+          "as": "smoothed"
+        }
+      ],
+      "frame": [
+        -2,
+        2
+      ],
+      "groupby": [
+        "country"
+      ],
+      "sort": [
+        {
+          "field": "year",
+          "order": "ascending"
+        }
+      ]
     },
     {
-      "joinaggregate": [{"op": "max", "field": "smoothed", "as": "peak"}],
-      "groupby": ["country"]
+      "joinaggregate": [
+        {
+          "op": "max",
+          "field": "smoothed",
+          "as": "peak"
+        }
+      ],
+      "groupby": [
+        "country"
+      ]
     },
-    {"calculate": "datum.smoothed / datum.peak", "as": "norm"},
     {
-      "joinaggregate": [{"op": "sum", "field": "series", "as": "total"}],
-      "groupby": ["country"]
+      "calculate": "datum.smoothed / datum.peak",
+      "as": "norm"
+    },
+    {
+      "calculate": "datum.year * datum.series",
+      "as": "year_weight"
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "sum",
+          "field": "year_weight",
+          "as": "sum_yw"
+        },
+        {
+          "op": "sum",
+          "field": "series",
+          "as": "total"
+        }
+      ],
+      "groupby": [
+        "country"
+      ]
+    },
+    {
+      "calculate": "round(datum.sum_yw / datum.total)",
+      "as": "avg_year"
+    },
+    {
+      "calculate": "indexof(['Australia','Japan','United States'], datum.country) >= 0 ? datum.country : 'Other countries'",
+      "as": "highlight"
     }
   ],
-  "width": "container",
-  "height": 26,
-  "bounds": "flush",
-  "spacing": 2,
-  "facet": {
+  "width": 420,
+  "height": 22,
+  "mark": {
+    "type": "area",
+    "interpolate": "monotone",
+    "fillOpacity": 0.9,
+    "stroke": "#ffffff",
+    "strokeWidth": 0.6
+  },
+  "encoding": {
     "row": {
       "field": "country",
       "type": "nominal",
-      "sort": {"op": "max", "field": "total", "order": "descending"},
+      "sort": {
+        "field": "avg_year",
+        "op": "min",
+        "order": "ascending"
+      },
       "title": null,
       "header": {
         "labelAngle": 0,
         "labelAlign": "left",
-        "labelAnchor": "middle",
         "labelFontSize": 10,
-        "labelPadding": 4
-      }
-    }
-  },
-  "spec": {
-    "width": "container",
-    "height": 26,
-    "layer": [
-      {
-        "mark": {"type": "area", "interpolate": "monotone", "fillOpacity": 0.75, "line": {"strokeWidth": 1}},
-        "encoding": {
-          "x": {
-            "field": "year",
-            "type": "quantitative",
-            "scale": {"domain": [1930, 2026], "nice": false},
-            "axis": {"title": null, "format": "d", "grid": false, "tickCount": 10}
-          },
-          "y": {
-            "field": "norm",
-            "type": "quantitative",
-            "scale": {"domain": [0, 1]},
-            "axis": null
-          },
-          "color": {
-            "field": "country",
-            "type": "nominal",
-            "scale": {"scheme": "tableau20"},
-            "legend": null
-          },
-          "tooltip": [
-            {"field": "country", "type": "nominal", "title": "Country"},
-            {"field": "year", "type": "quantitative", "title": "Year", "format": "d"},
-            {"field": "series", "type": "quantitative", "title": "Series started"}
-          ]
+        "labelPadding": 6,
+        "labelFontWeight": {
+          "expr": "indexof(['Australia','Japan','United States'], datum.value) >= 0 ? 'bold' : 'normal'"
         }
       }
-    ]
+    },
+    "x": {
+      "field": "year",
+      "type": "quantitative",
+      "scale": {
+        "domain": [
+          1930,
+          2026
+        ],
+        "nice": false
+      },
+      "axis": {
+        "title": null,
+        "format": "d",
+        "grid": false,
+        "tickCount": 10
+      }
+    },
+    "y": {
+      "field": "norm",
+      "type": "quantitative",
+      "scale": {
+        "range": [
+          22,
+          -22
+        ]
+      },
+      "axis": null
+    },
+    "tooltip": [
+      {
+        "field": "country",
+        "type": "nominal",
+        "title": "Country"
+      },
+      {
+        "field": "year",
+        "type": "quantitative",
+        "title": "Year",
+        "format": "d"
+      },
+      {
+        "field": "series",
+        "type": "quantitative",
+        "title": "Series started"
+      },
+      {
+        "field": "avg_year",
+        "type": "quantitative",
+        "title": "Average year",
+        "format": "d"
+      }
+    ],
+    "color": {
+      "field": "highlight",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "Australia",
+          "Japan",
+          "United States",
+          "Other countries"
+        ],
+        "range": [
+          "#B07A00",
+          "#C8102E",
+          "#1F4E9A",
+          "#C9C9C4"
+        ]
+      },
+      "legend": null
+    }
   },
   "config": {
-    "view": {"stroke": null},
-    "facet": {"spacing": 2},
-    "font": "Inter, system-ui, sans-serif"
+    "view": {
+      "stroke": null
+    },
+    "facet": {
+      "spacing": 0
+    }
   }
 }
