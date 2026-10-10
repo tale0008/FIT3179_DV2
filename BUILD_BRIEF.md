@@ -116,21 +116,23 @@ Use one CSS class (for example `.placeholder`) and keep the markup consistent, s
 
 ## 7. Layout system
 
-The student's tutor gave two explicit pieces of feedback on the sketch. Both are requirements:
+(Replaced by Update 04.)
 
-* **Strict two-column grid everywhere.** Never mix a three-column row with two-column rows. A row is either two equal columns or one full-width row spanning both.
-* **Every chart has text beside or below it.** No chart sits alone without narrative or caption text.
+* **The page reads left to right, row by row**, never down one column and then the other.
+* **Every row is one of three types:**
+  * **Chart row** (`.row-chart`): one chart in one column and all of that chart's five-part text (lead, reading guide, takeaway, caveat, transition) directly beside it, vertically centred against it. Never two charts side by side. `.row-chart` puts the chart left; `.row-chart--flip` puts it right. Chart rows alternate sides through each section, starting with chart right.
+  * **Wide chart row** (`.row-wide-chart`): one chart across both columns, with a text row of its lead and reading guide directly above and a text row of its takeaway, caveat and transition directly below.
+  * **Text row** (`.row-text`): text with no chart, one merged cell across both columns. Never two columns of text, never text beside an empty column.
+* Merged text rows are centred across both columns and capped at `--measure-wide` (760 px, about 85 to 90 characters per line). Set it to `none` for full-width text.
+* The footer ("About this visualisation") is the one exception: details and sources sit side by side in `.row-meta`, because it is a reference list.
 
 Grid details:
 
 * Content max width about 1120 px, centred, with side padding of at least 24 px.
-* Two equal columns with a gutter of about 48 px. Every box on the page aligns to the same two column edges, giving one consistent set of vertical sight lines from top to bottom.
-* **Body text never runs full width.** Even in a full-width row, paragraphs are capped at one column's width (roughly 60 to 75 characters per line). Charts and maps may span the full width, prose may not.
-* One spacing scale (for example 8, 16, 24, 48, 96 px) used throughout for consistent vertical rhythm.
+* Two equal columns with a gutter of about 48 px, the same in every row, so every box aligns to the same two column edges.
+* One spacing scale (8, 16, 24, 48, 96 px) used throughout for consistent vertical rhythm.
 * Sections separated by generous white space and a thin rule or subtle background change, not heavy borders.
-* Below about 820 px viewport width, collapse to one column.
-
-Use CSS Grid with reusable row classes, for example `.row-2` (two columns) and `.row-full` (spanning both), rather than one-off layout rules per section.
+* Below about 820 px viewport width, every row collapses to one column, with each chart's text directly above its chart.
 
 ## 8. Typography and colour
 

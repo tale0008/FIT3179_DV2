@@ -39,7 +39,7 @@ Every chart follows the same five-part pattern. Parts marked optional can be dro
 
 Total per chart: about 100 to 150 words. Per section intro: about 40 to 70 words.
 
-Placement: text sits beside the chart (left or right column) or directly below it. A chart never appears without its lead-in and takeaway.
+Placement: the page reads left to right, row by row. A chart in one column has all of its text directly beside it in the other column, and chart rows alternate sides. A chart spanning both columns has its lead-in and reading guide in a merged text row directly above it, and the rest directly below it. Text with no chart is one merged cell across both columns, never two columns of text. A chart never appears without its lead-in and takeaway.
 
 ## 4. Page-level structure
 

@@ -1,8 +1,10 @@
 /* ==========================================================================
    FIT3179 DV2 — "Australia reads comics. Australia doesn't make them."
-   Layout: one strict two-column grid. A row is either .row-2 (two equal
-   columns) or .row-full (one block spanning both). Prose never runs wider
-   than one column.
+   Layout: one strict two-column grid, read left to right, row by row.
+   Every row is one of three types: .row-chart (a chart in one column, all
+   of its text beside it), .row-wide-chart (a chart across both columns) or
+   .row-text (text with no chart, one merged cell, centred and capped at
+   --measure-wide). Two columns of text never sit side by side.
    ========================================================================== */
 
 :root {
@@ -40,6 +42,7 @@
   /* Grid */
   --content: 1120px;
   --gutter: 48px;
+  --measure-wide: 760px; /* max width of text in a merged text row; "none" for full width */
 }
 
 /* --------------------------------------------------------------------------
@@ -95,11 +98,13 @@ a:hover {
   padding: 0 var(--s3);
 }
 
+/* Every row uses the same two columns and gutter, so all rows share the
+   same column edges. */
 .row {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   column-gap: var(--gutter);
-  row-gap: var(--s4);
+  row-gap: var(--s3);
   align-items: start;
 }
 
@@ -107,24 +112,57 @@ a:hover {
   margin-top: var(--s4);
 }
 
-.row-full > * {
+/* A wide chart's text rows sit closer to it than to the rows around them. */
+.row-text + .row-wide-chart,
+.row-wide-chart + .row-text {
+  margin-top: var(--s3);
+}
+
+/* Chart row: the chart's text first in the source, then its .figure.
+   Default puts the chart left; --flip puts it right. The text is centred
+   against the chart, or the chart against the text if the text is taller.
+   Below 821px the row is one column in source order, text above chart. */
+.row-chart {
+  align-items: center;
+}
+
+@media (min-width: 821px) {
+  .row-chart > :not(.figure) { grid-column: 2; grid-row: 1; }
+  .row-chart > .figure       { grid-column: 1; grid-row: 1; }
+
+  .row-chart--flip > :not(.figure) { grid-column: 1; }
+  .row-chart--flip > .figure       { grid-column: 2; }
+}
+
+/* Wide chart row: the chart spans both columns. */
+.row-wide-chart > * {
   grid-column: 1 / -1;
 }
 
-/* Text around a full-width chart keeps to one column's width. */
-.row-full .caption,
-.row-full .prose {
-  max-width: calc((100% - var(--gutter)) / 2);
+/* Text row: one merged cell. The text block is centred across both columns
+   and capped at --measure-wide; the text inside stays left-aligned. */
+.row-text > * {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: 100%;
+  max-width: var(--measure-wide);
 }
+
+.row-text p {
+  max-width: none;
+}
+
+/* The page title is display type, not reading text: it runs the full width. */
+.row-text--display > * {
+  max-width: none;
+}
+
+/* .row-meta (footer only) is a plain .row: details and sources sit side by
+   side because they are a reference list, not reading text. */
 
 @media (max-width: 820px) {
   .row {
     grid-template-columns: minmax(0, 1fr);
-  }
-
-  .row-full .caption,
-  .row-full .prose {
-    max-width: 68ch;
   }
 }
 
@@ -257,20 +295,6 @@ a:hover {
   margin-top: var(--s3);
 }
 
-/* A chart with text above and below it. Inside a .row-paired row, the two
-   blocks share row tracks (subgrid), so both charts start at the same height
-   and both takeaways start at the same height. */
-.chart-block {
-  display: grid;
-  row-gap: var(--s3);
-  align-content: start;
-}
-
-.row-paired > .chart-block {
-  grid-row: span 3;
-  grid-template-rows: subgrid;
-}
-
 /* --------------------------------------------------------------------------
    Figures and captions
    -------------------------------------------------------------------------- */
@@ -306,11 +330,6 @@ a:hover {
   color: var(--muted);
 }
 
-/* A caption in the column beside its chart lines up with the chart's top. */
-.row > .caption {
-  margin-top: 0;
-}
-
 .chart-error {
   padding: var(--s3);
   border: 1.5px solid var(--ink);
@@ -339,14 +358,8 @@ a:hover {
   color: var(--muted);
 }
 
-.row-full .placeholder > * {
-  max-width: calc((100% - var(--gutter)) / 2);
-}
-
-@media (max-width: 820px) {
-  .row-full .placeholder > * {
-    max-width: none;
-  }
+.row-wide-chart .placeholder > * {
+  max-width: var(--measure-wide);
 }
 
 .ph-id {

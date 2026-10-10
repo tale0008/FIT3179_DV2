@@ -23,6 +23,17 @@
   "layer": [
     {
       "data": {
+        "sphere": true
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#E3EDF3",
+        "stroke": "#C9D9E3",
+        "strokeWidth": 0.8
+      }
+    },
+    {
+      "data": {
         "url": "https://cdn.jsdelivr.net/npm/vega-datasets@2/data/world-110m.json",
         "format": {
           "type": "topojson",
