@@ -111,8 +111,9 @@ a:hover {
   grid-column: 1 / -1;
 }
 
-/* A caption under a full-width chart keeps to one column's width. */
-.row-full .caption {
+/* Text around a full-width chart keeps to one column's width. */
+.row-full .caption,
+.row-full .prose {
   max-width: calc((100% - var(--gutter)) / 2);
 }
 
@@ -121,7 +122,8 @@ a:hover {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .row-full .caption {
+  .row-full .caption,
+  .row-full .prose {
     max-width: 68ch;
   }
 }
@@ -302,6 +304,11 @@ a:hover {
   font-size: 14px;
   line-height: 1.5;
   color: var(--muted);
+}
+
+/* A caption in the column beside its chart lines up with the chart's top. */
+.row > .caption {
+  margin-top: 0;
 }
 
 .chart-error {

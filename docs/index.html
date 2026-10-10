@@ -78,7 +78,7 @@
         <p class="transition">So who makes comics depends on how you count. The next question is when.</p>
       </div>
       <figure class="figure">
-        <div id="m1" class="chart" style="--h: 420px"></div>
+        <div id="m1" class="chart"></div>
       </figure>
     </div>
 
@@ -91,7 +91,7 @@
           <p class="reading-guide">(Reading the ridgeline: each strip is one country's new comic series per year. The taller the strip, the closer that year was to the country's busiest. Countries run from the earliest publishers at the top to the latest at the bottom.)</p>
         </div>
         <figure class="figure">
-          <div id="c1" class="chart" style="--h: 480px"></div>
+          <div id="c1" class="chart"></div>
         </figure>
         <div class="prose">
           <p class="takeaway"><span class="c-au">Australia</span>'s strip has two humps: one in the 1950s, when local publishers filled the gap left by banned imports, and another around 1980, when Australian editions of American comics boomed. After the mid-1980s it almost disappears.</p>
@@ -107,12 +107,31 @@
           <p class="reading-guide">(Each row is one country and each column one genre. Darker purple means a larger share of that country's stories.)</p>
         </div>
         <figure class="figure">
-          <div id="c2" class="chart" style="--h: 440px"></div>
+          <div id="c2" class="chart"></div>
         </figure>
         <div class="prose">
           <p class="takeaway">Superheroes dominate <span class="c-us">American</span> comics. Most other countries built their industries on humour, adventure and stories for children.</p>
           <!-- VERIFY against rendered C2 -->
           <p class="caveat">(A story can carry more than one genre, so shares count genre tags rather than whole stories. Smaller genres are grouped together and not shown.)</p>
+          <p class="transition">Countries did not only publish different stories. They published them in different shapes.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- C10: chart full width, prose kept to the left column -->
+    <div class="row row-full">
+      <div class="chart-block">
+        <div class="prose">
+          <p class="lead">Some countries launch thousands of short series. Others keep a few running for decades.</p>
+          <p class="reading-guide">(Each dot is a country. Further right means more series published. Higher up means each series ran for more issues on average.)</p>
+        </div>
+        <figure class="figure">
+          <div id="c10" class="chart"></div>
+        </figure>
+        <div class="prose">
+          <p class="takeaway"><span class="c-us">The United States</span> publishes the most series, but they average only about 4 issues each. Mexico's average about 119. <span class="c-jp">Japan</span> sits in between at about 37 issues per series, and <span class="c-au">Australia</span> at about 10.</p>
+          <!-- VERIFY: issues per series values against country_output.csv -->
+          <p class="caveat">(Both axes use a log scale, so each gridline multiplies the value rather than adding to it. Countries with fewer than 200 series in the database are left out.)</p>
           <p class="transition"><span class="c-jp">Japan</span> is the clearest case of a country that built its own kind of comics, and then kept them for itself.</p>
         </div>
       </div>
@@ -251,82 +270,111 @@
 
     <div class="row row-2">
       <div class="prose">
-        <p>Australia is one of the world's great importers of comics. Of the Australian comic issues in the database, <strong class="num">17.5%</strong> are reprints of foreign comics and just <strong class="num">0.7%</strong> are reprints of Australian ones: twenty-five imported reprints for every local one. Only Norway and Canada import a larger share. Meanwhile Australian sales of graphic novels more than doubled between 2020 and 2023.</p>
-        <p class="stat">
-          <span class="stat-value">250×</span>
-          <span class="stat-label">Australia vs Japan: 250 times the share of imported reprints.</span>
-        </p>
+        <p>Australia has always read comics. For most of the last eighty years, it has printed other countries' comics to do it.</p>
+      </div>
+    </div>
+
+    <!-- C7a: text left, chart right -->
+    <div class="row row-2">
+      <div class="prose">
+        <p class="lead">Start with today. Australians are buying more comics than ever.</p>
+        <p class="lead">Sales of graphic novels in Australian shops nearly tripled in four years, from about 500,000 copies in 2020 to 1.38 million in 2023.</p>
+        <p class="reading-guide">(Grey bars are copies sold. Each gold square beneath them is one new comic series published in Australia that year.)</p>
+        <p class="takeaway">Over the same four years, the database records just 14 new Australian comic series.</p>
+        <!-- VERIFY: sum of 2020 to 2023 in au_series_by_year.csv -->
+        <p class="caveat">(Sales figures exclude manga and superhero titles, so the true total is higher. The newest years of the database are the least complete, because volunteers tend to catalogue recent comics last.)</p>
+        <p class="transition">So if Australians are not reading Australian comics, whose are they reading?</p>
       </div>
       <figure class="figure">
-        <div id="c7" class="chart placeholder" style="--h: 320px">
-          <p class="ph-id">C7</p>
-          <p class="ph-title">Whose comics are Australia's comics?</p>
-          <dl class="ph-meta">
-            <dt>Idiom</dt><dd>Waffle chart</dd>
-            <dt>Source</dt><dd>Grand Comics Database</dd>
-            <dt>Annotation</dt><dd>“17.5% foreign reprints vs 0.7% domestic”</dd>
-          </dl>
-        </div>
-        <figcaption class="caption todo"><span class="todo-label">Caption to write</span>How to read the waffle chart, and the Japan comparison it sets up.</figcaption>
+        <div id="c7a" class="chart"></div>
       </figure>
     </div>
 
-    <div class="row row-2">
-      <figure class="figure">
-        <div id="c7a" class="chart placeholder" style="--h: 320px">
-          <p class="ph-id">C7a</p>
-          <p class="ph-title">The gap: what Australia buys vs what it makes</p>
-          <dl class="ph-meta">
-            <dt>Idiom</dt><dd>Indexed two-series chart, 2020 = 100</dd>
-            <dt>Sources</dt><dd>NielsenIQ BookScan via Australian Publishers Association report (Splatt, 2024) · Grand Comics Database</dd>
-            <dt>Annotation</dt><dd>“Sales up about 2.5 times, local output flat”</dd>
-          </dl>
+    <!-- C7 and C7b side by side. The two blocks share row tracks, so the
+         charts and the takeaways start at the same height. -->
+    <div class="row row-2 row-paired">
+      <div class="chart-block">
+        <div class="prose">
+          <p class="lead">Look at the comics Australia has published itself, and many of them turn out to be someone else's.</p>
+          <p class="reading-guide">(Reading the waffle: each grid is 100 comic issues. Dark squares reprint a foreign comic, light squares reprint one of the country's own, and grey squares have no reprint recorded.)</p>
         </div>
-      </figure>
-      <p class="todo"><span class="todo-label">Text to write (C7a)</span>What "2020 = 100" means in plain words, and how far sales and local output have drifted apart since.</p>
+        <figure class="figure">
+          <div id="c7" class="chart"></div>
+        </figure>
+        <div class="prose">
+          <p class="takeaway">About 18 of every 100 <span class="c-au">Australian</span> issues reprint a foreign comic, and fewer than 1 reprints an Australian one. In <span class="c-jp">Japan</span>, foreign reprints do not fill a single square: about 7 in every 10,000 issues.</p>
+          <p class="caveat">(These are only the reprints volunteers have linked to their originals, so the true shares are higher everywhere.)</p>
+          <p class="transition">Australia is not the only country that imports its comics, but it is near the top of the list.</p>
+        </div>
+      </div>
+
+      <div class="chart-block">
+        <div class="prose">
+          <p class="lead">Every country reprints comics. What differs is whose.</p>
+          <p class="reading-guide">(Bars to the right show reprints of foreign comics. Bars to the left show reprints of a country's own older comics.)</p>
+        </div>
+        <figure class="figure">
+          <div id="c7b" class="chart"></div>
+        </figure>
+        <div class="prose">
+          <p class="takeaway"><span class="c-au">Australia</span> ranks third for foreign reprints, behind only Norway and Canada. <span class="c-us">The United States</span> and <span class="c-jp">Japan</span> sit at the bottom: when they reprint, they reprint themselves. Eleven of every 100 American issues bring back an older American comic.</p>
+          <p class="caveat">(Countries with more than 5,000 issues in the database. Yugoslavia is shown as it existed from 1918 to 1991.)</p>
+          <p class="transition">It was not always this way. For a few years, Australia made its own comics because it had no choice.</p>
+        </div>
+      </div>
     </div>
 
+    <!-- C8: chart full width, prose kept to the left column -->
     <div class="row row-full">
-      <figure class="figure">
-        <div id="c8" class="chart placeholder" style="--h: 220px">
-          <p class="ph-id">C8</p>
-          <p class="ph-title">Eighty years of Australian comics</p>
-          <dl class="ph-meta">
-            <dt>Idiom</dt><dd>Horizon chart</dd>
-            <dt>Source</dt><dd>Grand Comics Database</dd>
-            <dt>Annotations</dt><dd>“1940: wartime import ban, new series jump from 2 to 83” · “1959: American comics return” · “1980: second reprint boom”</dd>
-          </dl>
+      <div class="chart-block">
+        <div class="prose">
+          <p class="lead">In 1940, wartime import controls stopped American comics reaching Australian newsstands. Local publishers filled the gap almost overnight.</p>
+          <p class="reading-guide">(Reading the horizon chart: the strip shows new Australian series each year. Light gold fills up to half the busiest year. When a year is busier than that, the extra folds back over the strip in dark gold, so dark gold always marks the busiest years.)</p>
         </div>
-        <figcaption class="caption todo"><span class="todo-label">Caption to write</span>How to read a horizon chart (darker bands mean more new series), in one or two plain sentences.</figcaption>
-      </figure>
+        <figure class="figure">
+          <div id="c8" class="chart"></div>
+        </figure>
+        <div class="prose">
+          <p class="takeaway">New series jumped from 2 in 1939 to 83 in 1940, and the industry peaked in the mid-1950s. When American comics returned in 1959, local output began to fall. After a second wave of Australian editions of American comics around 1980, it almost disappeared.</p>
+          <!-- VERIFY against rendered C8 and au_series_by_year.csv: 1939 and 1940 counts, timing of the peaks -->
+          <p class="caveat">(Series with an uncertain start year are left out. Each point is a three-year average.)</p>
+          <p class="transition">Where did the replacement comics come from? Almost entirely from one country.</p>
+        </div>
+      </div>
     </div>
 
-    <div class="row row-2">
-      <figure class="figure">
-        <div id="m4" class="chart placeholder" style="--h: 320px">
-          <p class="ph-id">M4</p>
-          <p class="ph-title">How American comics reached Australia</p>
-          <dl class="ph-meta">
-            <dt>Idiom</dt><dd>Flow map</dd>
-            <dt>Source</dt><dd>Grand Comics Database reprint records</dd>
-            <dt>Annotation</dt><dd>“22,645 documented US to Australia reprint links”</dd>
-          </dl>
+    <!-- M4: map full width, prose kept to the left column -->
+    <div class="row row-full">
+      <div class="chart-block">
+        <div class="prose">
+          <p class="lead">American comics did not only fill Australian shelves. They filled shelves around the world.</p>
+          <p class="reading-guide">(Each line runs from the United States to a country that reprinted American stories. The thicker the line, the more stories.)</p>
         </div>
-        <figcaption class="caption todo"><span class="todo-label">Caption to write</span>What a line's width means.</figcaption>
-      </figure>
-      <figure class="figure">
-        <div id="m5" class="chart placeholder" style="--h: 320px">
-          <p class="ph-id">M5</p>
-          <p class="ph-title">Where Australian fans gather</p>
-          <dl class="ph-meta">
-            <dt>Idiom</dt><dd>Proportional symbol map of conventions and comic festivals by city</dd>
-            <dt>Sources</dt><dd>Convention attendance figures · city coordinates</dd>
-            <dt>Annotation</dt><dd>“SMASH! Sydney: 53,071 attendees in 2026”</dd>
-          </dl>
+        <figure class="figure">
+          <div id="m4" class="chart"></div>
+        </figure>
+        <div class="prose">
+          <p class="takeaway">Western Europe took the most, led by France with about 71,000 stories. <span class="c-au">Australia</span> took 22,645, more than any other country outside Europe except Brazil.</p>
+          <!-- VERIFY against reprint_flows.csv -->
+          <p class="caveat">(Counts are reprinted stories rather than issues, and only stories that volunteers have linked to their American original. Flows of under 1,000 stories are not shown.)</p>
+          <p class="transition">The readers are still here. The next question is where they gather.</p>
         </div>
-        <figcaption class="caption todo"><span class="todo-label">Caption to write</span>What a circle's size means.</figcaption>
-      </figure>
+      </div>
     </div>
+
+    <!-- M5 placeholder left, its caption right -->
+    <figure class="figure row row-2">
+      <div id="m5" class="chart placeholder" style="--h: 320px">
+        <p class="ph-id">M5</p>
+        <p class="ph-title">Where Australian fans gather</p>
+        <dl class="ph-meta">
+          <dt>Idiom</dt><dd>Proportional symbol map of conventions and comic festivals by city</dd>
+          <dt>Sources</dt><dd>Convention attendance figures · city coordinates</dd>
+          <dt>Annotation</dt><dd>“SMASH! Sydney: 53,071 attendees in 2026”</dd>
+        </dl>
+      </div>
+      <figcaption class="caption todo"><span class="todo-label">Caption to write</span>What a circle's size means.</figcaption>
+    </figure>
 
     <div class="row row-2">
       <figure class="figure">
@@ -411,7 +459,7 @@
         <ul class="sources">
           <li>Research Institute for Publications / <a href="https://www.ajpea.or.jp/">AJPEA</a>, Japanese publishing market 2025.</li>
           <li><a href="https://icv2.com/">ICv2</a> / <a href="https://www.circana.com/">Circana BookScan</a>, US graphic novel market 2025.</li>
-          <li><a href="https://publishers.asn.au/">Australian Publishers Association</a>, “Graphic Novels: Can We Grow Them at Home?” (Splatt, 2024).</li>
+          <li>NielsenIQ BookScan figures as published in: Splatt, S. (2024). <a href="https://www.publishers.asn.au/common/Uploaded%20files/APA%20Resources/Research/BDEF/BDEF%202023-24%20Report%20-%20Sophie%20Splatt.pdf"><cite>Graphic Novels: Can We Grow Them at Home?</cite></a> Australian Publishers Association, 2023 to 24 Beatrice Davis Editorial Fellowship Report.</li>
           <li class="pending"><a href="https://trends.google.com/">Google Trends</a>: search interest by state. [details to add]</li>
           <li class="pending">Convention attendance figures. [sources to add]</li>
         </ul>

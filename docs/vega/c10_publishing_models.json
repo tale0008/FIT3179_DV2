@@ -36,7 +36,7 @@
     }
   ],
   "width": "container",
-  "height": 300,
+  "height": 400,
   "autosize": {
     "type": "fit-x",
     "contains": "padding"
@@ -93,7 +93,7 @@
     {
       "mark": {
         "type": "circle",
-        "size": 70,
+        "size": 110,
         "opacity": 1,
         "stroke": "#ffffff",
         "strokeWidth": 1.5

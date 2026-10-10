@@ -12,7 +12,7 @@
     "subtitleColor": "#666"
   },
   "width": "container",
-  "height": 230,
+  "height": 460,
   "autosize": {
     "type": "fit-x",
     "contains": "padding"
@@ -39,7 +39,12 @@
         "fill": "#ECEBE6",
         "stroke": "#ffffff",
         "strokeWidth": 0.5
-      }
+      },
+      "transform": [
+        {
+          "filter": "toNumber(datum.id) != 10"
+        }
+      ]
     },
     {
       "data": {
@@ -50,6 +55,9 @@
         }
       },
       "transform": [
+        {
+          "filter": "toNumber(datum.id) != 10"
+        },
         {
           "filter": "datum.id == '036' || datum.id == 36 || datum.id == '840' || datum.id == 840"
         }
@@ -170,8 +178,8 @@
               "type": "quantitative",
               "scale": {
                 "range": [
-                  0.8,
-                  9
+                  1,
+                  12
                 ]
               },
               "legend": null
@@ -216,12 +224,12 @@
         {
           "transform": [
             {
-              "filter": "indexof(['fr','br','no'], datum.target_code) >= 0"
+              "filter": "indexof(['fr','no','br','mx','ca'], datum.target_code) >= 0"
             }
           ],
           "mark": {
             "type": "text",
-            "fontSize": 10,
+            "fontSize": 11,
             "dy": -9,
             "color": "#2B2B28"
           },
@@ -251,7 +259,7 @@
           ],
           "mark": {
             "type": "text",
-            "fontSize": 10,
+            "fontSize": 12,
             "dy": 40,
             "color": "#2B2B28",
             "fontWeight": "bold",

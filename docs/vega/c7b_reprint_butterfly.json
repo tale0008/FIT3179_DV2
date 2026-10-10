@@ -27,7 +27,7 @@
   },
   "transform": [
     {
-      "calculate": "replace(datum.country, ' (Hrvatska)', '')",
+      "calculate": "replace(replace(datum.country, ' (Hrvatska)', ''), ' (1918-1991)', '')",
       "as": "name"
     },
     {
@@ -67,7 +67,7 @@
   ],
   "width": "container",
   "height": {
-    "step": 13
+    "step": 20
   },
   "autosize": {
     "type": "fit-x",
@@ -84,7 +84,7 @@
       },
       "axis": {
         "title": null,
-        "labelFontSize": 10,
+        "labelFontSize": 11,
         "domain": false,
         "ticks": false,
         "labelFontWeight": {
@@ -99,7 +99,7 @@
         "type": "bar",
         "cornerRadiusEnd": 2,
         "height": {
-          "band": 0.72
+          "band": 0.8
         }
       },
       "encoding": {
@@ -191,7 +191,7 @@
       ],
       "mark": {
         "type": "text",
-        "fontSize": 10,
+        "fontSize": 11,
         "fontWeight": "bold",
         "color": "#2B2B28",
         "align": "left",
@@ -217,7 +217,7 @@
       ],
       "mark": {
         "type": "text",
-        "fontSize": 10,
+        "fontSize": 11,
         "fontWeight": "bold",
         "color": "#2B2B28",
         "align": "right",

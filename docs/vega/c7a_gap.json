@@ -3,9 +3,8 @@
   "title": {
     "text": "What Australia buys, and what it makes",
     "subtitle": [
-      "Top: graphic novels sold in Australia each year (NielsenIQ BookScan,",
-      "excluding manga and superhero titles). Bottom: new comic series",
-      "published in Australia (Grand Comics Database), one square per series."
+      "Graphic novels sold in Australian shops (excluding manga and superhero titles),",
+      "against new comic series published in Australia in the same years."
     ],
     "anchor": "start",
     "fontSize": 16,
@@ -15,7 +14,11 @@
   "spacing": 6,
   "resolve": {
     "scale": {
-      "x": "shared"
+      "x": "shared",
+      "color": "shared"
+    },
+    "legend": {
+      "color": "shared"
     }
   },
   "vconcat": [
@@ -50,7 +53,6 @@
         {
           "mark": {
             "type": "bar",
-            "color": "#8C8B85",
             "cornerRadiusEnd": 3,
             "width": {
               "band": 0.55
@@ -98,7 +100,31 @@
                 "title": "Graphic novels sold",
                 "format": ","
               }
-            ]
+            ],
+            "color": {
+              "datum": "Graphic novels sold in Australia (BookScan)",
+              "type": "nominal",
+              "scale": {
+                "domain": [
+                  "Graphic novels sold in Australia (BookScan)",
+                  "New comic series made in Australia (Grand Comics Database)"
+                ],
+                "range": [
+                  "#8C8B85",
+                  "#B07A00"
+                ]
+              },
+              "legend": {
+                "title": null,
+                "orient": "top",
+                "direction": "vertical",
+                "symbolType": "square",
+                "labelFontSize": 11,
+                "symbolSize": 110,
+                "offset": 6,
+                "labelLimit": 0
+              }
+            }
           }
         },
         {
@@ -193,7 +219,6 @@
           "mark": {
             "type": "square",
             "size": 30,
-            "color": "#B07A00",
             "opacity": 1
           },
           "encoding": {
@@ -242,7 +267,31 @@
                 "type": "quantitative",
                 "title": "New Australian series"
               }
-            ]
+            ],
+            "color": {
+              "datum": "New comic series made in Australia (Grand Comics Database)",
+              "type": "nominal",
+              "scale": {
+                "domain": [
+                  "Graphic novels sold in Australia (BookScan)",
+                  "New comic series made in Australia (Grand Comics Database)"
+                ],
+                "range": [
+                  "#8C8B85",
+                  "#B07A00"
+                ]
+              },
+              "legend": {
+                "title": null,
+                "orient": "top",
+                "direction": "vertical",
+                "symbolType": "square",
+                "labelFontSize": 11,
+                "symbolSize": 110,
+                "offset": 6,
+                "labelLimit": 0
+              }
+            }
           }
         },
         {

@@ -3,8 +3,8 @@
   "title": {
     "text": "Eighty years of Australian comics",
     "subtitle": [
-      "New Australian comic series started each year, averaged over three years.",
-      "Darker gold means a busier year. Uncertain start years excluded."
+      "New Australian comic series started each year, averaged over three years. Uncertain start years excluded.",
+      "Horizon chart: light gold fills up to half the busiest year. Busier years fold back on top in dark gold."
     ],
     "anchor": "start",
     "fontSize": 16,
@@ -65,16 +65,12 @@
       "as": "norm"
     },
     {
-      "calculate": "datum.norm - 1/3",
+      "calculate": "datum.norm - 0.5",
       "as": "band2"
-    },
-    {
-      "calculate": "datum.norm - 2/3",
-      "as": "band3"
     }
   ],
   "width": "container",
-  "height": 70,
+  "height": 110,
   "autosize": {
     "type": "fit-x",
     "contains": "padding"
@@ -115,29 +111,7 @@
           "scale": {
             "domain": [
               0,
-              0.3333333333333333
-            ]
-          },
-          "axis": null,
-          "stack": null
-        }
-      }
-    },
-    {
-      "mark": {
-        "type": "area",
-        "clip": true,
-        "interpolate": "monotone",
-        "color": "#C99A2E"
-      },
-      "encoding": {
-        "y": {
-          "field": "band2",
-          "type": "quantitative",
-          "scale": {
-            "domain": [
-              0,
-              0.3333333333333333
+              0.5
             ]
           },
           "axis": null,
@@ -154,12 +128,12 @@
       },
       "encoding": {
         "y": {
-          "field": "band3",
+          "field": "band2",
           "type": "quantitative",
           "scale": {
             "domain": [
               0,
-              0.3333333333333333
+              0.5
             ]
           },
           "axis": null,
