@@ -1,0 +1,314 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Where America's comics went",
+    "subtitle": [
+      "Stories first published in the United States and reprinted elsewhere.",
+      "Line width shows the number of reprinted stories. Flows of 1,000 or more."
+    ],
+    "anchor": "start",
+    "fontSize": 16,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#666"
+  },
+  "width": "container",
+  "height": 230,
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "projection": {
+    "type": "equalEarth",
+    "rotate": [
+      100,
+      0,
+      0
+    ]
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "https://cdn.jsdelivr.net/npm/vega-datasets@2/data/world-110m.json",
+        "format": {
+          "type": "topojson",
+          "feature": "countries"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#ECEBE6",
+        "stroke": "#ffffff",
+        "strokeWidth": 0.5
+      }
+    },
+    {
+      "data": {
+        "url": "https://cdn.jsdelivr.net/npm/vega-datasets@2/data/world-110m.json",
+        "format": {
+          "type": "topojson",
+          "feature": "countries"
+        }
+      },
+      "transform": [
+        {
+          "filter": "datum.id == '036' || datum.id == 36 || datum.id == '840' || datum.id == 840"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#ffffff",
+        "strokeWidth": 0.5
+      },
+      "encoding": {
+        "color": {
+          "condition": {
+            "test": "toNumber(datum.id) == 36",
+            "value": "#DDC17F"
+          },
+          "value": "#93A8D1"
+        }
+      }
+    },
+    {
+      "data": {
+        "url": "data/reprint_flows.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "reprints": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "filter": "datum.origin_code == 'us' && datum.reprints >= 1000"
+        },
+        {
+          "lookup": "origin_code",
+          "from": {
+            "data": {
+              "url": "data/country_meta.csv",
+              "format": {
+                "type": "csv",
+                "parse": {
+                  "iso_n3": "number",
+                  "population": "number",
+                  "lat": "number",
+                  "lon": "number"
+                }
+              }
+            },
+            "key": "code",
+            "fields": [
+              "lat",
+              "lon"
+            ]
+          },
+          "as": [
+            "olat",
+            "olon"
+          ]
+        },
+        {
+          "lookup": "target_code",
+          "from": {
+            "data": {
+              "url": "data/country_meta.csv",
+              "format": {
+                "type": "csv",
+                "parse": {
+                  "iso_n3": "number",
+                  "population": "number",
+                  "lat": "number",
+                  "lon": "number"
+                }
+              }
+            },
+            "key": "code",
+            "fields": [
+              "lat",
+              "lon"
+            ]
+          },
+          "as": [
+            "tlat",
+            "tlon"
+          ]
+        },
+        {
+          "filter": "isValid(datum.tlat)"
+        },
+        {
+          "calculate": "datum.target_code == 'au' ? 'Australia' : 'Elsewhere'",
+          "as": "dest"
+        }
+      ],
+      "layer": [
+        {
+          "mark": {
+            "type": "rule",
+            "strokeCap": "round",
+            "opacity": 0.85
+          },
+          "encoding": {
+            "latitude": {
+              "field": "olat",
+              "type": "quantitative"
+            },
+            "longitude": {
+              "field": "olon",
+              "type": "quantitative"
+            },
+            "latitude2": {
+              "field": "tlat"
+            },
+            "longitude2": {
+              "field": "tlon"
+            },
+            "strokeWidth": {
+              "field": "reprints",
+              "type": "quantitative",
+              "scale": {
+                "range": [
+                  0.8,
+                  9
+                ]
+              },
+              "legend": null
+            },
+            "color": {
+              "field": "dest",
+              "type": "nominal",
+              "legend": null,
+              "scale": {
+                "domain": [
+                  "Australia",
+                  "Elsewhere"
+                ],
+                "range": [
+                  "#B07A00",
+                  "#9B9A94"
+                ]
+              }
+            },
+            "order": {
+              "condition": {
+                "test": "datum.target_code == 'au'",
+                "value": 1
+              },
+              "value": 0
+            },
+            "tooltip": [
+              {
+                "field": "target",
+                "type": "nominal",
+                "title": "Reprinted in"
+              },
+              {
+                "field": "reprints",
+                "type": "quantitative",
+                "title": "US stories reprinted",
+                "format": ","
+              }
+            ]
+          }
+        },
+        {
+          "transform": [
+            {
+              "filter": "indexof(['fr','br','no'], datum.target_code) >= 0"
+            }
+          ],
+          "mark": {
+            "type": "text",
+            "fontSize": 10,
+            "dy": -9,
+            "color": "#2B2B28"
+          },
+          "encoding": {
+            "latitude": {
+              "field": "tlat",
+              "type": "quantitative"
+            },
+            "longitude": {
+              "field": "tlon",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "target"
+            }
+          }
+        },
+        {
+          "transform": [
+            {
+              "filter": "datum.target_code == 'au'"
+            },
+            {
+              "calculate": "'Australia: ' + format(datum.reprints, ',') + ' US stories'",
+              "as": "lab"
+            }
+          ],
+          "mark": {
+            "type": "text",
+            "fontSize": 10,
+            "dy": 40,
+            "color": "#2B2B28",
+            "fontWeight": "bold",
+            "align": "left",
+            "dx": -30
+          },
+          "encoding": {
+            "latitude": {
+              "field": "tlat",
+              "type": "quantitative"
+            },
+            "longitude": {
+              "field": "tlon",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "lab"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lat": 39.8,
+            "lon": -98.6,
+            "t": "United States"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 10,
+        "fontWeight": "bold",
+        "dy": 14,
+        "color": "#2B2B28"
+      },
+      "encoding": {
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "t"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

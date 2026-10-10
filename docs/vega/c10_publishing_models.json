@@ -1,0 +1,280 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Two ways to publish comics",
+    "subtitle": [
+      "Each dot is a country: series published, against average issues per series.",
+      "Both axes use a log scale. Countries with at least 200 series indexed."
+    ],
+    "anchor": "start",
+    "fontSize": 16,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#666"
+  },
+  "data": {
+    "url": "data/country_output.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "series": "number",
+        "issues": "number",
+        "issues_per_series": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "filter": "datum.series >= 200"
+    },
+    {
+      "calculate": "replace(replace(datum.country, ' (Hrvatska)', ''), ' (1918-1991)', '')",
+      "as": "name"
+    },
+    {
+      "calculate": "indexof(['Australia','Japan','United States'], datum.country) >= 0 ? datum.country : 'Other countries'",
+      "as": "highlight"
+    }
+  ],
+  "width": "container",
+  "height": 300,
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "encoding": {
+    "x": {
+      "field": "series",
+      "type": "quantitative",
+      "scale": {
+        "type": "log",
+        "domain": [
+          150,
+          150000
+        ]
+      },
+      "axis": {
+        "title": "Comic series published (log scale)",
+        "format": "~s",
+        "titleFontSize": 10,
+        "titleFontWeight": "normal",
+        "gridColor": "#ECEBE6",
+        "domain": false
+      }
+    },
+    "y": {
+      "field": "issues_per_series",
+      "type": "quantitative",
+      "scale": {
+        "type": "log",
+        "domain": [
+          2,
+          200
+        ]
+      },
+      "axis": {
+        "title": "Average issues per series (log scale)",
+        "titleFontSize": 10,
+        "titleFontWeight": "normal",
+        "gridColor": "#ECEBE6",
+        "domain": false,
+        "values": [
+          2,
+          5,
+          10,
+          20,
+          50,
+          100,
+          200
+        ]
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "circle",
+        "size": 70,
+        "opacity": 1,
+        "stroke": "#ffffff",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "color": {
+          "field": "highlight",
+          "type": "nominal",
+          "legend": null,
+          "scale": {
+            "domain": [
+              "Australia",
+              "Japan",
+              "United States",
+              "Other countries"
+            ],
+            "range": [
+              "#B07A00",
+              "#C8102E",
+              "#1F4E9A",
+              "#A6A5A0"
+            ]
+          }
+        },
+        "order": {
+          "condition": {
+            "test": "datum.highlight != 'Other countries'",
+            "value": 1
+          },
+          "value": 0
+        },
+        "tooltip": [
+          {
+            "field": "name",
+            "type": "nominal",
+            "title": "Country"
+          },
+          {
+            "field": "series",
+            "type": "quantitative",
+            "title": "Series",
+            "format": ","
+          },
+          {
+            "field": "issues",
+            "type": "quantitative",
+            "title": "Issues",
+            "format": ","
+          },
+          {
+            "field": "issues_per_series",
+            "type": "quantitative",
+            "title": "Issues per series",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": {
+            "field": "country",
+            "oneOf": [
+              "Mexico",
+              "Argentina",
+              "Philippines",
+              "Japan",
+              "Australia",
+              "United States",
+              "France",
+              "United Kingdom",
+              "Belgium"
+            ]
+          }
+        },
+        {
+          "filter": "indexof(['Australia','Japan','United States'], datum.country) < 0"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 7,
+        "fontSize": 10,
+        "color": "#2B2B28"
+      },
+      "encoding": {
+        "text": {
+          "field": "name"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": {
+            "field": "country",
+            "oneOf": [
+              "Mexico",
+              "Argentina",
+              "Philippines",
+              "Japan",
+              "Australia",
+              "United States",
+              "France",
+              "United Kingdom",
+              "Belgium"
+            ]
+          }
+        },
+        {
+          "filter": "indexof(['Australia','Japan','United States'], datum.country) >= 0"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 7,
+        "fontSize": 10,
+        "color": "#2B2B28",
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "text": {
+          "field": "name"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "series": 170,
+            "issues_per_series": 170,
+            "t": "Few series, each running for a very long time",
+            "a": "left"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "color": "#77766F",
+        "align": "left"
+      },
+      "encoding": {
+        "text": {
+          "field": "t"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "series": 140000,
+            "issues_per_series": 2.3,
+            "t": "Many series, each running a short time",
+            "a": "right"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "color": "#77766F",
+        "align": "right"
+      },
+      "encoding": {
+        "text": {
+          "field": "t"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

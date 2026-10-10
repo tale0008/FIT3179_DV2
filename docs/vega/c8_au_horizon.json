@@ -1,0 +1,259 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Eighty years of Australian comics",
+    "subtitle": [
+      "New Australian comic series started each year, averaged over three years.",
+      "Darker gold means a busier year. Uncertain start years excluded."
+    ],
+    "anchor": "start",
+    "fontSize": 16,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#666"
+  },
+  "data": {
+    "url": "data/au_series_by_year.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "year": "number",
+        "series": "number",
+        "issues": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "impute": "series",
+      "key": "year",
+      "keyvals": {
+        "start": 1930,
+        "stop": 2027,
+        "step": 1
+      },
+      "value": 0
+    },
+    {
+      "window": [
+        {
+          "op": "mean",
+          "field": "series",
+          "as": "smoothed"
+        }
+      ],
+      "frame": [
+        -1,
+        1
+      ],
+      "sort": [
+        {
+          "field": "year"
+        }
+      ]
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "max",
+          "field": "smoothed",
+          "as": "peak"
+        }
+      ]
+    },
+    {
+      "calculate": "datum.smoothed / datum.peak",
+      "as": "norm"
+    },
+    {
+      "calculate": "datum.norm - 1/3",
+      "as": "band2"
+    },
+    {
+      "calculate": "datum.norm - 2/3",
+      "as": "band3"
+    }
+  ],
+  "width": "container",
+  "height": 70,
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "quantitative",
+      "scale": {
+        "domain": [
+          1930,
+          2026
+        ],
+        "nice": false,
+        "zero": false
+      },
+      "axis": {
+        "title": null,
+        "format": "d",
+        "grid": false,
+        "tickCount": 10,
+        "domain": false
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "area",
+        "clip": true,
+        "interpolate": "monotone",
+        "color": "#DDC17F"
+      },
+      "encoding": {
+        "y": {
+          "field": "norm",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              0.3333333333333333
+            ]
+          },
+          "axis": null,
+          "stack": null
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "area",
+        "clip": true,
+        "interpolate": "monotone",
+        "color": "#C99A2E"
+      },
+      "encoding": {
+        "y": {
+          "field": "band2",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              0.3333333333333333
+            ]
+          },
+          "axis": null,
+          "stack": null
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "area",
+        "clip": true,
+        "interpolate": "monotone",
+        "color": "#B07A00"
+      },
+      "encoding": {
+        "y": {
+          "field": "band3",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              0.3333333333333333
+            ]
+          },
+          "axis": null,
+          "stack": null
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "rule",
+        "opacity": 0,
+        "strokeWidth": 6
+      },
+      "encoding": {
+        "tooltip": [
+          {
+            "field": "year",
+            "type": "quantitative",
+            "title": "Year",
+            "format": "d"
+          },
+          {
+            "field": "series",
+            "type": "quantitative",
+            "title": "New series that year"
+          },
+          {
+            "field": "smoothed",
+            "type": "quantitative",
+            "title": "Three-year average",
+            "format": ".0f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "year": 1940,
+            "label": "1940: import ban",
+            "row": -16
+          },
+          {
+            "year": 1959,
+            "label": "1959: US comics return",
+            "row": -3
+          },
+          {
+            "year": 1980,
+            "label": "c.1980: local US reprints boom",
+            "row": -16
+          }
+        ]
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "rule",
+            "color": "#2B2B28",
+            "strokeDash": [
+              2,
+              2
+            ],
+            "strokeWidth": 1
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "baseline": "bottom",
+            "dx": 3,
+            "dy": 0,
+            "fontSize": 10,
+            "color": "#2B2B28"
+          },
+          "encoding": {
+            "text": {
+              "field": "label"
+            },
+            "y": {
+              "field": "row",
+              "type": "quantitative",
+              "scale": null
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

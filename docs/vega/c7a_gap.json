@@ -1,0 +1,292 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "What Australia buys, and what it makes",
+    "subtitle": [
+      "Top: graphic novels sold in Australia each year (NielsenIQ BookScan,",
+      "excluding manga and superhero titles). Bottom: new comic series",
+      "published in Australia (Grand Comics Database), one square per series."
+    ],
+    "anchor": "start",
+    "fontSize": 16,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#666"
+  },
+  "spacing": 6,
+  "resolve": {
+    "scale": {
+      "x": "shared"
+    }
+  },
+  "vconcat": [
+    {
+      "data": {
+        "url": "data/au_sales.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "year": "number",
+            "units": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "aggregate": [
+            {
+              "op": "sum",
+              "field": "units",
+              "as": "total"
+            }
+          ],
+          "groupby": [
+            "year"
+          ]
+        }
+      ],
+      "width": 440,
+      "height": 190,
+      "layer": [
+        {
+          "mark": {
+            "type": "bar",
+            "color": "#8C8B85",
+            "cornerRadiusEnd": 3,
+            "width": {
+              "band": 0.55
+            }
+          },
+          "encoding": {
+            "x": {
+              "field": "year",
+              "type": "ordinal",
+              "axis": null,
+              "scale": {
+                "type": "band",
+                "domain": [
+                  2020,
+                  2021,
+                  2022,
+                  2023
+                ],
+                "paddingInner": 0.35
+              }
+            },
+            "y": {
+              "field": "total",
+              "type": "quantitative",
+              "axis": {
+                "title": "Copies sold",
+                "format": "~s",
+                "titleFontSize": 10,
+                "titleFontWeight": "normal",
+                "gridColor": "#ECEBE6",
+                "domain": false,
+                "ticks": false,
+                "tickCount": 4
+              }
+            },
+            "tooltip": [
+              {
+                "field": "year",
+                "type": "ordinal",
+                "title": "Year"
+              },
+              {
+                "field": "total",
+                "type": "quantitative",
+                "title": "Graphic novels sold",
+                "format": ","
+              }
+            ]
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "dy": -6,
+            "fontSize": 10,
+            "baseline": "bottom",
+            "color": "#2B2B28"
+          },
+          "encoding": {
+            "x": {
+              "field": "year",
+              "type": "ordinal",
+              "scale": {
+                "type": "band",
+                "domain": [
+                  2020,
+                  2021,
+                  2022,
+                  2023
+                ],
+                "paddingInner": 0.35
+              }
+            },
+            "y": {
+              "field": "total",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "total",
+              "type": "quantitative",
+              "format": ".2s"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "data": {
+        "url": "data/au_series_by_year.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "year": "number",
+            "series": "number",
+            "issues": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "filter": "datum.year >= 2020 && datum.year <= 2023"
+        },
+        {
+          "impute": "series",
+          "key": "year",
+          "keyvals": [
+            2020,
+            2021,
+            2022,
+            2023
+          ],
+          "value": 0
+        }
+      ],
+      "width": 440,
+      "height": 50,
+      "layer": [
+        {
+          "transform": [
+            {
+              "filter": "datum.series > 0"
+            },
+            {
+              "calculate": "sequence(0, datum.series)",
+              "as": "cells"
+            },
+            {
+              "flatten": [
+                "cells"
+              ],
+              "as": [
+                "cell"
+              ]
+            },
+            {
+              "calculate": "datum.cell - (datum.series - 1) / 2",
+              "as": "off"
+            }
+          ],
+          "mark": {
+            "type": "square",
+            "size": 30,
+            "color": "#B07A00",
+            "opacity": 1
+          },
+          "encoding": {
+            "x": {
+              "field": "year",
+              "type": "ordinal",
+              "axis": {
+                "title": null,
+                "labelAngle": 0,
+                "domain": false,
+                "ticks": false,
+                "labelPadding": 6
+              },
+              "scale": {
+                "type": "band",
+                "domain": [
+                  2020,
+                  2021,
+                  2022,
+                  2023
+                ],
+                "paddingInner": 0.35
+              }
+            },
+            "xOffset": {
+              "field": "off",
+              "type": "quantitative",
+              "scale": {
+                "domain": [
+                  -5,
+                  5
+                ]
+              }
+            },
+            "y": {
+              "value": 14
+            },
+            "tooltip": [
+              {
+                "field": "year",
+                "type": "ordinal",
+                "title": "Year"
+              },
+              {
+                "field": "series",
+                "type": "quantitative",
+                "title": "New Australian series"
+              }
+            ]
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "fontSize": 10,
+            "color": "#2B2B28",
+            "baseline": "middle"
+          },
+          "encoding": {
+            "x": {
+              "field": "year",
+              "type": "ordinal",
+              "scale": {
+                "type": "band",
+                "domain": [
+                  2020,
+                  2021,
+                  2022,
+                  2023
+                ],
+                "paddingInner": 0.35
+              }
+            },
+            "y": {
+              "value": 38
+            },
+            "text": {
+              "field": "lab"
+            }
+          },
+          "transform": [
+            {
+              "calculate": "datum.series + (datum.series == 1 ? ' new series' : ' new series')",
+              "as": "lab"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

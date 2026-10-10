@@ -32,14 +32,18 @@
 <header class="masthead">
   <div class="container">
     <div class="row row-full">
-      <h1 class="page-title">
-        <span>Australia reads comics.</span>
-        <span>Australia doesn't make them.</span>
-      </h1>
+      <div>
+        <h1 class="page-title">
+          <span>Australia reads comics.</span>
+          <span>Australia doesn't make them.</span>
+        </h1>
+        <p class="page-subtitle">Who makes the world's comics, and who only reads them, 1930 to 2026</p>
+      </div>
     </div>
     <div class="row row-2">
       <div class="prose">
-        <p class="standfirst">Australians buy millions of comics and graphic novels every year. Almost none of them are made here. This page follows eighty years of comic publishing around the world to show how that happened, and what it would take to change it.</p>
+        <p class="standfirst">A comic can be made in Australia, or made somewhere else and printed here. This page follows both: comics made in <span class="c-au">Australia</span>, comics made in <span class="c-jp">Japan</span> and <span class="c-us">the United States</span>, and the reprints that carry them around the world.</p>
+        <p class="scope-note">Unless a chart says otherwise, these figures count comic issues, not copies sold. They come from the Grand Comics Database, a volunteer catalogue of over two million comic issues from around the world.</p>
         <p class="byline">By Thisum Patabadige · October 2026 · <a href="#sources">Sources listed at the end of the page</a></p>
       </div>
     </div>
@@ -49,32 +53,69 @@
 <main>
 
 <!-- =====================================================================
-     §1 Who makes comics?
+     §1 Comics are everywhere
      ===================================================================== -->
 <section class="section" id="s1" aria-labelledby="s1-title">
   <div class="container">
     <header class="section-head">
-      <h2 class="section-title" id="s1-title"><span class="section-num">§1</span>Who makes comics?</h2>
+      <h2 class="section-title" id="s1-title"><span class="section-num">§1</span>Comics are everywhere. They are not made everywhere.</h2>
     </header>
 
     <div class="row row-2">
       <div class="prose">
-        <p>Comics are a global medium, but they are not made evenly. The Grand Comics Database, a volunteer catalogue of over two million comic issues, shows that a handful of countries produce most of the world's comics. Per person the picture changes: small countries like Norway and Belgium publish far more than their size suggests. One caution applies to every chart built on this database. It is compiled by volunteers, so it measures how thoroughly each country's comics have been catalogued as well as how many were made.</p>
+        <p>Almost every country reads comics. Far fewer make them, and the ones that do have made them at different times, in different amounts, and about different things.</p>
+      </div>
+    </div>
+
+    <!-- M1: text left, map right -->
+    <div class="row row-2">
+      <div class="prose">
+        <p class="lead">Start with where comics come from. Counted in total, a handful of large countries publish most of the world's comics.</p>
+        <p class="lead">Counted per person, the map changes. Small countries in northern Europe turn the darkest.</p>
+        <p class="takeaway">Norway has about 10,600 comic issues for every million people, around six times the rate of <span class="c-us">the United States</span>. <span class="c-au">Australia</span> sits at about 1,300 per million.</p>
+        <!-- VERIFY: recheck figures after World Bank populations are added -->
+        <p class="caveat">(The database is built by volunteers, so this map also measures how thoroughly each country's comics have been catalogued. <span class="c-jp">Japan</span>, the largest comics market in the world, shows only about 1,100 per million for that reason. Colours use a log scale, so each step is about ten times the last.)</p>
+        <p class="transition">So who makes comics depends on how you count. The next question is when.</p>
       </div>
       <figure class="figure">
         <div id="m1" class="chart" style="--h: 420px"></div>
       </figure>
     </div>
 
-    <div class="row row-2">
-      <figure class="figure">
-        <div id="c1" class="chart" style="--h: 480px"></div>
-        <figcaption class="caption">Each country's publishing over time, scaled to its own peak. The centre of gravity of comics has moved across the world since the 1930s.</figcaption>
-      </figure>
-      <figure class="figure">
-        <div id="c2" class="chart" style="--h: 440px"></div>
-        <figcaption class="caption">Superheroes dominate American comics, but most other countries built their industries on humour, adventure and stories for children.</figcaption>
-      </figure>
+    <!-- C1 and C2 side by side. The two blocks share row tracks, so the
+         charts and the takeaways start at the same height. -->
+    <div class="row row-2 row-paired">
+      <div class="chart-block">
+        <div class="prose">
+          <p class="lead">Comic industries did not grow at the same time. Some countries had their boom before television arrived, others are still in theirs.</p>
+          <p class="reading-guide">(Reading the ridgeline: each strip is one country's new comic series per year. The taller the strip, the closer that year was to the country's busiest. Countries run from the earliest publishers at the top to the latest at the bottom.)</p>
+        </div>
+        <figure class="figure">
+          <div id="c1" class="chart" style="--h: 480px"></div>
+        </figure>
+        <div class="prose">
+          <p class="takeaway"><span class="c-au">Australia</span>'s strip has two humps: one in the 1950s, when local publishers filled the gap left by banned imports, and another around 1980, when Australian editions of American comics boomed. After the mid-1980s it almost disappears.</p>
+          <!-- VERIFY against rendered C1: are both humps visible, which is taller -->
+          <p class="caveat">(Series with an uncertain start year are left out, so the earliest decades are undercounted.)</p>
+          <p class="transition">Countries did not only publish at different times. They published different kinds of comics.</p>
+        </div>
+      </div>
+
+      <div class="chart-block">
+        <div class="prose">
+          <p class="lead">Each country built its comics around different kinds of stories.</p>
+          <p class="reading-guide">(Each row is one country and each column one genre. Darker purple means a larger share of that country's stories.)</p>
+        </div>
+        <figure class="figure">
+          <div id="c2" class="chart" style="--h: 440px"></div>
+        </figure>
+        <div class="prose">
+          <p class="takeaway">Superheroes dominate <span class="c-us">American</span> comics. Most other countries built their industries on humour, adventure and stories for children.</p>
+          <!-- VERIFY against rendered C2 -->
+          <p class="caveat">(A story can carry more than one genre, so shares count genre tags rather than whole stories. Smaller genres are grouped together and not shown.)</p>
+          <p class="transition"><span class="c-jp">Japan</span> is the clearest case of a country that built its own kind of comics, and then kept them for itself.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -85,12 +126,12 @@
 <section class="section" id="s2" aria-labelledby="s2-title">
   <div class="container">
     <header class="section-head" data-accent="jp">
-      <h2 class="section-title" id="s2-title"><span class="section-num">§2</span>Japan: a country that feeds itself</h2>
+      <h2 class="section-title" id="s2-title"><span class="section-num">§2</span>Japan makes its own comics, and keeps them.</h2>
     </header>
 
     <div class="row row-2">
       <div class="prose">
-        <p>Japan has the largest comics industry in the world, and almost all of it is homegrown. Just <strong class="num num--jp">0.07%</strong> of the Japanese comic issues in the database are reprints of foreign work. In 2025 the Japanese manga market was worth <strong class="num num--jp">¥692.5 billion</strong>, even as print sales fell and more readers moved to digital.</p>
+        <p>Japan has the largest comics industry in the world, and almost all of it is homegrown. Just <strong class="num">0.07%</strong> of the Japanese comic issues in the database are reprints of foreign work. In 2025 the Japanese manga market was worth <strong class="num">¥692.5 billion</strong>, even as print sales fell and more readers moved to digital.</p>
       </div>
       <figure class="figure">
         <div id="c3" class="chart placeholder" style="--h: 320px">
@@ -155,7 +196,7 @@
 <section class="section" id="s3" aria-labelledby="s3-title">
   <div class="container">
     <header class="section-head" data-accent="us">
-      <h2 class="section-title" id="s3-title"><span class="section-num">§3</span>The United States</h2>
+      <h2 class="section-title" id="s3-title"><span class="section-num">§3</span>America reprints itself.</h2>
     </header>
 
     <div class="row row-2">
@@ -171,7 +212,7 @@
         </div>
       </figure>
       <div class="prose">
-        <p>The United States is the world's other comics superpower, and like Japan it mostly reprints itself. Only about <strong class="num num--us">1%</strong> of American comic issues in the database are reprints of foreign work, while <strong class="num num--us">11%</strong> are reprints of older American comics sold again as collected editions.</p>
+        <p>The United States is the world's other comics superpower, and like Japan it mostly reprints itself. Only about <strong class="num">1%</strong> of American comic issues in the database are reprints of foreign work, while <strong class="num">11%</strong> are reprints of older American comics sold again as collected editions.</p>
       </div>
     </div>
 
@@ -205,12 +246,12 @@
 <section class="section section--feature" id="s4" aria-labelledby="s4-title">
   <div class="container">
     <header class="section-head" data-accent="au">
-      <h2 class="section-title" id="s4-title"><span class="section-num">§4</span>Australia</h2>
+      <h2 class="section-title" id="s4-title"><span class="section-num">§4</span>Australia's comics are mostly someone else's.</h2>
     </header>
 
     <div class="row row-2">
       <div class="prose">
-        <p>Australia is one of the world's great importers of comics. Of the Australian comic issues in the database, <strong class="num num--au">17.5%</strong> are reprints of foreign comics and just <strong class="num num--au">0.7%</strong> are reprints of Australian ones: twenty-five imported reprints for every local one. Only Norway and Canada import a larger share. Meanwhile Australian sales of graphic novels more than doubled between 2020 and 2023.</p>
+        <p>Australia is one of the world's great importers of comics. Of the Australian comic issues in the database, <strong class="num">17.5%</strong> are reprints of foreign comics and just <strong class="num">0.7%</strong> are reprints of Australian ones: twenty-five imported reprints for every local one. Only Norway and Canada import a larger share. Meanwhile Australian sales of graphic novels more than doubled between 2020 and 2023.</p>
         <p class="stat">
           <span class="stat-value">250×</span>
           <span class="stat-label">Australia vs Japan: 250 times the share of imported reprints.</span>
@@ -346,36 +387,46 @@
      ===================================================================== -->
 <footer class="meta" id="sources">
   <div class="container">
-    <h2 class="meta-title">About this page</h2>
+    <h2 class="meta-title">About this visualisation</h2>
     <div class="row row-2">
       <div>
         <dl class="meta-list">
           <dt>Author</dt><dd>Thisum Patabadige</dd>
           <dt>Date</dt><dd>October 2026</dd>
           <dt>Unit</dt><dd>FIT3179 Data Visualisation, Monash University</dd>
+          <dt>Generative AI</dt><dd class="pending">[Generative AI acknowledgement to be completed by the author.]</dd>
           <dt>Tools</dt><dd>Built with <a href="https://vega.github.io/vega-lite/">Vega-Lite</a>.</dd>
           <dt>Licence</dt><dd>Data derived from the Grand Comics Database is shared under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. <span class="pending">[Licence for the rest of the page to be chosen by the author.]</span></dd>
-          <dt>AI use</dt><dd class="pending">[AI acknowledgement to be completed by the author.]</dd>
         </dl>
-        <h3>Data note</h3>
-        <p>Figures from the Grand Comics Database reflect volunteer indexing and are a lower bound. Series with uncertain start years are excluded from year-by-year charts.</p>
       </div>
       <div>
         <h3>Data sources</h3>
+        <h4>Comics</h4>
         <ul class="sources">
           <li><a href="https://www.comics.org/">Grand Comics Database</a> (comics.org), licensed <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Comic issues, series, genres, reprints and creators.</li>
-          <li><a href="https://data.worldbank.org/indicator/SP.POP.TOTL">World Bank, population, total</a>. Used for per-person rates in the world map.</li>
+          <li class="pending"><a href="https://www.wikidata.org/">Wikidata</a>: manga artist birthplaces. [details to add]</li>
+          <li class="pending"><a href="https://anilist.co/">AniList</a> / <a href="https://jikan.moe/">Jikan</a> (MyAnimeList) API: manga demographics. [details to add]</li>
+        </ul>
+        <h4>Markets, sales and fans</h4>
+        <ul class="sources">
           <li>Research Institute for Publications / <a href="https://www.ajpea.or.jp/">AJPEA</a>, Japanese publishing market 2025.</li>
           <li><a href="https://icv2.com/">ICv2</a> / <a href="https://www.circana.com/">Circana BookScan</a>, US graphic novel market 2025.</li>
           <li><a href="https://publishers.asn.au/">Australian Publishers Association</a>, “Graphic Novels: Can We Grow Them at Home?” (Splatt, 2024).</li>
-          <li>World boundaries: <a href="https://www.naturalearthdata.com/">Natural Earth</a>, via <a href="https://github.com/vega/vega-datasets">vega-datasets</a>.</li>
-          <li class="pending"><a href="https://www.wikidata.org/">Wikidata</a>: manga artist birthplaces. [details to add]</li>
-          <li class="pending"><a href="https://anilist.co/">AniList</a> / <a href="https://jikan.moe/">Jikan</a> (MyAnimeList) API: manga demographics. [details to add]</li>
           <li class="pending"><a href="https://trends.google.com/">Google Trends</a>: search interest by state. [details to add]</li>
-          <li class="pending"><a href="https://www.abs.gov.au/">Australian Bureau of Statistics</a>: state populations. [details to add]</li>
-          <li class="pending"><a href="https://www.census.gov/">US Census Bureau</a>: state populations. [details to add]</li>
           <li class="pending">Convention attendance figures. [sources to add]</li>
         </ul>
+        <h4>Population</h4>
+        <ul class="sources">
+          <li><a href="https://data.worldbank.org/indicator/SP.POP.TOTL">World Bank, population, total</a>. Used for per-person rates in the world map.</li>
+          <li class="pending"><a href="https://www.abs.gov.au/">Australian Bureau of Statistics</a>: state populations. [details to add]</li>
+          <li class="pending"><a href="https://www.census.gov/">US Census Bureau</a>: state populations. [details to add]</li>
+        </ul>
+        <h4>Maps</h4>
+        <ul class="sources">
+          <li>World boundaries: <a href="https://www.naturalearthdata.com/">Natural Earth</a>, via <a href="https://github.com/vega/vega-datasets">vega-datasets</a>.</li>
+        </ul>
+        <h3>Notes on the data</h3>
+        <p>Figures from the Grand Comics Database reflect volunteer indexing and are a lower bound. Series with uncertain start years are excluded from year-by-year charts.</p>
       </div>
     </div>
   </div>

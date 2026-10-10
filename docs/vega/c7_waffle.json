@@ -1,0 +1,182 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Whose comics are these?",
+    "subtitle": [
+      "Every 100 comic issues published in each country.",
+      "Dark: reprints of foreign comics. Light: reprints of the country's own comics.",
+      "Grey: no reprint recorded."
+    ],
+    "anchor": "start",
+    "fontSize": 16,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#666"
+  },
+  "data": {
+    "url": "data/reprint_shares.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "total_issues": "number",
+        "foreign_reprints": "number",
+        "domestic_reprints": "number",
+        "original": "number",
+        "pct_foreign": "number",
+        "pct_domestic": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "filter": "indexof(['au','us','jp'], datum.code) >= 0"
+    },
+    {
+      "calculate": "indexof(['au','us','jp'], datum.code)",
+      "as": "ord"
+    },
+    {
+      "calculate": "round(datum.pct_foreign)",
+      "as": "f"
+    },
+    {
+      "calculate": "round(datum.pct_domestic)",
+      "as": "d"
+    },
+    {
+      "calculate": "datum.country + '|' + format(datum.pct_foreign, '.1f') + '% foreign reprints|' + format(datum.pct_domestic, '.1f') + '% own reprints'",
+      "as": "label"
+    },
+    {
+      "calculate": "sequence(0, 100)",
+      "as": "cells"
+    },
+    {
+      "flatten": [
+        "cells"
+      ],
+      "as": [
+        "cell"
+      ]
+    },
+    {
+      "calculate": "datum.cell < datum.f ? 'foreign' : (datum.cell < datum.f + datum.d ? 'own' : 'none')",
+      "as": "kind"
+    },
+    {
+      "calculate": "datum.code + '_' + datum.kind",
+      "as": "key"
+    },
+    {
+      "calculate": "datum.cell % 10",
+      "as": "col"
+    },
+    {
+      "calculate": "floor(datum.cell / 10)",
+      "as": "row"
+    },
+    {
+      "calculate": "datum.kind == 'foreign' ? 'Reprint of a foreign comic' : (datum.kind == 'own' ? 'Reprint of the country\\'s own comic' : 'No reprint recorded')",
+      "as": "kind_label"
+    }
+  ],
+  "facet": {
+    "column": {
+      "field": "label",
+      "type": "nominal",
+      "title": null,
+      "sort": {
+        "field": "ord",
+        "op": "min"
+      },
+      "header": {
+        "labelExpr": "split(datum.value, '|')",
+        "labelFontSize": 11,
+        "labelAlign": "left",
+        "labelAnchor": "start",
+        "labelOrient": "top",
+        "labelPadding": 6
+      }
+    }
+  },
+  "spacing": 18,
+  "spec": {
+    "width": 130,
+    "height": 130,
+    "mark": {
+      "type": "rect",
+      "stroke": "#ffffff",
+      "strokeWidth": 1.5,
+      "cornerRadius": 1
+    },
+    "encoding": {
+      "x": {
+        "field": "col",
+        "type": "ordinal",
+        "axis": null
+      },
+      "y": {
+        "field": "row",
+        "type": "ordinal",
+        "axis": null
+      },
+      "color": {
+        "field": "key",
+        "type": "nominal",
+        "legend": null,
+        "scale": {
+          "domain": [
+            "au_foreign",
+            "au_own",
+            "au_none",
+            "us_foreign",
+            "us_own",
+            "us_none",
+            "jp_foreign",
+            "jp_own",
+            "jp_none"
+          ],
+          "range": [
+            "#B07A00",
+            "#DDC17F",
+            "#E6E4DE",
+            "#1F4E9A",
+            "#93A8D1",
+            "#E6E4DE",
+            "#C8102E",
+            "#EB9AA6",
+            "#E6E4DE"
+          ]
+        }
+      },
+      "tooltip": [
+        {
+          "field": "country",
+          "type": "nominal",
+          "title": "Country"
+        },
+        {
+          "field": "kind_label",
+          "type": "nominal",
+          "title": "This square"
+        },
+        {
+          "field": "pct_foreign",
+          "type": "quantitative",
+          "title": "Foreign reprints (%)",
+          "format": ".2f"
+        },
+        {
+          "field": "pct_domestic",
+          "type": "quantitative",
+          "title": "Own reprints (%)",
+          "format": ".2f"
+        }
+      ]
+    }
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

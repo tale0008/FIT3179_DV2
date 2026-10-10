@@ -16,12 +16,14 @@
   --ph-bg: rgba(27, 26, 24, 0.03);
   --ph-border: #bdb7ac;
 
-  /* Country accents, reused in the charts. Use sparingly. */
-  --au: #d99a00;
-  --jp: #c8102e;
-  --us: #1f4e9a;
-  /* Darker gold for text: --au is too light to read as text on paper. */
-  --au-ink: #8a6200;
+  /* Country colours, shared with the charts (STYLE_GUIDE.md section 5).
+     Each means one country everywhere on the page. Purple is reserved for
+     amounts inside maps and heatmaps, so it never appears in the page chrome. */
+  --au: #B07A00;       /* Australia, chart marks and bars */
+  --au-text: #8A5F00;  /* Australia, coloured words in text (passes contrast) */
+  --jp: #C8102E;       /* Japan, marks and text */
+  --us: #1F4E9A;       /* United States, marks and text */
+  --context: #C9C9C4;  /* other countries, the past, context */
 
   /* Type. Each stack looks right without web fonts loaded. */
   --font-display: "Bebas Neue", "Anton", Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
@@ -146,10 +148,26 @@ a:hover {
   display: block;
 }
 
+.page-subtitle {
+  margin: var(--s3) 0 0;
+  max-width: none;
+  font-size: 24px;
+  line-height: 1.3;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
 .standfirst {
   font-size: 21px;
   line-height: 1.5;
   color: var(--ink-soft);
+}
+
+.scope-note {
+  font-family: var(--font-ui);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--muted);
 }
 
 .byline {
@@ -206,15 +224,50 @@ a:hover {
   color: var(--muted);
 }
 
-/* Key numbers in lead paragraphs, coloured by country. */
+/* Country names in text. These are the page legend: only the three country
+   names (and matching words in chart titles) are ever coloured, always bold. */
+.c-au { color: var(--au-text); font-weight: 700; }
+.c-jp { color: var(--jp);      font-weight: 700; }
+.c-us { color: var(--us);      font-weight: 700; }
+
+/* Key numbers in draft paragraphs. Bold only: numbers are never coloured. */
 .num {
   font-weight: 600;
   white-space: nowrap;
 }
 
-.num--jp { color: var(--jp); }
-.num--us { color: var(--us); }
-.num--au { color: var(--au-ink); }
+/* --------------------------------------------------------------------------
+   Per-chart text pattern (STYLE_GUIDE.md section 3):
+   lead, reading guide, chart, takeaway, caveat, transition.
+   .lead and .takeaway are normal body text and need no rules of their own.
+   The brackets around reading guides and caveats are part of the text.
+   -------------------------------------------------------------------------- */
+
+.reading-guide,
+.caveat {
+  font-size: 16px;
+  line-height: 1.55;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.transition {
+  margin-top: var(--s3);
+}
+
+/* A chart with text above and below it. Inside a .row-paired row, the two
+   blocks share row tracks (subgrid), so both charts start at the same height
+   and both takeaways start at the same height. */
+.chart-block {
+  display: grid;
+  row-gap: var(--s3);
+  align-content: start;
+}
+
+.row-paired > .chart-block {
+  grid-row: span 3;
+  grid-template-rows: subgrid;
+}
 
 /* --------------------------------------------------------------------------
    Figures and captions
@@ -253,11 +306,11 @@ a:hover {
 
 .chart-error {
   padding: var(--s3);
-  border: 1px solid var(--jp);
+  border: 1.5px solid var(--ink);
   border-radius: 4px;
   font-family: var(--font-ui);
   font-size: 14px;
-  color: var(--jp);
+  color: var(--ink);
 }
 
 /* --------------------------------------------------------------------------
@@ -366,7 +419,7 @@ a:hover {
   font-family: var(--font-display);
   font-size: 72px;
   line-height: 1;
-  color: var(--au-ink);
+  color: var(--ink);
 }
 
 .stat-label {
@@ -414,7 +467,11 @@ a:hover {
   display: grid;
   grid-template-columns: max-content minmax(0, 1fr);
   gap: var(--s1) var(--s3);
-  margin: 0 0 var(--s4);
+  margin: 0;
+}
+
+.sources + h3 {
+  margin-top: var(--s4);
 }
 
 .meta-list dt {
@@ -424,6 +481,17 @@ a:hover {
 
 .meta-list dd {
   margin: 0;
+}
+
+.meta h4 {
+  margin: var(--s3) 0 var(--s1);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.meta h3 + h4 {
+  margin-top: 0;
 }
 
 .sources {
