@@ -92,30 +92,236 @@
       "data": {
         "url": "data/reprint_flows.csv",
         "format": {
-          "type": "csv",
-          "parse": {
-            "reprints": "number"
-          }
+          "type": "csv"
         }
       },
       "transform": [
         {
-          "filter": "datum.origin_code == 'us' && datum.reprints >= 1000"
+          "calculate": "trim(lower(datum.origin_code || datum['\\ufefforigin_code'] || ''))",
+          "as": "o"
         },
         {
-          "lookup": "origin_code",
+          "calculate": "trim(lower(datum.target_code || ''))",
+          "as": "t"
+        },
+        {
+          "calculate": "toNumber(replace(datum.reprints + '', ',', ''))",
+          "as": "n"
+        },
+        {
+          "filter": "datum.o == 'us' && datum.n >= 1000"
+        },
+        {
+          "lookup": "o",
           "from": {
             "data": {
-              "url": "data/country_meta.csv",
-              "format": {
-                "type": "csv",
-                "parse": {
-                  "iso_n3": "number",
-                  "population": "number",
-                  "lat": "number",
-                  "lon": "number"
+              "values": [
+                {
+                  "code": "us",
+                  "lat": 39.8,
+                  "lon": -98.6
+                },
+                {
+                  "code": "fr",
+                  "lat": 46.6,
+                  "lon": 2.4
+                },
+                {
+                  "code": "de",
+                  "lat": 51.2,
+                  "lon": 10.4
+                },
+                {
+                  "code": "be",
+                  "lat": 50.6,
+                  "lon": 4.6
+                },
+                {
+                  "code": "gb",
+                  "lat": 54.0,
+                  "lon": -2.5
+                },
+                {
+                  "code": "nl",
+                  "lat": 52.2,
+                  "lon": 5.5
+                },
+                {
+                  "code": "br",
+                  "lat": -10.8,
+                  "lon": -52.9
+                },
+                {
+                  "code": "es",
+                  "lat": 40.2,
+                  "lon": -3.6
+                },
+                {
+                  "code": "se",
+                  "lat": 62.0,
+                  "lon": 15.0
+                },
+                {
+                  "code": "ca",
+                  "lat": 56.1,
+                  "lon": -106.3
+                },
+                {
+                  "code": "no",
+                  "lat": 61.4,
+                  "lon": 8.8
+                },
+                {
+                  "code": "jp",
+                  "lat": 36.2,
+                  "lon": 138.3
+                },
+                {
+                  "code": "au",
+                  "lat": -25.3,
+                  "lon": 134.5
+                },
+                {
+                  "code": "it",
+                  "lat": 42.8,
+                  "lon": 12.6
+                },
+                {
+                  "code": "dk",
+                  "lat": 56.0,
+                  "lon": 10.0
+                },
+                {
+                  "code": "ch",
+                  "lat": 46.8,
+                  "lon": 8.2
+                },
+                {
+                  "code": "fi",
+                  "lat": 64.5,
+                  "lon": 26.0
+                },
+                {
+                  "code": "mx",
+                  "lat": 23.6,
+                  "lon": -102.6
+                },
+                {
+                  "code": "hu",
+                  "lat": 47.2,
+                  "lon": 19.5
+                },
+                {
+                  "code": "pl",
+                  "lat": 52.1,
+                  "lon": 19.4
+                },
+                {
+                  "code": "bg",
+                  "lat": 42.7,
+                  "lon": 25.5
+                },
+                {
+                  "code": "pt",
+                  "lat": 39.6,
+                  "lon": -8.0
+                },
+                {
+                  "code": "at",
+                  "lat": 47.6,
+                  "lon": 14.1
+                },
+                {
+                  "code": "hr",
+                  "lat": 45.1,
+                  "lon": 15.2
+                },
+                {
+                  "code": "in",
+                  "lat": 22.9,
+                  "lon": 79.0
+                },
+                {
+                  "code": "ar",
+                  "lat": -34.6,
+                  "lon": -64.0
+                },
+                {
+                  "code": "ph",
+                  "lat": 12.9,
+                  "lon": 121.8
+                },
+                {
+                  "code": "gr",
+                  "lat": 39.1,
+                  "lon": 22.0
+                },
+                {
+                  "code": "za",
+                  "lat": -29.0,
+                  "lon": 24.7
+                },
+                {
+                  "code": "cl",
+                  "lat": -35.7,
+                  "lon": -71.5
+                },
+                {
+                  "code": "co",
+                  "lat": 4.6,
+                  "lon": -74.1
+                },
+                {
+                  "code": "eg",
+                  "lat": 26.8,
+                  "lon": 30.8
+                },
+                {
+                  "code": "id",
+                  "lat": -2.5,
+                  "lon": 118.0
+                },
+                {
+                  "code": "tr",
+                  "lat": 39.0,
+                  "lon": 35.2
+                },
+                {
+                  "code": "ru",
+                  "lat": 61.5,
+                  "lon": 96.0
+                },
+                {
+                  "code": "cn",
+                  "lat": 35.9,
+                  "lon": 104.2
+                },
+                {
+                  "code": "kr",
+                  "lat": 36.5,
+                  "lon": 127.9
+                },
+                {
+                  "code": "nz",
+                  "lat": -41.8,
+                  "lon": 172.8
+                },
+                {
+                  "code": "ie",
+                  "lat": 53.4,
+                  "lon": -8.2
+                },
+                {
+                  "code": "cz",
+                  "lat": 49.8,
+                  "lon": 15.5
+                },
+                {
+                  "code": "yu",
+                  "lat": 44.0,
+                  "lon": 20.5
                 }
-              }
+              ]
             },
             "key": "code",
             "fields": [
@@ -129,19 +335,216 @@
           ]
         },
         {
-          "lookup": "target_code",
+          "lookup": "t",
           "from": {
             "data": {
-              "url": "data/country_meta.csv",
-              "format": {
-                "type": "csv",
-                "parse": {
-                  "iso_n3": "number",
-                  "population": "number",
-                  "lat": "number",
-                  "lon": "number"
+              "values": [
+                {
+                  "code": "us",
+                  "lat": 39.8,
+                  "lon": -98.6
+                },
+                {
+                  "code": "fr",
+                  "lat": 46.6,
+                  "lon": 2.4
+                },
+                {
+                  "code": "de",
+                  "lat": 51.2,
+                  "lon": 10.4
+                },
+                {
+                  "code": "be",
+                  "lat": 50.6,
+                  "lon": 4.6
+                },
+                {
+                  "code": "gb",
+                  "lat": 54.0,
+                  "lon": -2.5
+                },
+                {
+                  "code": "nl",
+                  "lat": 52.2,
+                  "lon": 5.5
+                },
+                {
+                  "code": "br",
+                  "lat": -10.8,
+                  "lon": -52.9
+                },
+                {
+                  "code": "es",
+                  "lat": 40.2,
+                  "lon": -3.6
+                },
+                {
+                  "code": "se",
+                  "lat": 62.0,
+                  "lon": 15.0
+                },
+                {
+                  "code": "ca",
+                  "lat": 56.1,
+                  "lon": -106.3
+                },
+                {
+                  "code": "no",
+                  "lat": 61.4,
+                  "lon": 8.8
+                },
+                {
+                  "code": "jp",
+                  "lat": 36.2,
+                  "lon": 138.3
+                },
+                {
+                  "code": "au",
+                  "lat": -25.3,
+                  "lon": 134.5
+                },
+                {
+                  "code": "it",
+                  "lat": 42.8,
+                  "lon": 12.6
+                },
+                {
+                  "code": "dk",
+                  "lat": 56.0,
+                  "lon": 10.0
+                },
+                {
+                  "code": "ch",
+                  "lat": 46.8,
+                  "lon": 8.2
+                },
+                {
+                  "code": "fi",
+                  "lat": 64.5,
+                  "lon": 26.0
+                },
+                {
+                  "code": "mx",
+                  "lat": 23.6,
+                  "lon": -102.6
+                },
+                {
+                  "code": "hu",
+                  "lat": 47.2,
+                  "lon": 19.5
+                },
+                {
+                  "code": "pl",
+                  "lat": 52.1,
+                  "lon": 19.4
+                },
+                {
+                  "code": "bg",
+                  "lat": 42.7,
+                  "lon": 25.5
+                },
+                {
+                  "code": "pt",
+                  "lat": 39.6,
+                  "lon": -8.0
+                },
+                {
+                  "code": "at",
+                  "lat": 47.6,
+                  "lon": 14.1
+                },
+                {
+                  "code": "hr",
+                  "lat": 45.1,
+                  "lon": 15.2
+                },
+                {
+                  "code": "in",
+                  "lat": 22.9,
+                  "lon": 79.0
+                },
+                {
+                  "code": "ar",
+                  "lat": -34.6,
+                  "lon": -64.0
+                },
+                {
+                  "code": "ph",
+                  "lat": 12.9,
+                  "lon": 121.8
+                },
+                {
+                  "code": "gr",
+                  "lat": 39.1,
+                  "lon": 22.0
+                },
+                {
+                  "code": "za",
+                  "lat": -29.0,
+                  "lon": 24.7
+                },
+                {
+                  "code": "cl",
+                  "lat": -35.7,
+                  "lon": -71.5
+                },
+                {
+                  "code": "co",
+                  "lat": 4.6,
+                  "lon": -74.1
+                },
+                {
+                  "code": "eg",
+                  "lat": 26.8,
+                  "lon": 30.8
+                },
+                {
+                  "code": "id",
+                  "lat": -2.5,
+                  "lon": 118.0
+                },
+                {
+                  "code": "tr",
+                  "lat": 39.0,
+                  "lon": 35.2
+                },
+                {
+                  "code": "ru",
+                  "lat": 61.5,
+                  "lon": 96.0
+                },
+                {
+                  "code": "cn",
+                  "lat": 35.9,
+                  "lon": 104.2
+                },
+                {
+                  "code": "kr",
+                  "lat": 36.5,
+                  "lon": 127.9
+                },
+                {
+                  "code": "nz",
+                  "lat": -41.8,
+                  "lon": 172.8
+                },
+                {
+                  "code": "ie",
+                  "lat": 53.4,
+                  "lon": -8.2
+                },
+                {
+                  "code": "cz",
+                  "lat": 49.8,
+                  "lon": 15.5
+                },
+                {
+                  "code": "yu",
+                  "lat": 44.0,
+                  "lon": 20.5
                 }
-              }
+              ]
             },
             "key": "code",
             "fields": [
@@ -155,11 +558,19 @@
           ]
         },
         {
-          "filter": "isValid(datum.tlat)"
+          "filter": "isValid(datum.tlat) && isValid(datum.olat)"
         },
         {
-          "calculate": "datum.target_code == 'au' ? 'Australia' : 'Elsewhere'",
+          "calculate": "datum.t == 'au' ? 'Australia' : 'Elsewhere'",
           "as": "dest"
+        },
+        {
+          "calculate": "datum.n",
+          "as": "reprints"
+        },
+        {
+          "calculate": "datum.t",
+          "as": "target_code"
         }
       ],
       "layer": [
