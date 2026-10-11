@@ -1,0 +1,201 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Which states search for manga",
+    "subtitle": [
+      "Share of Google searches for 'manga' when compared with 'comics', by",
+      "state, past five years.",
+      "Source: Google Trends. Darker red means manga is searched for more,",
+      "relative to comics."
+    ],
+    "anchor": "start",
+    "fontSize": 16,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#666"
+  },
+  "width": "container",
+  "height": 330,
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "projection": {
+    "type": "mercator"
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/au_states.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "australian-states"
+        }
+      },
+      "transform": [
+        {
+          "lookup": "properties.STATE_NAME",
+          "from": {
+            "data": {
+              "url": "data/au_trends_states.csv",
+              "format": {
+                "type": "csv",
+                "parse": {
+                  "manga": "number",
+                  "comics": "number",
+                  "manga_share": "number"
+                }
+              }
+            },
+            "key": "state",
+            "fields": [
+              "state",
+              "manga",
+              "comics",
+              "manga_share"
+            ]
+          }
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#ffffff",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "color": {
+          "field": "manga_share",
+          "type": "quantitative",
+          "scale": {
+            "scheme": "reds",
+            "domain": [
+              30,
+              70
+            ]
+          },
+          "legend": {
+            "title": "Manga share of searches (%)",
+            "orient": "bottom-left",
+            "direction": "horizontal",
+            "gradientLength": 150,
+            "titleFontSize": 10,
+            "labelFontSize": 9,
+            "titleLimit": 0,
+            "labelLimit": 0
+          }
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "manga_share",
+            "type": "quantitative",
+            "title": "Manga share (%)",
+            "format": ".0f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "state": "New South Wales",
+            "abbr": "NSW",
+            "lon": 146.9,
+            "lat": -32.2
+          },
+          {
+            "state": "Victoria",
+            "abbr": "VIC",
+            "lon": 144.3,
+            "lat": -36.9
+          },
+          {
+            "state": "Queensland",
+            "abbr": "QLD",
+            "lon": 144.5,
+            "lat": -22.5
+          },
+          {
+            "state": "South Australia",
+            "abbr": "SA",
+            "lon": 135.3,
+            "lat": -30.0
+          },
+          {
+            "state": "Western Australia",
+            "abbr": "WA",
+            "lon": 122.2,
+            "lat": -25.5
+          },
+          {
+            "state": "Tasmania",
+            "abbr": "TAS",
+            "lon": 146.6,
+            "lat": -42.0
+          },
+          {
+            "state": "Northern Territory",
+            "abbr": "NT",
+            "lon": 133.4,
+            "lat": -19.4
+          }
+        ]
+      },
+      "transform": [
+        {
+          "lookup": "state",
+          "from": {
+            "data": {
+              "url": "data/au_trends_states.csv",
+              "format": {
+                "type": "csv",
+                "parse": {
+                  "manga_share": "number"
+                }
+              }
+            },
+            "key": "state",
+            "fields": [
+              "manga_share"
+            ]
+          }
+        },
+        {
+          "filter": "isValid(datum.manga_share)"
+        },
+        {
+          "calculate": "datum.abbr + ' ' + format(datum.manga_share, '.0f') + '%'",
+          "as": "lab"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#2B2B28"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "lab"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

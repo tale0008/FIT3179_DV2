@@ -1,0 +1,213 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Japan's manga market, print and digital",
+    "subtitle": [
+      "Estimated sales in billions of yen, 2016 to 2025.",
+      "Source: All Japan Magazine and Book Publishers' and Editors'",
+      "Association."
+    ],
+    "anchor": "start",
+    "fontSize": 16,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#666"
+  },
+  "data": {
+    "url": "data/japan_manga_market.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "year": "number",
+        "yen_billion": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "calculate": "indexof(['Digital manga','Printed volumes','Printed magazines'], datum.format)",
+      "as": "ord"
+    }
+  ],
+  "width": "container",
+  "height": 280,
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "quantitative",
+      "scale": {
+        "domain": [
+          2016,
+          2025
+        ],
+        "nice": false
+      },
+      "axis": {
+        "titleFontSize": 10,
+        "titleFontWeight": "normal",
+        "labelFontSize": 10,
+        "gridColor": "#ECEBE6",
+        "domain": false,
+        "ticks": false,
+        "title": null,
+        "format": "d",
+        "tickCount": 10,
+        "grid": false
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "area",
+        "line": {
+          "strokeWidth": 1,
+          "stroke": "#ffffff"
+        }
+      },
+      "encoding": {
+        "y": {
+          "field": "yen_billion",
+          "type": "quantitative",
+          "stack": "zero",
+          "axis": {
+            "titleFontSize": 10,
+            "titleFontWeight": "normal",
+            "labelFontSize": 10,
+            "gridColor": "#ECEBE6",
+            "domain": false,
+            "ticks": false,
+            "title": "Billion yen",
+            "tickCount": 5
+          },
+          "scale": {
+            "domain": [
+              0,
+              780
+            ]
+          }
+        },
+        "color": {
+          "field": "format",
+          "type": "nominal",
+          "sort": [
+            "Digital manga",
+            "Printed volumes",
+            "Printed magazines"
+          ],
+          "scale": {
+            "domain": [
+              "Digital manga",
+              "Printed volumes",
+              "Printed magazines"
+            ],
+            "range": [
+              "#C8102E",
+              "#E8899A",
+              "#F4C7CE"
+            ]
+          },
+          "legend": {
+            "title": null,
+            "orient": "top",
+            "direction": "horizontal",
+            "labelFontSize": 11,
+            "symbolType": "square",
+            "titleLimit": 0,
+            "labelLimit": 0
+          }
+        },
+        "order": {
+          "field": "ord"
+        },
+        "tooltip": [
+          {
+            "field": "year",
+            "type": "quantitative",
+            "title": "Year",
+            "format": "d"
+          },
+          {
+            "field": "format",
+            "type": "nominal",
+            "title": "Format"
+          },
+          {
+            "field": "yen_billion",
+            "type": "quantitative",
+            "title": "Billion yen",
+            "format": ",.1f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "year": 2020,
+            "y": 660,
+            "t": "2020: pandemic boom",
+            "a": "right"
+          },
+          {
+            "year": 2025,
+            "y": 745,
+            "t": "2025: first fall since 2017",
+            "a": "right"
+          }
+        ]
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "rule",
+            "strokeDash": [
+              2,
+              2
+            ],
+            "color": "#2B2B28"
+          },
+          "encoding": {
+            "x": {
+              "field": "year",
+              "type": "quantitative"
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "right",
+            "dx": -4,
+            "dy": -2,
+            "fontSize": 10,
+            "color": "#2B2B28",
+            "baseline": "bottom"
+          },
+          "encoding": {
+            "x": {
+              "field": "year",
+              "type": "quantitative"
+            },
+            "y": {
+              "field": "y",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "t"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Who manga is written for",
+    "subtitle": [
+      "New manga series by start year and intended audience, among the 5,000",
+      "most popular titles on MyAnimeList.",
+      "Three-year moving average. Shōnen and shōjo are aimed at teen boys and",
+      "girls, seinen and josei at adult men and women."
+    ],
+    "anchor": "start",
+    "fontSize": 16,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#666"
+  },
+  "data": {
+    "url": "data/manga_demo_by_year.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "year": "number",
+        "titles": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "filter": "datum.year >= 1970 && datum.year <= 2024"
+    },
+    {
+      "window": [
+        {
+          "op": "mean",
+          "field": "titles",
+          "as": "smooth"
+        }
+      ],
+      "frame": [
+        -1,
+        1
+      ],
+      "groupby": [
+        "demographic"
+      ],
+      "sort": [
+        {
+          "field": "year"
+        }
+      ]
+    },
+    {
+      "calculate": "indexof([\"Sh\\u014dnen\", \"Sh\\u014djo\", \"Seinen\", \"Josei\", \"Kids\", \"Not stated\"], datum.demographic)",
+      "as": "ord"
+    }
+  ],
+  "width": "container",
+  "height": 300,
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "mark": {
+    "type": "area",
+    "interpolate": "basis",
+    "stroke": "#ffffff",
+    "strokeWidth": 0.5
+  },
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "quantitative",
+      "scale": {
+        "domain": [
+          1970,
+          2024
+        ],
+        "nice": false
+      },
+      "axis": {
+        "titleFontSize": 10,
+        "titleFontWeight": "normal",
+        "labelFontSize": 10,
+        "gridColor": "#ECEBE6",
+        "domain": false,
+        "ticks": false,
+        "title": null,
+        "format": "d",
+        "grid": false
+      }
+    },
+    "y": {
+      "field": "smooth",
+      "type": "quantitative",
+      "stack": "center",
+      "axis": null
+    },
+    "color": {
+      "field": "demographic",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "Shōnen",
+          "Shōjo",
+          "Seinen",
+          "Josei",
+          "Kids",
+          "Not stated"
+        ],
+        "range": [
+          "#B50F2A",
+          "#F0849A",
+          "#00829E",
+          "#45C6D1",
+          "#A6A5A0",
+          "#DAD9D3"
+        ]
+      },
+      "legend": {
+        "title": null,
+        "orient": "top",
+        "direction": "horizontal",
+        "columns": 6,
+        "labelFontSize": 11,
+        "symbolType": "square",
+        "titleLimit": 0,
+        "labelLimit": 0
+      }
+    },
+    "order": {
+      "field": "ord"
+    },
+    "tooltip": [
+      {
+        "field": "year",
+        "type": "quantitative",
+        "title": "Start year",
+        "format": "d"
+      },
+      {
+        "field": "demographic",
+        "type": "nominal",
+        "title": "Audience"
+      },
+      {
+        "field": "titles",
+        "type": "quantitative",
+        "title": "New series that year"
+      }
+    ]
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

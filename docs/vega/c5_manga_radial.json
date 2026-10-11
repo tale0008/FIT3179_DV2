@@ -1,0 +1,154 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Manga's audience today",
+    "subtitle": [
+      "Series still being published, by intended audience, among the 5,000",
+      "most popular titles on MyAnimeList.",
+      "Angle and distance from the centre both show the number of series."
+    ],
+    "anchor": "start",
+    "fontSize": 16,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#666"
+  },
+  "data": {
+    "url": "data/manga_demo_current.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "titles": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "joinaggregate": [
+        {
+          "op": "sum",
+          "field": "titles",
+          "as": "total"
+        }
+      ]
+    },
+    {
+      "calculate": "datum.titles / datum.total",
+      "as": "share"
+    },
+    {
+      "calculate": "indexof([\"Sh\\u014dnen\", \"Sh\\u014djo\", \"Seinen\", \"Josei\", \"Kids\", \"Not stated\"], datum.demographic)",
+      "as": "ord"
+    },
+    {
+      "filter": "datum.titles > 0"
+    }
+  ],
+  "width": 300,
+  "height": 300,
+  "encoding": {
+    "theta": {
+      "field": "titles",
+      "type": "quantitative",
+      "stack": true
+    },
+    "radius": {
+      "field": "titles",
+      "type": "quantitative",
+      "scale": {
+        "type": "sqrt",
+        "zero": true,
+        "rangeMin": 30
+      }
+    },
+    "order": {
+      "field": "ord"
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "arc",
+        "innerRadius": 22,
+        "stroke": "#ffffff",
+        "strokeWidth": 2,
+        "padAngle": 0.01
+      },
+      "encoding": {
+        "tooltip": [
+          {
+            "field": "demographic",
+            "type": "nominal",
+            "title": "Audience"
+          },
+          {
+            "field": "titles",
+            "type": "quantitative",
+            "title": "Series still publishing"
+          },
+          {
+            "field": "share",
+            "type": "quantitative",
+            "title": "Share",
+            "format": ".0%"
+          }
+        ],
+        "color": {
+          "field": "demographic",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Shōnen",
+              "Shōjo",
+              "Seinen",
+              "Josei",
+              "Kids",
+              "Not stated"
+            ],
+            "range": [
+              "#B50F2A",
+              "#F0849A",
+              "#00829E",
+              "#45C6D1",
+              "#A6A5A0",
+              "#DAD9D3"
+            ]
+          },
+          "legend": {
+            "title": null,
+            "orient": "right",
+            "labelFontSize": 11,
+            "symbolType": "square",
+            "titleLimit": 0,
+            "labelLimit": 0
+          }
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.share >= 0.06"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "radiusOffset": 14,
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#2B2B28"
+      },
+      "encoding": {
+        "text": {
+          "field": "share",
+          "type": "quantitative",
+          "format": ".0%"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

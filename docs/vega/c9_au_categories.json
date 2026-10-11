@@ -1,0 +1,215 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Who is reading comics in Australia",
+    "subtitle": [
+      "Graphic novels sold in Australian shops by category, 2020 and 2023",
+      "(excluding manga and superhero titles).",
+      "Source: NielsenIQ BookScan, as published by the Australian Publishers",
+      "Association (Splatt, 2024)."
+    ],
+    "anchor": "start",
+    "fontSize": 16,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#666"
+  },
+  "data": {
+    "url": "data/au_sales.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "year": "number",
+        "units": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "filter": "datum.year == 2020 || datum.year == 2023"
+    },
+    {
+      "calculate": "datum.category == \"Children's comic strip fiction and graphic novels\" ? 'Children' : (datum.category == 'Graphic novels: general' ? 'Adults: fiction' : 'Adults: non-fiction')",
+      "as": "group"
+    },
+    {
+      "pivot": "year",
+      "value": "units",
+      "groupby": [
+        "group"
+      ]
+    },
+    {
+      "calculate": "datum['2023'] / datum['2020']",
+      "as": "growth"
+    },
+    {
+      "fold": [
+        "2020",
+        "2023"
+      ],
+      "as": [
+        "year",
+        "units"
+      ]
+    },
+    {
+      "calculate": "toNumber(datum.units)",
+      "as": "units"
+    }
+  ],
+  "width": "container",
+  "height": {
+    "step": 56
+  },
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "encoding": {
+    "y": {
+      "field": "group",
+      "type": "nominal",
+      "sort": {
+        "field": "growth",
+        "op": "max",
+        "order": "descending"
+      },
+      "axis": {
+        "titleFontSize": 10,
+        "titleFontWeight": "normal",
+        "labelFontSize": 11,
+        "gridColor": "#ECEBE6",
+        "domain": false,
+        "ticks": false,
+        "title": null,
+        "labelLimit": 220
+      }
+    },
+    "x": {
+      "field": "units",
+      "type": "quantitative",
+      "axis": {
+        "titleFontSize": 10,
+        "titleFontWeight": "normal",
+        "labelFontSize": 10,
+        "gridColor": "#ECEBE6",
+        "domain": false,
+        "ticks": false,
+        "title": "Copies sold",
+        "format": "~s",
+        "tickCount": 5
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 3,
+        "color": "#D9D7CF"
+      },
+      "encoding": {
+        "detail": {
+          "field": "group"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "size": 150,
+        "opacity": 1,
+        "stroke": "#ffffff",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "color": {
+          "field": "year",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "2020",
+              "2023"
+            ],
+            "range": [
+              "#C9C9C4",
+              "#B07A00"
+            ]
+          },
+          "legend": {
+            "title": null,
+            "orient": "top",
+            "direction": "horizontal",
+            "labelFontSize": 11,
+            "titleLimit": 0,
+            "labelLimit": 0
+          }
+        },
+        "tooltip": [
+          {
+            "field": "group",
+            "type": "nominal",
+            "title": "Category"
+          },
+          {
+            "field": "year",
+            "type": "nominal",
+            "title": "Year"
+          },
+          {
+            "field": "units",
+            "type": "quantitative",
+            "title": "Copies sold",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.year == '2023'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 12,
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#2B2B28"
+      },
+      "encoding": {
+        "text": {
+          "field": "growth",
+          "type": "quantitative",
+          "format": ".1f"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.year == '2023'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 34,
+        "fontSize": 11,
+        "color": "#2B2B28"
+      },
+      "encoding": {
+        "text": {
+          "value": "times"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

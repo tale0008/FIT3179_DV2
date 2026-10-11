@@ -1,0 +1,111 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Where American comic creators were born",
+    "subtitle": [
+      "Comic creators in the Grand Comics Database born in each state, per",
+      "million residents (2020 Census).",
+      "Only creators with a recorded birth state are counted."
+    ],
+    "anchor": "start",
+    "fontSize": 16,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#666"
+  },
+  "width": "container",
+  "height": 320,
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "projection": {
+    "type": "albersUsa"
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "https://cdn.jsdelivr.net/npm/vega-datasets@2/data/us-10m.json",
+        "format": {
+          "type": "topojson",
+          "feature": "states"
+        }
+      },
+      "transform": [
+        {
+          "lookup": "id",
+          "from": {
+            "data": {
+              "url": "data/us_creators_state_pc.csv",
+              "format": {
+                "type": "csv",
+                "parse": {
+                  "fips": "number",
+                  "creators": "number",
+                  "population": "number",
+                  "per_million": "number"
+                }
+              }
+            },
+            "key": "fips",
+            "fields": [
+              "state",
+              "creators",
+              "population",
+              "per_million"
+            ]
+          }
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#ffffff",
+        "strokeWidth": 0.6
+      },
+      "encoding": {
+        "color": {
+          "field": "per_million",
+          "type": "quantitative",
+          "scale": {
+            "scheme": "purples",
+            "type": "sqrt",
+            "zero": true
+          },
+          "legend": {
+            "title": "Creators per million residents",
+            "orient": "top",
+            "direction": "horizontal",
+            "gradientLength": 150,
+            "titleFontSize": 10,
+            "labelFontSize": 9,
+            "titleLimit": 0,
+            "labelLimit": 0
+          }
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "creators",
+            "type": "quantitative",
+            "title": "Creators born there",
+            "format": ","
+          },
+          {
+            "field": "per_million",
+            "type": "quantitative",
+            "title": "Per million residents",
+            "format": ".1f"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

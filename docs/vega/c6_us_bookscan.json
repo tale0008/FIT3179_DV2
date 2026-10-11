@@ -1,0 +1,206 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "What America buys in bookshops",
+    "subtitle": [
+      "Graphic novels sold through US bookshops and online retailers,",
+      "millions of copies, 2020 to 2023.",
+      "Source: Circana BookScan, as published by the Australian Publishers",
+      "Association (Splatt, 2024)."
+    ],
+    "anchor": "start",
+    "fontSize": 16,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#666"
+  },
+  "data": {
+    "url": "data/us_bookscan_categories.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "year": "number",
+        "units": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "calculate": "datum.category == \"Adult fiction (includes most manga)\" ? \"Adult fiction, mostly manga\" : datum.category == \"Children's fiction\" ? \"Children's fiction\" : datum.category == \"Teen fiction\" ? \"Teen fiction\" : datum.category == \"Children's non-fiction\" ? \"Non-fiction (all ages)\" : datum.category == \"Teen non-fiction\" ? \"Non-fiction (all ages)\" : datum.category == \"Adult non-fiction\" ? \"Non-fiction (all ages)\" : datum.category",
+      "as": "group"
+    },
+    {
+      "aggregate": [
+        {
+          "op": "sum",
+          "field": "units",
+          "as": "units"
+        }
+      ],
+      "groupby": [
+        "year",
+        "group"
+      ]
+    },
+    {
+      "calculate": "datum.units / 1000000",
+      "as": "millions"
+    },
+    {
+      "calculate": "datum.group == 'Adult fiction, mostly manga' ? 'manga' : 'other'",
+      "as": "hl"
+    }
+  ],
+  "width": "container",
+  "height": 300,
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "quantitative",
+      "scale": {
+        "domain": [
+          2019.8,
+          2025.4
+        ],
+        "nice": false
+      },
+      "axis": {
+        "titleFontSize": 10,
+        "labelFontSize": 10,
+        "gridColor": "#ECEBE6",
+        "domain": false,
+        "ticks": false,
+        "title": null,
+        "values": [
+          2020,
+          2021,
+          2022,
+          2023
+        ],
+        "format": "d",
+        "grid": false
+      }
+    },
+    "y": {
+      "field": "millions",
+      "type": "quantitative",
+      "axis": {
+        "titleFontSize": 10,
+        "titleFontWeight": "normal",
+        "labelFontSize": 10,
+        "gridColor": "#ECEBE6",
+        "domain": false,
+        "ticks": false,
+        "title": "Million copies",
+        "tickCount": 5
+      }
+    },
+    "detail": {
+      "field": "group"
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 2.5,
+        "point": {
+          "size": 45,
+          "filled": true
+        }
+      },
+      "encoding": {
+        "color": {
+          "field": "hl",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "manga",
+              "other"
+            ],
+            "range": [
+              "#C8102E",
+              "#8C8B85"
+            ]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {
+            "field": "group",
+            "type": "nominal",
+            "title": "Category"
+          },
+          {
+            "field": "year",
+            "type": "ordinal",
+            "title": "Year"
+          },
+          {
+            "field": "units",
+            "type": "quantitative",
+            "title": "Copies sold",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.year == 2023"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 8,
+        "fontSize": 11,
+        "color": "#2B2B28"
+      },
+      "encoding": {
+        "text": {
+          "field": "group"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "year": 2022,
+            "millions": 35.4,
+            "t": "Manga boom peaks: 35.4 million"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "dy": -12,
+        "fontSize": 10,
+        "color": "#2B2B28"
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "millions",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "t"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

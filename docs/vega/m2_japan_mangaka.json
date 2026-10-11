@@ -1,0 +1,153 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Where Japan's manga artists were born, by generation",
+    "subtitle": [
+      "Manga artists born in each prefecture per million current residents,",
+      "grouped by birth decade.",
+      "Source: Wikidata (manga artists with a recorded birthplace),",
+      "prefecture populations from Wikidata."
+    ],
+    "anchor": "start",
+    "fontSize": 16,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#666"
+  },
+  "data": {
+    "url": "data/mangaka_prefecture_decade.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "pref_id": "number",
+        "generation_order": "number",
+        "mangaka": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "lookup": "pref_id",
+      "from": {
+        "data": {
+          "url": "data/japan_prefecture_population.csv",
+          "format": {
+            "type": "csv",
+            "parse": {
+              "pref_id": "number",
+              "population": "number"
+            }
+          }
+        },
+        "key": "pref_id",
+        "fields": [
+          "prefecture",
+          "population"
+        ]
+      }
+    },
+    {
+      "calculate": "datum.mangaka / (datum.population / 1000000)",
+      "as": "per_million"
+    },
+    {
+      "lookup": "pref_id",
+      "from": {
+        "data": {
+          "url": "data/japan_prefectures.topojson",
+          "format": {
+            "type": "topojson",
+            "feature": "japan"
+          }
+        },
+        "key": "properties.id"
+      },
+      "as": "geo"
+    }
+  ],
+  "facet": {
+    "field": "generation",
+    "type": "nominal",
+    "title": null,
+    "sort": {
+      "field": "generation_order",
+      "op": "min"
+    },
+    "header": {
+      "labelFontSize": 12,
+      "labelFontWeight": "bold",
+      "labelAnchor": "start",
+      "labelPadding": 4
+    }
+  },
+  "columns": 3,
+  "spacing": {
+    "row": 14,
+    "column": 10
+  },
+  "spec": {
+    "width": 300,
+    "height": 250,
+    "projection": {
+      "type": "mercator"
+    },
+    "mark": {
+      "type": "geoshape",
+      "stroke": "#ffffff",
+      "strokeWidth": 0.4
+    },
+    "encoding": {
+      "shape": {
+        "field": "geo",
+        "type": "geojson"
+      },
+      "color": {
+        "field": "per_million",
+        "type": "quantitative",
+        "scale": {
+          "scheme": "purples",
+          "type": "sqrt",
+          "zero": true
+        },
+        "legend": {
+          "title": "Manga artists per million residents",
+          "orient": "top",
+          "direction": "horizontal",
+          "gradientLength": 180,
+          "titleFontSize": 10,
+          "labelFontSize": 9,
+          "titleLimit": 0,
+          "labelLimit": 0
+        }
+      },
+      "tooltip": [
+        {
+          "field": "prefecture",
+          "type": "nominal",
+          "title": "Prefecture"
+        },
+        {
+          "field": "generation",
+          "type": "nominal",
+          "title": "Born"
+        },
+        {
+          "field": "mangaka",
+          "type": "quantitative",
+          "title": "Manga artists"
+        },
+        {
+          "field": "per_million",
+          "type": "quantitative",
+          "title": "Per million residents",
+          "format": ".1f"
+        }
+      ]
+    }
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "background": null
+  }
+}

@@ -1,0 +1,228 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Australia's biggest manga and anime convention",
+    "subtitle": [
+      "Attendance at SMASH! (Sydney Manga and Anime Show), 2007 to 2026.",
+      "Hollow points are reported as minimums.",
+      "No convention in 2020 or 2021. No figures published for 2016 and 2017.",
+      "Source: Wikipedia, SMASH! convention records."
+    ],
+    "anchor": "start",
+    "fontSize": 16,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#666"
+  },
+  "data": {
+    "url": "data/smash_attendance.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "year": "number",
+        "attendance": "number"
+      }
+    }
+  },
+  "width": "container",
+  "height": 280,
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "quantitative",
+      "scale": {
+        "domain": [
+          2006,
+          2027
+        ],
+        "nice": false
+      },
+      "axis": {
+        "titleFontSize": 10,
+        "titleFontWeight": "normal",
+        "labelFontSize": 10,
+        "gridColor": "#ECEBE6",
+        "domain": false,
+        "ticks": false,
+        "title": null,
+        "format": "d",
+        "grid": false,
+        "values": [
+          2007,
+          2010,
+          2013,
+          2016,
+          2019,
+          2022,
+          2026
+        ]
+      }
+    },
+    "y": {
+      "field": "attendance",
+      "type": "quantitative",
+      "axis": {
+        "titleFontSize": 10,
+        "titleFontWeight": "normal",
+        "labelFontSize": 10,
+        "gridColor": "#ECEBE6",
+        "domain": false,
+        "ticks": false,
+        "title": "Attendance",
+        "format": "~s",
+        "tickCount": 5
+      }
+    }
+  },
+  "layer": [
+    {
+      "data": {
+        "values": [
+          {
+            "x": 2019.5,
+            "x2": 2021.5
+          }
+        ]
+      },
+      "mark": {
+        "type": "rect",
+        "color": "#ECEBE6"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative"
+        },
+        "x2": {
+          "field": "x2"
+        },
+        "y": {
+          "value": 0
+        },
+        "y2": {
+          "value": 280
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": 2020.5,
+            "t": "Cancelled"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 10,
+        "color": "#77766F",
+        "angle": 0
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative"
+        },
+        "y": {
+          "value": 14
+        },
+        "text": {
+          "field": "t"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "color": "#B07A00",
+        "strokeWidth": 2.5,
+        "interpolate": "monotone"
+      },
+      "transform": [
+        {
+          "filter": "datum.year < 2020"
+        }
+      ]
+    },
+    {
+      "mark": {
+        "type": "line",
+        "color": "#B07A00",
+        "strokeWidth": 2.5,
+        "interpolate": "monotone"
+      },
+      "transform": [
+        {
+          "filter": "datum.year > 2020"
+        }
+      ]
+    },
+    {
+      "mark": {
+        "type": "point",
+        "size": 55,
+        "strokeWidth": 2,
+        "color": "#B07A00",
+        "filled": true
+      },
+      "encoding": {
+        "fill": {
+          "condition": {
+            "test": "datum.precision == 'exact'",
+            "value": "#B07A00"
+          },
+          "value": "#ffffff"
+        },
+        "tooltip": [
+          {
+            "field": "year",
+            "type": "quantitative",
+            "title": "Year",
+            "format": "d"
+          },
+          {
+            "field": "attendance",
+            "type": "quantitative",
+            "title": "Attendance",
+            "format": ","
+          },
+          {
+            "field": "precision",
+            "type": "nominal",
+            "title": "Figure"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.year == 2007 || datum.year == 2026"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "dy": -12,
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#2B2B28"
+      },
+      "encoding": {
+        "text": {
+          "field": "attendance",
+          "type": "quantitative",
+          "format": ","
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}
