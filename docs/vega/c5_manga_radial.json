@@ -1,10 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Manga's audience today",
+    "text": "Who running manga is written for",
     "subtitle": [
-      "Series still being published, by intended audience, among the 5,000",
-      "most popular titles on MyAnimeList.",
+      "Popular manga still being published in August 2023, by intended audience.",
+      "Series with no stated audience (520 of 1,012) are left out.",
       "Angle and distance from the centre both show the number of series."
     ],
     "anchor": "start",
@@ -22,6 +22,9 @@
     }
   },
   "transform": [
+    {
+      "filter": "datum.demographic != 'Not stated'"
+    },
     {
       "joinaggregate": [
         {
@@ -101,16 +104,14 @@
               "Shōjo",
               "Seinen",
               "Josei",
-              "Kids",
-              "Not stated"
+              "Kids"
             ],
             "range": [
               "#B50F2A",
               "#F0849A",
               "#00829E",
               "#45C6D1",
-              "#A6A5A0",
-              "#DAD9D3"
+              "#A6A5A0"
             ]
           },
           "legend": {

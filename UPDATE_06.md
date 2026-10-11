@@ -105,10 +105,10 @@ Bold country names use the colour classes. Lines marked VERIFY must get an HTML 
    * `.caveat` "(Based on the 5,000 manga with the most members on MyAnimeList, an English-language site. It shows what international fans follow, not everything published in Japan.)"
    * `.transition` "So who is manga written for right now?"
 7. **Chart row, text left, C5 right.**
-   * `.lead` "Look only at the series still being published today."
+   * `.lead` "Look only at the series that were still being published in 2023."
    * `.reading-guide` "(Each slice is one audience. The wider and longer the slice, the more series.)"
-   * `.takeaway` VERIFY "About [X] in every 10 popular series still running are written for adults." Fill in from the rendered C5 (seinen plus josei share).
-   * `.caveat` "(Same 5,000 MyAnimeList titles as the chart above, counting only those still being published.)"
+   * `.takeaway` "Manga for adult men, seinen, now slightly outnumbers manga for teenage boys, shōnen: 218 running series against 211. Almost half of all popular running manga are written for adults."
+   * `.caveat` "(Same 5,000 MyAnimeList titles as the chart above, counting the 492 still being published in August 2023 that have a stated audience. Another 520 running series list no audience and are left out.)"
    * `.transition` "Japan makes comics for every age group. **America**'s comics industry grew up differently."
 
 ### §3 America reprints itself.
@@ -118,7 +118,7 @@ Bold country names use the colour classes. Lines marked VERIFY must get an HTML 
    * `.lead` "American comics have been made all over the country, but not evenly."
    * `.reading-guide` "(Darker purple means more comic creators born in that state for every million people living there today.)"
    * `.takeaway` VERIFY "Per person, [state] and [state] have produced the most comic creators." Fill in from the rendered M3.
-   * `.caveat` "(Counts only creators in the Grand Comics Database with a recorded birth state. Rates use 2020 Census populations.)"
+   * `.caveat` "(Counts only creators in the Grand Comics Database with a recorded birth state. Rates use 2024 Census Bureau population estimates.)"
    * `.transition` "Those creators work in an industry that now sells far more than superheroes."
 3. **Chart row, C6 left, text right.**
    * `.lead` "Superhero comic books are what most people picture when they think of American comics. They are not what Americans buy most."
@@ -137,8 +137,8 @@ Bold country names use the colour classes. Lines marked VERIFY must get an HTML 
    * `.transition` "Those fans are not spread evenly across the country."
 * The M6 row stays a **chart row, text left, M6 right**, with this text:
    * `.lead` "Which comics Australians look for depends on where they live."
-   * `.reading-guide` "(Each state is coloured by the share of Google searches for 'manga', compared with searches for 'comics'. Darker red means manga is searched for more.)"
-   * `.takeaway` VERIFY "Manga out-searches comics in [states], while [state] still leans towards comics." Fill in from the rendered M6.
+   * `.reading-guide` "(Each state is coloured by the share of Google searches for 'manga', compared with searches for 'comics'. The colour scale runs from 60 to 80 per cent, so even the palest state still searches mostly for manga.)"
+   * `.takeaway` "In every state and territory, Australians search for manga more than twice as often as for comics. The Northern Territory leans furthest towards manga, at 76 per cent of searches, and Tasmania the least, at 67 per cent."
    * `.caveat` "(Google Trends shows relative interest, not the number of searches, over the past five years.)"
    * `.transition` "The readers are here. The question is who will make comics for them."
 
@@ -159,7 +159,7 @@ Add these to the data sources list, each with its link:
 * All Japan Magazine and Book Publishers' and Editors' Association, Research Institute for Publications, annual comic market reports 2016 to 2025 (shuppankagaku.com, as reported by hon.jp and nippon.com)
 * Wikidata, manga artists' birthplaces and prefecture populations, CC0 (wikidata.org)
 * MyAnimeList, top 5,000 manga by members, via a Kaggle export: 'MyAnimeList Anime and Manga Datasets' by Andreu Vall Hernàndez (kaggle.com/datasets/andreuvallhernndez/myanimelist), data as of August 2023
-* U.S. Census Bureau, 2020 Census redistricting data (census.gov)
+* U.S. Census Bureau, Vintage 2024 state population estimates, NST-EST2024 (census.gov)
 * Circana BookScan, US graphic novel sales by category 2020 to 2023, and Brian Hibbs's 2023 BookScan analysis, both as published in Splatt (2024)
 * Google Trends, Australia, 'manga' compared with 'comics', past five years (trends.google.com), with the download date
 * SMASH! convention attendance, Wikipedia (en.wikipedia.org/wiki/SMASH!_(convention))
@@ -179,4 +179,4 @@ Add these to the data sources list, each with its link:
 * [ ] Footer sources are added.
 * [ ] No horizontal scroll at 1366 x 768. M2 fits in its wide row.
 
-When done, list the five VERIFY sentences and any missing data files.
+When done, list the three remaining VERIFY sentences (M2, C4, M3) and any missing data files.

@@ -4,9 +4,9 @@
     "text": "Who manga is written for",
     "subtitle": [
       "New manga series by start year and intended audience, among the 5,000",
-      "most popular titles on MyAnimeList.",
-      "Three-year moving average. Shōnen and shōjo are aimed at teen boys and",
-      "girls, seinen and josei at adult men and women."
+      "most popular manga on MyAnimeList (data as of August 2023). Three-year average.",
+      "Shōnen and shōjo are aimed at teen boys and girls, seinen and josei at adult",
+      "men and women."
     ],
     "anchor": "start",
     "fontSize": 16,
@@ -25,7 +25,7 @@
   },
   "transform": [
     {
-      "filter": "datum.year >= 1970 && datum.year <= 2024"
+      "filter": "datum.year >= 1970 && datum.year <= 2022"
     },
     {
       "window": [
@@ -72,7 +72,7 @@
       "scale": {
         "domain": [
           1970,
-          2024
+          2022
         ],
         "nice": false
       },

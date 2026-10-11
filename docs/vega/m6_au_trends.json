@@ -3,10 +3,9 @@
   "title": {
     "text": "Which states search for manga",
     "subtitle": [
-      "Share of Google searches for 'manga' when compared with 'comics', by",
-      "state, past five years.",
-      "Source: Google Trends. Darker red means manga is searched for more,",
-      "relative to comics."
+      "Share of Google searches for 'manga' when compared with 'comics',",
+      "by state, past five years. Source: Google Trends.",
+      "Darker red means manga is searched for more, relative to comics."
     ],
     "anchor": "start",
     "fontSize": 16,
@@ -68,8 +67,8 @@
           "scale": {
             "scheme": "reds",
             "domain": [
-              30,
-              70
+              60,
+              80
             ]
           },
           "legend": {

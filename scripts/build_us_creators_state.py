@@ -7,7 +7,7 @@ Census Bureau API (no key needed). Writes data/us_creators_state_pc.csv.
 
 Run from the repo root:   python scripts/build_us_creators_state.py
 Needs: Python 3.8+, internet access. No extra packages.
-Cite as "U.S. Census Bureau, 2020 Census, P.L. 94-171 Redistricting Data".
+Cite as "U.S. Census Bureau, Vintage 2024 state population estimates (NST-EST2024)".
 """
 
 import csv
@@ -48,19 +48,23 @@ def norm(s):
 
 
 def main():
+    nst = os.path.join(DATA, "raw", "NST-EST2024-ALLDATA.csv")
     raw = os.path.join(DATA, "raw", "census_2020.json")
-    if os.path.exists(raw):
+    if os.path.exists(nst):
+        print("Using downloaded file raw/NST-EST2024-ALLDATA.csv (2024 population estimates)")
+        census = []
+        with open(nst, encoding="latin-1", newline="") as f:
+            for row in csv.DictReader(f):
+                if row.get("SUMLEV", "").strip() == "040":
+                    census.append((row["NAME"].strip(), row["POPESTIMATE2024"], row["STATE"]))
+    elif os.path.exists(raw):
         print("Using downloaded file raw/census_2020.json")
         with open(raw, encoding="utf-8-sig") as f:
             census = json.load(f)[1:]
     else:
-        try:
-            req = urllib.request.Request(CENSUS, headers={"User-Agent": "FIT3179-DV2-student-project/1.0"})
-            with urllib.request.urlopen(req, timeout=60) as r:
-                census = json.loads(r.read().decode("utf-8"))[1:]
-        except Exception as e:
-            raise SystemExit(f"Census download failed ({e}).\nOpen this link in your browser, save the page as "
-                             f"{raw}, and run again:\n{CENSUS}")
+        raise SystemExit("No population file found. Download this file and save it into "
+                         f"{os.path.dirname(nst)}:\n"
+                         "https://www2.census.gov/programs-surveys/popest/datasets/2020-2024/state/totals/NST-EST2024-ALLDATA.csv")
     pop = {name: (int(p), int(fips)) for name, p, fips in census}
     lookup = {norm(n): n for n in pop}
     lookup.update({a.lower(): n for a, n in ABBR.items()})
