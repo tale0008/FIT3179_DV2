@@ -35,8 +35,9 @@ Five charts need data that has to be downloaded on the student's machine. The st
 
 | Script | Creates | Used by | Notes |
 | :- | :- | :- | :- |
-| `python scripts/fetch_mangaka_wikidata.py` | `mangaka_prefecture_decade.csv`, `japan_prefecture_population.csv` | M2 | About a minute |
+| `python scripts/fetch_mangaka_wikidata.py` | `mangaka_prefecture_decade.csv`, `japan_prefecture_population.csv` | M2 | Waits out Wikidata's one-query-a-minute limit, or uses two CSVs downloaded by hand into `data/raw/` (see the top of the script) |
 | `python scripts/fetch_manga_demographics.py` | `manga_demo_by_year.csv`, `manga_demo_current.csv` | C4, C5 | About 4 to 5 minutes |
+| or `python scripts/process_manga_kaggle.py` | same two files | C4, C5 | Manual route if the Jikan API is unreachable: uses a MyAnimeList export from Kaggle saved as `data/raw/manga.csv` |
 | `python scripts/build_us_creators_state.py` | `us_creators_state_pc.csv` | M3 | Prints any birth states it could not match |
 | `python scripts/build_au_trends.py` | `au_trends_states.csv` | M6 | Needs a manual Google Trends download first, see the top of the script |
 
@@ -155,7 +156,7 @@ Add these to the data sources list, each with its link:
 
 * All Japan Magazine and Book Publishers' and Editors' Association, Research Institute for Publications, annual comic market reports 2016 to 2025 (shuppankagaku.com, as reported by hon.jp and nippon.com)
 * Wikidata, manga artists' birthplaces and prefecture populations, CC0 (wikidata.org)
-* MyAnimeList via the Jikan API, top 5,000 manga by members (jikan.moe)
+* MyAnimeList, top 5,000 manga by members, via the Jikan API (jikan.moe) or a Kaggle export (name the dataset and author used)
 * U.S. Census Bureau, 2020 Census redistricting data (census.gov)
 * Circana BookScan, US graphic novel sales by category 2020 to 2023, and Brian Hibbs's 2023 BookScan analysis, both as published in Splatt (2024)
 * Google Trends, Australia, 'manga' compared with 'comics', past five years (trends.google.com), with the download date

@@ -5,9 +5,20 @@ Queries Wikidata for every person with occupation "manga artist" (Q191633)
 whose place of birth lies inside a Japanese prefecture, plus each
 prefecture's latest population. Writes two small CSVs into data/.
 
-Run from the repo root:   python scripts/fetch_mangaka_wikidata.py
-Needs: Python 3.8+, internet access. No extra packages.
-Takes about a minute. Wikidata is CC0, cite as "Wikidata".
+Two ways to run it:
+
+  A) Automatic: python scripts/fetch_mangaka_wikidata.py
+     Sends two queries, waiting over a minute between them because Wikidata
+     currently limits everyone to one query per minute.
+
+  B) Manual (if A fails): run the two queries in your browser at
+     https://query.wikidata.org, download each result as CSV, and save them as
+       data/raw/wikidata_mangaka.csv    (the first query, Q_MANGAKA below)
+       data/raw/wikidata_pref_pop.csv   (the second query, Q_POP below)
+     then run the same command. If both files exist, the script uses them and
+     makes no network requests.
+
+Wikidata is CC0, cite as "Wikidata".
 """
 
 import csv
@@ -57,17 +68,30 @@ SELECT ?code ?prefLabel ?pop ?when WHERE {
 """
 
 
-def run(query, tries=4):
+RAW = os.path.join(OUT, "raw")
+
+
+def from_csv(path):
+    """Read a CSV downloaded from query.wikidata.org into the same shape as the JSON results."""
+    with open(path, encoding="utf-8-sig") as f:
+        return [{k: {"value": v} for k, v in row.items() if v} for row in csv.DictReader(f)]
+
+
+def run(query, raw_name, tries=4):
+    raw_path = os.path.join(RAW, raw_name)
+    if os.path.exists(raw_path):
+        print(f"  using downloaded file {raw_name}")
+        return from_csv(raw_path)
     url = ENDPOINT + "?" + urllib.parse.urlencode({"query": query, "format": "json"})
     for attempt in range(tries):
         try:
             req = urllib.request.Request(url, headers=HEADERS)
-            with urllib.request.urlopen(req, timeout=120) as r:
+            with urllib.request.urlopen(req, timeout=180) as r:
                 return json.load(r)["results"]["bindings"]
         except Exception as e:
-            print(f"  query failed ({e}), retrying in {10 * (attempt + 1)}s")
-            time.sleep(10 * (attempt + 1))
-    raise SystemExit("Wikidata query kept failing. Try again in a few minutes.")
+            print(f"  query failed ({e}), waiting 70s before retrying (Wikidata allows one query a minute)")
+            time.sleep(70)
+    raise SystemExit("Wikidata kept refusing. Use the manual route described at the top of this file.")
 
 
 def pref_id(code):
@@ -77,7 +101,7 @@ def pref_id(code):
 
 def main():
     print("Querying Wikidata for manga artists' birthplaces...")
-    rows = run(Q_MANGAKA)
+    rows = run(Q_MANGAKA, "wikidata_mangaka.csv")
     seen = {}
     for r in rows:
         p = r["person"]["value"]
@@ -112,8 +136,11 @@ def main():
                 w.writerow([pid, label, i, counts.get((pid, label), 0)])
 
     print("Querying Wikidata for prefecture populations...")
+    if not os.path.exists(os.path.join(RAW, "wikidata_pref_pop.csv")):
+        print("  waiting 70s first (Wikidata allows one query a minute)")
+        time.sleep(70)
     best = {}
-    for r in run(Q_POP):
+    for r in run(Q_POP, "wikidata_pref_pop.csv"):
         pid = pref_id(r["code"]["value"])
         when = r.get("when", {}).get("value", "")
         pop = int(float(r["pop"]["value"]))
