@@ -6,6 +6,7 @@ i feel like there is too many aterix/footnotes (the grey text in brackets), it l
 
 some of the gery text acn be put in the chatt istesl, like in the waffle chart we have a reading the waffle chart text.this can go into the chart itself, which would make more senese, which we already do as a legend, so the text is redundant and cluttering.also the grey legend text is too small
 
+we need to make sure our text isnt simply narrating the chart but also explaing why the data is so, adding storytelling and so on.i know we do this a bit, but maybe we need to discuss more on how to add more story flesh to the text.
 
 critique given: 
 colour, red is used for Japan, but also used for manga genre.dont do this,
@@ -14,3 +15,12 @@ first map legend is overlapping with the globe
 some of the grey subtext is too small, need to scale up.
 
 chart what Australia buys, and what it makes: ther is no clear relation between number of series and cpies sold, so maybe split it into 2 charts or explain in the text 
+
+we can add a zoom feature to the where americas comics went, cos the erupoe section is pretty cluttered, we can maybe zomm into the map to see.
+for where americas comics went, we dont need to use the equal earth map,if appropriate we can use a flat map as well, depende on what show the data well
+also maybe add arrow heads to the flow lines.
+
+zoom can be added to any map where appropariate.
+
+Need more interactiviy, dropdowns, sliders, etc.maybe have filters that effect more than 1 chart.
+
