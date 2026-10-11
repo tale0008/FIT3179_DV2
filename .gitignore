@@ -7,3 +7,4 @@ cmd output.txt
 *.dll
 *.def
 __pycache__/
+docs/data/raw/manga.csv
