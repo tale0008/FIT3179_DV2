@@ -25,6 +25,7 @@ Section headings are claims or questions, never topic labels. Read in order, the
 | §5 | Can we grow them at home? |
 
 Chart titles are plain descriptions of what is shown, with a subtitle line giving the unit, the period and the source in short form. Where a title names a country or category, that word is coloured to act as the legend (see section 5).
+Headings must be center aligned.
 
 ## 3. The per-chart text pattern
 
