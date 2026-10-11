@@ -16,9 +16,11 @@ import csv
 import os
 import re
 
-HERE = os.path.dirname(__file__)
-RAW = os.path.join(HERE, "..", "data", "raw", "geoMap.csv")
-OUT = os.path.join(HERE, "..", "data", "au_trends_states.csv")
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+# The site lives in docs/ (GitHub Pages), so data is in docs/data. Fall back to data/ at the repo root.
+DATA_DIR = os.path.join(ROOT, "docs", "data") if os.path.isdir(os.path.join(ROOT, "docs", "data")) else os.path.join(ROOT, "data")
+RAW = os.path.join(DATA_DIR, "raw", "geoMap.csv")
+OUT = os.path.join(DATA_DIR, "au_trends_states.csv")
 STATES = {"New South Wales", "Victoria", "Queensland", "South Australia", "Western Australia",
           "Tasmania", "Northern Territory", "Australian Capital Territory"}
 

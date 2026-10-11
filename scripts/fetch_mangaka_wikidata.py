@@ -34,7 +34,10 @@ HEADERS = {
     "User-Agent": "FIT3179-DV2-student-project/1.0 (Monash University coursework)",
     "Accept": "application/sparql-results+json",
 }
-OUT = os.path.join(os.path.dirname(__file__), "..", "data")
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+# The site lives in docs/ (GitHub Pages), so data is in docs/data. Fall back to data/ at the repo root.
+DATA_DIR = os.path.join(ROOT, "docs", "data") if os.path.isdir(os.path.join(ROOT, "docs", "data")) else os.path.join(ROOT, "data")
+OUT = DATA_DIR
 
 BINS = [
     ("Born before 1950", 0, 1949),
@@ -87,7 +90,7 @@ def run(query, raw_name, tries=4):
         try:
             req = urllib.request.Request(url, headers=HEADERS)
             with urllib.request.urlopen(req, timeout=180) as r:
-                return json.load(r)["results"]["bindings"]
+                return json.loads(r.read().decode("utf-8"), strict=False)["results"]["bindings"]
         except Exception as e:
             print(f"  query failed ({e}), waiting 70s before retrying (Wikidata allows one query a minute)")
             time.sleep(70)

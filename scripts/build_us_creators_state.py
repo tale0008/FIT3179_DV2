@@ -17,8 +17,10 @@ import re
 import urllib.request
 from collections import Counter
 
-HERE = os.path.dirname(__file__)
-DATA = os.path.join(HERE, "..", "data")
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+# The site lives in docs/ (GitHub Pages), so data is in docs/data. Fall back to data/ at the repo root.
+DATA_DIR = os.path.join(ROOT, "docs", "data") if os.path.isdir(os.path.join(ROOT, "docs", "data")) else os.path.join(ROOT, "data")
+DATA = DATA_DIR
 CENSUS = "https://api.census.gov/data/2020/dec/pl?get=NAME,P1_001N&for=state:*"
 
 ABBR = {
@@ -46,8 +48,19 @@ def norm(s):
 
 
 def main():
-    with urllib.request.urlopen(CENSUS, timeout=60) as r:
-        census = json.load(r)[1:]
+    raw = os.path.join(DATA, "raw", "census_2020.json")
+    if os.path.exists(raw):
+        print("Using downloaded file raw/census_2020.json")
+        with open(raw, encoding="utf-8-sig") as f:
+            census = json.load(f)[1:]
+    else:
+        try:
+            req = urllib.request.Request(CENSUS, headers={"User-Agent": "FIT3179-DV2-student-project/1.0"})
+            with urllib.request.urlopen(req, timeout=60) as r:
+                census = json.loads(r.read().decode("utf-8"))[1:]
+        except Exception as e:
+            raise SystemExit(f"Census download failed ({e}).\nOpen this link in your browser, save the page as "
+                             f"{raw}, and run again:\n{CENSUS}")
     pop = {name: (int(p), int(fips)) for name, p, fips in census}
     lookup = {norm(n): n for n in pop}
     lookup.update({a.lower(): n for a, n in ABBR.items()})

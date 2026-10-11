@@ -9,6 +9,8 @@ Files supplied with this update:
 * `data/`: `japan_manga_market.csv`, `us_bookscan_categories.csv`, `smash_attendance.csv`, `japan_prefectures.topojson`, `au_states.topojson`
 * `scripts/`: `fetch_mangaka_wikidata.py`, `fetch_manga_demographics.py`, `build_us_creators_state.py`, `build_au_trends.py`
 
+**Paths:** this repo serves the site from `docs/`. Everywhere this update says `vega/`, `data/` or `index.html`, it means `docs/vega/`, `docs/data/` and `docs/index.html`. Scripts go in `scripts/` at the repo root. The scripts already read from and write to `docs/data/`. Never commit `docs/data/raw/` (add it to `.gitignore`), because it holds large downloads such as the 54 MB Kaggle file.
+
 ## 0. Layout fixes (do these first)
 
 ### Merged text rows span both columns exactly
@@ -156,7 +158,7 @@ Add these to the data sources list, each with its link:
 
 * All Japan Magazine and Book Publishers' and Editors' Association, Research Institute for Publications, annual comic market reports 2016 to 2025 (shuppankagaku.com, as reported by hon.jp and nippon.com)
 * Wikidata, manga artists' birthplaces and prefecture populations, CC0 (wikidata.org)
-* MyAnimeList, top 5,000 manga by members, via the Jikan API (jikan.moe) or a Kaggle export (name the dataset and author used)
+* MyAnimeList, top 5,000 manga by members, via a Kaggle export: 'MyAnimeList Anime and Manga Datasets' by Andreu Vall Hernàndez (kaggle.com/datasets/andreuvallhernndez/myanimelist), data as of August 2023
 * U.S. Census Bureau, 2020 Census redistricting data (census.gov)
 * Circana BookScan, US graphic novel sales by category 2020 to 2023, and Brian Hibbs's 2023 BookScan analysis, both as published in Splatt (2024)
 * Google Trends, Australia, 'manga' compared with 'comics', past five years (trends.google.com), with the download date

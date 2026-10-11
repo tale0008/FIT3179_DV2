@@ -1,0 +1,403 @@
+year,demographic,titles
+1960,Shōnen,0
+1960,Shōjo,0
+1960,Seinen,0
+1960,Josei,0
+1960,Kids,0
+1960,Not stated,0
+1961,Shōnen,0
+1961,Shōjo,0
+1961,Seinen,0
+1961,Josei,0
+1961,Kids,0
+1961,Not stated,0
+1962,Shōnen,0
+1962,Shōjo,0
+1962,Seinen,0
+1962,Josei,0
+1962,Kids,0
+1962,Not stated,0
+1963,Shōnen,0
+1963,Shōjo,0
+1963,Seinen,0
+1963,Josei,0
+1963,Kids,0
+1963,Not stated,0
+1964,Shōnen,1
+1964,Shōjo,0
+1964,Seinen,0
+1964,Josei,0
+1964,Kids,0
+1964,Not stated,0
+1965,Shōnen,1
+1965,Shōjo,0
+1965,Seinen,0
+1965,Josei,0
+1965,Kids,0
+1965,Not stated,0
+1966,Shōnen,1
+1966,Shōjo,0
+1966,Seinen,0
+1966,Josei,0
+1966,Kids,0
+1966,Not stated,0
+1967,Shōnen,1
+1967,Shōjo,0
+1967,Seinen,1
+1967,Josei,0
+1967,Kids,0
+1967,Not stated,0
+1968,Shōnen,1
+1968,Shōjo,0
+1968,Seinen,1
+1968,Josei,0
+1968,Kids,0
+1968,Not stated,0
+1969,Shōnen,1
+1969,Shōjo,0
+1969,Seinen,1
+1969,Josei,0
+1969,Kids,1
+1969,Not stated,0
+1970,Shōnen,1
+1970,Shōjo,0
+1970,Seinen,3
+1970,Josei,0
+1970,Kids,0
+1970,Not stated,0
+1971,Shōnen,0
+1971,Shōjo,1
+1971,Seinen,0
+1971,Josei,0
+1971,Kids,0
+1971,Not stated,0
+1972,Shōnen,3
+1972,Shōjo,2
+1972,Seinen,1
+1972,Josei,0
+1972,Kids,0
+1972,Not stated,3
+1973,Shōnen,3
+1973,Shōjo,0
+1973,Seinen,0
+1973,Josei,0
+1973,Kids,0
+1973,Not stated,1
+1974,Shōnen,1
+1974,Shōjo,2
+1974,Seinen,0
+1974,Josei,0
+1974,Kids,0
+1974,Not stated,0
+1975,Shōnen,0
+1975,Shōjo,2
+1975,Seinen,0
+1975,Josei,0
+1975,Kids,0
+1975,Not stated,0
+1976,Shōnen,1
+1976,Shōjo,2
+1976,Seinen,1
+1976,Josei,0
+1976,Kids,0
+1976,Not stated,0
+1977,Shōnen,0
+1977,Shōjo,0
+1977,Seinen,1
+1977,Josei,0
+1977,Kids,0
+1977,Not stated,0
+1978,Shōnen,1
+1978,Shōjo,1
+1978,Seinen,0
+1978,Josei,0
+1978,Kids,0
+1978,Not stated,0
+1979,Shōnen,2
+1979,Shōjo,0
+1979,Seinen,0
+1979,Josei,0
+1979,Kids,0
+1979,Not stated,0
+1980,Shōnen,1
+1980,Shōjo,0
+1980,Seinen,2
+1980,Josei,0
+1980,Kids,1
+1980,Not stated,0
+1981,Shōnen,4
+1981,Shōjo,0
+1981,Seinen,0
+1981,Josei,0
+1981,Kids,0
+1981,Not stated,0
+1982,Shōnen,0
+1982,Shōjo,0
+1982,Seinen,1
+1982,Josei,0
+1982,Kids,0
+1982,Not stated,3
+1983,Shōnen,2
+1983,Shōjo,0
+1983,Seinen,0
+1983,Josei,0
+1983,Kids,0
+1983,Not stated,2
+1984,Shōnen,4
+1984,Shōjo,0
+1984,Seinen,1
+1984,Josei,0
+1984,Kids,0
+1984,Not stated,1
+1985,Shōnen,4
+1985,Shōjo,1
+1985,Seinen,0
+1985,Josei,0
+1985,Kids,0
+1985,Not stated,2
+1986,Shōnen,1
+1986,Shōjo,0
+1986,Seinen,3
+1986,Josei,0
+1986,Kids,0
+1986,Not stated,2
+1987,Shōnen,5
+1987,Shōjo,4
+1987,Seinen,2
+1987,Josei,0
+1987,Kids,0
+1987,Not stated,1
+1988,Shōnen,2
+1988,Shōjo,0
+1988,Seinen,4
+1988,Josei,0
+1988,Kids,0
+1988,Not stated,1
+1989,Shōnen,5
+1989,Shōjo,3
+1989,Seinen,5
+1989,Josei,1
+1989,Kids,0
+1989,Not stated,1
+1990,Shōnen,5
+1990,Shōjo,5
+1990,Seinen,9
+1990,Josei,0
+1990,Kids,0
+1990,Not stated,2
+1991,Shōnen,3
+1991,Shōjo,4
+1991,Seinen,3
+1991,Josei,0
+1991,Kids,0
+1991,Not stated,1
+1992,Shōnen,7
+1992,Shōjo,7
+1992,Seinen,5
+1992,Josei,1
+1992,Kids,0
+1992,Not stated,1
+1993,Shōnen,3
+1993,Shōjo,1
+1993,Seinen,11
+1993,Josei,2
+1993,Kids,0
+1993,Not stated,2
+1994,Shōnen,5
+1994,Shōjo,3
+1994,Seinen,9
+1994,Josei,0
+1994,Kids,0
+1994,Not stated,3
+1995,Shōnen,6
+1995,Shōjo,8
+1995,Seinen,7
+1995,Josei,2
+1995,Kids,0
+1995,Not stated,1
+1996,Shōnen,8
+1996,Shōjo,9
+1996,Seinen,8
+1996,Josei,1
+1996,Kids,0
+1996,Not stated,2
+1997,Shōnen,7
+1997,Shōjo,12
+1997,Seinen,15
+1997,Josei,2
+1997,Kids,2
+1997,Not stated,3
+1998,Shōnen,12
+1998,Shōjo,12
+1998,Seinen,15
+1998,Josei,1
+1998,Kids,0
+1998,Not stated,3
+1999,Shōnen,17
+1999,Shōjo,12
+1999,Seinen,24
+1999,Josei,2
+1999,Kids,0
+1999,Not stated,10
+2000,Shōnen,12
+2000,Shōjo,19
+2000,Seinen,20
+2000,Josei,5
+2000,Kids,0
+2000,Not stated,9
+2001,Shōnen,20
+2001,Shōjo,24
+2001,Seinen,24
+2001,Josei,5
+2001,Kids,0
+2001,Not stated,15
+2002,Shōnen,26
+2002,Shōjo,34
+2002,Seinen,25
+2002,Josei,4
+2002,Kids,0
+2002,Not stated,24
+2003,Shōnen,20
+2003,Shōjo,36
+2003,Seinen,31
+2003,Josei,3
+2003,Kids,0
+2003,Not stated,28
+2004,Shōnen,26
+2004,Shōjo,45
+2004,Seinen,42
+2004,Josei,8
+2004,Kids,0
+2004,Not stated,39
+2005,Shōnen,34
+2005,Shōjo,45
+2005,Seinen,41
+2005,Josei,7
+2005,Kids,0
+2005,Not stated,40
+2006,Shōnen,38
+2006,Shōjo,48
+2006,Seinen,42
+2006,Josei,8
+2006,Kids,0
+2006,Not stated,44
+2007,Shōnen,43
+2007,Shōjo,73
+2007,Seinen,48
+2007,Josei,9
+2007,Kids,1
+2007,Not stated,66
+2008,Shōnen,41
+2008,Shōjo,80
+2008,Seinen,62
+2008,Josei,9
+2008,Kids,0
+2008,Not stated,74
+2009,Shōnen,61
+2009,Shōjo,57
+2009,Seinen,60
+2009,Josei,9
+2009,Kids,0
+2009,Not stated,72
+2010,Shōnen,47
+2010,Shōjo,49
+2010,Seinen,60
+2010,Josei,8
+2010,Kids,0
+2010,Not stated,63
+2011,Shōnen,68
+2011,Shōjo,41
+2011,Seinen,58
+2011,Josei,7
+2011,Kids,0
+2011,Not stated,92
+2012,Shōnen,58
+2012,Shōjo,47
+2012,Seinen,66
+2012,Josei,9
+2012,Kids,0
+2012,Not stated,94
+2013,Shōnen,51
+2013,Shōjo,65
+2013,Seinen,64
+2013,Josei,7
+2013,Kids,0
+2013,Not stated,95
+2014,Shōnen,52
+2014,Shōjo,41
+2014,Seinen,68
+2014,Josei,9
+2014,Kids,0
+2014,Not stated,100
+2015,Shōnen,53
+2015,Shōjo,32
+2015,Seinen,52
+2015,Josei,5
+2015,Kids,1
+2015,Not stated,90
+2016,Shōnen,52
+2016,Shōjo,16
+2016,Seinen,55
+2016,Josei,5
+2016,Kids,0
+2016,Not stated,102
+2017,Shōnen,62
+2017,Shōjo,12
+2017,Seinen,56
+2017,Josei,3
+2017,Kids,0
+2017,Not stated,138
+2018,Shōnen,48
+2018,Shōjo,10
+2018,Seinen,51
+2018,Josei,4
+2018,Kids,0
+2018,Not stated,176
+2019,Shōnen,46
+2019,Shōjo,8
+2019,Seinen,36
+2019,Josei,6
+2019,Kids,0
+2019,Not stated,166
+2020,Shōnen,50
+2020,Shōjo,8
+2020,Seinen,40
+2020,Josei,1
+2020,Kids,0
+2020,Not stated,98
+2021,Shōnen,34
+2021,Shōjo,3
+2021,Seinen,12
+2021,Josei,0
+2021,Kids,0
+2021,Not stated,26
+2022,Shōnen,23
+2022,Shōjo,1
+2022,Seinen,2
+2022,Josei,0
+2022,Kids,0
+2022,Not stated,17
+2023,Shōnen,3
+2023,Shōjo,0
+2023,Seinen,3
+2023,Josei,1
+2023,Kids,0
+2023,Not stated,3
+2024,Shōnen,0
+2024,Shōjo,0
+2024,Seinen,0
+2024,Josei,0
+2024,Kids,0
+2024,Not stated,0
+2025,Shōnen,0
+2025,Shōjo,0
+2025,Seinen,0
+2025,Josei,0
+2025,Kids,0
+2025,Not stated,0
+2026,Shōnen,0
+2026,Shōjo,0
+2026,Seinen,0
+2026,Josei,0
+2026,Kids,0
+2026,Not stated,0

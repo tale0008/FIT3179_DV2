@@ -20,7 +20,10 @@ import urllib.request
 from collections import Counter
 
 PAGES = 200          # 25 titles per page, so 5,000 titles
-OUT = os.path.join(os.path.dirname(__file__), "..", "data")
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+# The site lives in docs/ (GitHub Pages), so data is in docs/data. Fall back to data/ at the repo root.
+DATA_DIR = os.path.join(ROOT, "docs", "data") if os.path.isdir(os.path.join(ROOT, "docs", "data")) else os.path.join(ROOT, "data")
+OUT = DATA_DIR
 URL = "https://api.jikan.moe/v4/manga?type=manga&order_by=members&sort=desc&limit=25&page={}"
 NAMES = {"Shounen": "Shōnen", "Shoujo": "Shōjo", "Seinen": "Seinen", "Josei": "Josei", "Kids": "Kids"}
 

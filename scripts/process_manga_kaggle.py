@@ -24,9 +24,11 @@ import sys
 from collections import Counter
 
 csv.field_size_limit(10_000_000)
-HERE = os.path.dirname(__file__)
-RAW = os.path.join(HERE, "..", "data", "raw", "manga.csv")
-OUT = os.path.join(HERE, "..", "data")
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+# The site lives in docs/ (GitHub Pages), so data is in docs/data. Fall back to data/ at the repo root.
+DATA_DIR = os.path.join(ROOT, "docs", "data") if os.path.isdir(os.path.join(ROOT, "docs", "data")) else os.path.join(ROOT, "data")
+RAW = os.path.join(DATA_DIR, "raw", "manga.csv")
+OUT = DATA_DIR
 TOP_N = 5000
 NAMES = {"shounen": "Shōnen", "shonen": "Shōnen", "shoujo": "Shōjo", "shojo": "Shōjo",
          "seinen": "Seinen", "josei": "Josei", "kids": "Kids"}
@@ -67,7 +69,7 @@ def num(v):
 
 def main():
     if not os.path.exists(RAW):
-        sys.exit("Put the Kaggle manga file at data/raw/manga.csv first.")
+        sys.exit(f"Put the Kaggle manga file at {RAW} first.")
     with open(RAW, encoding="utf-8-sig", newline="") as f:
         reader = csv.DictReader(f)
         cols = reader.fieldnames
