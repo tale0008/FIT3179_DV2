@@ -35,7 +35,8 @@
        .row-wide-chart  chart across both columns, with a .row-text of its
                         lead and reading guide above and one of its takeaway,
                         caveat and transition below.
-       .row-text        text with no chart, one merged cell, centred.
+       .row-text        text with no chart, one merged cell spanning both
+                        columns edge to edge, text left-aligned.
      ===================================================================== -->
 
 <!-- =====================================================================
@@ -43,7 +44,7 @@
      ===================================================================== -->
 <header class="masthead">
   <div class="container">
-    <div class="row row-text row-text--display">
+    <div class="row row-text">
       <div>
         <h1 class="page-title">
           <span>Australia reads comics.</span>
@@ -164,85 +165,70 @@
 
     <!-- C3: text left, chart right -->
     <div class="row row-chart row-chart--flip">
-      <div class="todo">
-        <span class="todo-label">Caption to write (about C3)</span>
-        How print and digital sales have moved since 2017, and what the 2025 contraction means.
+      <div class="prose">
+        <p class="lead">In 2025, Japanese readers spent ¥692.5 billion on manga, about US$4.4 billion. Almost all of it was written and drawn in <span class="c-jp">Japan</span>.</p>
+        <p class="reading-guide">(Each band is one format. The top edge of the chart is the whole market.)</p>
+        <p class="takeaway">Digital manga grew three and a half times in ten years, from ¥149 billion in 2016 to ¥527 billion in 2025. It is now about three quarters of the market, while printed volumes and magazines have both shrunk.</p>
+        <p class="caveat">(Print figures cover books and magazines sold through wholesalers. Digital figures are estimates of reader spending.)</p>
+        <p class="transition"><span class="c-jp">Japan</span> does not only read its own comics. It grows the people who draw them, all over the country.</p>
       </div>
       <figure class="figure">
-        <div id="c3" class="chart placeholder" style="--h: 320px">
-          <p class="ph-id">C3</p>
-          <p class="ph-title">Japan's manga market, print vs digital</p>
-          <dl class="ph-meta">
-            <dt>Idiom</dt><dd>Line chart</dd>
-            <dt>Source</dt><dd>Research Institute for Publications (AJPEA)</dd>
-            <dt>Annotation</dt><dd>“2025: first market contraction since 2017”</dd>
-          </dl>
-        </div>
+        <div id="c3" class="chart"></div>
       </figure>
     </div>
 
     <!-- M2: wide chart, text above and below -->
     <div class="row row-text">
-      <div class="todo">
-        <span class="todo-label">Lead to write (about M2)</span>
-        How to read the six maps (artists born per million residents, by decade).
+      <div class="prose">
+        <p class="lead">Tokyo is the centre of Japanese publishing, but manga artists come from every corner of the country.</p>
+        <p class="reading-guide">(Each map is one generation, grouped by the decade an artist was born. Darker purple means more manga artists for every million people living in that prefecture today.)</p>
       </div>
     </div>
     <div class="row row-wide-chart">
       <figure class="figure">
-        <div id="m2" class="chart placeholder" style="--h: 280px">
-          <p class="ph-id">M2</p>
-          <p class="ph-title">Where Japan's manga artists come from</p>
-          <dl class="ph-meta">
-            <dt>Idiom</dt><dd>Small-multiples choropleth of prefectures, one map per decade (six maps)</dd>
-            <dt>Sources</dt><dd>Wikidata manga artist birthplaces · Japanese prefecture populations</dd>
-            <dt>Annotation</dt><dd>“Most famous mangaka were not born in Tokyo”</dd>
-          </dl>
-        </div>
+        <div id="m2" class="chart"></div>
       </figure>
     </div>
     <div class="row row-text">
-      <div class="todo">
-        <span class="todo-label">Caption to write (about M2)</span>
-        The one pattern to look for across the six maps.
+      <div class="prose">
+        <p class="takeaway">Per person, several rural prefectures have produced as many manga artists as Tokyo, in every generation.</p>
+        <!-- VERIFY: rewrite once the real M2 is visible. Name the two or three prefectures that stand out, and say whether Tokyo leads.
+             From the CSVs: across all generations Kochi leads (about 38 per million), Tokyo is second (34), then Akita and Iwate (33).
+             Tokyo tops only the 1960s map. Kochi tops the pre-1950 and 1980s maps, Iwate the 1950s, Tochigi the 1970s. -->
+        <p class="caveat">(Only artists with a recorded birthplace and birth year on Wikidata are counted, so famous artists are over-represented. Rates use today's population, not the population when each artist was born.)</p>
+        <p class="transition">What those artists draw, and who for, has changed too.</p>
       </div>
     </div>
 
     <!-- C4: chart left, text right -->
     <div class="row row-chart">
-      <div class="todo">
-        <span class="todo-label">Caption to write (about C4)</span>
-        Explain the demographic labels (shōnen, shōjo, seinen, josei) in plain English and point out the biggest change.
+      <div class="prose">
+        <p class="lead">Manga is not one genre. It is sold by the reader it is written for.</p>
+        <p class="reading-guide">(Reading the streamgraph: each band is one audience, and its thickness shows how many popular series started that year. Reds are manga written for teenagers, teals manga written for adults.)</p>
+        <p class="takeaway">Manga written for adult men, seinen, has grown fastest among popular titles, and now rivals shōnen, the boys' adventure manga most Western readers know.</p>
+        <!-- VERIFY: check against the rendered C4 and rewrite if the pattern is different.
+             From manga_demo_by_year.csv: series started in the 2010s, seinen 566 vs shonen 537; in the 1990s, seinen 106 vs shonen 73.
+             Since 2020 shonen leads (110 vs 57), but 2022 and 2023 are thin because the data stops in August 2023.
+             Shojo shrank most: 461 series started in the 2000s, 321 in the 2010s, 12 since 2020. -->
+        <p class="caveat">(Based on the 5,000 manga with the most members on MyAnimeList, an English-language site. It shows what international fans follow, not everything published in Japan.)</p>
+        <p class="transition">So who is manga written for right now?</p>
       </div>
       <figure class="figure">
-        <div id="c4" class="chart placeholder" style="--h: 300px">
-          <p class="ph-id">C4</p>
-          <p class="ph-title">Who manga is written for</p>
-          <dl class="ph-meta">
-            <dt>Idiom</dt><dd>Streamgraph</dd>
-            <dt>Source</dt><dd>AniList / Jikan (MyAnimeList) API</dd>
-            <dt>Annotation</dt><dd>“Shōnen's share over time”</dd>
-          </dl>
-        </div>
+        <div id="c4" class="chart"></div>
       </figure>
     </div>
 
     <!-- C5: text left, chart right -->
     <div class="row row-chart row-chart--flip">
-      <div class="todo">
-        <span class="todo-label">Caption to write (about C5)</span>
-        Compare today's mix with the history in C4, and tie it back to who reads manga in Australia.
+      <div class="prose">
+        <p class="lead">Look only at the series that were still being published in 2023.</p>
+        <p class="reading-guide">(Each slice is one audience. The wider and longer the slice, the more series.)</p>
+        <p class="takeaway">Manga for adult men, seinen, now slightly outnumbers manga for teenage boys, shōnen: 218 running series against 211. Almost half of all popular running manga are written for adults.</p>
+        <p class="caveat">(Same 5,000 MyAnimeList titles as the chart above, counting the 492 still being published in August 2023 that have a stated audience. Another 520 running series list no audience and are left out.)</p>
+        <p class="transition"><span class="c-jp">Japan</span> makes comics for every age group. <span class="c-us">America</span>'s comics industry grew up differently.</p>
       </div>
       <figure class="figure">
-        <div id="c5" class="chart placeholder" style="--h: 300px">
-          <p class="ph-id">C5</p>
-          <p class="ph-title">Manga's audience today</p>
-          <dl class="ph-meta">
-            <dt>Idiom</dt><dd>Radial arc chart</dd>
-            <dt>Source</dt><dd>AniList / Jikan API</dd>
-            <dt>Annotation</dt><dd>“Demographic mix of currently running series”</dd>
-          </dl>
-        </div>
+        <div id="c5" class="chart"></div>
       </figure>
     </div>
   </div>
@@ -265,43 +251,32 @@
 
     <!-- M3: text left, chart right -->
     <div class="row row-chart row-chart--flip">
-      <div class="todo">
-        <span class="todo-label">Caption to write (about M3)</span>
-        How to read the map (creators per million residents, by birth state) and which states stand out.
+      <div class="prose">
+        <p class="lead">American comics have been made all over the country, but not evenly.</p>
+        <p class="reading-guide">(Darker purple means more comic creators born in that state for every million people living there today.)</p>
+        <p class="takeaway">Per person, New York and the District of Columbia have produced the most comic creators.</p>
+        <!-- VERIFY: states filled in from us_creators_state_pc.csv; check against the rendered M3.
+             New York about 89 per million (1,775 creators), DC about 70 (49), then Massachusetts 42 and Rhode Island 40.
+             DC is tiny on the map, so Massachusetts may read better as the second state named. -->
+        <p class="caveat">(Counts only creators in the Grand Comics Database with a recorded birth state. Rates use 2024 Census Bureau population estimates.)</p>
+        <p class="transition">Those creators work in an industry that now sells far more than superheroes.</p>
       </div>
       <figure class="figure">
-        <div id="m3" class="chart placeholder" style="--h: 320px">
-          <p class="ph-id">M3</p>
-          <p class="ph-title">Where American comic creators were born</p>
-          <dl class="ph-meta">
-            <dt>Idiom</dt><dd>State choropleth, per capita</dd>
-            <dt>Sources</dt><dd>Grand Comics Database · US Census state populations</dd>
-            <dt>Annotation</dt><dd>“Creators per million residents by birth state”</dd>
-          </dl>
-        </div>
+        <div id="m3" class="chart"></div>
       </figure>
     </div>
 
     <!-- C6: chart left, text right -->
     <div class="row row-chart">
-      <div class="todo">
-        <span class="todo-label">Callout notes to write (about C6)</span>
-        <ol>
-          <li>2015: name the publishers at the top of the chart and their rank.</li>
-          <li>The climbers: which children's graphic novel publishers rose furthest by 2025.</li>
-          <li>Link to §4: whether the same shift shows up in what Australians buy.</li>
-        </ol>
+      <div class="prose">
+        <p class="lead">Superhero comic books are what most people picture when they think of American comics. They are not what Americans buy most.</p>
+        <p class="reading-guide">(Each line is one kind of graphic novel sold in US bookshops and online. Red marks adult fiction, which is mostly manga.)</p>
+        <p class="takeaway">Adult fiction nearly doubled, from 15.2 million copies in 2020 to 28.2 million in 2023, after peaking at 35.4 million in 2022. In 2023, manga made up 21.8 million of the 44.7 million graphic novels sold, almost half.</p>
+        <p class="caveat">(BookScan covers bookshops and online retailers, about 85 per cent of the book market, but not comic shops, libraries or school book fairs.)</p>
+        <p class="transition"><span class="c-us">America</span>'s bookshops are now full of comics from <span class="c-jp">Japan</span>. So are Australia's.</p>
       </div>
       <figure class="figure">
-        <div id="c6" class="chart placeholder" style="--h: 320px">
-          <p class="ph-id">C6</p>
-          <p class="ph-title">Who sells America's comics</p>
-          <dl class="ph-meta">
-            <dt>Idiom</dt><dd>Slope graph, publisher rank 2015 vs 2025</dd>
-            <dt>Source</dt><dd>ICv2 / Circana BookScan</dd>
-            <dt>Annotation</dt><dd>“Children's graphic novel publishers overtake the superhero giants”</dd>
-          </dl>
-        </div>
+        <div id="c6" class="chart"></div>
       </figure>
     </div>
   </div>
@@ -408,41 +383,31 @@
       </div>
     </div>
 
-    <!-- M5: chart left, text right -->
+    <!-- C11: chart left, text right (replaces M5) -->
     <div class="row row-chart">
-      <div class="todo">
-        <span class="todo-label">Caption to write (about M5)</span>
-        Fans gather in large numbers, so demand is visible. What a circle's size means.
+      <div class="prose">
+        <p class="lead">The appetite for manga and anime shows up in person, too.</p>
+        <p class="reading-guide">(Each point is one year's attendance at SMASH!, Sydney's manga and anime convention. Hollow points are minimum figures.)</p>
+        <p class="takeaway">SMASH! grew from 1,435 visitors in 2007 to 53,071 in 2026, about 37 times bigger, and it has grown every year since it returned after the pandemic.</p>
+        <p class="caveat">(Attendance as reported by the convention and collected on Wikipedia. Some years are reported only as 'more than' a figure, and none were published for 2016 and 2017.)</p>
+        <p class="transition">Those fans are not spread evenly across the country.</p>
       </div>
       <figure class="figure">
-        <div id="m5" class="chart placeholder" style="--h: 320px">
-          <p class="ph-id">M5</p>
-          <p class="ph-title">Where Australian fans gather</p>
-          <dl class="ph-meta">
-            <dt>Idiom</dt><dd>Proportional symbol map of conventions and comic festivals by city</dd>
-            <dt>Sources</dt><dd>Convention attendance figures · city coordinates</dd>
-            <dt>Annotation</dt><dd>“SMASH! Sydney: 53,071 attendees in 2026”</dd>
-          </dl>
-        </div>
+        <div id="c11" class="chart"></div>
       </figure>
     </div>
 
     <!-- M6: text left, chart right -->
     <div class="row row-chart row-chart--flip">
-      <div class="todo">
-        <span class="todo-label">Caption to write (about M6)</span>
-        Where that interest is strongest, and whether it leans to manga or superheroes.
+      <div class="prose">
+        <p class="lead">Which comics Australians look for depends on where they live.</p>
+        <p class="reading-guide">(Each state is coloured by the share of Google searches for 'manga', compared with searches for 'comics'. The colour scale runs from 60 to 80 per cent, so even the palest state still searches mostly for manga.)</p>
+        <p class="takeaway">In every state and territory, Australians search for manga more than twice as often as for comics. The Northern Territory leans furthest towards manga, at 76 per cent of searches, and Tasmania the least, at 67 per cent.</p>
+        <p class="caveat">(Google Trends shows relative interest, not the number of searches, over the past five years.)</p>
+        <p class="transition">The readers are here. The question is who will make comics for them.</p>
       </div>
       <figure class="figure">
-        <div id="m6" class="chart placeholder" style="--h: 320px">
-          <p class="ph-id">M6</p>
-          <p class="ph-title">Which states search for comics</p>
-          <dl class="ph-meta">
-            <dt>Idiom</dt><dd>State choropleth, per capita</dd>
-            <dt>Sources</dt><dd>Google Trends · ABS state populations</dd>
-            <dt>Annotation</dt><dd>“Interest in manga vs superhero comics by state”</dd>
-          </dl>
-        </div>
+        <div id="m6" class="chart"></div>
       </figure>
     </div>
   </div>
@@ -459,20 +424,14 @@
 
     <!-- C9: text left, chart right -->
     <div class="row row-chart row-chart--flip">
-      <div class="todo">
-        <span class="todo-label">Caption to write (about C9)</span>
-        How to read the strip plot (each dot is one title, placed by its sales) and which titles to label.
+      <div class="prose">
+        <p class="lead">The fastest-growing comic readers in <span class="c-au">Australia</span> are the youngest.</p>
+        <p class="reading-guide">(Grey dots are sales in 2020, gold dots sales in 2023. The longer the line, the bigger the growth.)</p>
+        <p class="takeaway">Sales of children's graphic novels in <span class="c-au">Australia</span> grew 3.3 times in three years, to almost 1.1 million copies in 2023. Adult fiction grew 1.8 times.</p>
+        <p class="caveat">(Excludes manga and superhero titles, which BookScan counts separately. Most of the best-selling children's titles are imported, such as Dog Man.)</p>
       </div>
       <figure class="figure">
-        <div id="c9" class="chart placeholder" style="--h: 280px">
-          <p class="ph-id">C9</p>
-          <p class="ph-title">Hits and misses</p>
-          <dl class="ph-meta">
-            <dt>Idiom</dt><dd>Jittered strip plot of title sales</dd>
-            <dt>Source</dt><dd>Circana BookScan / ICv2</dd>
-            <dt>Annotation</dt><dd>To decide: which titles to label</dd>
-          </dl>
-        </div>
+        <div id="c9" class="chart"></div>
       </figure>
     </div>
 
@@ -509,26 +468,29 @@
         <h4>Comics</h4>
         <ul class="sources">
           <li><a href="https://www.comics.org/">Grand Comics Database</a> (comics.org), licensed <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Comic issues, series, genres, reprints and creators.</li>
-          <li class="pending"><a href="https://www.wikidata.org/">Wikidata</a>: manga artist birthplaces. [details to add]</li>
-          <li class="pending"><a href="https://anilist.co/">AniList</a> / <a href="https://jikan.moe/">Jikan</a> (MyAnimeList) API: manga demographics. [details to add]</li>
+          <li><a href="https://www.wikidata.org/">Wikidata</a> (wikidata.org), manga artists' birthplaces and prefecture populations, <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>.</li>
+          <li><a href="https://myanimelist.net/">MyAnimeList</a>, top 5,000 manga by members, via a Kaggle export: Vall Hernàndez, A., <a href="https://www.kaggle.com/datasets/andreuvallhernndez/myanimelist">MyAnimeList Anime and Manga Datasets</a> (kaggle.com). Data as of August 2023.</li>
         </ul>
         <h4>Markets, sales and fans</h4>
         <ul class="sources">
-          <li>Research Institute for Publications / <a href="https://www.ajpea.or.jp/">AJPEA</a>, Japanese publishing market 2025.</li>
-          <li><a href="https://icv2.com/">ICv2</a> / <a href="https://www.circana.com/">Circana BookScan</a>, US graphic novel market 2025.</li>
+          <li>Research Institute for Publications, All Japan Magazine and Book Publishers' and Editors' Association (<a href="https://www.ajpea.or.jp/">AJPEA</a>), annual comic market reports 2016 to 2025 (<a href="https://shuppankagaku.com/">shuppankagaku.com</a>), as reported by <a href="https://hon.jp/">hon.jp</a> and <a href="https://www.nippon.com/">nippon.com</a>.</li>
+          <li><a href="https://www.circana.com/">Circana BookScan</a>, US graphic novel sales by category 2020 to 2023, and Brian Hibbs's 2023 BookScan analysis, both as published in Splatt (2024), below.</li>
           <li>NielsenIQ BookScan figures as published in: Splatt, S. (2024). <a href="https://www.publishers.asn.au/common/Uploaded%20files/APA%20Resources/Research/BDEF/BDEF%202023-24%20Report%20-%20Sophie%20Splatt.pdf"><cite>Graphic Novels: Can We Grow Them at Home?</cite></a> Australian Publishers Association, 2023 to 24 Beatrice Davis Editorial Fellowship Report.</li>
-          <li class="pending"><a href="https://trends.google.com/">Google Trends</a>: search interest by state. [details to add]</li>
-          <li class="pending">Convention attendance figures. [sources to add]</li>
+          <li><a href="https://trends.google.com/trends/explore?date=today%205-y&amp;geo=AU&amp;q=manga,comics">Google Trends</a> (trends.google.com), Australia, 'manga' compared with 'comics', past five years. Downloaded 11 October 2026.</li>
+          <!-- VERIFY: Google Trends download date (taken from when geoMap.csv was committed) -->
+          <li>SMASH! convention attendance, <a href="https://en.wikipedia.org/wiki/SMASH!_(convention)">Wikipedia</a> (en.wikipedia.org).</li>
         </ul>
         <h4>Population</h4>
         <ul class="sources">
           <li><a href="https://data.worldbank.org/indicator/SP.POP.TOTL">World Bank, population, total</a>. Used for per-person rates in the world map.</li>
-          <li class="pending"><a href="https://www.abs.gov.au/">Australian Bureau of Statistics</a>: state populations. [details to add]</li>
-          <li class="pending"><a href="https://www.census.gov/">US Census Bureau</a>: state populations. [details to add]</li>
+          <li>U.S. Census Bureau, <a href="https://www.census.gov/data/tables/time-series/demo/popest/2020s-state-total.html">Vintage 2024 state population estimates</a>, NST-EST2024 (census.gov).</li>
         </ul>
         <h4>Maps</h4>
         <ul class="sources">
           <li>World boundaries: <a href="https://www.naturalearthdata.com/">Natural Earth</a>, via <a href="https://github.com/vega/vega-datasets">vega-datasets</a>.</li>
+          <li>Japan prefecture boundaries: Global Map Japan (<a href="https://www.gsi.go.jp/">Geospatial Information Authority of Japan</a>), via the <a href="https://github.com/dataofjapan/land">dataofjapan/land</a> GitHub repository.</li>
+          <li>Australian state boundaries: <a href="https://github.com/tonywr71/GeoJson-Data">tonywr71/GeoJson-Data</a> GitHub repository.</li>
+          <li>US state boundaries: <a href="https://github.com/vega/vega-datasets">vega-datasets</a> (us-10m).</li>
         </ul>
         <h3>Notes on the data</h3>
         <p>Figures from the Grand Comics Database reflect volunteer indexing and are a lower bound. Series with uncertain start years are excluded from year-by-year charts.</p>

@@ -3,8 +3,9 @@
    Layout: one strict two-column grid, read left to right, row by row.
    Every row is one of three types: .row-chart (a chart in one column, all
    of its text beside it), .row-wide-chart (a chart across both columns) or
-   .row-text (text with no chart, one merged cell, centred and capped at
-   --measure-wide). Two columns of text never sit side by side.
+   .row-text (text with no chart, one merged cell spanning both columns,
+   edge to edge like a merged table cell). Two columns of text never sit
+   side by side.
    ========================================================================== */
 
 :root {
@@ -42,7 +43,6 @@
   /* Grid */
   --content: 1120px;
   --gutter: 48px;
-  --measure-wide: 760px; /* max width of text in a merged text row; "none" for full width */
 }
 
 /* --------------------------------------------------------------------------
@@ -139,21 +139,14 @@ a:hover {
   grid-column: 1 / -1;
 }
 
-/* Text row: one merged cell. The text block is centred across both columns
-   and capped at --measure-wide; the text inside stays left-aligned. */
+/* Text row: one merged cell, like a merged table cell. It starts at the left
+   column's left edge and ends at the right column's right edge; the text
+   inside is left-aligned. */
 .row-text > * {
   grid-column: 1 / -1;
-  justify-self: center;
-  width: 100%;
-  max-width: var(--measure-wide);
 }
 
 .row-text p {
-  max-width: none;
-}
-
-/* The page title is display type, not reading text: it runs the full width. */
-.row-text--display > * {
   max-width: none;
 }
 
@@ -359,10 +352,6 @@ a:hover {
   font-size: 14px;
   line-height: 1.5;
   color: var(--muted);
-}
-
-.row-wide-chart .placeholder > * {
-  max-width: var(--measure-wide);
 }
 
 .ph-id {

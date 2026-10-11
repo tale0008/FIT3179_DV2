@@ -28,7 +28,16 @@ const CHARTS = {
   c7:  { spec: "vega/c7_waffle.json" },
   c7b: { spec: "vega/c7b_reprint_butterfly.json" },
   c8:  { spec: "vega/c8_au_horizon.json" },
-  m4:  { spec: "vega/m4_flow_map.json", aspect: 0.46 }
+  m4:  { spec: "vega/m4_flow_map.json", aspect: 0.46 },
+  c3:  { spec: "vega/c3_japan_market.json" },
+  m2:  { spec: "vega/m2_japan_mangaka.json" },
+  c4:  { spec: "vega/c4_manga_streamgraph.json" },
+  c5:  { spec: "vega/c5_manga_radial.json" },
+  m3:  { spec: "vega/m3_us_creators.json" },
+  c6:  { spec: "vega/c6_us_bookscan.json" },
+  c11: { spec: "vega/c11_smash_attendance.json" },
+  m6:  { spec: "vega/m6_au_trends.json" },
+  c9:  { spec: "vega/c9_au_categories.json" }
   // add new charts here as they are built
 };
 

@@ -40,7 +40,7 @@ Every chart follows the same five-part pattern. Parts marked optional can be dro
 
 Total per chart: about 100 to 150 words. Per section intro: about 40 to 70 words.
 
-Placement: the page reads left to right, row by row. A chart in one column has all of its text directly beside it in the other column, and chart rows alternate sides. A chart spanning both columns has its lead-in and reading guide in a merged text row directly above it, and the rest directly below it. Text with no chart is one merged cell across both columns, never two columns of text. A chart never appears without its lead-in and takeaway.
+Placement: the page reads left to right, row by row. A chart in one column has all of its text directly beside it in the other column, and chart rows alternate sides. A chart spanning both columns has its lead-in and reading guide in a merged text row directly above it, and the rest directly below it. Text with no chart is one merged cell across both columns, never two columns of text. A merged text cell starts at the left edge of the left column and ends at the right edge of the right column, like a merged table cell. It is never a narrower centred block. A chart never appears without its lead-in and takeaway.
 
 ## 4. Page-level structure
 
@@ -70,6 +70,7 @@ Rules:
 * **Purple is only for amounts.** A single-hue ramp, light means less, dark means more. Never used for categories.
 * A new category that is not a country (for example "foreign reprints" vs "domestic reprints" in the waffle) uses shades of the relevant country's colour plus grey, not a new hue. Add a new hue only when no existing one fits, and say what it means in the chart title.
 * No rainbow or multi-hue scales anywhere.
+* **Manga audiences (C4 and C5 only).** Reds for manga written for teenagers (shōnen dark red `#B50F2A`, shōjo pink `#F0849A`), teals for manga written for adults (seinen dark teal `#00829E`, josei light teal `#45C6D1`), greys for kids and not stated. The reds tie to Japan. This palette appears nowhere else.
 
 ## 6. Example: §1 written in this style
 
