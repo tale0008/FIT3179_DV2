@@ -8,3 +8,4 @@ cmd output.txt
 *.def
 __pycache__/
 docs/data/raw/
+/notes
