@@ -8,8 +8,8 @@
     ],
     "anchor": "start",
     "fontSize": 16,
-    "subtitleFontSize": 11,
-    "subtitleColor": "#666"
+    "subtitleFontSize": 12,
+    "subtitleColor": "#555"
   },
   "data": {
     "url": "data/au_series_by_year.csv",
@@ -208,7 +208,7 @@
             "baseline": "bottom",
             "dx": 3,
             "dy": 0,
-            "fontSize": 10,
+            "fontSize": 11,
             "color": "#2B2B28"
           },
           "encoding": {

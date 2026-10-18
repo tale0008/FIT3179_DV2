@@ -8,8 +8,8 @@
     ],
     "anchor": "start",
     "fontSize": 16,
-    "subtitleFontSize": 11,
-    "subtitleColor": "#666"
+    "subtitleFontSize": 12,
+    "subtitleColor": "#555"
   },
   "width": "container",
   "height": 460,
@@ -716,7 +716,7 @@
       },
       "mark": {
         "type": "text",
-        "fontSize": 10,
+        "fontSize": 11,
         "fontWeight": "bold",
         "dy": 14,
         "color": "#2B2B28"

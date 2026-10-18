@@ -3,15 +3,16 @@
   "title": {
     "text": "Where American comic creators were born",
     "subtitle": [
-      "Each circle is one state. Circle size shows how many comic creators",
-      "were born there. Darker purple means more for every million residents",
-      "(US Census Bureau 2024 estimates). Only creators with a recorded",
-      "birth state in the Grand Comics Database are counted."
+      "Each circle is one state. Circle size shows how many comic",
+      "creators were born there. Darker purple means more for every",
+      "million residents (US Census Bureau 2024 estimates). Only",
+      "creators with a recorded birth state in the Grand Comics",
+      "Database are counted."
     ],
     "anchor": "start",
     "fontSize": 16,
-    "subtitleFontSize": 11,
-    "subtitleColor": "#666"
+    "subtitleFontSize": 12,
+    "subtitleColor": "#555"
   },
   "width": "container",
   "height": 340,
@@ -407,8 +408,8 @@
             ],
             "symbolFillColor": "#ffffff",
             "symbolStrokeColor": "#9E9AC8",
-            "titleFontSize": 10,
-            "labelFontSize": 9,
+            "titleFontSize": 11,
+            "labelFontSize": 11,
             "titleLimit": 0,
             "direction": "horizontal"
           }
@@ -427,8 +428,8 @@
             "orient": "top",
             "direction": "horizontal",
             "gradientLength": 150,
-            "titleFontSize": 10,
-            "labelFontSize": 9,
+            "titleFontSize": 11,
+            "labelFontSize": 11,
             "titleLimit": 0,
             "labelLimit": 0
           }
@@ -752,7 +753,7 @@
       ],
       "mark": {
         "type": "text",
-        "fontSize": 10,
+        "fontSize": 11,
         "fontWeight": 600,
         "align": "right",
         "baseline": "middle",
@@ -1070,7 +1071,7 @@
       ],
       "mark": {
         "type": "text",
-        "fontSize": 10,
+        "fontSize": 11,
         "fontWeight": 600,
         "align": "right",
         "baseline": "middle",
@@ -1385,7 +1386,7 @@
       ],
       "mark": {
         "type": "text",
-        "fontSize": 10,
+        "fontSize": 11,
         "fontWeight": 600,
         "align": "center",
         "baseline": "middle",
@@ -1703,7 +1704,7 @@
       ],
       "mark": {
         "type": "text",
-        "fontSize": 10,
+        "fontSize": 11,
         "fontWeight": 600,
         "align": "center",
         "baseline": "middle",

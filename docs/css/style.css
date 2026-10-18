@@ -321,7 +321,7 @@ a:hover {
 .caption {
   margin: var(--s2) 0 0;
   font-family: var(--font-ui);
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.5;
   color: var(--muted);
 }
@@ -498,7 +498,7 @@ a:hover {
 
 .meta h4 {
   margin: var(--s3) 0 var(--s1);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--muted);
 }

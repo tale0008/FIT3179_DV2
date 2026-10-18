@@ -3,13 +3,14 @@
   "title": {
     "text": "Importers and self-reprinters",
     "subtitle": [
-      "Share of each country's comic issues that reprint foreign comics (right)",
-      "or the country's own comics (left). Countries with over 5,000 issues indexed."
+      "Share of each country's comic issues that reprint foreign",
+      "comics (right) or the country's own comics (left). Countries",
+      "with over 5,000 issues indexed."
     ],
     "anchor": "start",
     "fontSize": 16,
-    "subtitleFontSize": 11,
-    "subtitleColor": "#666"
+    "subtitleFontSize": 12,
+    "subtitleColor": "#555"
   },
   "data": {
     "url": "data/reprint_shares.csv",
@@ -115,9 +116,9 @@
           "axis": {
             "title": "← own comics (%)     foreign comics (%) →",
             "labelExpr": "abs(datum.value)",
-            "titleFontSize": 10,
+            "titleFontSize": 11,
             "titleFontWeight": "normal",
-            "labelFontSize": 9,
+            "labelFontSize": 11,
             "grid": true,
             "gridColor": "#ECEBE6",
             "tickCount": 8,

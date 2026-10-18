@@ -3,14 +3,15 @@
   "title": {
     "text": "Which states search for manga",
     "subtitle": [
-      "Share of Google searches for 'manga' when compared with 'comics',",
-      "by state, past five years. Source: Google Trends.",
-      "Darker red means manga is searched for more, relative to comics."
+      "Share of Google searches for 'manga' when compared with",
+      "'comics', by state, past five years. Source: Google Trends.",
+      "Darker purple means manga is searched for more, relative to",
+      "comics."
     ],
     "anchor": "start",
     "fontSize": 16,
-    "subtitleFontSize": 11,
-    "subtitleColor": "#666"
+    "subtitleFontSize": 12,
+    "subtitleColor": "#555"
   },
   "width": "container",
   "height": 330,
@@ -65,7 +66,7 @@
           "field": "manga_share",
           "type": "quantitative",
           "scale": {
-            "scheme": "reds",
+            "scheme": "purples",
             "domain": [
               60,
               80
@@ -76,8 +77,8 @@
             "orient": "bottom-left",
             "direction": "horizontal",
             "gradientLength": 150,
-            "titleFontSize": 10,
-            "labelFontSize": 9,
+            "titleFontSize": 11,
+            "labelFontSize": 11,
             "titleLimit": 0,
             "labelLimit": 0
           }

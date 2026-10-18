@@ -3,13 +3,14 @@
   "title": {
     "text": "Comics published per million people",
     "subtitle": [
-      "Comic issues indexed in the Grand Comics Database, divided by population.",
-      "Colour uses a log scale: each step is roughly ten times the last."
+      "Comic issues indexed in the Grand Comics Database, divided by",
+      "population. Colour uses a log scale: each step is roughly ten",
+      "times the last."
     ],
     "anchor": "start",
     "fontSize": 16,
-    "subtitleFontSize": 11,
-    "subtitleColor": "#666"
+    "subtitleFontSize": 12,
+    "subtitleColor": "#555"
   },
   "width": "container",
   "height": 280,
@@ -114,12 +115,13 @@
           },
           "legend": {
             "title": "Issues per million people",
-            "orient": "bottom-left",
+            "orient": "top",
             "direction": "horizontal",
-            "gradientLength": 140,
+            "gradientLength": 180,
             "format": ",.0f",
-            "titleFontSize": 10,
-            "labelFontSize": 9
+            "titleFontSize": 12,
+            "labelFontSize": 11,
+            "offset": 4
           }
         },
         "tooltip": [

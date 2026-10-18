@@ -10,8 +10,8 @@
     ],
     "anchor": "start",
     "fontSize": 16,
-    "subtitleFontSize": 11,
-    "subtitleColor": "#666"
+    "subtitleFontSize": 12,
+    "subtitleColor": "#555"
   },
   "data": {
     "url": "data/mangaka_prefecture_decade.csv",
@@ -113,8 +113,8 @@
           "orient": "top",
           "direction": "horizontal",
           "gradientLength": 180,
-          "titleFontSize": 10,
-          "labelFontSize": 9,
+          "titleFontSize": 11,
+          "labelFontSize": 11,
           "titleLimit": 0,
           "labelLimit": 0
         }

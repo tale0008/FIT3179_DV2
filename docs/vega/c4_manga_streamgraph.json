@@ -3,15 +3,15 @@
   "title": {
     "text": "Who manga is written for",
     "subtitle": [
-      "New manga series by start year and intended audience, among the 5,000",
-      "most popular manga on MyAnimeList (data as of August 2023). Three-year average.",
-      "Shōnen and shōjo are aimed at teen boys and girls, seinen and josei at adult",
-      "men and women."
+      "New manga series by start year and intended audience, among",
+      "the 5,000 most popular manga on MyAnimeList (data as of August",
+      "2023). Three-year average. Sh\u014dnen and sh\u014djo are aimed at teen",
+      "boys and girls, seinen and josei at adult men and women."
     ],
     "anchor": "start",
     "fontSize": 16,
-    "subtitleFontSize": 11,
-    "subtitleColor": "#666"
+    "subtitleFontSize": 12,
+    "subtitleColor": "#555"
   },
   "data": {
     "url": "data/manga_demo_by_year.csv",
@@ -77,9 +77,9 @@
         "nice": false
       },
       "axis": {
-        "titleFontSize": 10,
+        "titleFontSize": 11,
         "titleFontWeight": "normal",
-        "labelFontSize": 10,
+        "labelFontSize": 11,
         "gridColor": "#ECEBE6",
         "domain": false,
         "ticks": false,
@@ -99,18 +99,18 @@
       "type": "nominal",
       "scale": {
         "domain": [
-          "Shōnen",
-          "Shōjo",
+          "Sh\u014dnen",
+          "Sh\u014djo",
           "Seinen",
           "Josei",
           "Kids",
           "Not stated"
         ],
         "range": [
-          "#B50F2A",
-          "#F0849A",
-          "#00829E",
-          "#45C6D1",
+          "#2D6A1F",
+          "#A9CF7F",
+          "#0E8C8C",
+          "#86D3CE",
           "#A6A5A0",
           "#DAD9D3"
         ]

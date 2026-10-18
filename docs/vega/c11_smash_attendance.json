@@ -3,15 +3,15 @@
   "title": {
     "text": "Australia's biggest manga and anime convention",
     "subtitle": [
-      "Attendance at SMASH! (Sydney Manga and Anime Show), 2007 to 2026.",
-      "Hollow points are reported as minimums.",
-      "No convention in 2020 or 2021. No figures published for 2016 and 2017.",
+      "Attendance at SMASH! (Sydney Manga and Anime Show), 2007 to",
+      "2026. Hollow points are reported as minimums. No convention in",
+      "2020 or 2021. No figures published for 2016 and 2017.",
       "Source: Wikipedia, SMASH! convention records."
     ],
     "anchor": "start",
     "fontSize": 16,
-    "subtitleFontSize": 11,
-    "subtitleColor": "#666"
+    "subtitleFontSize": 12,
+    "subtitleColor": "#555"
   },
   "data": {
     "url": "data/smash_attendance.csv",
@@ -41,9 +41,9 @@
         "nice": false
       },
       "axis": {
-        "titleFontSize": 10,
+        "titleFontSize": 11,
         "titleFontWeight": "normal",
-        "labelFontSize": 10,
+        "labelFontSize": 11,
         "gridColor": "#ECEBE6",
         "domain": false,
         "ticks": false,
@@ -65,9 +65,9 @@
       "field": "attendance",
       "type": "quantitative",
       "axis": {
-        "titleFontSize": 10,
+        "titleFontSize": 11,
         "titleFontWeight": "normal",
-        "labelFontSize": 10,
+        "labelFontSize": 11,
         "gridColor": "#ECEBE6",
         "domain": false,
         "ticks": false,
@@ -118,8 +118,8 @@
       },
       "mark": {
         "type": "text",
-        "fontSize": 10,
-        "color": "#77766F",
+        "fontSize": 11,
+        "color": "#5F5E58",
         "angle": 0
       },
       "encoding": {

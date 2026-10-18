@@ -5,13 +5,13 @@
     "subtitle": [
       "Graphic novels sold through US bookshops and online retailers,",
       "millions of copies, 2020 to 2023.",
-      "Source: Circana BookScan, as published by the Australian Publishers",
-      "Association (Splatt, 2024)."
+      "Source: Circana BookScan, as published by the Australian",
+      "Publishers Association (Splatt, 2024)."
     ],
     "anchor": "start",
     "fontSize": 16,
-    "subtitleFontSize": 11,
-    "subtitleColor": "#666"
+    "subtitleFontSize": 12,
+    "subtitleColor": "#555"
   },
   "data": {
     "url": "data/us_bookscan_categories.csv",
@@ -68,8 +68,8 @@
         "nice": false
       },
       "axis": {
-        "titleFontSize": 10,
-        "labelFontSize": 10,
+        "titleFontSize": 11,
+        "labelFontSize": 11,
         "gridColor": "#ECEBE6",
         "domain": false,
         "ticks": false,
@@ -88,9 +88,9 @@
       "field": "millions",
       "type": "quantitative",
       "axis": {
-        "titleFontSize": 10,
+        "titleFontSize": 11,
         "titleFontWeight": "normal",
-        "labelFontSize": 10,
+        "labelFontSize": 11,
         "gridColor": "#ECEBE6",
         "domain": false,
         "ticks": false,
@@ -180,7 +180,7 @@
       "mark": {
         "type": "text",
         "dy": -12,
-        "fontSize": 10,
+        "fontSize": 11,
         "color": "#2B2B28"
       },
       "encoding": {

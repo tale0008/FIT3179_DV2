@@ -3,15 +3,15 @@
   "title": {
     "text": "Who is reading comics in Australia",
     "subtitle": [
-      "Graphic novels sold in Australian shops by category, 2020 and 2023",
-      "(excluding manga and superhero titles).",
-      "Source: NielsenIQ BookScan, as published by the Australian Publishers",
-      "Association (Splatt, 2024)."
+      "Graphic novels sold in Australian shops by category, 2020 and",
+      "2023 (excluding manga and superhero titles).",
+      "Source: NielsenIQ BookScan, as published by the Australian",
+      "Publishers Association (Splatt, 2024)."
     ],
     "anchor": "start",
     "fontSize": 16,
-    "subtitleFontSize": 11,
-    "subtitleColor": "#666"
+    "subtitleFontSize": 12,
+    "subtitleColor": "#555"
   },
   "data": {
     "url": "data/au_sales.csv",
@@ -75,7 +75,7 @@
         "order": "descending"
       },
       "axis": {
-        "titleFontSize": 10,
+        "titleFontSize": 11,
         "titleFontWeight": "normal",
         "labelFontSize": 11,
         "gridColor": "#ECEBE6",
@@ -89,9 +89,9 @@
       "field": "units",
       "type": "quantitative",
       "axis": {
-        "titleFontSize": 10,
+        "titleFontSize": 11,
         "titleFontWeight": "normal",
-        "labelFontSize": 10,
+        "labelFontSize": 11,
         "gridColor": "#ECEBE6",
         "domain": false,
         "ticks": false,

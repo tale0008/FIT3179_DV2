@@ -3,13 +3,13 @@
   "title": {
     "text": "Every country has its favourite genre",
     "subtitle": [
-      "Share of each country's indexed stories by genre.",
-      "A story can carry more than one genre tag."
+      "Share of each country's indexed stories by genre. A story can",
+      "carry more than one genre tag."
     ],
     "anchor": "start",
     "fontSize": 16,
-    "subtitleFontSize": 11,
-    "subtitleColor": "#666"
+    "subtitleFontSize": 12,
+    "subtitleColor": "#555"
   },
   "data": {
     "url": "data/country_genre.csv"
@@ -71,7 +71,7 @@
         "title": null,
         "labelAngle": -45,
         "labelAlign": "right",
-        "labelFontSize": 10,
+        "labelFontSize": 11,
         "domain": false,
         "ticks": false
       }
@@ -86,7 +86,7 @@
       },
       "axis": {
         "title": null,
-        "labelFontSize": 10,
+        "labelFontSize": 11,
         "domain": false,
         "ticks": false,
         "labelFontWeight": {
@@ -107,8 +107,8 @@
         "orient": "top",
         "direction": "horizontal",
         "gradientLength": 140,
-        "titleFontSize": 10,
-        "labelFontSize": 9
+        "titleFontSize": 11,
+        "labelFontSize": 11
       }
     },
     "tooltip": [

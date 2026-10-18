@@ -1,0 +1,1244 @@
+diff --git a/STYLE_GUIDE.md b/STYLE_GUIDE.md
+index cf928aa..c330ba9 100644
+--- a/STYLE_GUIDE.md
++++ b/STYLE_GUIDE.md
+@@ -70,7 +70,8 @@ Rules:
+ * **Purple is only for amounts.** A single-hue ramp, light means less, dark means more. Never used for categories.
+ * A new category that is not a country (for example "foreign reprints" vs "domestic reprints" in the waffle) uses shades of the relevant country's colour plus grey, not a new hue. Add a new hue only when no existing one fits, and say what it means in the chart title.
+ * No rainbow or multi-hue scales anywhere.
+-* **Manga audiences (C4 and C5 only).** Reds for manga written for teenagers (shōnen dark red `#B50F2A`, shōjo pink `#F0849A`), teals for manga written for adults (seinen dark teal `#00829E`, josei light teal `#45C6D1`), greys for kids and not stated. The reds tie to Japan. This palette appears nowhere else.
++* **Manga audiences (C4 and C5 only).** Greens for manga written for teenagers (shōnen dark green `#2D6A1F`, shōjo light green `#A9CF7F`), teals for manga written for adults (seinen dark teal `#0E8C8C`, josei light teal `#86D3CE`), greys for kids and not stated. No reds, so red only ever means Japan. This palette appears nowhere else.
++* **M6 (state search shares) uses the purple ramp**, like every other amount on the page. Red is kept for Japan and manga lines, never for an amount.
+ 
+ ## 6. Example: §1 written in this style
+ 
+diff --git a/docs/css/style.css b/docs/css/style.css
+index 8c83072..ac7bf27 100644
+--- a/docs/css/style.css
++++ b/docs/css/style.css
+@@ -321,7 +321,7 @@ a:hover {
+ .caption {
+   margin: var(--s2) 0 0;
+   font-family: var(--font-ui);
+-  font-size: 14px;
++  font-size: 15px;
+   line-height: 1.5;
+   color: var(--muted);
+ }
+@@ -498,7 +498,7 @@ a:hover {
+ 
+ .meta h4 {
+   margin: var(--s3) 0 var(--s1);
+-  font-size: 12px;
++  font-size: 13px;
+   font-weight: 600;
+   color: var(--muted);
+ }
+diff --git a/docs/index.html b/docs/index.html
+index c5c8d79..b8fd033 100644
+--- a/docs/index.html
++++ b/docs/index.html
+@@ -204,7 +204,7 @@
+     <div class="row row-chart">
+       <div class="prose">
+         <p class="lead">Manga is not one genre. It is sold by the reader it is written for.</p>
+-        <p class="reading-guide">(Reading the streamgraph: each band is one audience, and its thickness shows how many popular series started that year. Reds are manga written for teenagers, teals manga written for adults.)</p>
++        <p class="reading-guide">(Reading the streamgraph: each band is one audience, and its thickness shows how many popular series started that year. Greens are manga written for teenagers, teals manga written for adults.)</p>
+         <p class="takeaway">Manga written for adult men, seinen, has grown fastest among popular titles, and now rivals shōnen, the boys' adventure manga most Western readers know.</p>
+         <!-- VERIFY: check against the rendered C4 and rewrite if the pattern is different.
+              From manga_demo_by_year.csv: series started in the 2010s, seinen 566 vs shonen 537; in the 1990s, seinen 106 vs shonen 73.
+@@ -299,9 +299,7 @@
+       <div class="prose">
+         <p class="lead">Start with today. Australians are buying more comics than ever.</p>
+         <p class="lead">Sales of graphic novels in Australian shops nearly tripled in four years, from about 500,000 copies in 2020 to 1.38 million in 2023.</p>
+-        <p class="reading-guide">(Grey bars are copies sold. Each gold square beneath them is one new comic series published in Australia that year.)</p>
+-        <p class="takeaway">Over the same four years, the database records just 14 new Australian comic series.</p>
+-        <!-- VERIFY: sum of 2020 to 2023 in au_series_by_year.csv -->
++        <p class="takeaway">Over the same four years, the database records just 14 new Australian comic series. The two panels count different things, copies bought and series made, but together they show the gap: demand nearly tripled while local supply stayed in single figures each year.</p>
+         <p class="caveat">(Sales figures exclude manga and superhero titles, so the true total is higher. The newest years of the database are the least complete, because volunteers tend to catalogue recent comics last.)</p>
+         <p class="transition">So if Australians are not reading Australian comics, whose are they reading?</p>
+       </div>
+diff --git a/docs/js/main.js b/docs/js/main.js
+index 173ec05..b431f82 100644
+--- a/docs/js/main.js
++++ b/docs/js/main.js
+@@ -20,7 +20,7 @@
+ // fit-x autosize keeps the same fit); fixed-width specs are scaled up as far as
+ // their box allows.
+ const CHARTS = {
+-  m1: { spec: "vega/m1_world_choropleth.json" },
++  m1: { spec: "vega/m1_world_choropleth.json", aspect: 0.5 },
+   c1: { spec: "vega/c1_ridgeline.json", facetWidth: true },
+   c2: { spec: "vega/c2_genre_heatmap.json" },
+   c10: { spec: "vega/c10_publishing_models.json" },
+@@ -42,8 +42,18 @@ const CHARTS = {
+ };
+ 
+ // background: null lets the page colour show through instead of Vega's default
+-// white box. It merges under each spec's own config, so the spec files are unchanged.
+-const EMBED_OPTIONS = { actions: false, renderer: "svg", config: { background: null } };
++// white box. The axis and legend sizes lift Vega's 10px defaults so small chart
++// text stays readable. Both merge under each spec's own config, so any size set
++// in a spec still wins.
++const EMBED_OPTIONS = {
++  actions: false,
++  renderer: "svg",
++  config: {
++    background: null,
++    axis: { labelFontSize: 11, titleFontSize: 12, labelColor: "#3a3833", titleColor: "#3a3833" },
++    legend: { labelFontSize: 11, titleFontSize: 12, labelColor: "#3a3833" }
++  }
++};
+ const FACET_LABEL_ROOM = 110; // px kept free for a facet chart's row labels
+ const CHART_SCALE = 1.2;      // how much larger charts are drawn than their natural size
+ const MIN_DRAW_WIDTH = 360;   // px; on narrow screens the scale shrinks so charts are never drawn narrower
+diff --git a/docs/vega/c10_publishing_models.json b/docs/vega/c10_publishing_models.json
+index d70bd42..0274982 100644
+--- a/docs/vega/c10_publishing_models.json
++++ b/docs/vega/c10_publishing_models.json
+@@ -8,8 +8,8 @@
+     ],
+     "anchor": "start",
+     "fontSize": 16,
+-    "subtitleFontSize": 11,
+-    "subtitleColor": "#666"
++    "subtitleFontSize": 12,
++    "subtitleColor": "#555"
+   },
+   "data": {
+     "url": "data/country_output.csv",
+@@ -55,7 +55,7 @@
+       "axis": {
+         "title": "Comic series published (log scale)",
+         "format": "~s",
+-        "titleFontSize": 10,
++        "titleFontSize": 11,
+         "titleFontWeight": "normal",
+         "gridColor": "#ECEBE6",
+         "domain": false
+@@ -73,7 +73,7 @@
+       },
+       "axis": {
+         "title": "Average issues per series (log scale)",
+-        "titleFontSize": 10,
++        "titleFontSize": 11,
+         "titleFontWeight": "normal",
+         "gridColor": "#ECEBE6",
+         "domain": false,
+@@ -178,7 +178,7 @@
+         "type": "text",
+         "align": "left",
+         "dx": 7,
+-        "fontSize": 10,
++        "fontSize": 11,
+         "color": "#2B2B28"
+       },
+       "encoding": {
+@@ -213,7 +213,7 @@
+         "type": "text",
+         "align": "left",
+         "dx": 7,
+-        "fontSize": 10,
++        "fontSize": 11,
+         "color": "#2B2B28",
+         "fontWeight": "bold"
+       },
+@@ -236,9 +236,9 @@
+       },
+       "mark": {
+         "type": "text",
+-        "fontSize": 10,
++        "fontSize": 11,
+         "fontStyle": "italic",
+-        "color": "#77766F",
++        "color": "#5F5E58",
+         "align": "left"
+       },
+       "encoding": {
+@@ -260,9 +260,9 @@
+       },
+       "mark": {
+         "type": "text",
+-        "fontSize": 10,
++        "fontSize": 11,
+         "fontStyle": "italic",
+-        "color": "#77766F",
++        "color": "#5F5E58",
+         "align": "right"
+       },
+       "encoding": {
+diff --git a/docs/vega/c11_smash_attendance.json b/docs/vega/c11_smash_attendance.json
+index 90d7f18..4760649 100644
+--- a/docs/vega/c11_smash_attendance.json
++++ b/docs/vega/c11_smash_attendance.json
+@@ -3,15 +3,15 @@
+   "title": {
+     "text": "Australia's biggest manga and anime convention",
+     "subtitle": [
+-      "Attendance at SMASH! (Sydney Manga and Anime Show), 2007 to 2026.",
+-      "Hollow points are reported as minimums.",
+-      "No convention in 2020 or 2021. No figures published for 2016 and 2017.",
++      "Attendance at SMASH! (Sydney Manga and Anime Show), 2007 to",
++      "2026. Hollow points are reported as minimums. No convention in",
++      "2020 or 2021. No figures published for 2016 and 2017.",
+       "Source: Wikipedia, SMASH! convention records."
+     ],
+     "anchor": "start",
+     "fontSize": 16,
+-    "subtitleFontSize": 11,
+-    "subtitleColor": "#666"
++    "subtitleFontSize": 12,
++    "subtitleColor": "#555"
+   },
+   "data": {
+     "url": "data/smash_attendance.csv",
+@@ -41,9 +41,9 @@
+         "nice": false
+       },
+       "axis": {
+-        "titleFontSize": 10,
++        "titleFontSize": 11,
+         "titleFontWeight": "normal",
+-        "labelFontSize": 10,
++        "labelFontSize": 11,
+         "gridColor": "#ECEBE6",
+         "domain": false,
+         "ticks": false,
+@@ -65,9 +65,9 @@
+       "field": "attendance",
+       "type": "quantitative",
+       "axis": {
+-        "titleFontSize": 10,
++        "titleFontSize": 11,
+         "titleFontWeight": "normal",
+-        "labelFontSize": 10,
++        "labelFontSize": 11,
+         "gridColor": "#ECEBE6",
+         "domain": false,
+         "ticks": false,
+@@ -118,8 +118,8 @@
+       },
+       "mark": {
+         "type": "text",
+-        "fontSize": 10,
+-        "color": "#77766F",
++        "fontSize": 11,
++        "color": "#5F5E58",
+         "angle": 0
+       },
+       "encoding": {
+diff --git a/docs/vega/c1_ridgeline.json b/docs/vega/c1_ridgeline.json
+index 70caac0..80738f5 100644
+--- a/docs/vega/c1_ridgeline.json
++++ b/docs/vega/c1_ridgeline.json
+@@ -3,13 +3,15 @@
+   "title": {
+     "text": "When each country made its comics",
+     "subtitle": [
+-      "New series started per year, smoothed over five years and scaled to each country's own peak.",
+-      "Australia, Japan and the United States in colour, other countries in grey. Uncertain start years excluded."
++      "New series started per year, smoothed over five years and",
++      "scaled to each country's own peak. Australia, Japan and the",
++      "United States in colour, other countries in grey. Uncertain",
++      "start years excluded."
+     ],
+     "anchor": "start",
+     "fontSize": 16,
+-    "subtitleFontSize": 11,
+-    "subtitleColor": "#666"
++    "subtitleFontSize": 12,
++    "subtitleColor": "#555"
+   },
+   "data": {
+     "url": "data/country_year.csv"
+@@ -118,7 +120,7 @@
+       "header": {
+         "labelAngle": 0,
+         "labelAlign": "left",
+-        "labelFontSize": 10,
++        "labelFontSize": 11,
+         "labelPadding": 6,
+         "labelFontWeight": {
+           "expr": "indexof(['Australia','Japan','United States'], datum.value) >= 0 ? 'bold' : 'normal'"
+diff --git a/docs/vega/c2_genre_heatmap.json b/docs/vega/c2_genre_heatmap.json
+index d91a2df..b58bd09 100644
+--- a/docs/vega/c2_genre_heatmap.json
++++ b/docs/vega/c2_genre_heatmap.json
+@@ -3,13 +3,13 @@
+   "title": {
+     "text": "Every country has its favourite genre",
+     "subtitle": [
+-      "Share of each country's indexed stories by genre.",
+-      "A story can carry more than one genre tag."
++      "Share of each country's indexed stories by genre. A story can",
++      "carry more than one genre tag."
+     ],
+     "anchor": "start",
+     "fontSize": 16,
+-    "subtitleFontSize": 11,
+-    "subtitleColor": "#666"
++    "subtitleFontSize": 12,
++    "subtitleColor": "#555"
+   },
+   "data": {
+     "url": "data/country_genre.csv"
+@@ -71,7 +71,7 @@
+         "title": null,
+         "labelAngle": -45,
+         "labelAlign": "right",
+-        "labelFontSize": 10,
++        "labelFontSize": 11,
+         "domain": false,
+         "ticks": false
+       }
+@@ -86,7 +86,7 @@
+       },
+       "axis": {
+         "title": null,
+-        "labelFontSize": 10,
++        "labelFontSize": 11,
+         "domain": false,
+         "ticks": false,
+         "labelFontWeight": {
+@@ -107,8 +107,8 @@
+         "orient": "top",
+         "direction": "horizontal",
+         "gradientLength": 140,
+-        "titleFontSize": 10,
+-        "labelFontSize": 9
++        "titleFontSize": 11,
++        "labelFontSize": 11
+       }
+     },
+     "tooltip": [
+diff --git a/docs/vega/c3_japan_market.json b/docs/vega/c3_japan_market.json
+index a214a71..3cfb0f9 100644
+--- a/docs/vega/c3_japan_market.json
++++ b/docs/vega/c3_japan_market.json
+@@ -9,8 +9,8 @@
+     ],
+     "anchor": "start",
+     "fontSize": 16,
+-    "subtitleFontSize": 11,
+-    "subtitleColor": "#666"
++    "subtitleFontSize": 12,
++    "subtitleColor": "#555"
+   },
+   "data": {
+     "url": "data/japan_manga_market.csv",
+@@ -46,9 +46,9 @@
+         "nice": false
+       },
+       "axis": {
+-        "titleFontSize": 10,
++        "titleFontSize": 11,
+         "titleFontWeight": "normal",
+-        "labelFontSize": 10,
++        "labelFontSize": 11,
+         "gridColor": "#ECEBE6",
+         "domain": false,
+         "ticks": false,
+@@ -74,9 +74,9 @@
+           "type": "quantitative",
+           "stack": "zero",
+           "axis": {
+-            "titleFontSize": 10,
++            "titleFontSize": 11,
+             "titleFontWeight": "normal",
+-            "labelFontSize": 10,
++            "labelFontSize": 11,
+             "gridColor": "#ECEBE6",
+             "domain": false,
+             "ticks": false,
+@@ -184,7 +184,7 @@
+             "align": "right",
+             "dx": -4,
+             "dy": -2,
+-            "fontSize": 10,
++            "fontSize": 11,
+             "color": "#2B2B28",
+             "baseline": "bottom"
+           },
+diff --git a/docs/vega/c4_manga_streamgraph.json b/docs/vega/c4_manga_streamgraph.json
+index 4964898..a4ca61e 100644
+--- a/docs/vega/c4_manga_streamgraph.json
++++ b/docs/vega/c4_manga_streamgraph.json
+@@ -3,15 +3,15 @@
+   "title": {
+     "text": "Who manga is written for",
+     "subtitle": [
+-      "New manga series by start year and intended audience, among the 5,000",
+-      "most popular manga on MyAnimeList (data as of August 2023). Three-year average.",
+-      "Shōnen and shōjo are aimed at teen boys and girls, seinen and josei at adult",
+-      "men and women."
++      "New manga series by start year and intended audience, among",
++      "the 5,000 most popular manga on MyAnimeList (data as of August",
++      "2023). Three-year average. Sh\u014dnen and sh\u014djo are aimed at teen",
++      "boys and girls, seinen and josei at adult men and women."
+     ],
+     "anchor": "start",
+     "fontSize": 16,
+-    "subtitleFontSize": 11,
+-    "subtitleColor": "#666"
++    "subtitleFontSize": 12,
++    "subtitleColor": "#555"
+   },
+   "data": {
+     "url": "data/manga_demo_by_year.csv",
+@@ -77,9 +77,9 @@
+         "nice": false
+       },
+       "axis": {
+-        "titleFontSize": 10,
++        "titleFontSize": 11,
+         "titleFontWeight": "normal",
+-        "labelFontSize": 10,
++        "labelFontSize": 11,
+         "gridColor": "#ECEBE6",
+         "domain": false,
+         "ticks": false,
+@@ -99,18 +99,18 @@
+       "type": "nominal",
+       "scale": {
+         "domain": [
+-          "Shōnen",
+-          "Shōjo",
++          "Sh\u014dnen",
++          "Sh\u014djo",
+           "Seinen",
+           "Josei",
+           "Kids",
+           "Not stated"
+         ],
+         "range": [
+-          "#B50F2A",
+-          "#F0849A",
+-          "#00829E",
+-          "#45C6D1",
++          "#2D6A1F",
++          "#A9CF7F",
++          "#0E8C8C",
++          "#86D3CE",
+           "#A6A5A0",
+           "#DAD9D3"
+         ]
+diff --git a/docs/vega/c5_manga_radial.json b/docs/vega/c5_manga_radial.json
+index 42dbe47..c2b2661 100644
+--- a/docs/vega/c5_manga_radial.json
++++ b/docs/vega/c5_manga_radial.json
+@@ -3,14 +3,15 @@
+   "title": {
+     "text": "Who running manga is written for",
+     "subtitle": [
+-      "Popular manga still being published in August 2023, by intended audience.",
+-      "Series with no stated audience (520 of 1,012) are left out.",
+-      "Angle and distance from the centre both show the number of series."
++      "Popular manga still being published in August 2023, by",
++      "intended audience. Series with no stated audience (520 of",
++      "1,012) are left out. Angle and distance from the centre both",
++      "show the number of series."
+     ],
+     "anchor": "start",
+     "fontSize": 16,
+-    "subtitleFontSize": 11,
+-    "subtitleColor": "#666"
++    "subtitleFontSize": 12,
++    "subtitleColor": "#555"
+   },
+   "data": {
+     "url": "data/manga_demo_current.csv",
+@@ -100,17 +101,17 @@
+           "type": "nominal",
+           "scale": {
+             "domain": [
+-              "Shōnen",
+-              "Shōjo",
++              "Sh\u014dnen",
++              "Sh\u014djo",
+               "Seinen",
+               "Josei",
+               "Kids"
+             ],
+             "range": [
+-              "#B50F2A",
+-              "#F0849A",
+-              "#00829E",
+-              "#45C6D1",
++              "#2D6A1F",
++              "#A9CF7F",
++              "#0E8C8C",
++              "#86D3CE",
+               "#A6A5A0"
+             ]
+           },
+diff --git a/docs/vega/c6_us_bookscan.json b/docs/vega/c6_us_bookscan.json
+index 466574f..9e82ae4 100644
+--- a/docs/vega/c6_us_bookscan.json
++++ b/docs/vega/c6_us_bookscan.json
+@@ -5,13 +5,13 @@
+     "subtitle": [
+       "Graphic novels sold through US bookshops and online retailers,",
+       "millions of copies, 2020 to 2023.",
+-      "Source: Circana BookScan, as published by the Australian Publishers",
+-      "Association (Splatt, 2024)."
++      "Source: Circana BookScan, as published by the Australian",
++      "Publishers Association (Splatt, 2024)."
+     ],
+     "anchor": "start",
+     "fontSize": 16,
+-    "subtitleFontSize": 11,
+-    "subtitleColor": "#666"
++    "subtitleFontSize": 12,
++    "subtitleColor": "#555"
+   },
+   "data": {
+     "url": "data/us_bookscan_categories.csv",
+@@ -68,8 +68,8 @@
+         "nice": false
+       },
+       "axis": {
+-        "titleFontSize": 10,
+-        "labelFontSize": 10,
++        "titleFontSize": 11,
++        "labelFontSize": 11,
+         "gridColor": "#ECEBE6",
+         "domain": false,
+         "ticks": false,
+@@ -88,9 +88,9 @@
+       "field": "millions",
+       "type": "quantitative",
+       "axis": {
+-        "titleFontSize": 10,
++        "titleFontSize": 11,
+         "titleFontWeight": "normal",
+-        "labelFontSize": 10,
++        "labelFontSize": 11,
+         "gridColor": "#ECEBE6",
+         "domain": false,
+         "ticks": false,
+@@ -180,7 +180,7 @@
+       "mark": {
+         "type": "text",
+         "dy": -12,
+-        "fontSize": 10,
++        "fontSize": 11,
+         "color": "#2B2B28"
+       },
+       "encoding": {
+diff --git a/docs/vega/c7_waffle.json b/docs/vega/c7_waffle.json
+index 008190e..97a5a1f 100644
+--- a/docs/vega/c7_waffle.json
++++ b/docs/vega/c7_waffle.json
+@@ -3,14 +3,14 @@
+   "title": {
+     "text": "Whose comics are these?",
+     "subtitle": [
+-      "Every 100 comic issues published in each country.",
+-      "Dark: reprints of foreign comics. Light: reprints of the country's own comics.",
+-      "Grey: no reprint recorded."
++      "Every 100 comic issues published in each country. Dark:",
++      "reprints of foreign comics. Light: reprints of the country's",
++      "own comics. Grey: no reprint recorded."
+     ],
+     "anchor": "start",
+     "fontSize": 16,
+-    "subtitleFontSize": 11,
+-    "subtitleColor": "#666"
++    "subtitleFontSize": 12,
++    "subtitleColor": "#555"
+   },
+   "data": {
+     "url": "data/reprint_shares.csv",
+diff --git a/docs/vega/c7a_gap.json b/docs/vega/c7a_gap.json
+index a2964e0..0e2bbea 100644
+--- a/docs/vega/c7a_gap.json
++++ b/docs/vega/c7a_gap.json
+@@ -3,26 +3,33 @@
+   "title": {
+     "text": "What Australia buys, and what it makes",
+     "subtitle": [
+-      "Graphic novels sold in Australian shops (excluding manga and superhero titles),",
+-      "against new comic series published in Australia in the same years."
++      "Two different counts for the same four years: copies sold",
++      "in Australian shops, and new comic series made in Australia."
+     ],
+     "anchor": "start",
+     "fontSize": 16,
+-    "subtitleFontSize": 11,
+-    "subtitleColor": "#666"
++    "subtitleFontSize": 12,
++    "subtitleColor": "#555"
+   },
+-  "spacing": 6,
++  "spacing": 28,
+   "resolve": {
+     "scale": {
+-      "x": "shared",
+-      "color": "shared"
+-    },
+-    "legend": {
+-      "color": "shared"
++      "x": "independent",
++      "xOffset": "independent"
+     }
+   },
+   "vconcat": [
+     {
++      "title": {
++        "text": "Graphic novels sold in Australian shops",
++        "subtitle": "Copies. Excludes manga and superhero titles. Source: NielsenIQ BookScan.",
++        "anchor": "start",
++        "fontSize": 13,
++        "fontWeight": "bold",
++        "subtitleFontSize": 11,
++        "subtitleColor": "#555",
++        "offset": 10
++      },
+       "data": {
+         "url": "data/au_sales.csv",
+         "format": {
+@@ -47,46 +54,50 @@
+           ]
+         }
+       ],
+-      "width": 440,
+-      "height": 190,
++      "width": 400,
++      "height": 140,
+       "layer": [
+         {
+           "mark": {
+             "type": "bar",
++            "color": "#8C8B85",
+             "cornerRadiusEnd": 3,
+             "width": {
+-              "band": 0.55
++              "band": 0.6
+             }
+           },
+           "encoding": {
+             "x": {
+               "field": "year",
+               "type": "ordinal",
+-              "axis": null,
+               "scale": {
+-                "type": "band",
+                 "domain": [
+                   2020,
+                   2021,
+                   2022,
+                   2023
+                 ],
+-                "paddingInner": 0.35
++                "paddingInner": 0.35,
++                "type": "band"
++              },
++              "axis": {
++                "title": null,
++                "labelAngle": 0,
++                "domain": false,
++                "ticks": false,
++                "labelPadding": 6
+               }
+             },
+             "y": {
+               "field": "total",
+               "type": "quantitative",
+-              "axis": {
+-                "title": "Copies sold",
+-                "format": "~s",
+-                "titleFontSize": 10,
+-                "titleFontWeight": "normal",
+-                "gridColor": "#ECEBE6",
+-                "domain": false,
+-                "ticks": false,
+-                "tickCount": 4
+-              }
++              "scale": {
++                "domain": [
++                  0,
++                  1600000
++                ]
++              },
++              "axis": null
+             },
+             "tooltip": [
+               {
+@@ -100,38 +111,14 @@
+                 "title": "Graphic novels sold",
+                 "format": ","
+               }
+-            ],
+-            "color": {
+-              "datum": "Graphic novels sold in Australia (BookScan)",
+-              "type": "nominal",
+-              "scale": {
+-                "domain": [
+-                  "Graphic novels sold in Australia (BookScan)",
+-                  "New comic series made in Australia (Grand Comics Database)"
+-                ],
+-                "range": [
+-                  "#8C8B85",
+-                  "#B07A00"
+-                ]
+-              },
+-              "legend": {
+-                "title": null,
+-                "orient": "top",
+-                "direction": "vertical",
+-                "symbolType": "square",
+-                "labelFontSize": 11,
+-                "symbolSize": 110,
+-                "offset": 6,
+-                "labelLimit": 0
+-              }
+-            }
++            ]
+           }
+         },
+         {
+           "mark": {
+             "type": "text",
+             "dy": -6,
+-            "fontSize": 10,
++            "fontSize": 11,
+             "baseline": "bottom",
+             "color": "#2B2B28"
+           },
+@@ -140,19 +127,33 @@
+               "field": "year",
+               "type": "ordinal",
+               "scale": {
+-                "type": "band",
+                 "domain": [
+                   2020,
+                   2021,
+                   2022,
+                   2023
+                 ],
+-                "paddingInner": 0.35
++                "paddingInner": 0.35,
++                "type": "band"
++              },
++              "axis": {
++                "title": null,
++                "labelAngle": 0,
++                "domain": false,
++                "ticks": false,
++                "labelPadding": 6
+               }
+             },
+             "y": {
+               "field": "total",
+-              "type": "quantitative"
++              "type": "quantitative",
++              "scale": {
++                "domain": [
++                  0,
++                  1600000
++                ]
++              },
++              "axis": null
+             },
+             "text": {
+               "field": "total",
+@@ -164,6 +165,16 @@
+       ]
+     },
+     {
++      "title": {
++        "text": "New comic series made in Australia",
++        "subtitle": "Series started each year. Source: Grand Comics Database.",
++        "anchor": "start",
++        "fontSize": 13,
++        "fontWeight": "bold",
++        "subtitleFontSize": 11,
++        "subtitleColor": "#555",
++        "offset": 10
++      },
+       "data": {
+         "url": "data/au_series_by_year.csv",
+         "format": {
+@@ -191,8 +202,8 @@
+           "value": 0
+         }
+       ],
+-      "width": 440,
+-      "height": 50,
++      "width": 400,
++      "height": 60,
+       "layer": [
+         {
+           "transform": [
+@@ -218,29 +229,30 @@
+           ],
+           "mark": {
+             "type": "square",
+-            "size": 30,
++            "size": 40,
++            "color": "#B07A00",
+             "opacity": 1
+           },
+           "encoding": {
+             "x": {
+               "field": "year",
+               "type": "ordinal",
+-              "axis": {
+-                "title": null,
+-                "labelAngle": 0,
+-                "domain": false,
+-                "ticks": false,
+-                "labelPadding": 6
+-              },
+               "scale": {
+-                "type": "band",
+                 "domain": [
+                   2020,
+                   2021,
+                   2022,
+                   2023
+                 ],
+-                "paddingInner": 0.35
++                "paddingInner": 0.35,
++                "type": "band"
++              },
++              "axis": {
++                "title": null,
++                "labelAngle": 0,
++                "domain": false,
++                "ticks": false,
++                "labelPadding": 6
+               }
+             },
+             "xOffset": {
+@@ -248,13 +260,13 @@
+               "type": "quantitative",
+               "scale": {
+                 "domain": [
+-                  -5,
+-                  5
++                  -4,
++                  4
+                 ]
+               }
+             },
+             "y": {
+-              "value": 14
++              "value": 16
+             },
+             "tooltip": [
+               {
+@@ -267,37 +279,19 @@
+                 "type": "quantitative",
+                 "title": "New Australian series"
+               }
+-            ],
+-            "color": {
+-              "datum": "New comic series made in Australia (Grand Comics Database)",
+-              "type": "nominal",
+-              "scale": {
+-                "domain": [
+-                  "Graphic novels sold in Australia (BookScan)",
+-                  "New comic series made in Australia (Grand Comics Database)"
+-                ],
+-                "range": [
+-                  "#8C8B85",
+-                  "#B07A00"
+-                ]
+-              },
+-              "legend": {
+-                "title": null,
+-                "orient": "top",
+-                "direction": "vertical",
+-                "symbolType": "square",
+-                "labelFontSize": 11,
+-                "symbolSize": 110,
+-                "offset": 6,
+-                "labelLimit": 0
+-              }
+-            }
++            ]
+           }
+         },
+         {
++          "transform": [
++            {
++              "calculate": "datum.series + ' new series'",
++              "as": "lab"
++            }
++          ],
+           "mark": {
+             "type": "text",
+-            "fontSize": 10,
++            "fontSize": 11,
+             "color": "#2B2B28",
+             "baseline": "middle"
+           },
+@@ -306,29 +300,23 @@
+               "field": "year",
+               "type": "ordinal",
+               "scale": {
+-                "type": "band",
+                 "domain": [
+                   2020,
+                   2021,
+                   2022,
+                   2023
+                 ],
+-                "paddingInner": 0.35
++                "paddingInner": 0.35,
++                "type": "band"
+               }
+             },
+             "y": {
+-              "value": 38
++              "value": 44
+             },
+             "text": {
+               "field": "lab"
+             }
+-          },
+-          "transform": [
+-            {
+-              "calculate": "datum.series + (datum.series == 1 ? ' new series' : ' new series')",
+-              "as": "lab"
+-            }
+-          ]
++          }
+         }
+       ]
+     }
+@@ -338,4 +326,4 @@
+       "stroke": null
+     }
+   }
+-}
+\ No newline at end of file
++}
+diff --git a/docs/vega/c7b_reprint_butterfly.json b/docs/vega/c7b_reprint_butterfly.json
+index cb2cb71..2ad40eb 100644
+--- a/docs/vega/c7b_reprint_butterfly.json
++++ b/docs/vega/c7b_reprint_butterfly.json
+@@ -3,13 +3,14 @@
+   "title": {
+     "text": "Importers and self-reprinters",
+     "subtitle": [
+-      "Share of each country's comic issues that reprint foreign comics (right)",
+-      "or the country's own comics (left). Countries with over 5,000 issues indexed."
++      "Share of each country's comic issues that reprint foreign",
++      "comics (right) or the country's own comics (left). Countries",
++      "with over 5,000 issues indexed."
+     ],
+     "anchor": "start",
+     "fontSize": 16,
+-    "subtitleFontSize": 11,
+-    "subtitleColor": "#666"
++    "subtitleFontSize": 12,
++    "subtitleColor": "#555"
+   },
+   "data": {
+     "url": "data/reprint_shares.csv",
+@@ -115,9 +116,9 @@
+           "axis": {
+             "title": "← own comics (%)     foreign comics (%) →",
+             "labelExpr": "abs(datum.value)",
+-            "titleFontSize": 10,
++            "titleFontSize": 11,
+             "titleFontWeight": "normal",
+-            "labelFontSize": 9,
++            "labelFontSize": 11,
+             "grid": true,
+             "gridColor": "#ECEBE6",
+             "tickCount": 8,
+diff --git a/docs/vega/c8_au_horizon.json b/docs/vega/c8_au_horizon.json
+index 3e870b5..f8eef10 100644
+--- a/docs/vega/c8_au_horizon.json
++++ b/docs/vega/c8_au_horizon.json
+@@ -8,8 +8,8 @@
+     ],
+     "anchor": "start",
+     "fontSize": 16,
+-    "subtitleFontSize": 11,
+-    "subtitleColor": "#666"
++    "subtitleFontSize": 12,
++    "subtitleColor": "#555"
+   },
+   "data": {
+     "url": "data/au_series_by_year.csv",
+@@ -208,7 +208,7 @@
+             "baseline": "bottom",
+             "dx": 3,
+             "dy": 0,
+-            "fontSize": 10,
++            "fontSize": 11,
+             "color": "#2B2B28"
+           },
+           "encoding": {
+diff --git a/docs/vega/c9_au_categories.json b/docs/vega/c9_au_categories.json
+index 21adcf1..3fb8929 100644
+--- a/docs/vega/c9_au_categories.json
++++ b/docs/vega/c9_au_categories.json
+@@ -3,15 +3,15 @@
+   "title": {
+     "text": "Who is reading comics in Australia",
+     "subtitle": [
+-      "Graphic novels sold in Australian shops by category, 2020 and 2023",
+-      "(excluding manga and superhero titles).",
+-      "Source: NielsenIQ BookScan, as published by the Australian Publishers",
+-      "Association (Splatt, 2024)."
++      "Graphic novels sold in Australian shops by category, 2020 and",
++      "2023 (excluding manga and superhero titles).",
++      "Source: NielsenIQ BookScan, as published by the Australian",
++      "Publishers Association (Splatt, 2024)."
+     ],
+     "anchor": "start",
+     "fontSize": 16,
+-    "subtitleFontSize": 11,
+-    "subtitleColor": "#666"
++    "subtitleFontSize": 12,
++    "subtitleColor": "#555"
+   },
+   "data": {
+     "url": "data/au_sales.csv",
+@@ -75,7 +75,7 @@
+         "order": "descending"
+       },
+       "axis": {
+-        "titleFontSize": 10,
++        "titleFontSize": 11,
+         "titleFontWeight": "normal",
+         "labelFontSize": 11,
+         "gridColor": "#ECEBE6",
+@@ -89,9 +89,9 @@
+       "field": "units",
+       "type": "quantitative",
+       "axis": {
+-        "titleFontSize": 10,
++        "titleFontSize": 11,
+         "titleFontWeight": "normal",
+-        "labelFontSize": 10,
++        "labelFontSize": 11,
+         "gridColor": "#ECEBE6",
+         "domain": false,
+         "ticks": false,
+diff --git a/docs/vega/m1_world_choropleth.json b/docs/vega/m1_world_choropleth.json
+index d02f49e..7667848 100644
+--- a/docs/vega/m1_world_choropleth.json
++++ b/docs/vega/m1_world_choropleth.json
+@@ -3,13 +3,14 @@
+   "title": {
+     "text": "Comics published per million people",
+     "subtitle": [
+-      "Comic issues indexed in the Grand Comics Database, divided by population.",
+-      "Colour uses a log scale: each step is roughly ten times the last."
++      "Comic issues indexed in the Grand Comics Database, divided by",
++      "population. Colour uses a log scale: each step is roughly ten",
++      "times the last."
+     ],
+     "anchor": "start",
+     "fontSize": 16,
+-    "subtitleFontSize": 11,
+-    "subtitleColor": "#666"
++    "subtitleFontSize": 12,
++    "subtitleColor": "#555"
+   },
+   "width": "container",
+   "height": 280,
+@@ -114,12 +115,13 @@
+           },
+           "legend": {
+             "title": "Issues per million people",
+-            "orient": "bottom-left",
++            "orient": "top",
+             "direction": "horizontal",
+-            "gradientLength": 140,
++            "gradientLength": 180,
+             "format": ",.0f",
+-            "titleFontSize": 10,
+-            "labelFontSize": 9
++            "titleFontSize": 12,
++            "labelFontSize": 11,
++            "offset": 4
+           }
+         },
+         "tooltip": [
+diff --git a/docs/vega/m2_japan_mangaka.json b/docs/vega/m2_japan_mangaka.json
+index aff4671..23d5783 100644
+--- a/docs/vega/m2_japan_mangaka.json
++++ b/docs/vega/m2_japan_mangaka.json
+@@ -10,8 +10,8 @@
+     ],
+     "anchor": "start",
+     "fontSize": 16,
+-    "subtitleFontSize": 11,
+-    "subtitleColor": "#666"
++    "subtitleFontSize": 12,
++    "subtitleColor": "#555"
+   },
+   "data": {
+     "url": "data/mangaka_prefecture_decade.csv",
+@@ -113,8 +113,8 @@
+           "orient": "top",
+           "direction": "horizontal",
+           "gradientLength": 180,
+-          "titleFontSize": 10,
+-          "labelFontSize": 9,
++          "titleFontSize": 11,
++          "labelFontSize": 11,
+           "titleLimit": 0,
+           "labelLimit": 0
+         }
+diff --git a/docs/vega/m3_us_creators.json b/docs/vega/m3_us_creators.json
+index 332ea16..5078db0 100644
+--- a/docs/vega/m3_us_creators.json
++++ b/docs/vega/m3_us_creators.json
+@@ -3,15 +3,16 @@
+   "title": {
+     "text": "Where American comic creators were born",
+     "subtitle": [
+-      "Each circle is one state. Circle size shows how many comic creators",
+-      "were born there. Darker purple means more for every million residents",
+-      "(US Census Bureau 2024 estimates). Only creators with a recorded",
+-      "birth state in the Grand Comics Database are counted."
++      "Each circle is one state. Circle size shows how many comic",
++      "creators were born there. Darker purple means more for every",
++      "million residents (US Census Bureau 2024 estimates). Only",
++      "creators with a recorded birth state in the Grand Comics",
++      "Database are counted."
+     ],
+     "anchor": "start",
+     "fontSize": 16,
+-    "subtitleFontSize": 11,
+-    "subtitleColor": "#666"
++    "subtitleFontSize": 12,
++    "subtitleColor": "#555"
+   },
+   "width": "container",
+   "height": 340,
+@@ -407,8 +408,8 @@
+             ],
+             "symbolFillColor": "#ffffff",
+             "symbolStrokeColor": "#9E9AC8",
+-            "titleFontSize": 10,
+-            "labelFontSize": 9,
++            "titleFontSize": 11,
++            "labelFontSize": 11,
+             "titleLimit": 0,
+             "direction": "horizontal"
+           }
+@@ -427,8 +428,8 @@
+             "orient": "top",
+             "direction": "horizontal",
+             "gradientLength": 150,
+-            "titleFontSize": 10,
+-            "labelFontSize": 9,
++            "titleFontSize": 11,
++            "labelFontSize": 11,
+             "titleLimit": 0,
+             "labelLimit": 0
+           }
+@@ -752,7 +753,7 @@
+       ],
+       "mark": {
+         "type": "text",
+-        "fontSize": 10,
++        "fontSize": 11,
+         "fontWeight": 600,
+         "align": "right",
+         "baseline": "middle",
+@@ -1070,7 +1071,7 @@
+       ],
+       "mark": {
+         "type": "text",
+-        "fontSize": 10,
++        "fontSize": 11,
+         "fontWeight": 600,
+         "align": "right",
+         "baseline": "middle",
+@@ -1385,7 +1386,7 @@
+       ],
+       "mark": {
+         "type": "text",
+-        "fontSize": 10,
++        "fontSize": 11,
+         "fontWeight": 600,
+         "align": "center",
+         "baseline": "middle",
+@@ -1703,7 +1704,7 @@
+       ],
+       "mark": {
+         "type": "text",
+-        "fontSize": 10,
++        "fontSize": 11,
+         "fontWeight": 600,
+         "align": "center",
+         "baseline": "middle",
+diff --git a/docs/vega/m4_flow_map.json b/docs/vega/m4_flow_map.json
+index 26bf32d..691eee7 100644
+--- a/docs/vega/m4_flow_map.json
++++ b/docs/vega/m4_flow_map.json
+@@ -8,8 +8,8 @@
+     ],
+     "anchor": "start",
+     "fontSize": 16,
+-    "subtitleFontSize": 11,
+-    "subtitleColor": "#666"
++    "subtitleFontSize": 12,
++    "subtitleColor": "#555"
+   },
+   "width": "container",
+   "height": 460,
+@@ -716,7 +716,7 @@
+       },
+       "mark": {
+         "type": "text",
+-        "fontSize": 10,
++        "fontSize": 11,
+         "fontWeight": "bold",
+         "dy": 14,
+         "color": "#2B2B28"
+diff --git a/docs/vega/m6_au_trends.json b/docs/vega/m6_au_trends.json
+index 1777962..43282d9 100644
+--- a/docs/vega/m6_au_trends.json
++++ b/docs/vega/m6_au_trends.json
+@@ -3,14 +3,15 @@
+   "title": {
+     "text": "Which states search for manga",
+     "subtitle": [
+-      "Share of Google searches for 'manga' when compared with 'comics',",
+-      "by state, past five years. Source: Google Trends.",
+-      "Darker red means manga is searched for more, relative to comics."
++      "Share of Google searches for 'manga' when compared with",
++      "'comics', by state, past five years. Source: Google Trends.",
++      "Darker purple means manga is searched for more, relative to",
++      "comics."
+     ],
+     "anchor": "start",
+     "fontSize": 16,
+-    "subtitleFontSize": 11,
+-    "subtitleColor": "#666"
++    "subtitleFontSize": 12,
++    "subtitleColor": "#555"
+   },
+   "width": "container",
+   "height": 330,
+@@ -65,7 +66,7 @@
+           "field": "manga_share",
+           "type": "quantitative",
+           "scale": {
+-            "scheme": "reds",
++            "scheme": "purples",
+             "domain": [
+               60,
+               80
+@@ -76,8 +77,8 @@
+             "orient": "bottom-left",
+             "direction": "horizontal",
+             "gradientLength": 150,
+-            "titleFontSize": 10,
+-            "labelFontSize": 9,
++            "titleFontSize": 11,
++            "labelFontSize": 11,
+             "titleLimit": 0,
+             "labelLimit": 0
+           }

@@ -9,8 +9,8 @@
     ],
     "anchor": "start",
     "fontSize": 16,
-    "subtitleFontSize": 11,
-    "subtitleColor": "#666"
+    "subtitleFontSize": 12,
+    "subtitleColor": "#555"
   },
   "data": {
     "url": "data/japan_manga_market.csv",
@@ -46,9 +46,9 @@
         "nice": false
       },
       "axis": {
-        "titleFontSize": 10,
+        "titleFontSize": 11,
         "titleFontWeight": "normal",
-        "labelFontSize": 10,
+        "labelFontSize": 11,
         "gridColor": "#ECEBE6",
         "domain": false,
         "ticks": false,
@@ -74,9 +74,9 @@
           "type": "quantitative",
           "stack": "zero",
           "axis": {
-            "titleFontSize": 10,
+            "titleFontSize": 11,
             "titleFontWeight": "normal",
-            "labelFontSize": 10,
+            "labelFontSize": 11,
             "gridColor": "#ECEBE6",
             "domain": false,
             "ticks": false,
@@ -184,7 +184,7 @@
             "align": "right",
             "dx": -4,
             "dy": -2,
-            "fontSize": 10,
+            "fontSize": 11,
             "color": "#2B2B28",
             "baseline": "bottom"
           },

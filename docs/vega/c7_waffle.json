@@ -3,14 +3,14 @@
   "title": {
     "text": "Whose comics are these?",
     "subtitle": [
-      "Every 100 comic issues published in each country.",
-      "Dark: reprints of foreign comics. Light: reprints of the country's own comics.",
-      "Grey: no reprint recorded."
+      "Every 100 comic issues published in each country. Dark:",
+      "reprints of foreign comics. Light: reprints of the country's",
+      "own comics. Grey: no reprint recorded."
     ],
     "anchor": "start",
     "fontSize": 16,
-    "subtitleFontSize": 11,
-    "subtitleColor": "#666"
+    "subtitleFontSize": 12,
+    "subtitleColor": "#555"
   },
   "data": {
     "url": "data/reprint_shares.csv",

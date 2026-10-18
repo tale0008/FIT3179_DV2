@@ -20,7 +20,7 @@
 // fit-x autosize keeps the same fit); fixed-width specs are scaled up as far as
 // their box allows.
 const CHARTS = {
-  m1: { spec: "vega/m1_world_choropleth.json" },
+  m1: { spec: "vega/m1_world_choropleth.json", aspect: 0.5 },
   c1: { spec: "vega/c1_ridgeline.json", facetWidth: true },
   c2: { spec: "vega/c2_genre_heatmap.json" },
   c10: { spec: "vega/c10_publishing_models.json" },
@@ -42,8 +42,18 @@ const CHARTS = {
 };
 
 // background: null lets the page colour show through instead of Vega's default
-// white box. It merges under each spec's own config, so the spec files are unchanged.
-const EMBED_OPTIONS = { actions: false, renderer: "svg", config: { background: null } };
+// white box. The axis and legend sizes lift Vega's 10px defaults so small chart
+// text stays readable. Both merge under each spec's own config, so any size set
+// in a spec still wins.
+const EMBED_OPTIONS = {
+  actions: false,
+  renderer: "svg",
+  config: {
+    background: null,
+    axis: { labelFontSize: 11, titleFontSize: 12, labelColor: "#3a3833", titleColor: "#3a3833" },
+    legend: { labelFontSize: 11, titleFontSize: 12, labelColor: "#3a3833" }
+  }
+};
 const FACET_LABEL_ROOM = 110; // px kept free for a facet chart's row labels
 const CHART_SCALE = 1.2;      // how much larger charts are drawn than their natural size
 const MIN_DRAW_WIDTH = 360;   // px; on narrow screens the scale shrinks so charts are never drawn narrower

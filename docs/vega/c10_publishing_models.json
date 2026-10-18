@@ -8,8 +8,8 @@
     ],
     "anchor": "start",
     "fontSize": 16,
-    "subtitleFontSize": 11,
-    "subtitleColor": "#666"
+    "subtitleFontSize": 12,
+    "subtitleColor": "#555"
   },
   "data": {
     "url": "data/country_output.csv",
@@ -55,7 +55,7 @@
       "axis": {
         "title": "Comic series published (log scale)",
         "format": "~s",
-        "titleFontSize": 10,
+        "titleFontSize": 11,
         "titleFontWeight": "normal",
         "gridColor": "#ECEBE6",
         "domain": false
@@ -73,7 +73,7 @@
       },
       "axis": {
         "title": "Average issues per series (log scale)",
-        "titleFontSize": 10,
+        "titleFontSize": 11,
         "titleFontWeight": "normal",
         "gridColor": "#ECEBE6",
         "domain": false,
@@ -178,7 +178,7 @@
         "type": "text",
         "align": "left",
         "dx": 7,
-        "fontSize": 10,
+        "fontSize": 11,
         "color": "#2B2B28"
       },
       "encoding": {
@@ -213,7 +213,7 @@
         "type": "text",
         "align": "left",
         "dx": 7,
-        "fontSize": 10,
+        "fontSize": 11,
         "color": "#2B2B28",
         "fontWeight": "bold"
       },
@@ -236,9 +236,9 @@
       },
       "mark": {
         "type": "text",
-        "fontSize": 10,
+        "fontSize": 11,
         "fontStyle": "italic",
-        "color": "#77766F",
+        "color": "#5F5E58",
         "align": "left"
       },
       "encoding": {
@@ -260,9 +260,9 @@
       },
       "mark": {
         "type": "text",
-        "fontSize": 10,
+        "fontSize": 11,
         "fontStyle": "italic",
-        "color": "#77766F",
+        "color": "#5F5E58",
         "align": "right"
       },
       "encoding": {
