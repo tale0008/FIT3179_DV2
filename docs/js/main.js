@@ -208,7 +208,9 @@ async function render(id) {
 
   try {
     if (!specs[id]) {
-      const res = await fetch(cfg.spec);
+      // no-cache: check with the server each time, so an edited spec is never
+      // paired with a stale cached copy after a normal reload.
+      const res = await fetch(cfg.spec, { cache: "no-cache" });
       if (!res.ok) throw new Error(`${cfg.spec}: HTTP ${res.status}`);
       specs[id] = await res.json();
     }
