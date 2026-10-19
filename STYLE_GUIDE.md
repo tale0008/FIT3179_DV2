@@ -1,6 +1,6 @@
-# Style Guide: text and colour
+# Style Guide: text, colour and type
 
-This guide sets the writing and colour rules for the FIT3179 DV2 page. It is based on the style of the author's DV1 dashboard ("Housing Tenure Over The Ages"). It overrides any draft text or colour choice in BUILD_BRIEF.md where the two disagree.
+This guide sets the writing, colour and typography rules for the FIT3179 DV2 page. It is based on the style of the author's DV1 dashboard ("Housing Tenure Over The Ages"). It overrides any draft text or colour choice in BUILD_BRIEF.md where the two disagree.
 
 ## 1. The page voice
 
@@ -73,7 +73,27 @@ Rules:
 * **Manga audiences (C4 and C5 only).** Greens for manga written for teenagers (shōnen dark green `#2D6A1F`, shōjo light green `#A9CF7F`), teals for manga written for adults (seinen dark teal `#0E8C8C`, josei light teal `#86D3CE`), greys for kids and not stated. No reds, so red only ever means Japan. This palette appears nowhere else.
 * **M6 (state search shares) uses the purple ramp**, like every other amount on the page. Red is kept for Japan and manga lines, never for an amount.
 
-## 6. Example: §1 written in this style
+## 6. Typography
+
+Four typefaces, each with one job. All load from Google Fonts in `index.html`, and each CSS stack falls back to a similar system font.
+
+| Typeface | Used for | Where it is set |
+| :- | :- | :- |
+| Bangers | The page title only. Comic-book lettering ties the page to its topic. | `--font-comic` in `style.css` |
+| Bebas Neue | Section headings and the footer title, uppercase. | `--font-display` |
+| Source Serif 4 | All reading text: leads, takeaways, caveats, transitions. | `--font-body` |
+| Inter | Small text (scope note, byline, footer) and all chart text. | `--font-ui`, and `config.font` in `main.js` |
+
+Rules:
+
+* **Display fonts stay big.** Bangers and Bebas Neue are only used at 32px and above, never for sentences.
+* **Body text** is 18px with a line height of 1.6. Text beside a chart is held to about 68 characters a line.
+* **Reading guides and caveats** are 16px italic in the muted grey.
+* **Chart text** is never smaller than 11px. Chart titles are 16px bold, subtitles 12px in `#555`.
+* **Bold** is for country names and key numbers only. No underlines except links, no all-caps in body text.
+* All text is left-aligned, except headings and the title, which are centred.
+
+## 7. Example: §1 written in this style
 
 Draft text for §1. Lines marked [verify] contain a finding that must be checked against the rendered chart before it is used.
 

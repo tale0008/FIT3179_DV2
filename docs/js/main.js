@@ -8,7 +8,7 @@
  */
 
 // Element ID -> Vega-Lite spec. To add a chart: put its spec in vega/, add one
-// line here, and delete the placeholder content inside the element with that ID.
+// line here, and add an element with that ID to index.html.
 // facetWidth: faceted specs cannot use "container" width, so the loader sets a
 // pixel width from the element before embedding and again on window resize.
 // aspect: the loader sets the spec's height to its drawing width times this
@@ -42,7 +42,7 @@ const CHARTS = {
 };
 
 // background: null lets the page colour show through instead of Vega's default
-// white box. The axis and legend sizes lift Vega's 10px defaults so small chart
+// white box. font sets every chart's text to Inter, the page's small-text font. The axis and legend sizes lift Vega's 10px defaults so small chart
 // text stays readable. Both merge under each spec's own config, so any size set
 // in a spec still wins.
 const EMBED_OPTIONS = {
@@ -50,6 +50,7 @@ const EMBED_OPTIONS = {
   renderer: "svg",
   config: {
     background: null,
+    font: "Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
     axis: { labelFontSize: 11, titleFontSize: 12, labelColor: "#3a3833", titleColor: "#3a3833" },
     legend: { labelFontSize: 11, titleFontSize: 12, labelColor: "#3a3833" }
   }
@@ -172,7 +173,7 @@ async function render(id) {
     }
 
     scaleSvg(el, scale, boxWidth);
-    el.classList.remove("placeholder", "is-loading");
+    el.classList.remove("is-loading");
   } catch (err) {
     showError(el, id, err);
   }
@@ -199,4 +200,7 @@ function init() {
   });
 }
 
-init();
+// Wait for the web fonts before drawing, because Vega measures text once when it
+// lays out a chart. Charts drawn before Inter loads would be laid out for the
+// fallback font.
+document.fonts.ready.then(init);
