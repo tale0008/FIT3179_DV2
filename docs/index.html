@@ -483,10 +483,13 @@
   </div>
 </footer>
 
-<!-- Shown while a country is followed (see setFocus in js/main.js). -->
+<!-- Floating copy of the header picker, shown once the header one scrolls out of
+     view and while a country is followed (see updateChip in js/main.js). The
+     options are copied from #focus-select when the page loads. -->
 <div class="focus-chip" id="focus-chip" hidden>
-  Following <strong></strong>
-  <button type="button" id="focus-clear">Clear</button>
+  <label for="focus-float">Follow</label>
+  <select id="focus-float"></select>
+  <button type="button" id="focus-clear" hidden>Clear</button>
 </div>
 
 </body>

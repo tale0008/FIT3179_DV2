@@ -371,6 +371,7 @@ a:hover {
 }
 
 .focus-picker select,
+.focus-chip select,
 .focus-chip button {
   font: inherit;
   color: var(--ink);

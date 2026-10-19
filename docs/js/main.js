@@ -174,15 +174,25 @@ function setFocus(code, name) {
     });
   }
 
-  const select = document.getElementById("focus-select");
-  if (code && !select.querySelector(`option[value="${code}"]`)) {
-    select.add(new Option(name || code, code)); // a country clicked in a chart but not in the list
+  // The header picker and the floating one always show the same country.
+  for (const id of ["focus-select", "focus-float"]) {
+    const select = document.getElementById(id);
+    if (code && !select.querySelector(`option[value="${code}"]`)) {
+      select.add(new Option(name || code, code)); // a country clicked in a chart but not in the list
+    }
+    select.value = code;
   }
-  select.value = code;
+  updateChip();
+}
 
-  const chip = document.getElementById("focus-chip");
-  chip.hidden = !code;
-  chip.querySelector("strong").textContent = code ? select.selectedOptions[0].text : "";
+// The floating picker in the corner appears once the header picker scrolls out
+// of view, so the reader can switch country without scrolling back up. It also
+// stays while a country is followed, so it can be cleared from anywhere.
+let headerPickerVisible = true;
+
+function updateChip() {
+  document.getElementById("focus-chip").hidden = !focus && headerPickerVisible;
+  document.getElementById("focus-clear").hidden = !focus;
 }
 
 // Give a newly embedded chart the current focus, and let a click on one of its
@@ -259,8 +269,17 @@ function init() {
     render(id);
   }
 
-  document.getElementById("focus-select").addEventListener("change", (e) => setFocus(e.target.value));
+  const headerSelect = document.getElementById("focus-select");
+  const floatSelect = document.getElementById("focus-float");
+  floatSelect.innerHTML = headerSelect.innerHTML;
+  for (const select of [headerSelect, floatSelect]) {
+    select.addEventListener("change", (e) => setFocus(e.target.value));
+  }
   document.getElementById("focus-clear").addEventListener("click", () => setFocus(""));
+  new IntersectionObserver(([entry]) => {
+    headerPickerVisible = entry.isIntersecting;
+    updateChip();
+  }).observe(headerSelect.closest(".focus-picker"));
 
   let timer;
   window.addEventListener("resize", () => {
