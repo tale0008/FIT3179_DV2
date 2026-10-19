@@ -11,6 +11,24 @@
     "subtitleFontSize": 12,
     "subtitleColor": "#555"
   },
+  "params": [
+    {
+      "name": "zoom",
+      "value": "World",
+      "bind": {
+        "input": "radio",
+        "options": [
+          "World",
+          "Europe"
+        ],
+        "name": "Zoom to "
+      }
+    },
+    {
+      "name": "focus",
+      "value": ""
+    }
+  ],
   "width": "container",
   "height": 460,
   "autosize": {
@@ -18,12 +36,21 @@
     "contains": "padding"
   },
   "projection": {
-    "type": "equalEarth",
+    "type": "mercator",
     "rotate": [
       100,
       0,
       0
-    ]
+    ],
+    "scale": {
+      "expr": "(zoom == 'Europe' ? 3.3 : 1) * width / (2 * PI)"
+    },
+    "center": {
+      "expr": "zoom == 'Europe' ? [110, 53] : [0, 28]"
+    },
+    "translate": {
+      "expr": "[width / 2, height / 2]"
+    }
   },
   "layer": [
     {
@@ -33,8 +60,8 @@
       "mark": {
         "type": "geoshape",
         "fill": "#E3EDF3",
-        "stroke": "#C9D9E3",
-        "strokeWidth": 0.8
+        "strokeWidth": 0,
+        "clip": true
       }
     },
     {
@@ -49,7 +76,8 @@
         "type": "geoshape",
         "fill": "#ECEBE6",
         "stroke": "#ffffff",
-        "strokeWidth": 0.5
+        "strokeWidth": 0.5,
+        "clip": true
       },
       "transform": [
         {
@@ -76,7 +104,8 @@
       "mark": {
         "type": "geoshape",
         "stroke": "#ffffff",
-        "strokeWidth": 0.5
+        "strokeWidth": 0.5,
+        "clip": true
       },
       "encoding": {
         "color": {
@@ -571,6 +600,39 @@
         {
           "calculate": "datum.t",
           "as": "target_code"
+        },
+        {
+          "calculate": "((datum.olon + 100 + 540) % 360) - 180",
+          "as": "orl"
+        },
+        {
+          "calculate": "((datum.tlon + 100 + 540) % 360) - 180",
+          "as": "trl"
+        },
+        {
+          "calculate": "log(tan(PI / 4 + datum.olat * PI / 360))",
+          "as": "oy"
+        },
+        {
+          "calculate": "log(tan(PI / 4 + datum.tlat * PI / 360))",
+          "as": "ty"
+        },
+        {
+          "calculate": "atan2(datum.oy - datum.ty, (datum.trl - datum.orl) * PI / 180) * 180 / PI",
+          "as": "heading"
+        },
+        {
+          "calculate": "focus == '' || datum.target_code == focus ? 1 : 0",
+          "as": "lit"
+        },
+        {
+          "joinaggregate": [
+            {
+              "op": "max",
+              "field": "lit",
+              "as": "any_lit"
+            }
+          ]
         }
       ],
       "layer": [
@@ -578,7 +640,7 @@
           "mark": {
             "type": "rule",
             "strokeCap": "round",
-            "opacity": 0.85
+            "clip": true
           },
           "encoding": {
             "latitude": {
@@ -640,20 +702,97 @@
                 "title": "US stories reprinted",
                 "format": ","
               }
+            ],
+            "opacity": {
+              "condition": {
+                "test": "focus == '' || datum.target_code == focus || datum.any_lit == 0",
+                "value": 0.85
+              },
+              "value": 0.15
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "point",
+            "shape": "triangle-right",
+            "filled": true,
+            "clip": true
+          },
+          "encoding": {
+            "latitude": {
+              "field": "tlat",
+              "type": "quantitative"
+            },
+            "longitude": {
+              "field": "tlon",
+              "type": "quantitative"
+            },
+            "angle": {
+              "field": "heading",
+              "type": "quantitative",
+              "scale": null
+            },
+            "size": {
+              "field": "reprints",
+              "type": "quantitative",
+              "scale": {
+                "range": [
+                  30,
+                  260
+                ]
+              },
+              "legend": null
+            },
+            "color": {
+              "field": "dest",
+              "type": "nominal",
+              "legend": null,
+              "scale": {
+                "domain": [
+                  "Australia",
+                  "Elsewhere"
+                ],
+                "range": [
+                  "#B07A00",
+                  "#9B9A94"
+                ]
+              }
+            },
+            "opacity": {
+              "condition": {
+                "test": "focus == '' || datum.target_code == focus || datum.any_lit == 0",
+                "value": 1
+              },
+              "value": 0.15
+            },
+            "tooltip": [
+              {
+                "field": "target",
+                "type": "nominal",
+                "title": "Reprinted in"
+              },
+              {
+                "field": "reprints",
+                "type": "quantitative",
+                "title": "US stories reprinted",
+                "format": ","
+              }
             ]
           }
         },
         {
           "transform": [
             {
-              "filter": "indexof(['fr','no','br','mx','ca'], datum.target_code) >= 0"
+              "filter": "zoom == 'Europe' ? (datum.tlon > -15 && datum.tlon < 40 && datum.reprints >= 2000) || datum.target_code == focus : indexof(['fr','no','br','mx','ca'], datum.target_code) >= 0 || datum.target_code == focus"
             }
           ],
           "mark": {
             "type": "text",
             "fontSize": 11,
             "dy": -9,
-            "color": "#2B2B28"
+            "color": "#2B2B28",
+            "clip": true
           },
           "encoding": {
             "latitude": {
@@ -672,6 +811,9 @@
         {
           "transform": [
             {
+              "filter": "zoom == 'World'"
+            },
+            {
               "filter": "datum.target_code == 'au'"
             },
             {
@@ -686,7 +828,8 @@
             "color": "#2B2B28",
             "fontWeight": "bold",
             "align": "left",
-            "dx": -30
+            "dx": -30,
+            "clip": true
           },
           "encoding": {
             "latitude": {
@@ -719,7 +862,8 @@
         "fontSize": 11,
         "fontWeight": "bold",
         "dy": 14,
-        "color": "#2B2B28"
+        "color": "#2B2B28",
+        "clip": true
       },
       "encoding": {
         "latitude": {

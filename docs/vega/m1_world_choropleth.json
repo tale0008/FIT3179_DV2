@@ -1,17 +1,53 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Comics published per million people",
+    "text": {
+      "expr": "measure == 'Total' ? 'Comics published, in total' : 'Comics published per million people'"
+    },
     "subtitle": [
-      "Comic issues indexed in the Grand Comics Database, divided by",
-      "population. Colour uses a log scale: each step is roughly ten",
-      "times the last."
+      "Comic issues indexed in the Grand Comics Database, in total or",
+      "divided by population. Colour uses a log scale: each step is roughly",
+      "ten times the last."
     ],
     "anchor": "start",
     "fontSize": 16,
     "subtitleFontSize": 12,
     "subtitleColor": "#555"
   },
+  "params": [
+    {
+      "name": "measure",
+      "value": "Per million",
+      "bind": {
+        "input": "radio",
+        "options": [
+          "Per million",
+          "Total"
+        ],
+        "labels": [
+          "Per million people",
+          "Total issues"
+        ],
+        "name": "Count "
+      }
+    },
+    {
+      "name": "zoom",
+      "value": "World",
+      "bind": {
+        "input": "radio",
+        "options": [
+          "World",
+          "Europe"
+        ],
+        "name": "Zoom to "
+      }
+    },
+    {
+      "name": "focus",
+      "value": ""
+    }
+  ],
   "width": "container",
   "height": 280,
   "autosize": {
@@ -19,7 +55,16 @@
     "contains": "padding"
   },
   "projection": {
-    "type": "equalEarth"
+    "type": "equalEarth",
+    "scale": {
+      "expr": "(zoom == 'Europe' ? 4 : 1) * width / 5.42"
+    },
+    "center": {
+      "expr": "zoom == 'Europe' ? [12, 52] : [0, 0]"
+    },
+    "translate": {
+      "expr": "[width / 2, height / 2]"
+    }
   },
   "layer": [
     {
@@ -30,7 +75,8 @@
         "type": "geoshape",
         "fill": "#E3EDF3",
         "stroke": "#C9D9E3",
-        "strokeWidth": 0.8
+        "strokeWidth": 0.8,
+        "clip": true
       }
     },
     {
@@ -45,7 +91,8 @@
         "type": "geoshape",
         "fill": "#e8e8e8",
         "stroke": "#ffffff",
-        "strokeWidth": 0.5
+        "strokeWidth": 0.5,
+        "clip": true
       }
     },
     {
@@ -98,23 +145,29 @@
         {
           "calculate": "datum.issues / (datum.population / 1000000)",
           "as": "per_million"
+        },
+        {
+          "calculate": "measure == 'Total' ? datum.issues : datum.per_million",
+          "as": "value"
         }
       ],
       "mark": {
         "type": "geoshape",
         "stroke": "#ffffff",
-        "strokeWidth": 0.5
+        "strokeWidth": 0.5,
+        "clip": true
       },
       "encoding": {
         "color": {
-          "field": "per_million",
+          "field": "value",
           "type": "quantitative",
           "scale": {
             "type": "log",
-            "scheme": "purples"
+            "scheme": "purples",
+            "nice": true
           },
           "legend": {
-            "title": "Issues per million people",
+            "title": "Comic issues",
             "orient": "top",
             "direction": "horizontal",
             "gradientLength": 180,
@@ -149,6 +202,74 @@
             "format": ","
           }
         ]
+      }
+    },
+    {
+      "data": {
+        "url": "https://cdn.jsdelivr.net/npm/vega-datasets@2/data/world-110m.json",
+        "format": {
+          "type": "topojson",
+          "feature": "countries"
+        }
+      },
+      "transform": [
+        {
+          "calculate": "toNumber(datum.id)",
+          "as": "iso_n3"
+        },
+        {
+          "lookup": "iso_n3",
+          "from": {
+            "data": {
+              "url": "data/country_meta.csv"
+            },
+            "key": "iso_n3",
+            "fields": [
+              "code",
+              "country",
+              "population"
+            ]
+          }
+        },
+        {
+          "filter": "isValid(datum.code)"
+        },
+        {
+          "lookup": "code",
+          "from": {
+            "data": {
+              "url": "data/country_output.csv"
+            },
+            "key": "code",
+            "fields": [
+              "series",
+              "issues",
+              "issues_per_series"
+            ]
+          }
+        },
+        {
+          "filter": "isValid(datum.issues)"
+        },
+        {
+          "calculate": "datum.issues / (datum.population / 1000000)",
+          "as": "per_million"
+        },
+        {
+          "calculate": "measure == 'Total' ? datum.issues : datum.per_million",
+          "as": "value"
+        },
+        {
+          "filter": "datum.code == focus"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "fill": null,
+        "filled": false,
+        "stroke": "#2B2B28",
+        "strokeWidth": 1.2,
+        "clip": true
       }
     }
   ],

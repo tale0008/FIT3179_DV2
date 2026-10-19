@@ -119,15 +119,83 @@ async function embed(id, el, spec) {
   let dataError = null;
   const loader = trackingLoader((err) => { dataError = dataError || err; });
 
+  // A resize re-embeds the chart, which would reset its buttons. Keep their values.
+  const kept = views[id] ? boundParams(views[id], spec) : {};
   if (views[id]) views[id].finalize();
   const result = await vegaEmbed(el, spec, { ...EMBED_OPTIONS, loader });
   views[id] = result.view;
+  for (const [name, value] of Object.entries(kept)) result.view.signal(name, value);
+  linkFocus(result.view);
+  await result.view.runAsync();
 
   if (dataError) {
     result.view.finalize();
     delete views[id];
     throw dataError;
   }
+}
+
+// Current values of the params a spec binds to buttons (zoom, count).
+function boundParams(view, spec) {
+  const values = {};
+  for (const p of spec.params || []) {
+    if (p.bind && !p.select) values[p.name] = view.signal(p.name);
+  }
+  return values;
+}
+
+/*
+ * Follow a country. Every chart whose spec declares a "focus" param highlights
+ * the country whose code is in that param, and fades the rest. This code keeps
+ * that param the same in all of them: the dropdown in the header and a click on
+ * a country in any linked chart both call setFocus, which pushes the code into
+ * every linked view. An empty string means no country is followed.
+ */
+let focus = "";
+
+function hasFocus(view) {
+  try {
+    view.signal("focus");
+    return true;
+  } catch (err) {
+    return false; // this chart has no focus param
+  }
+}
+
+function setFocus(code, name) {
+  focus = code;
+  for (const [id, view] of Object.entries(views)) {
+    if (!hasFocus(view)) continue;
+    // resize() lets a chart grow when it gains a panel (the waffle adds one for
+    // the followed country); the SVG is then fitted to its box again.
+    view.signal("focus", focus).resize().runAsync().then(() => {
+      const el = document.getElementById(id);
+      scaleSvg(el, chartScale(boxWidths[id]), boxWidths[id]);
+    });
+  }
+
+  const select = document.getElementById("focus-select");
+  if (code && !select.querySelector(`option[value="${code}"]`)) {
+    select.add(new Option(name || code, code)); // a country clicked in a chart but not in the list
+  }
+  select.value = code;
+
+  const chip = document.getElementById("focus-chip");
+  chip.hidden = !code;
+  chip.querySelector("strong").textContent = code ? select.selectedOptions[0].text : "";
+}
+
+// Give a newly embedded chart the current focus, and let a click on one of its
+// countries change it. Clicking the followed country again stops following it.
+function linkFocus(view) {
+  if (!hasFocus(view)) return;
+  view.signal("focus", focus);
+  view.addEventListener("click", (event, item) => {
+    const d = item && item.datum;
+    const code = d && (d.code || d.target_code);
+    if (!code) return;
+    setFocus(code === focus ? "" : code, d.name || d.country || d.target);
+  });
 }
 
 async function render(id) {
@@ -188,6 +256,9 @@ function init() {
     }
     render(id);
   }
+
+  document.getElementById("focus-select").addEventListener("change", (e) => setFocus(e.target.value));
+  document.getElementById("focus-clear").addEventListener("click", () => setFocus(""));
 
   let timer;
   window.addEventListener("resize", () => {

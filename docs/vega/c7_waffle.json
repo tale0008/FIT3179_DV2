@@ -12,6 +12,12 @@
     "subtitleFontSize": 12,
     "subtitleColor": "#555"
   },
+  "params": [
+    {
+      "name": "focus",
+      "value": ""
+    }
+  ],
   "data": {
     "url": "data/reprint_shares.csv",
     "format": {
@@ -28,10 +34,10 @@
   },
   "transform": [
     {
-      "filter": "indexof(['au','us','jp'], datum.code) >= 0"
+      "filter": "indexof(['au','us','jp'], datum.code) >= 0 || datum.code == focus"
     },
     {
-      "calculate": "indexof(['au','us','jp'], datum.code)",
+      "calculate": "datum.code == focus && indexof(['au','us','jp'], datum.code) < 0 ? 3 : indexof(['au','us','jp'], datum.code)",
       "as": "ord"
     },
     {
@@ -63,7 +69,7 @@
       "as": "kind"
     },
     {
-      "calculate": "datum.code + '_' + datum.kind",
+      "calculate": "(indexof(['au','us','jp'], datum.code) >= 0 ? datum.code : 'other') + '_' + datum.kind",
       "as": "key"
     },
     {
@@ -77,6 +83,19 @@
     {
       "calculate": "datum.kind == 'foreign' ? 'Reprint of a foreign comic' : (datum.kind == 'own' ? 'Reprint of the country\\'s own comic' : 'No reprint recorded')",
       "as": "kind_label"
+    },
+    {
+      "calculate": "datum.code == focus ? 1 : 0",
+      "as": "is_focus"
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "max",
+          "field": "is_focus",
+          "as": "focus_here"
+        }
+      ]
     }
   ],
   "facet": {
@@ -100,13 +119,14 @@
   },
   "spacing": 18,
   "spec": {
-    "width": 130,
-    "height": 130,
+    "width": 112,
+    "height": 112,
     "mark": {
       "type": "rect",
       "stroke": "#ffffff",
       "strokeWidth": 1.5,
-      "cornerRadius": 1
+      "cornerRadius": 1,
+      "cursor": "pointer"
     },
     "encoding": {
       "x": {
@@ -133,7 +153,10 @@
             "us_none",
             "jp_foreign",
             "jp_own",
-            "jp_none"
+            "jp_none",
+            "other_foreign",
+            "other_own",
+            "other_none"
           ],
           "range": [
             "#B07A00",
@@ -144,6 +167,9 @@
             "#E6E4DE",
             "#C8102E",
             "#EB9AA6",
+            "#E6E4DE",
+            "#6F6D66",
+            "#B5B3AC",
             "#E6E4DE"
           ]
         }
@@ -171,7 +197,14 @@
           "title": "Own reprints (%)",
           "format": ".2f"
         }
-      ]
+      ],
+      "opacity": {
+        "condition": {
+          "test": "focus == '' || datum.focus_here == 0 || datum.code == focus",
+          "value": 1
+        },
+        "value": 0.3
+      }
     }
   },
   "config": {

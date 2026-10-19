@@ -12,6 +12,12 @@
     "subtitleFontSize": 12,
     "subtitleColor": "#555"
   },
+  "params": [
+    {
+      "name": "focus",
+      "value": ""
+    }
+  ],
   "data": {
     "url": "data/reprint_shares.csv",
     "format": {
@@ -50,7 +56,7 @@
       "as": "signed"
     },
     {
-      "calculate": "(indexof(['Australia','Japan','United States'], datum.country) >= 0 ? datum.code : 'other') + '_' + datum.side",
+      "calculate": "(indexof(['Australia','Japan','United States'], datum.country) >= 0 ? datum.code : (datum.code == focus ? 'focus' : 'other')) + '_' + datum.side",
       "as": "key"
     },
     {
@@ -63,6 +69,19 @@
       ],
       "groupby": [
         "name"
+      ]
+    },
+    {
+      "calculate": "datum.code == focus ? 1 : 0",
+      "as": "is_focus"
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "max",
+          "field": "is_focus",
+          "as": "focus_here"
+        }
       ]
     }
   ],
@@ -101,7 +120,8 @@
         "cornerRadiusEnd": 2,
         "height": {
           "band": 0.8
-        }
+        },
+        "cursor": "pointer"
       },
       "encoding": {
         "x": {
@@ -138,7 +158,9 @@
               "jp_foreign",
               "jp_own",
               "other_foreign",
-              "other_own"
+              "other_own",
+              "focus_foreign",
+              "focus_own"
             ],
             "range": [
               "#B07A00",
@@ -148,7 +170,9 @@
               "#C8102E",
               "#EB9AA6",
               "#A6A5A0",
-              "#D3D2CC"
+              "#D3D2CC",
+              "#6F6D66",
+              "#A6A5A0"
             ]
           }
         },
@@ -169,7 +193,14 @@
             "title": "Share of issues (%)",
             "format": ".2f"
           }
-        ]
+        ],
+        "opacity": {
+          "condition": {
+            "test": "focus == '' || datum.focus_here == 0 || datum.code == focus",
+            "value": 1
+          },
+          "value": 0.25
+        }
       }
     },
     {
@@ -187,7 +218,7 @@
     {
       "transform": [
         {
-          "filter": "(indexof(['Australia','Japan','United States'], datum.country) >= 0 && ((datum.side == 'foreign' && datum.code == 'au') || (datum.side == 'own' && datum.code != 'au'))) && datum.signed >= 0"
+          "filter": "((indexof(['Australia','Japan','United States'], datum.country) >= 0 && ((datum.side == 'foreign' && datum.code == 'au') || (datum.side == 'own' && datum.code != 'au'))) || (datum.code == focus && indexof(['au','jp','us'], focus) < 0 && datum.side == 'foreign')) && datum.signed >= 0"
         }
       ],
       "mark": {
@@ -207,13 +238,20 @@
           "field": "pct",
           "type": "quantitative",
           "format": ".1f"
+        },
+        "opacity": {
+          "condition": {
+            "test": "focus == '' || datum.focus_here == 0 || datum.code == focus",
+            "value": 1
+          },
+          "value": 0.25
         }
       }
     },
     {
       "transform": [
         {
-          "filter": "(indexof(['Australia','Japan','United States'], datum.country) >= 0 && ((datum.side == 'foreign' && datum.code == 'au') || (datum.side == 'own' && datum.code != 'au'))) && datum.signed < 0"
+          "filter": "((indexof(['Australia','Japan','United States'], datum.country) >= 0 && ((datum.side == 'foreign' && datum.code == 'au') || (datum.side == 'own' && datum.code != 'au'))) || (datum.code == focus && indexof(['au','jp','us'], focus) < 0 && datum.side == 'foreign')) && datum.signed < 0"
         }
       ],
       "mark": {
@@ -233,6 +271,13 @@
           "field": "pct",
           "type": "quantitative",
           "format": ".1f"
+        },
+        "opacity": {
+          "condition": {
+            "test": "focus == '' || datum.focus_here == 0 || datum.code == focus",
+            "value": 1
+          },
+          "value": 0.25
         }
       }
     }

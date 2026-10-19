@@ -54,6 +54,28 @@
       <div class="prose">
         <p class="standfirst">A comic can be made in Australia, or made somewhere else and printed here. This page follows both: comics made in <span class="c-au">Australia</span>, comics made in <span class="c-jp">Japan</span> and <span class="c-us">the United States</span>, and the reprints that carry them around the world.</p>
         <p class="scope-note">Unless a chart says otherwise, these figures count comic issues, not copies sold. They come from the Grand Comics Database, a volunteer catalogue of over two million comic issues from around the world.</p>
+        <p class="focus-picker">
+          <label for="focus-select">Follow one country through the charts:</label>
+          <select id="focus-select">
+            <option value="">No country</option>
+            <option value="au">Australia</option>
+            <option value="be">Belgium</option>
+            <option value="br">Brazil</option>
+            <option value="ca">Canada</option>
+            <option value="dk">Denmark</option>
+            <option value="fr">France</option>
+            <option value="de">Germany</option>
+            <option value="it">Italy</option>
+            <option value="jp">Japan</option>
+            <option value="nl">Netherlands</option>
+            <option value="no">Norway</option>
+            <option value="es">Spain</option>
+            <option value="se">Sweden</option>
+            <option value="gb">United Kingdom</option>
+            <option value="us">United States</option>
+          </select>
+          <span>Or click a country in any chart that compares countries.</span>
+        </p>
         <p class="byline">By Thisum Patabadige · October 2026 · <a href="#sources">Sources listed at the end of the page</a></p>
       </div>
     </div>
@@ -460,6 +482,12 @@
     </div>
   </div>
 </footer>
+
+<!-- Shown while a country is followed (see setFocus in js/main.js). -->
+<div class="focus-chip" id="focus-chip" hidden>
+  Following <strong></strong>
+  <button type="button" id="focus-clear">Clear</button>
+</div>
 
 </body>
 </html>

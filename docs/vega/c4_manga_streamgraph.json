@@ -5,7 +5,7 @@
     "subtitle": [
       "New manga series by start year and intended audience, among",
       "the 5,000 most popular manga on MyAnimeList (data as of August",
-      "2023). Three-year average. Sh\u014dnen and sh\u014djo are aimed at teen",
+      "2023). Three-year average. Shōnen and shōjo are aimed at teen",
       "boys and girls, seinen and josei at adult men and women."
     ],
     "anchor": "start",
@@ -13,6 +13,18 @@
     "subtitleFontSize": 12,
     "subtitleColor": "#555"
   },
+  "params": [
+    {
+      "name": "audience",
+      "select": {
+        "type": "point",
+        "fields": [
+          "demographic"
+        ]
+      },
+      "bind": "legend"
+    }
+  ],
   "data": {
     "url": "data/manga_demo_by_year.csv",
     "format": {
@@ -99,8 +111,8 @@
       "type": "nominal",
       "scale": {
         "domain": [
-          "Sh\u014dnen",
-          "Sh\u014djo",
+          "Shōnen",
+          "Shōjo",
           "Seinen",
           "Josei",
           "Kids",
@@ -146,7 +158,14 @@
         "type": "quantitative",
         "title": "New series that year"
       }
-    ]
+    ],
+    "opacity": {
+      "condition": {
+        "param": "audience",
+        "value": 1
+      },
+      "value": 0.2
+    }
   },
   "config": {
     "view": {

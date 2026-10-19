@@ -60,6 +60,7 @@ Colour is semantic. Each colour means one thing, and it means that thing everywh
 | Red | `#C8102E` | `#C8102E` | Japan |
 | Blue | `#1F4E9A` | `#1F4E9A` | United States |
 | Light grey | `#C9C9C4` | not used for text | Every other country, the past, context |
+| Dark grey | `#6F6D66` | not used for text | The country the reader is following, when it is not one of the three (see section 8) |
 | Purple ramp, light to dark | Vega `purples` scheme | not used for text | "How much" on maps and heatmaps |
 
 Rules:
@@ -123,3 +124,22 @@ Draft text for §1. Lines marked [verify] contain a finding that must be checked
 * Takeaway [verify]: "Superheroes dominate **American** comics, but most other countries built their industries on humour, adventure and stories for children."
 * Caveat: "(A story can carry more than one genre, so shares count genre tags rather than whole stories. Smaller genres are grouped together and not shown.)"
 * Transition: "**Japan** is the clearest case of a country that built its own kind of comics, and then kept them for itself."
+
+## 8. Interactivity
+
+The spec asks for interactivity "where it makes sense", not for its own sake. Each interaction on the page answers a question the text raises.
+
+| Interaction | Charts | The question it answers |
+| :- | :- | :- |
+| Follow a country | M1, C1, C2, C10, C7, C7b, M4 | "Where does my country (or this one) sit in each of these?" |
+| Count per million or in total | M1 | The M1 lead-in says the map changes depending on how you count. |
+| Zoom to Europe | M1, M4 | Europe's countries are small and its flow lines overlap. |
+| Click an audience in the legend | C4 | The middle layers of a streamgraph are hard to read on their own. |
+
+Rules:
+
+* **Follow a country.** Picking a country in the header dropdown, or clicking one in any of the linked charts, highlights it in every linked chart and fades the others. The followed country keeps its own colour if it is Australia, Japan or the United States, and turns dark grey otherwise. On the choropleth (M1) it is outlined instead, because fading would hide the amounts. The waffle (C7) adds it as a fourth panel. A chart that does not include that country stays as it is.
+* **Every chart reads correctly with nothing selected.** Interactions add detail. The takeaway text never depends on the reader clicking anything.
+* **Buttons are labelled with what they do** ("Zoom to Europe", "Count per million people"), in Inter at 14px, directly under the chart.
+* **No sliders or extra dropdowns** unless a chart asks a question that one answers better than the static chart.
+* **No new libraries.** Everything uses Vega-Lite params and Vega's view API in `main.js`.

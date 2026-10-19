@@ -12,6 +12,12 @@
     "subtitleFontSize": 12,
     "subtitleColor": "#555"
   },
+  "params": [
+    {
+      "name": "focus",
+      "value": ""
+    }
+  ],
   "data": {
     "url": "data/country_year.csv"
   },
@@ -95,6 +101,19 @@
     {
       "calculate": "indexof(['Australia','Japan','United States'], datum.country) >= 0 ? datum.country : 'Other countries'",
       "as": "highlight"
+    },
+    {
+      "calculate": "datum.code == focus ? 1 : 0",
+      "as": "is_focus"
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "max",
+          "field": "is_focus",
+          "as": "focus_here"
+        }
+      ]
     }
   ],
   "width": 420,
@@ -102,9 +121,9 @@
   "mark": {
     "type": "area",
     "interpolate": "monotone",
-    "fillOpacity": 0.9,
     "stroke": "#ffffff",
-    "strokeWidth": 0.6
+    "strokeWidth": 0.6,
+    "cursor": "pointer"
   },
   "encoding": {
     "row": {
@@ -179,6 +198,10 @@
       }
     ],
     "color": {
+      "condition": {
+        "test": "datum.code == focus && datum.highlight == 'Other countries'",
+        "value": "#6F6D66"
+      },
       "field": "highlight",
       "type": "nominal",
       "scale": {
@@ -196,6 +219,13 @@
         ]
       },
       "legend": null
+    },
+    "fillOpacity": {
+      "condition": {
+        "test": "focus == '' || datum.focus_here == 0 || datum.code == focus",
+        "value": 0.9
+      },
+      "value": 0.2
     }
   },
   "config": {

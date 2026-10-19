@@ -333,6 +333,76 @@ a:hover {
   height: auto;
 }
 
+/* Buttons that Vega-Lite draws under a chart from a param's "bind" (M1, M4). */
+.vega-bindings {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px var(--s3);
+  margin-top: var(--s1);
+  font-family: var(--font-ui);
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.vega-bind-name {
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+.vega-bind-radio label {
+  margin-right: 12px;
+  cursor: pointer;
+}
+
+.vega-bindings input {
+  accent-color: var(--ink);
+  cursor: pointer;
+}
+
+/* Follow a country: the picker in the header and the tag shown while one is followed. */
+.focus-picker {
+  font-family: var(--font-ui);
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.focus-picker label {
+  font-weight: 600;
+}
+
+.focus-picker select,
+.focus-chip button {
+  font: inherit;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1.5px solid var(--ink-soft);
+  border-radius: 4px;
+  padding: 2px 6px;
+  cursor: pointer;
+}
+
+.focus-chip {
+  position: fixed;
+  right: var(--s2);
+  bottom: var(--s2);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: var(--s1);
+  padding: var(--s1) var(--s2);
+  background: var(--paper);
+  border: 1.5px solid var(--ink);
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  font-family: var(--font-ui);
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.focus-chip[hidden] {
+  display: none;
+}
+
 .chart-error {
   padding: var(--s3);
   border: 1.5px solid var(--ink);
