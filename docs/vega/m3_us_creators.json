@@ -3,11 +3,10 @@
   "title": {
     "text": "Where American comic creators were born",
     "subtitle": [
-      "Each circle is one state. Circle size shows how many comic",
-      "creators were born there. Darker purple means more for every",
-      "million residents (US Census Bureau 2024 estimates). Only",
-      "creators with a recorded birth state in the Grand Comics",
-      "Database are counted."
+      "Comic creators by birth state, in total and per million",
+      "residents (US Census Bureau 2024 estimates). Only creators",
+      "with a recorded birth state in the Grand Comics Database are",
+      "counted."
     ],
     "anchor": "start",
     "fontSize": 16,

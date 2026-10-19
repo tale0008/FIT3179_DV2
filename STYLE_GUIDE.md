@@ -32,7 +32,7 @@ Headings must be center aligned.
 Every chart follows the same five-part pattern. Parts marked optional can be dropped when they add nothing.
 
 1. **Lead-in** (1 to 3 short paragraphs, about 30 to 60 words). Sets up the question the chart answers, or explains why it matters. Often continues from the previous chart's transition.
-2. **Reading guide** (optional, required for unusual idioms, about 20 to 40 words). Starts with "Reading the ... :" in brackets, or sits as short side notes next to the chart. Required for: ridgeline, horizon chart, waffle, flow map, radial arc, streamgraph, small multiples. Not needed for bars, lines or a plain choropleth.
+2. **Reading guide** (optional, only where the chart cannot be read without one). Most charts need none: the title, axes, legend and direct labels already say how to read them, and repeating that in text clutters the page. Never describe a legend, an axis or what a dot or bar is. When a guide is genuinely needed (for example the horizon chart's folded bands, or a key the chart has no legend for), it is one short line in the chart subtitle, not a paragraph in the text. There is no "Reading the ..." paragraph in the text column.
 3. **The chart**, with its title and subtitle.
 4. **Takeaway** (1 or 2 short paragraphs, about 20 to 40 words). States the single finding with one or two specific numbers. Never just describes the chart.
 5. **Caveat** (optional, italic, in brackets, about 15 to 40 words). Data limits, definitions, exclusions. Example: "(The database is built by volunteers, so it records how thoroughly each country's comics have been catalogued as well as how many were made.)"
@@ -40,7 +40,7 @@ Every chart follows the same five-part pattern. Parts marked optional can be dro
 
 Total per chart: about 100 to 150 words. Per section intro: about 40 to 70 words.
 
-Placement: the page reads left to right, row by row. A chart in one column has all of its text directly beside it in the other column, and chart rows alternate sides. A chart spanning both columns has its lead-in and reading guide in a merged text row directly above it, and the rest directly below it. Text with no chart is one merged cell across both columns, never two columns of text. A merged text cell starts at the left edge of the left column and ends at the right edge of the right column, like a merged table cell. It is never a narrower centred block. A chart never appears without its lead-in and takeaway.
+Placement: the page reads left to right, row by row. A chart in one column has all of its text directly beside it in the other column, and chart rows alternate sides. A chart spanning both columns has its lead-in in a merged text row directly above it, and the rest directly below it. Text with no chart is one merged cell across both columns, never two columns of text. A merged text cell starts at the left edge of the left column and ends at the right edge of the right column, like a merged table cell. It is never a narrower centred block. A chart never appears without its lead-in and takeaway.
 
 ## 4. Page-level structure
 
@@ -88,7 +88,7 @@ Rules:
 
 * **Display fonts stay big.** Bangers and Bebas Neue are only used at 32px and above, never for sentences.
 * **Body text** is 18px with a line height of 1.6. Text beside a chart is held to about 68 characters a line.
-* **Reading guides and caveats** are 16px italic in the muted grey.
+* **Caveats** are 16px italic in the muted grey.
 * **Chart text** is never smaller than 11px. Chart titles are 16px bold, subtitles 12px in `#555`.
 * **Bold** is for country names and key numbers only. No underlines except links, no all-caps in body text.
 * All text is left-aligned, except headings and the title, which are centred.
@@ -113,7 +113,6 @@ Draft text for §1. Lines marked [verify] contain a finding that must be checked
 **C1, ridgeline**
 
 * Lead-in: "Comic industries did not grow at the same time. Some countries had their boom before television arrived, others are still in theirs."
-* Reading guide: "(Reading the ridgeline: each strip is one country's new series per year. A taller strip means that year was closer to the country's busiest. Countries run from the earliest publishers at the top to the latest at the bottom.)"
 * Takeaway [verify]: "**Australia**'s busiest years came early, in the 1950s, and its strip all but disappears after the mid-1980s. **Japan** and **the United States** are still publishing."
 * Caveat: "(Series with an uncertain start year are left out, so the earliest decades are undercounted.)"
 * Transition: "Countries did not only publish at different times. They published different kinds of comics."
@@ -121,7 +120,6 @@ Draft text for §1. Lines marked [verify] contain a finding that must be checked
 **C2, genre heatmap**
 
 * Lead-in: "Each country built its comics around different stories."
-* Reading guide: "(Each row is one country and each column one genre. Darker purple means a larger share of that country's stories.)"
 * Takeaway [verify]: "Superheroes dominate **American** comics, but most other countries built their industries on humour, adventure and stories for children."
 * Caveat: "(A story can carry more than one genre, so shares count genre tags rather than whole stories. Smaller genres are grouped together and not shown.)"
 * Transition: "**Japan** is the clearest case of a country that built its own kind of comics, and then kept them for itself."

@@ -3,7 +3,6 @@
   "title": {
     "text": "Two ways to publish comics",
     "subtitle": [
-      "Each dot is a country: series published, against average issues per series.",
       "Both axes use a log scale. Countries with at least 200 series indexed."
     ],
     "anchor": "start",
