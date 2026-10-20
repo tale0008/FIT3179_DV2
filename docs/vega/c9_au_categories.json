@@ -109,8 +109,13 @@
         "color": "#D9D7CF"
       },
       "encoding": {
-        "detail": {
-          "field": "group"
+        "x": {
+          "aggregate": "min",
+          "field": "units"
+        },
+        "x2": {
+          "aggregate": "max",
+          "field": "units"
         }
       }
     },
