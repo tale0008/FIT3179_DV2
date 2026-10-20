@@ -267,9 +267,10 @@
         "type": "geoshape",
         "fill": null,
         "filled": false,
-        "stroke": "#2B2B28",
-        "strokeWidth": 1.2,
-        "clip": true
+        "stroke": "#00B4D8",
+        "strokeWidth": 2,
+        "clip": true,
+        "strokeJoin": "round"
       }
     }
   ],

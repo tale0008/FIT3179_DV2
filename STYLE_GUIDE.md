@@ -61,6 +61,7 @@ Colour is semantic. Each colour means one thing, and it means that thing everywh
 | Blue | `#1F4E9A` | `#1F4E9A` | United States |
 | Light grey | `#C9C9C4` | not used for text | Every other country, the past, context |
 | Dark grey | `#6F6D66` | not used for text | The country the reader is following, when it is not one of the three (see section 8) |
+| Cyan | `#00B4D8` | not used for text | Outline of the followed country on the world maps (M1, M4). An outline only, never a fill, so the map's own colours still show |
 | Purple ramp, light to dark | Vega `purples` scheme | not used for text | "How much" on maps and heatmaps |
 
 Rules:

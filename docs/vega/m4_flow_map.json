@@ -119,6 +119,45 @@
     },
     {
       "data": {
+        "url": "https://cdn.jsdelivr.net/npm/vega-datasets@2/data/world-110m.json",
+        "format": {
+          "type": "topojson",
+          "feature": "countries"
+        }
+      },
+      "transform": [
+        {
+          "calculate": "toNumber(datum.id)",
+          "as": "iso_n3"
+        },
+        {
+          "lookup": "iso_n3",
+          "from": {
+            "data": {
+              "url": "data/country_meta.csv"
+            },
+            "key": "iso_n3",
+            "fields": [
+              "code"
+            ]
+          }
+        },
+        {
+          "filter": "focus != '' && datum.code == focus"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "fill": null,
+        "filled": false,
+        "stroke": "#00B4D8",
+        "strokeWidth": 2,
+        "strokeJoin": "round",
+        "clip": true
+      }
+    },
+    {
+      "data": {
         "url": "data/reprint_flows.csv",
         "format": {
           "type": "csv"
