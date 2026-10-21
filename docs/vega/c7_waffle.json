@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Australia prints other countries' comics. Japan prints its own.",
+    "text": "Australia prints other countries' comics. Japan prints its own (to 2026)",
     "subtitle": [
       "Every 100 comic issues published in each country. Dark:",
       "reprints of foreign comics. Light: reprints of the country's",

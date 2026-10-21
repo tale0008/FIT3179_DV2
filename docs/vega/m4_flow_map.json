@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Where America's comics went",
+    "text": "Where America's comics went (to 2026)",
     "subtitle": [
       "Stories first published in the United States and reprinted elsewhere.",
       "Line width shows the number of reprinted stories. Flows of 1,000 or more."

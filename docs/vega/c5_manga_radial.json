@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Who running manga is written for",
+    "text": "Who running manga is written for (Aug 2023)",
     "subtitle": [
       "Popular manga still being published in August 2023, by",
       "intended audience. Series with no stated audience (520 of",

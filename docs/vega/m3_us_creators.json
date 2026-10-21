@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Where American comic creators were born",
+    "text": "Where American comic creators were born (to 2026)",
     "subtitle": [
       "Comic creators by birth state, in total and per million",
       "residents (US Census Bureau 2024 estimates). Only creators",

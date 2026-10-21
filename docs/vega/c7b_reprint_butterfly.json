@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Importers and self-reprinters",
+    "text": "Importers and self-reprinters (to 2026)",
     "subtitle": [
       "Share of each country's comic issues that reprint foreign",
       "comics (right) or the country's own comics (left). Countries",

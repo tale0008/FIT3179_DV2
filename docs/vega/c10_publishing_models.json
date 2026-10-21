@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Two ways to publish comics",
+    "text": "Two ways to publish comics (to 2026)",
     "subtitle": [
       "Both axes use a log scale. Countries with at least 200 series indexed."
     ],

@@ -1,10 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Which states search for manga",
+    "text": "Which states search for manga (2021 to 2026)",
     "subtitle": [
       "Share of Google searches for 'manga' when compared with",
-      "'comics', by state, past five years. Source: Google Trends."
+      "'comics', by state. Source: Google Trends."
     ],
     "anchor": "start",
     "fontSize": 16,

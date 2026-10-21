@@ -81,8 +81,9 @@ function contentWidth(el) {
 
 function withWidth(spec, width) {
   const copy = structuredClone(spec);
-  copy.width = width;
+  // A facet operator spec takes its width on the inner spec only.
   if (copy.spec) copy.spec.width = width;
+  else copy.width = width;
   return copy;
 }
 

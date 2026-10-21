@@ -90,59 +90,161 @@
     "projection": {
       "type": "mercator"
     },
-    "mark": {
-      "type": "geoshape",
-      "stroke": "#ffffff",
-      "strokeWidth": 0.4
-    },
-    "encoding": {
-      "shape": {
-        "field": "geo",
-        "type": "geojson"
-      },
-      "color": {
-        "field": "per_million",
-        "type": "quantitative",
-        "scale": {
-          "scheme": "purples",
-          "type": "sqrt",
-          "zero": true
+    "layer": [
+      {
+        "mark": {
+          "type": "geoshape",
+          "stroke": "#ffffff",
+          "strokeWidth": 0.4
         },
-        "legend": {
-          "title": "Manga artists per million residents",
-          "orient": "top",
-          "direction": "horizontal",
-          "gradientLength": 180,
-          "titleFontSize": 12,
-          "labelFontSize": 12,
-          "titleLimit": 0,
-          "labelLimit": 0
+        "encoding": {
+          "shape": {
+            "field": "geo",
+            "type": "geojson"
+          },
+          "color": {
+            "field": "per_million",
+            "type": "quantitative",
+            "scale": {
+              "scheme": "purples",
+              "type": "sqrt",
+              "zero": true
+            },
+            "legend": {
+              "title": "Manga artists per million residents",
+              "orient": "top",
+              "direction": "horizontal",
+              "gradientLength": 180,
+              "titleFontSize": 12,
+              "labelFontSize": 12,
+              "titleLimit": 0,
+              "labelLimit": 0
+            }
+          },
+          "tooltip": [
+            {
+              "field": "prefecture",
+              "type": "nominal",
+              "title": "Prefecture"
+            },
+            {
+              "field": "generation",
+              "type": "nominal",
+              "title": "Born"
+            },
+            {
+              "field": "mangaka",
+              "type": "quantitative",
+              "title": "Manga artists"
+            },
+            {
+              "field": "per_million",
+              "type": "quantitative",
+              "title": "Per million residents",
+              "format": ".1f"
+            }
+          ]
         }
       },
-      "tooltip": [
-        {
-          "field": "prefecture",
-          "type": "nominal",
-          "title": "Prefecture"
+      {
+        "transform": [
+          {
+            "filter": "(datum.pref_id == 39 && datum.generation == 'Born before 1950') || (datum.pref_id == 13 && datum.generation == '1960s')"
+          },
+          {
+            "calculate": "datum.pref_id == 39 ? 133.53 : datum.pref_id == 13 ? 139.69 : null",
+            "as": "lon"
+          },
+          {
+            "calculate": "datum.pref_id == 39 ? 33.56 : datum.pref_id == 13 ? 35.69 : null",
+            "as": "lat"
+          },
+          {
+            "calculate": "datum.pref_id == 39 ? 135.6 : datum.pref_id == 13 ? 141.6 : null",
+            "as": "tlon"
+          },
+          {
+            "calculate": "datum.pref_id == 39 ? 30.6 : datum.pref_id == 13 ? 33.2 : null",
+            "as": "tlat"
+          },
+          {
+            "calculate": "datum.pref_id == 39 ? [\"Kōchi: 14.5 per million,\", \"the highest on any map\"] : datum.pref_id == 13 ? [\"Tokyo leads only\", \"this generation\"] : null",
+            "as": "note"
+          }
+        ],
+        "mark": {
+          "type": "rule",
+          "color": "#2B2B28",
+          "strokeWidth": 0.8
         },
-        {
-          "field": "generation",
-          "type": "nominal",
-          "title": "Born"
-        },
-        {
-          "field": "mangaka",
-          "type": "quantitative",
-          "title": "Manga artists"
-        },
-        {
-          "field": "per_million",
-          "type": "quantitative",
-          "title": "Per million residents",
-          "format": ".1f"
+        "encoding": {
+          "longitude": {
+            "field": "lon",
+            "type": "quantitative"
+          },
+          "latitude": {
+            "field": "lat",
+            "type": "quantitative"
+          },
+          "longitude2": {
+            "field": "tlon"
+          },
+          "latitude2": {
+            "field": "tlat"
+          }
         }
-      ]
-    }
+      },
+      {
+        "transform": [
+          {
+            "filter": "(datum.pref_id == 39 && datum.generation == 'Born before 1950') || (datum.pref_id == 13 && datum.generation == '1960s')"
+          },
+          {
+            "calculate": "datum.pref_id == 39 ? 133.53 : datum.pref_id == 13 ? 139.69 : null",
+            "as": "lon"
+          },
+          {
+            "calculate": "datum.pref_id == 39 ? 33.56 : datum.pref_id == 13 ? 35.69 : null",
+            "as": "lat"
+          },
+          {
+            "calculate": "datum.pref_id == 39 ? 135.6 : datum.pref_id == 13 ? 141.6 : null",
+            "as": "tlon"
+          },
+          {
+            "calculate": "datum.pref_id == 39 ? 30.6 : datum.pref_id == 13 ? 33.2 : null",
+            "as": "tlat"
+          },
+          {
+            "calculate": "datum.pref_id == 39 ? [\"Kōchi: 14.5 per million,\", \"the highest on any map\"] : datum.pref_id == 13 ? [\"Tokyo leads only\", \"this generation\"] : null",
+            "as": "note"
+          }
+        ],
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "baseline": "top",
+          "fontSize": 11,
+          "color": "#2B2B28",
+          "dx": 2,
+          "dy": 2,
+          "lineHeight": 13
+        },
+        "encoding": {
+          "longitude": {
+            "field": "tlon",
+            "type": "quantitative"
+          },
+          "latitude": {
+            "field": "tlat",
+            "type": "quantitative"
+          },
+          "text": {
+            "field": "note"
+          }
+        }
+      }
+    ]
   },
   "config": {
     "view": {

@@ -116,16 +116,7 @@
       ]
     }
   ],
-  "width": 420,
-  "height": 22,
-  "mark": {
-    "type": "area",
-    "interpolate": "monotone",
-    "stroke": "#ffffff",
-    "strokeWidth": 0.6,
-    "cursor": "pointer"
-  },
-  "encoding": {
+  "facet": {
     "row": {
       "field": "country",
       "type": "nominal",
@@ -144,89 +135,137 @@
           "expr": "indexof(['Australia','Japan','United States'], datum.value) >= 0 ? 'bold' : 'normal'"
         }
       }
-    },
-    "x": {
-      "field": "year",
-      "type": "quantitative",
-      "scale": {
-        "domain": [
-          1930,
-          2026
-        ],
-        "nice": false
-      },
-      "axis": {
-        "title": null,
-        "format": "d",
-        "grid": false,
-        "tickCount": 10
-      }
-    },
-    "y": {
-      "field": "norm",
-      "type": "quantitative",
-      "scale": {
-        "range": [
-          22,
-          -22
-        ]
-      },
-      "axis": null
-    },
-    "tooltip": [
-      {
-        "field": "country",
-        "type": "nominal",
-        "title": "Country"
-      },
-      {
-        "field": "year",
-        "type": "quantitative",
-        "title": "Year",
-        "format": "d"
-      },
-      {
-        "field": "series",
-        "type": "quantitative",
-        "title": "Series started"
-      },
-      {
-        "field": "avg_year",
-        "type": "quantitative",
-        "title": "Average year",
-        "format": "d"
-      }
-    ],
-    "color": {
-      "condition": {
-        "test": "datum.code == focus && datum.highlight == 'Other countries'",
-        "value": "#6F6D66"
-      },
-      "field": "highlight",
-      "type": "nominal",
-      "scale": {
-        "domain": [
-          "Australia",
-          "Japan",
-          "United States",
-          "Other countries"
-        ],
-        "range": [
-          "#B07A00",
-          "#C8102E",
-          "#1F4E9A",
-          "#C9C9C4"
-        ]
-      },
-      "legend": null
-    },
-    "fillOpacity": {
-      "condition": {
-        "test": "focus == '' || datum.focus_here == 0 || datum.code == focus",
-        "value": 0.9
-      },
-      "value": 0.2
     }
+  },
+  "spec": {
+    "width": 420,
+    "height": 22,
+    "layer": [
+      {
+        "mark": {
+          "type": "area",
+          "interpolate": "monotone",
+          "stroke": "#ffffff",
+          "strokeWidth": 0.6,
+          "cursor": "pointer"
+        },
+        "encoding": {
+          "x": {
+            "field": "year",
+            "type": "quantitative",
+            "scale": {
+              "domain": [
+                1930,
+                2026
+              ],
+              "nice": false
+            },
+            "axis": {
+              "title": null,
+              "format": "d",
+              "grid": false,
+              "tickCount": 10
+            }
+          },
+          "y": {
+            "field": "norm",
+            "type": "quantitative",
+            "scale": {
+              "range": [
+                22,
+                -22
+              ]
+            },
+            "axis": null
+          },
+          "tooltip": [
+            {
+              "field": "country",
+              "type": "nominal",
+              "title": "Country"
+            },
+            {
+              "field": "year",
+              "type": "quantitative",
+              "title": "Year",
+              "format": "d"
+            },
+            {
+              "field": "series",
+              "type": "quantitative",
+              "title": "Series started"
+            },
+            {
+              "field": "avg_year",
+              "type": "quantitative",
+              "title": "Average year",
+              "format": "d"
+            }
+          ],
+          "color": {
+            "condition": {
+              "test": "datum.code == focus && datum.highlight == 'Other countries'",
+              "value": "#6F6D66"
+            },
+            "field": "highlight",
+            "type": "nominal",
+            "scale": {
+              "domain": [
+                "Australia",
+                "Japan",
+                "United States",
+                "Other countries"
+              ],
+              "range": [
+                "#B07A00",
+                "#C8102E",
+                "#1F4E9A",
+                "#C9C9C4"
+              ]
+            },
+            "legend": null
+          },
+          "fillOpacity": {
+            "condition": {
+              "test": "focus == '' || datum.focus_here == 0 || datum.code == focus",
+              "value": 0.9
+            },
+            "value": 0.2
+          }
+        }
+      },
+      {
+        "transform": [
+          {
+            "filter": "datum.country == 'Australia' && datum.year == 1989"
+          }
+        ],
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "baseline": "bottom",
+          "fontSize": 11,
+          "color": "#2B2B28",
+          "dy": -16,
+          "lineHeight": 13
+        },
+        "encoding": {
+          "x": {
+            "field": "year",
+            "type": "quantitative"
+          },
+          "y": {
+            "value": 22
+          },
+          "text": {
+            "value": [
+              "Almost no new series",
+              "since the mid-1980s"
+            ]
+          }
+        }
+      }
+    ]
   },
   "config": {
     "view": {

@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": {
-      "expr": "measure == 'Total' ? 'Comics published, in total' : 'Comics published per million people'"
+      "expr": "measure == 'Total' ? 'Comics published, in total (to 2026)' : 'Comics published per million people (to 2026)'"
     },
     "subtitle": [
       "Comic issues indexed in the Grand Comics Database, in total or",

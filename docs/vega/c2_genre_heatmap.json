@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Every country has its favourite genre",
+    "text": "Every country has its favourite genre (to 2026)",
     "subtitle": [
       "Share of each country's indexed stories by genre. A story can",
       "carry more than one genre tag."

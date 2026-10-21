@@ -252,6 +252,85 @@
           "value": 0.2
         }
       }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "year": 1995,
+            "y": 70,
+            "y2": 128
+          }
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "strokeDash": [
+          2,
+          2
+        ],
+        "color": "#2B2B28"
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": null
+        },
+        "y2": {
+          "field": "y2"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "year": 1983,
+            "y": 40,
+            "a": "left",
+            "t": [
+              "1990s: manga for adult men (seinen)",
+              "overtakes manga for boys (shōnen)"
+            ]
+          },
+          {
+            "year": 1971,
+            "y": 225,
+            "a": "left",
+            "t": [
+              "Shōnen: 41% of new series in the",
+              "1980s, 21% in the 2010s"
+            ]
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "top",
+        "fontSize": 11,
+        "color": "#2B2B28",
+        "lineHeight": 13
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": null
+        },
+        "text": {
+          "field": "t"
+        }
+      }
     }
   ]
 }
