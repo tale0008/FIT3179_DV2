@@ -37,6 +37,10 @@
       "expr": "zoom == 'Europe' ? [110, 53] : [0, 28]"
     },
     {
+      "name": "zoomUnit",
+      "expr": "width / (2 * PI)"
+    },
+    {
       "name": "zoomK",
       "value": 1
     },
@@ -63,7 +67,7 @@
       0
     ],
     "scale": {
-      "expr": "zoomBase * zoomK * width / (2 * PI)"
+      "expr": "zoomBase * zoomK * zoomUnit"
     },
     "center": {
       "expr": "zoomCentre"

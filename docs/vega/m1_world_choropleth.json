@@ -46,6 +46,30 @@
     {
       "name": "focus",
       "value": ""
+    },
+    {
+      "name": "zoomBase",
+      "expr": "zoom == 'Europe' ? 4 : 1"
+    },
+    {
+      "name": "zoomCentre",
+      "expr": "zoom == 'Europe' ? [12, 52] : [0, 0]"
+    },
+    {
+      "name": "zoomUnit",
+      "expr": "width / 5.42"
+    },
+    {
+      "name": "zoomK",
+      "value": 1
+    },
+    {
+      "name": "panX",
+      "value": 0
+    },
+    {
+      "name": "panY",
+      "value": 0
     }
   ],
   "width": "container",
@@ -57,13 +81,13 @@
   "projection": {
     "type": "equalEarth",
     "scale": {
-      "expr": "(zoom == 'Europe' ? 4 : 1) * width / 5.42"
+      "expr": "zoomBase * zoomK * zoomUnit"
     },
     "center": {
-      "expr": "zoom == 'Europe' ? [12, 52] : [0, 0]"
+      "expr": "zoomCentre"
     },
     "translate": {
-      "expr": "[width / 2, height / 2]"
+      "expr": "[width / 2 + panX, height / 2 + panY]"
     }
   },
   "layer": [

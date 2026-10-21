@@ -359,7 +359,7 @@ a:hover {
   cursor: pointer;
 }
 
-/* Zoom and pan on a map (M4). main.js adds the buttons to the row above. */
+/* Zoom and pan on a map (M1, M4). main.js adds the buttons to the row above. */
 .chart[data-zoom-pan] svg {
   cursor: grab;
   touch-action: none; /* a finger on the map pans it instead of scrolling the page */

@@ -126,7 +126,7 @@ async function embed(id, el, spec) {
   views[id] = result.view;
   for (const [name, value] of Object.entries(kept)) result.view.signal(name, value);
   linkFocus(result.view);
-  linkZoom(id, el, result.view);
+  linkZoom(id, el, result.view, spec);
   await result.view.runAsync();
 
   if (dataError) {
@@ -214,38 +214,57 @@ function linkFocus(view) {
 }
 
 /*
- * Zoom and pan a map. A spec opts in by declaring the params zoomK (zoom on top
- * of the preset), panX and panY (shift of the map in drawing pixels), plus
- * zoomBase and zoomCentre, which its "Zoom to" preset sets. Its projection uses
- * scale zoomBase * zoomK * width / (2 * PI), center zoomCentre and translate
- * [width / 2 + panX, height / 2 + panY], with rotate [100, 0, 0] fixed, so
- * zoomCentre's longitude is measured from the map's middle. Dragging pans;
- * pinching, or Ctrl + scroll, zooms about the pointer. Picking a preset starts
- * again from it. Plain scrolling still scrolls the page.
+ * Zoom and pan a map (M1, M4). A spec opts in by declaring the params zoomK
+ * (zoom on top of the preset), panX and panY (shift of the map in drawing
+ * pixels), zoomUnit (the projection scale that fits the whole world across the
+ * width), plus zoomBase and zoomCentre, which its "Zoom to" preset sets. Its
+ * projection uses scale zoomBase * zoomK * zoomUnit, center zoomCentre and
+ * translate [width / 2 + panX, height / 2 + panY]. Dragging pans; pinching, or
+ * Ctrl + scroll, zooms about the pointer. Picking a preset starts again from it.
+ * Plain scrolling still scrolls the page.
  */
 const ZOOM_MIN = 1;        // never smaller than the whole world across the width
 const ZOOM_MAX = 16;       // times the world view
 const ZOOM_STEP = 1.6;     // per press of a zoom button
 const WHEEL_RATE = 0.004;  // doublings of zoom per pixel of Ctrl + scroll
 const DRAG_THRESHOLD = 4;  // screen px a pointer moves before a press counts as a drag
-const MAP_TOP = 84;        // latitude band the map can be panned within
-const MAP_BOTTOM = -60;
+// Latitudes the map can be panned within. Mercator runs to infinity at the poles,
+// so it stops at Antarctica's coast and above Greenland.
+const PAN_LATITUDES = { mercator: [-60, 84] };
 
-const mercatorY = (lat) => Math.log(Math.tan(Math.PI / 4 + (lat * Math.PI) / 360));
 const clamp = (v, lo, hi) => (lo > hi ? (lo + hi) / 2 : Math.min(hi, Math.max(lo, v)));
-const zoomControls = new WeakMap(); // view -> its zoom buttons
+const zoomMaps = new WeakMap();  // view -> { type: projection type, controls: its buttons }
+const mapBoundsCache = {};
+
+// The whole map's extent [x0, x1, y0, y1] at projection scale 1, measured from
+// the projected centre, found by projecting points along the map's edges.
+// zoomCentre is in the projection's rotated frame, so no rotation is needed here.
+function mapBounds(type, centre) {
+  const key = `${type} ${centre}`;
+  if (mapBoundsCache[key]) return mapBoundsCache[key];
+  const proj = vega.projection(type)().scale(1).center(centre).translate([0, 0]);
+  const [bottom, top] = PAN_LATITUDES[type] || [-90, 90];
+  const edge = [];
+  for (let lat = bottom; lat <= top; lat += 2) edge.push([-179.9, lat], [179.9, lat]);
+  for (let lon = -179.9; lon <= 179.9; lon += 5) edge.push([lon, bottom], [lon, top]);
+  const xs = [], ys = [];
+  for (const [x, y] of edge.map(proj)) {
+    xs.push(x);
+    ys.push(y);
+  }
+  return (mapBoundsCache[key] = [Math.min(...xs), Math.max(...xs), Math.min(...ys), Math.max(...ys)]);
+}
 
 // Set zoom and pan, kept inside the map so it cannot be dragged off the edge.
 function setView(view, k, panX, panY) {
   const base = view.signal("zoomBase");
-  const [lon, lat] = view.signal("zoomCentre");
   const w = view.width(), h = view.height();
   k = clamp(k, ZOOM_MIN / base, ZOOM_MAX / base);
-  const s = (base * k * w) / (2 * Math.PI); // projection scale
-  const lonC = (lon * Math.PI) / 180;
-  const yC = mercatorY(lat);
-  panX = clamp(panX, w / 2 - s * (Math.PI - lonC), s * (Math.PI + lonC) - w / 2);
-  panY = clamp(panY, s * (mercatorY(MAP_BOTTOM) - yC) + h / 2, s * (mercatorY(MAP_TOP) - yC) - h / 2);
+  const s = base * k * view.signal("zoomUnit"); // projection scale
+  const [x0, x1, y0, y1] = mapBounds(zoomMaps.get(view).type, view.signal("zoomCentre")).map((v) => v * s);
+  // The map spans translate + [x0, x1] across; keep it covering the plot.
+  panX = clamp(panX, w / 2 - x1, -x0 - w / 2);
+  panY = clamp(panY, h / 2 - y1, -y0 - h / 2);
   view.signal("zoomK", k).signal("panX", panX).signal("panY", panY).runAsync();
   updateZoomControls(view);
 }
@@ -307,13 +326,13 @@ function addZoomControls(view, el) {
   hint.textContent = "Drag to move. Pinch or Ctrl + scroll to zoom.";
   group.appendChild(hint);
   row.appendChild(group);
-  zoomControls.set(view, group);
+  zoomMaps.get(view).controls = group;
   updateZoomControls(view);
 }
 
 // Reset only shows once the map has moved away from its preset.
 function updateZoomControls(view) {
-  const group = zoomControls.get(view);
+  const group = zoomMaps.get(view).controls;
   if (!group) return;
   const moved = view.signal("zoomK") !== 1 || view.signal("panX") !== 0 || view.signal("panY") !== 0;
   group.querySelector("button:last-of-type").hidden = !moved;
@@ -321,8 +340,9 @@ function updateZoomControls(view) {
 
 // Pointer and wheel handling go on the chart's element once, since it outlives
 // each re-embedded view; they act on whichever view is current.
-function linkZoom(id, el, view) {
+function linkZoom(id, el, view, spec) {
   if (!hasSignal(view, "zoomK")) return;
+  zoomMaps.set(view, { type: spec.projection.type });
   addZoomControls(view, el);
   if (hasSignal(view, "zoom")) view.addSignalListener("zoom", () => resetZoom(view)); // a preset starts afresh
   if (el.dataset.zoomPan) return;
