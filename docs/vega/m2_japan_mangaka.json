@@ -10,7 +10,7 @@
     ],
     "anchor": "start",
     "fontSize": 16,
-    "subtitleFontSize": 12,
+    "subtitleFontSize": 13,
     "subtitleColor": "#555"
   },
   "data": {
@@ -113,8 +113,8 @@
           "orient": "top",
           "direction": "horizontal",
           "gradientLength": 180,
-          "titleFontSize": 11,
-          "labelFontSize": 11,
+          "titleFontSize": 12,
+          "labelFontSize": 12,
           "titleLimit": 0,
           "labelLimit": 0
         }

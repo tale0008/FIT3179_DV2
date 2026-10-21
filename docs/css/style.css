@@ -128,11 +128,12 @@ a:hover {
 }
 
 /* Chart row: the chart's text first in the source, then its .figure.
-   Default puts the chart left; --flip puts it right. The text is centred
-   against the chart, or the chart against the text if the text is taller.
+   Default puts the chart left; --flip puts it right. The text and the chart
+   both start at the top of the row, so the first line of text lines up with
+   the chart title.
    Below 821px the row is one column in source order, text above chart. */
 .row-chart {
-  align-items: center;
+  align-items: start;
 }
 
 @media (min-width: 821px) {
@@ -357,42 +358,6 @@ a:hover {
 .vega-bindings input {
   accent-color: var(--ink);
   cursor: pointer;
-}
-
-/* Zoom and pan on a map (M1, M4). main.js adds the buttons to the row above. */
-.chart[data-zoom-pan] svg {
-  cursor: grab;
-  touch-action: none; /* a finger on the map pans it instead of scrolling the page */
-  user-select: none;  /* dragging would otherwise select the labels */
-}
-
-.chart.is-dragging svg {
-  cursor: grabbing;
-}
-
-.zoom-controls {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 4px var(--s1);
-}
-
-.zoom-controls button {
-  font: inherit;
-  color: var(--ink);
-  background: var(--paper);
-  border: 1.5px solid var(--ink-soft);
-  border-radius: 4px;
-  padding: 0 6px;
-  cursor: pointer;
-}
-
-.zoom-controls button[hidden] {
-  display: none;
-}
-
-.zoom-hint {
-  color: var(--muted);
 }
 
 /* Follow a country: the picker in the header and the tag shown while one is followed. */

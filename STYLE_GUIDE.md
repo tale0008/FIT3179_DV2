@@ -24,7 +24,7 @@ Section headings are claims or questions, never topic labels. Read in order, the
 | §4 | Australia's comics are mostly someone else's. |
 | §5 | Can we grow them at home? |
 
-Chart titles are plain descriptions of what is shown, with a subtitle line giving the unit, the period and the source in short form. Where a title names a country or category, that word is coloured to act as the legend (see section 5).
+Chart titles are plain descriptions of what is shown, except on the five key charts (C1, C7, C7a, C8, C9), whose titles state the chart's message as a headline. Every chart has a subtitle line giving the unit, the period and the source in short form. Where a title names a country or category, that word is coloured to act as the legend (see section 5).
 Headings must be center aligned.
 
 ## 3. The per-chart text pattern
@@ -35,7 +35,7 @@ Every chart follows the same five-part pattern. Parts marked optional can be dro
 2. **Reading guide** (optional, only where the chart cannot be read without one). Most charts need none: the title, axes, legend and direct labels already say how to read them, and repeating that in text clutters the page. Never describe a legend, an axis or what a dot or bar is. When a guide is genuinely needed (for example the horizon chart's folded bands, or a key the chart has no legend for), it is one short line in the chart subtitle, not a paragraph in the text. There is no "Reading the ..." paragraph in the text column.
 3. **The chart**, with its title and subtitle.
 4. **Takeaway** (1 or 2 short paragraphs, about 20 to 40 words). States the single finding with one or two specific numbers. Never just describes the chart.
-5. **Caveat** (optional, italic, in brackets, about 15 to 40 words). Data limits, definitions, exclusions. Example: "(The database is built by volunteers, so it records how thoroughly each country's comics have been catalogued as well as how many were made.)"
+5. **Caveat** (optional, italic, in brackets, about 15 to 40 words). Data limits, definitions, exclusions. At most one caveat per chart, and never one that repeats the chart's subtitle. Example: "(The database is built by volunteers, so it records how thoroughly each country's comics have been catalogued as well as how many were made.)"
 6. **Transition** (one sentence, often a question). Hands over to the next chart or section. Example: "So who makes comics depends on how you count. The next question is when."
 
 Total per chart: about 100 to 150 words. Per section intro: about 40 to 70 words.
@@ -91,7 +91,9 @@ Rules:
 * **Display fonts stay big.** Bangers and Bebas Neue are only used at 32px and above, never for sentences.
 * **Body text** is 18px with a line height of 1.6. Text beside a chart is held to about 68 characters a line.
 * **Caveats** are 16px italic in the muted grey.
-* **Chart text** is never smaller than 11px. Chart titles are 16px bold, subtitles 12px in `#555`.
+* **Chart text** is never smaller than 12px (axis, legend and label text), except the two percentages printed inside C2's cells, and C5, which is kept as it is. Chart titles are 16px bold, subtitles 13px in `#555`.
+* **Bold numbers:** at most one per paragraph.
+* Text beside a chart starts at the top of the row, level with the chart title.
 * **Bold** is for country names and key numbers only. No underlines except links, no all-caps in body text.
 * All text is left-aligned, except headings and the title, which are centred.
 
@@ -135,7 +137,6 @@ The spec asks for interactivity "where it makes sense", not for its own sake. Ea
 | Follow a country | M1, C1, C2, C10, C7, C7b, M4 | "Where does my country (or this one) sit in each of these?" |
 | Count per million or in total | M1 | The M1 lead-in says the map changes depending on how you count. |
 | Zoom to Europe | M1, M4 | Europe's countries are small and its flow lines overlap. |
-| Zoom and pan freely | M1, M4 | Small countries and the flow lines into them overlap even at the Europe preset. Drag to pan; pinch, Ctrl + scroll or the Zoom in/out buttons to zoom; Reset returns to the preset. |
 | Click an audience in the legend | C4 | The middle layers of a streamgraph are hard to read on their own. |
 
 Rules:

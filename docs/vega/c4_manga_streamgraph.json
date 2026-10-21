@@ -10,21 +10,9 @@
     ],
     "anchor": "start",
     "fontSize": 16,
-    "subtitleFontSize": 12,
+    "subtitleFontSize": 13,
     "subtitleColor": "#555"
   },
-  "params": [
-    {
-      "name": "audience",
-      "select": {
-        "type": "point",
-        "fields": [
-          "demographic"
-        ]
-      },
-      "bind": "legend"
-    }
-  ],
   "data": {
     "url": "data/manga_demo_by_year.csv",
     "format": {
@@ -71,11 +59,10 @@
     "type": "fit-x",
     "contains": "padding"
   },
-  "mark": {
-    "type": "area",
-    "interpolate": "basis",
-    "stroke": "#ffffff",
-    "strokeWidth": 0.5
+  "config": {
+    "view": {
+      "stroke": null
+    }
   },
   "encoding": {
     "x": {
@@ -89,9 +76,9 @@
         "nice": false
       },
       "axis": {
-        "titleFontSize": 11,
+        "titleFontSize": 12,
         "titleFontWeight": "normal",
-        "labelFontSize": 11,
+        "labelFontSize": 12,
         "gridColor": "#ECEBE6",
         "domain": false,
         "ticks": false,
@@ -99,77 +86,172 @@
         "format": "d",
         "grid": false
       }
-    },
-    "y": {
-      "field": "smooth",
-      "type": "quantitative",
-      "stack": "center",
-      "axis": null
-    },
-    "color": {
-      "field": "demographic",
-      "type": "nominal",
-      "scale": {
-        "domain": [
-          "Shōnen",
-          "Shōjo",
-          "Seinen",
-          "Josei",
-          "Kids",
-          "Not stated"
-        ],
-        "range": [
-          "#2D6A1F",
-          "#A9CF7F",
-          "#0E8C8C",
-          "#86D3CE",
-          "#A6A5A0",
-          "#DAD9D3"
-        ]
-      },
-      "legend": {
-        "title": null,
-        "orient": "top",
-        "direction": "horizontal",
-        "columns": 6,
-        "labelFontSize": 11,
-        "symbolType": "square",
-        "titleLimit": 0,
-        "labelLimit": 0
-      }
-    },
-    "order": {
-      "field": "ord"
-    },
-    "tooltip": [
-      {
-        "field": "year",
-        "type": "quantitative",
-        "title": "Start year",
-        "format": "d"
-      },
-      {
-        "field": "demographic",
-        "type": "nominal",
-        "title": "Audience"
-      },
-      {
-        "field": "titles",
-        "type": "quantitative",
-        "title": "New series that year"
-      }
-    ],
-    "opacity": {
-      "condition": {
-        "param": "audience",
-        "value": 1
-      },
-      "value": 0.2
     }
   },
-  "config": {
-    "view": {
-      "stroke": null
+  "layer": [
+    {
+      "mark": {
+        "type": "area",
+        "interpolate": "basis",
+        "stroke": "#ffffff",
+        "strokeWidth": 0.5
+      },
+      "encoding": {
+        "y": {
+          "field": "smooth",
+          "type": "quantitative",
+          "stack": "center",
+          "axis": null
+        },
+        "color": {
+          "field": "demographic",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Shōnen",
+              "Shōjo",
+              "Seinen",
+              "Josei",
+              "Kids",
+              "Not stated"
+            ],
+            "range": [
+              "#2D6A1F",
+              "#A9CF7F",
+              "#0E8C8C",
+              "#86D3CE",
+              "#A6A5A0",
+              "#DAD9D3"
+            ]
+          },
+          "legend": {
+            "title": null,
+            "orient": "top",
+            "direction": "horizontal",
+            "columns": 6,
+            "labelFontSize": 12,
+            "symbolType": "square",
+            "titleLimit": 0,
+            "labelLimit": 0
+          }
+        },
+        "order": {
+          "field": "ord"
+        },
+        "tooltip": [
+          {
+            "field": "year",
+            "type": "quantitative",
+            "title": "Start year",
+            "format": "d"
+          },
+          {
+            "field": "demographic",
+            "type": "nominal",
+            "title": "Audience"
+          },
+          {
+            "field": "titles",
+            "type": "quantitative",
+            "title": "New series that year"
+          }
+        ],
+        "opacity": {
+          "condition": {
+            "param": "audience",
+            "value": 1
+          },
+          "value": 0.2
+        }
+      },
+      "params": [
+        {
+          "name": "audience",
+          "select": {
+            "type": "point",
+            "fields": [
+              "demographic"
+            ]
+          },
+          "bind": "legend"
+        }
+      ]
+    },
+    {
+      "transform": [
+        {
+          "stack": "smooth",
+          "groupby": [
+            "year"
+          ],
+          "sort": [
+            {
+              "field": "ord"
+            }
+          ],
+          "offset": "center",
+          "as": [
+            "y0",
+            "y1"
+          ]
+        },
+        {
+          "calculate": "(datum.y0 + datum.y1) / 2",
+          "as": "mid"
+        },
+        {
+          "filter": "indexof(['Shōnen','Shōjo','Seinen','Josei'], datum.demographic) >= 0 && datum.year >= 1976 && datum.year <= 2016"
+        },
+        {
+          "window": [
+            {
+              "op": "row_number",
+              "as": "rank"
+            }
+          ],
+          "groupby": [
+            "demographic"
+          ],
+          "sort": [
+            {
+              "field": "smooth",
+              "order": "descending"
+            }
+          ]
+        },
+        {
+          "filter": "datum.rank == 1"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "y": {
+          "field": "mid",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "demographic"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.demographic == 'Shōnen' || datum.demographic == 'Seinen'",
+            "value": "#ffffff"
+          },
+          "value": "#1f1e1b"
+        },
+        "opacity": {
+          "condition": {
+            "param": "audience",
+            "empty": true,
+            "value": 1
+          },
+          "value": 0.2
+        }
+      }
     }
-  }
+  ]
 }

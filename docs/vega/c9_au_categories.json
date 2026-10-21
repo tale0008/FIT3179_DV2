@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Who is reading comics in Australia",
+    "text": "Children are Australia's fastest-growing comic readers",
     "subtitle": [
       "Graphic novels sold in Australian shops by category, 2020 and",
       "2023 (excluding manga and superhero titles).",
@@ -10,7 +10,7 @@
     ],
     "anchor": "start",
     "fontSize": 16,
-    "subtitleFontSize": 12,
+    "subtitleFontSize": 13,
     "subtitleColor": "#555"
   },
   "data": {
@@ -75,9 +75,9 @@
         "order": "descending"
       },
       "axis": {
-        "titleFontSize": 11,
+        "titleFontSize": 12,
         "titleFontWeight": "normal",
-        "labelFontSize": 11,
+        "labelFontSize": 12,
         "gridColor": "#ECEBE6",
         "domain": false,
         "ticks": false,
@@ -89,15 +89,16 @@
       "field": "units",
       "type": "quantitative",
       "axis": {
-        "titleFontSize": 11,
+        "titleFontSize": 12,
         "titleFontWeight": "normal",
-        "labelFontSize": 11,
+        "labelFontSize": 12,
         "gridColor": "#ECEBE6",
         "domain": false,
         "ticks": false,
         "title": "Copies sold",
         "format": "~s",
-        "tickCount": 5
+        "tickCount": 5,
+        "labelExpr": "datum.value == 0 ? '0' : datum.label"
       }
     }
   },
@@ -145,7 +146,7 @@
             "title": null,
             "orient": "top",
             "direction": "horizontal",
-            "labelFontSize": 11,
+            "labelFontSize": 12,
             "titleLimit": 0,
             "labelLimit": 0
           }
@@ -180,7 +181,7 @@
         "type": "text",
         "align": "left",
         "dx": 12,
-        "fontSize": 11,
+        "fontSize": 12,
         "fontWeight": "bold",
         "color": "#2B2B28"
       },
@@ -202,7 +203,7 @@
         "type": "text",
         "align": "left",
         "dx": 34,
-        "fontSize": 11,
+        "fontSize": 12,
         "color": "#2B2B28"
       },
       "encoding": {

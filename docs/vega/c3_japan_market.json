@@ -9,7 +9,7 @@
     ],
     "anchor": "start",
     "fontSize": 16,
-    "subtitleFontSize": 12,
+    "subtitleFontSize": 13,
     "subtitleColor": "#555"
   },
   "data": {
@@ -46,9 +46,9 @@
         "nice": false
       },
       "axis": {
-        "titleFontSize": 11,
+        "titleFontSize": 12,
         "titleFontWeight": "normal",
-        "labelFontSize": 11,
+        "labelFontSize": 12,
         "gridColor": "#ECEBE6",
         "domain": false,
         "ticks": false,
@@ -74,9 +74,9 @@
           "type": "quantitative",
           "stack": "zero",
           "axis": {
-            "titleFontSize": 11,
+            "titleFontSize": 12,
             "titleFontWeight": "normal",
-            "labelFontSize": 11,
+            "labelFontSize": 12,
             "gridColor": "#ECEBE6",
             "domain": false,
             "ticks": false,
@@ -114,7 +114,7 @@
             "title": null,
             "orient": "top",
             "direction": "horizontal",
-            "labelFontSize": 11,
+            "labelFontSize": 12,
             "symbolType": "square",
             "titleLimit": 0,
             "labelLimit": 0
@@ -184,7 +184,7 @@
             "align": "right",
             "dx": -4,
             "dy": -2,
-            "fontSize": 11,
+            "fontSize": 12,
             "color": "#2B2B28",
             "baseline": "bottom"
           },

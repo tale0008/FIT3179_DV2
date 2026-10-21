@@ -10,7 +10,7 @@
     ],
     "anchor": "start",
     "fontSize": 16,
-    "subtitleFontSize": 12,
+    "subtitleFontSize": 13,
     "subtitleColor": "#555"
   },
   "data": {
@@ -41,9 +41,9 @@
         "nice": false
       },
       "axis": {
-        "titleFontSize": 11,
+        "titleFontSize": 12,
         "titleFontWeight": "normal",
-        "labelFontSize": 11,
+        "labelFontSize": 12,
         "gridColor": "#ECEBE6",
         "domain": false,
         "ticks": false,
@@ -65,15 +65,16 @@
       "field": "attendance",
       "type": "quantitative",
       "axis": {
-        "titleFontSize": 11,
+        "titleFontSize": 12,
         "titleFontWeight": "normal",
-        "labelFontSize": 11,
+        "labelFontSize": 12,
         "gridColor": "#ECEBE6",
         "domain": false,
         "ticks": false,
         "title": "Attendance",
         "format": "~s",
-        "tickCount": 5
+        "tickCount": 5,
+        "labelExpr": "datum.value == 0 ? '0' : datum.label"
       }
     }
   },
@@ -118,7 +119,7 @@
       },
       "mark": {
         "type": "text",
-        "fontSize": 11,
+        "fontSize": 12,
         "color": "#5F5E58",
         "angle": 0
       },
@@ -140,7 +141,7 @@
         "type": "line",
         "color": "#B07A00",
         "strokeWidth": 2.5,
-        "interpolate": "monotone"
+        "interpolate": "linear"
       },
       "transform": [
         {
@@ -153,7 +154,7 @@
         "type": "line",
         "color": "#B07A00",
         "strokeWidth": 2.5,
-        "interpolate": "monotone"
+        "interpolate": "linear"
       },
       "transform": [
         {
@@ -207,7 +208,7 @@
       "mark": {
         "type": "text",
         "dy": -12,
-        "fontSize": 11,
+        "fontSize": 12,
         "fontWeight": "bold",
         "color": "#2B2B28"
       },

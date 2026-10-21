@@ -8,7 +8,7 @@
     ],
     "anchor": "start",
     "fontSize": 16,
-    "subtitleFontSize": 12,
+    "subtitleFontSize": 13,
     "subtitleColor": "#555"
   },
   "width": "container",
@@ -75,8 +75,8 @@
             "orient": "bottom-left",
             "direction": "horizontal",
             "gradientLength": 150,
-            "titleFontSize": 11,
-            "labelFontSize": 11,
+            "titleFontSize": 12,
+            "labelFontSize": 12,
             "titleLimit": 0,
             "labelLimit": 0
           }
@@ -172,7 +172,7 @@
       ],
       "mark": {
         "type": "text",
-        "fontSize": 11,
+        "fontSize": 12,
         "fontWeight": "bold",
         "color": "#2B2B28"
       },

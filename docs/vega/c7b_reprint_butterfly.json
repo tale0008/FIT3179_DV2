@@ -9,7 +9,7 @@
     ],
     "anchor": "start",
     "fontSize": 16,
-    "subtitleFontSize": 12,
+    "subtitleFontSize": 13,
     "subtitleColor": "#555"
   },
   "params": [
@@ -104,7 +104,7 @@
       },
       "axis": {
         "title": null,
-        "labelFontSize": 11,
+        "labelFontSize": 12,
         "domain": false,
         "ticks": false,
         "labelFontWeight": {
@@ -136,9 +136,9 @@
           "axis": {
             "title": "← own comics (%)     foreign comics (%) →",
             "labelExpr": "abs(datum.value)",
-            "titleFontSize": 11,
+            "titleFontSize": 12,
             "titleFontWeight": "normal",
-            "labelFontSize": 11,
+            "labelFontSize": 12,
             "grid": true,
             "gridColor": "#ECEBE6",
             "tickCount": 8,
@@ -223,7 +223,7 @@
       ],
       "mark": {
         "type": "text",
-        "fontSize": 11,
+        "fontSize": 12,
         "fontWeight": "bold",
         "color": "#2B2B28",
         "align": "left",
@@ -256,7 +256,7 @@
       ],
       "mark": {
         "type": "text",
-        "fontSize": 11,
+        "fontSize": 12,
         "fontWeight": "bold",
         "color": "#2B2B28",
         "align": "right",

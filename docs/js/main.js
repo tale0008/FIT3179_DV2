@@ -51,8 +51,8 @@ const EMBED_OPTIONS = {
   config: {
     background: null,
     font: "Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
-    axis: { labelFontSize: 11, titleFontSize: 12, labelColor: "#3a3833", titleColor: "#3a3833" },
-    legend: { labelFontSize: 11, titleFontSize: 12, labelColor: "#3a3833" }
+    axis: { labelFontSize: 12, titleFontSize: 12, labelColor: "#3a3833", titleColor: "#3a3833" },
+    legend: { labelFontSize: 12, titleFontSize: 12, labelColor: "#3a3833" }
   }
 };
 const FACET_LABEL_ROOM = 110; // px kept free for a facet chart's row labels
@@ -126,7 +126,6 @@ async function embed(id, el, spec) {
   views[id] = result.view;
   for (const [name, value] of Object.entries(kept)) result.view.signal(name, value);
   linkFocus(result.view);
-  linkZoom(id, el, result.view, spec);
   await result.view.runAsync();
 
   if (dataError) {
@@ -154,17 +153,13 @@ function boundParams(view, spec) {
  */
 let focus = "";
 
-function hasSignal(view, name) {
+function hasFocus(view) {
   try {
-    view.signal(name);
+    view.signal("focus");
     return true;
   } catch (err) {
-    return false; // this chart has no such param
+    return false; // this chart has no focus param
   }
-}
-
-function hasFocus(view) {
-  return hasSignal(view, "focus");
 }
 
 function setFocus(code, name) {
@@ -211,211 +206,6 @@ function linkFocus(view) {
     if (!code) return;
     setFocus(code === focus ? "" : code, d.name || d.country || d.target);
   });
-}
-
-/*
- * Zoom and pan a map (M1, M4). A spec opts in by declaring the params zoomK
- * (zoom on top of the preset), panX and panY (shift of the map in drawing
- * pixels), zoomUnit (the projection scale that fits the whole world across the
- * width), plus zoomBase and zoomCentre, which its "Zoom to" preset sets. Its
- * projection uses scale zoomBase * zoomK * zoomUnit, center zoomCentre and
- * translate [width / 2 + panX, height / 2 + panY]. Dragging pans; pinching, or
- * Ctrl + scroll, zooms about the pointer. Picking a preset starts again from it.
- * Plain scrolling still scrolls the page.
- */
-const ZOOM_MIN = 1;        // never smaller than the whole world across the width
-const ZOOM_MAX = 16;       // times the world view
-const ZOOM_STEP = 1.6;     // per press of a zoom button
-const WHEEL_RATE = 0.004;  // doublings of zoom per pixel of Ctrl + scroll
-const DRAG_THRESHOLD = 4;  // screen px a pointer moves before a press counts as a drag
-// Latitudes the map can be panned within. Mercator runs to infinity at the poles,
-// so it stops at Antarctica's coast and above Greenland.
-const PAN_LATITUDES = { mercator: [-60, 84] };
-
-const clamp = (v, lo, hi) => (lo > hi ? (lo + hi) / 2 : Math.min(hi, Math.max(lo, v)));
-const zoomMaps = new WeakMap();  // view -> { type: projection type, controls: its buttons }
-const mapBoundsCache = {};
-
-// The whole map's extent [x0, x1, y0, y1] at projection scale 1, measured from
-// the projected centre, found by projecting points along the map's edges.
-// zoomCentre is in the projection's rotated frame, so no rotation is needed here.
-function mapBounds(type, centre) {
-  const key = `${type} ${centre}`;
-  if (mapBoundsCache[key]) return mapBoundsCache[key];
-  const proj = vega.projection(type)().scale(1).center(centre).translate([0, 0]);
-  const [bottom, top] = PAN_LATITUDES[type] || [-90, 90];
-  const edge = [];
-  for (let lat = bottom; lat <= top; lat += 2) edge.push([-179.9, lat], [179.9, lat]);
-  for (let lon = -179.9; lon <= 179.9; lon += 5) edge.push([lon, bottom], [lon, top]);
-  const xs = [], ys = [];
-  for (const [x, y] of edge.map(proj)) {
-    xs.push(x);
-    ys.push(y);
-  }
-  return (mapBoundsCache[key] = [Math.min(...xs), Math.max(...xs), Math.min(...ys), Math.max(...ys)]);
-}
-
-// Set zoom and pan, kept inside the map so it cannot be dragged off the edge.
-function setView(view, k, panX, panY) {
-  const base = view.signal("zoomBase");
-  const w = view.width(), h = view.height();
-  k = clamp(k, ZOOM_MIN / base, ZOOM_MAX / base);
-  const s = base * k * view.signal("zoomUnit"); // projection scale
-  const [x0, x1, y0, y1] = mapBounds(zoomMaps.get(view).type, view.signal("zoomCentre")).map((v) => v * s);
-  // The map spans translate + [x0, x1] across; keep it covering the plot.
-  panX = clamp(panX, w / 2 - x1, -x0 - w / 2);
-  panY = clamp(panY, h / 2 - y1, -y0 - h / 2);
-  view.signal("zoomK", k).signal("panX", panX).signal("panY", panY).runAsync();
-  updateZoomControls(view);
-}
-
-// Zoom by `ratio`, keeping the drawing point p (relative to the plot) fixed.
-function zoomAt(view, p, ratio) {
-  const k0 = view.signal("zoomK");
-  const base = view.signal("zoomBase");
-  const k = clamp(k0 * ratio, ZOOM_MIN / base, ZOOM_MAX / base);
-  const r = k / k0;
-  const tx = view.width() / 2 + view.signal("panX");
-  const ty = view.height() / 2 + view.signal("panY");
-  setView(view, k, p[0] - (p[0] - tx) * r - view.width() / 2, p[1] - (p[1] - ty) * r - view.height() / 2);
-}
-
-function zoomAtCentre(view, ratio) {
-  zoomAt(view, [view.width() / 2, view.height() / 2], ratio);
-}
-
-function resetZoom(view) {
-  setView(view, 1, 0, 0);
-}
-
-// Drawing pixels per screen pixel, since scaleSvg draws the SVG larger than its size.
-function drawPerScreen(el) {
-  const svg = el.querySelector("svg");
-  return svg ? svgWidth(el) / svg.getBoundingClientRect().width : 1;
-}
-
-// A screen point as drawing pixels relative to the plot's top-left corner.
-function plotPoint(view, el, clientX, clientY) {
-  const rect = el.querySelector("svg").getBoundingClientRect();
-  const f = drawPerScreen(el);
-  const pad = view.padding();
-  const origin = view.origin();
-  return [(clientX - rect.left) * f - pad.left - origin[0], (clientY - rect.top) * f - pad.top - origin[1]];
-}
-
-// Zoom buttons, added to the row of buttons Vega draws under the chart.
-function addZoomControls(view, el) {
-  const row = el.querySelector(".vega-bindings");
-  if (!row) return;
-  const group = document.createElement("div");
-  group.className = "zoom-controls";
-  const buttons = [
-    ["Zoom in", () => zoomAtCentre(view, ZOOM_STEP)],
-    ["Zoom out", () => zoomAtCentre(view, 1 / ZOOM_STEP)],
-    ["Reset", () => resetZoom(view)]
-  ];
-  for (const [label, action] of buttons) {
-    const button = document.createElement("button");
-    button.type = "button";
-    button.textContent = label;
-    button.addEventListener("click", action);
-    group.appendChild(button);
-  }
-  const hint = document.createElement("span");
-  hint.className = "zoom-hint";
-  hint.textContent = "Drag to move. Pinch or Ctrl + scroll to zoom.";
-  group.appendChild(hint);
-  row.appendChild(group);
-  zoomMaps.get(view).controls = group;
-  updateZoomControls(view);
-}
-
-// Reset only shows once the map has moved away from its preset.
-function updateZoomControls(view) {
-  const group = zoomMaps.get(view).controls;
-  if (!group) return;
-  const moved = view.signal("zoomK") !== 1 || view.signal("panX") !== 0 || view.signal("panY") !== 0;
-  group.querySelector("button:last-of-type").hidden = !moved;
-}
-
-// Pointer and wheel handling go on the chart's element once, since it outlives
-// each re-embedded view; they act on whichever view is current.
-function linkZoom(id, el, view, spec) {
-  if (!hasSignal(view, "zoomK")) return;
-  zoomMaps.set(view, { type: spec.projection.type });
-  addZoomControls(view, el);
-  if (hasSignal(view, "zoom")) view.addSignalListener("zoom", () => resetZoom(view)); // a preset starts afresh
-  if (el.dataset.zoomPan) return;
-  el.dataset.zoomPan = "on";
-
-  const pointers = new Map(); // pointerId -> last [clientX, clientY]
-  let travel = 0;             // screen px moved in the current gesture
-  let dragged = false;        // the gesture was a drag, so its click should not follow a country
-
-  el.addEventListener("wheel", (e) => {
-    const view = views[id];
-    if (!view || !(e.ctrlKey || e.metaKey) || !e.target.closest("svg")) return;
-    e.preventDefault(); // trackpad pinches arrive as Ctrl + wheel; stop the browser zooming the page
-    const px = e.deltaMode === 1 ? e.deltaY * 16 : e.deltaY;
-    zoomAt(view, plotPoint(view, el, e.clientX, e.clientY), Math.pow(2, -px * WHEEL_RATE));
-  }, { passive: false });
-
-  el.addEventListener("pointerdown", (e) => {
-    if (!views[id] || !e.target.closest("svg") || (e.pointerType === "mouse" && e.button !== 0)) return;
-    if (pointers.size === 0) {
-      travel = 0;
-      dragged = false;
-    }
-    pointers.set(e.pointerId, [e.clientX, e.clientY]);
-  });
-
-  el.addEventListener("pointermove", (e) => {
-    const last = pointers.get(e.pointerId);
-    const view = views[id];
-    if (!last || !view) return;
-    const before = [...pointers.values()];
-    pointers.set(e.pointerId, [e.clientX, e.clientY]);
-    travel += Math.hypot(e.clientX - last[0], e.clientY - last[1]);
-    if (!dragged) {
-      if (travel < DRAG_THRESHOLD) return;
-      // Capture only once it is a drag: a captured press would send its click to
-      // this element instead of the country under it.
-      dragged = true;
-      el.classList.add("is-dragging");
-      for (const pid of pointers.keys()) el.setPointerCapture(pid);
-    }
-    const f = drawPerScreen(el);
-    const after = [...pointers.values()];
-    if (after.length === 1) {
-      setView(view, view.signal("zoomK"),
-        view.signal("panX") + (e.clientX - last[0]) * f,
-        view.signal("panY") + (e.clientY - last[1]) * f);
-    } else if (after.length === 2) {
-      // Pinch: pan with the midpoint of the two fingers, zoom with their spread.
-      const mid = (pts) => [(pts[0][0] + pts[1][0]) / 2, (pts[0][1] + pts[1][1]) / 2];
-      const spread = (pts) => Math.hypot(pts[0][0] - pts[1][0], pts[0][1] - pts[1][1]);
-      const [m0, m1] = [mid(before), mid(after)];
-      setView(view, view.signal("zoomK"),
-        view.signal("panX") + (m1[0] - m0[0]) * f,
-        view.signal("panY") + (m1[1] - m0[1]) * f);
-      if (spread(before) > 0) zoomAt(view, plotPoint(view, el, m1[0], m1[1]), spread(after) / spread(before));
-    }
-  });
-
-  const release = (e) => {
-    pointers.delete(e.pointerId);
-    if (pointers.size === 0) el.classList.remove("is-dragging");
-  };
-  el.addEventListener("pointerup", release);
-  el.addEventListener("pointercancel", release);
-
-  // A drag ends with a click; stop it before it reaches Vega and changes the focus.
-  el.addEventListener("click", (e) => {
-    if (dragged && pointers.size === 0) {
-      e.stopPropagation();
-      dragged = false;
-    }
-  }, true);
 }
 
 async function render(id) {

@@ -11,7 +11,7 @@
     ],
     "anchor": "start",
     "fontSize": 16,
-    "subtitleFontSize": 12,
+    "subtitleFontSize": 13,
     "subtitleColor": "#555"
   },
   "params": [
@@ -46,30 +46,6 @@
     {
       "name": "focus",
       "value": ""
-    },
-    {
-      "name": "zoomBase",
-      "expr": "zoom == 'Europe' ? 4 : 1"
-    },
-    {
-      "name": "zoomCentre",
-      "expr": "zoom == 'Europe' ? [12, 52] : [0, 0]"
-    },
-    {
-      "name": "zoomUnit",
-      "expr": "width / 5.42"
-    },
-    {
-      "name": "zoomK",
-      "value": 1
-    },
-    {
-      "name": "panX",
-      "value": 0
-    },
-    {
-      "name": "panY",
-      "value": 0
     }
   ],
   "width": "container",
@@ -81,13 +57,13 @@
   "projection": {
     "type": "equalEarth",
     "scale": {
-      "expr": "zoomBase * zoomK * zoomUnit"
+      "expr": "(zoom == 'Europe' ? 4 : 1) * width / 5.42"
     },
     "center": {
-      "expr": "zoomCentre"
+      "expr": "zoom == 'Europe' ? [12, 52] : [0, 0]"
     },
     "translate": {
-      "expr": "[width / 2 + panX, height / 2 + panY]"
+      "expr": "[width / 2, height / 2]"
     }
   },
   "layer": [
@@ -197,7 +173,7 @@
             "gradientLength": 180,
             "format": ",.0f",
             "titleFontSize": 12,
-            "labelFontSize": 11,
+            "labelFontSize": 12,
             "offset": 4
           }
         },
@@ -296,6 +272,74 @@
         "clip": true,
         "strokeJoin": "round"
       }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 6,
+            "lat": 60,
+            "label": [
+              "Norway",
+              "10,600"
+            ]
+          }
+        ]
+      },
+      "transform": [
+        {
+          "filter": "measure != 'Total' && zoom == 'World'"
+        }
+      ],
+      "layer": [
+        {
+          "mark": {
+            "type": "rule",
+            "stroke": "#3a3833",
+            "strokeWidth": 0.8
+          },
+          "encoding": {
+            "longitude": {
+              "field": "lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "lat",
+              "type": "quantitative"
+            },
+            "longitude2": {
+              "datum": -40
+            },
+            "latitude2": {
+              "datum": 47
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "center",
+            "baseline": "top",
+            "dx": 0,
+            "fontSize": 12,
+            "fontWeight": "bold",
+            "color": "#3a3833",
+            "lineHeight": 13,
+            "dy": 2
+          },
+          "encoding": {
+            "longitude": {
+              "datum": -40
+            },
+            "latitude": {
+              "datum": 47
+            },
+            "text": {
+              "field": "label"
+            }
+          }
+        }
+      ]
     }
   ],
   "config": {

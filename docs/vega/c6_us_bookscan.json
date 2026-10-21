@@ -10,7 +10,7 @@
     ],
     "anchor": "start",
     "fontSize": 16,
-    "subtitleFontSize": 12,
+    "subtitleFontSize": 13,
     "subtitleColor": "#555"
   },
   "data": {
@@ -68,8 +68,8 @@
         "nice": false
       },
       "axis": {
-        "titleFontSize": 11,
-        "labelFontSize": 11,
+        "titleFontSize": 12,
+        "labelFontSize": 12,
         "gridColor": "#ECEBE6",
         "domain": false,
         "ticks": false,
@@ -88,9 +88,9 @@
       "field": "millions",
       "type": "quantitative",
       "axis": {
-        "titleFontSize": 11,
+        "titleFontSize": 12,
         "titleFontWeight": "normal",
-        "labelFontSize": 11,
+        "labelFontSize": 12,
         "gridColor": "#ECEBE6",
         "domain": false,
         "ticks": false,
@@ -158,7 +158,7 @@
         "type": "text",
         "align": "left",
         "dx": 8,
-        "fontSize": 11,
+        "fontSize": 12,
         "color": "#2B2B28"
       },
       "encoding": {
@@ -180,7 +180,7 @@
       "mark": {
         "type": "text",
         "dy": -12,
-        "fontSize": 11,
+        "fontSize": 12,
         "color": "#2B2B28"
       },
       "encoding": {

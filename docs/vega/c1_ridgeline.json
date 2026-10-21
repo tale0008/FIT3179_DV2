@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "When each country made its comics",
+    "text": "Australia's comic boom ended decades ago",
     "subtitle": [
       "New series started per year, smoothed over five years and",
       "scaled to each country's own peak. Uncertain start years",
@@ -9,7 +9,7 @@
     ],
     "anchor": "start",
     "fontSize": 16,
-    "subtitleFontSize": 12,
+    "subtitleFontSize": 13,
     "subtitleColor": "#555"
   },
   "params": [
@@ -138,7 +138,7 @@
       "header": {
         "labelAngle": 0,
         "labelAlign": "left",
-        "labelFontSize": 11,
+        "labelFontSize": 12,
         "labelPadding": 6,
         "labelFontWeight": {
           "expr": "indexof(['Australia','Japan','United States'], datum.value) >= 0 ? 'bold' : 'normal'"

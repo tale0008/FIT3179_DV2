@@ -1,14 +1,14 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "What Australia buys, and what it makes",
+    "text": "Australians buy more comics every year. They make almost none.",
     "subtitle": [
       "Two different counts for the same four years: copies sold",
       "in Australian shops, and new comic series made in Australia."
     ],
     "anchor": "start",
     "fontSize": 16,
-    "subtitleFontSize": 12,
+    "subtitleFontSize": 13,
     "subtitleColor": "#555"
   },
   "spacing": 28,
@@ -26,7 +26,7 @@
         "anchor": "start",
         "fontSize": 13,
         "fontWeight": "bold",
-        "subtitleFontSize": 11,
+        "subtitleFontSize": 13,
         "subtitleColor": "#555",
         "offset": 10
       },
@@ -118,7 +118,7 @@
           "mark": {
             "type": "text",
             "dy": -6,
-            "fontSize": 11,
+            "fontSize": 12,
             "baseline": "bottom",
             "color": "#2B2B28"
           },
@@ -171,7 +171,7 @@
         "anchor": "start",
         "fontSize": 13,
         "fontWeight": "bold",
-        "subtitleFontSize": 11,
+        "subtitleFontSize": 13,
         "subtitleColor": "#555",
         "offset": 10
       },
@@ -291,7 +291,7 @@
           ],
           "mark": {
             "type": "text",
-            "fontSize": 11,
+            "fontSize": 12,
             "color": "#2B2B28",
             "baseline": "middle"
           },

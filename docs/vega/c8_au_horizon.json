@@ -1,14 +1,14 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Eighty years of Australian comics",
+    "text": "Australia's comics boomed while American comics were banned",
     "subtitle": [
       "New Australian comic series started each year, averaged over three years. Uncertain start years excluded.",
       "Horizon chart: light gold fills up to half the busiest year. Busier years fold back on top in dark gold, so dark gold marks the busiest years."
     ],
     "anchor": "start",
     "fontSize": 16,
-    "subtitleFontSize": 12,
+    "subtitleFontSize": 13,
     "subtitleColor": "#555"
   },
   "data": {
@@ -208,7 +208,7 @@
             "baseline": "bottom",
             "dx": 3,
             "dy": 0,
-            "fontSize": 11,
+            "fontSize": 12,
             "color": "#2B2B28"
           },
           "encoding": {
