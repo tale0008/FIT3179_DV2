@@ -27,6 +27,26 @@
     {
       "name": "focus",
       "value": ""
+    },
+    {
+      "name": "zoomBase",
+      "expr": "zoom == 'Europe' ? 3.3 : 1"
+    },
+    {
+      "name": "zoomCentre",
+      "expr": "zoom == 'Europe' ? [110, 53] : [0, 28]"
+    },
+    {
+      "name": "zoomK",
+      "value": 1
+    },
+    {
+      "name": "panX",
+      "value": 0
+    },
+    {
+      "name": "panY",
+      "value": 0
     }
   ],
   "width": "container",
@@ -43,13 +63,13 @@
       0
     ],
     "scale": {
-      "expr": "(zoom == 'Europe' ? 3.3 : 1) * width / (2 * PI)"
+      "expr": "zoomBase * zoomK * width / (2 * PI)"
     },
     "center": {
-      "expr": "zoom == 'Europe' ? [110, 53] : [0, 28]"
+      "expr": "zoomCentre"
     },
     "translate": {
-      "expr": "[width / 2, height / 2]"
+      "expr": "[width / 2 + panX, height / 2 + panY]"
     }
   },
   "layer": [
@@ -823,7 +843,7 @@
         {
           "transform": [
             {
-              "filter": "zoom == 'Europe' ? (datum.tlon > -15 && datum.tlon < 40 && datum.reprints >= 2000) || datum.target_code == focus : indexof(['fr','no','br','mx','ca'], datum.target_code) >= 0 || datum.target_code == focus"
+              "filter": "datum.target_code == focus || (zoomBase * zoomK >= 6 ? true : zoomBase * zoomK >= 2 ? datum.reprints >= 2000 : indexof(['fr','no','br','mx','ca'], datum.target_code) >= 0)"
             }
           ],
           "mark": {
@@ -850,7 +870,7 @@
         {
           "transform": [
             {
-              "filter": "zoom == 'World'"
+              "filter": "zoomBase * zoomK < 2"
             },
             {
               "filter": "datum.target_code == 'au'"
