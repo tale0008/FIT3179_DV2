@@ -175,8 +175,8 @@ function setFocus(code, name) {
     });
   }
 
-  // The header picker and the floating one always show the same country.
-  for (const id of ["focus-select", "focus-float"]) {
+  // The header picker, the floating one and the waffle's always show the same country.
+  for (const id of ["focus-select", "focus-float", "focus-waffle"]) {
     const select = document.getElementById(id);
     if (code && !select.querySelector(`option[value="${code}"]`)) {
       select.add(new Option(name || code, code)); // a country clicked in a chart but not in the list
@@ -272,8 +272,10 @@ function init() {
 
   const headerSelect = document.getElementById("focus-select");
   const floatSelect = document.getElementById("focus-float");
+  const waffleSelect = document.getElementById("focus-waffle");
   floatSelect.innerHTML = headerSelect.innerHTML;
-  for (const select of [headerSelect, floatSelect]) {
+  waffleSelect.innerHTML = headerSelect.innerHTML;
+  for (const select of [headerSelect, floatSelect, waffleSelect]) {
     select.addEventListener("change", (e) => setFocus(e.target.value));
   }
   document.getElementById("focus-clear").addEventListener("click", () => setFocus(""));

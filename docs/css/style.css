@@ -372,6 +372,7 @@ a:hover {
 }
 
 .focus-picker select,
+.chart-hint select,
 .focus-chip select,
 .focus-chip button {
   font: inherit;
@@ -381,6 +382,22 @@ a:hover {
   border-radius: 4px;
   padding: 2px 6px;
   cursor: pointer;
+}
+
+/* A prompt under a chart that changes when a country is followed (C7). */
+.chart-hint {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s1);
+  margin: var(--s2) 0 0;
+  padding: var(--s1) var(--s2);
+  background: var(--paper-tint);
+  border-left: 4px solid var(--ink);
+  border-radius: 4px;
+  font-family: var(--font-ui);
+  font-size: 15px;
+  color: var(--ink);
 }
 
 .focus-chip {
