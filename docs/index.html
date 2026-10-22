@@ -330,11 +330,6 @@
       </div>
       <figure class="figure">
         <div id="c7" class="chart"></div>
-        <!-- Another copy of the header picker (options copied in js/main.js). -->
-        <p class="chart-hint">
-          <label for="focus-waffle"><strong>Try it:</strong> pick a country to add its waffle</label>
-          <select id="focus-waffle"></select>
-        </p>
       </figure>
     </div>
 
@@ -469,29 +464,33 @@
         <h3>Data sources</h3>
         <h4>Comics</h4>
         <ul class="sources">
-          <li><a href="https://www.comics.org/">Grand Comics Database</a> (comics.org), licensed <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Comic issues, series, genres, reprints and creators.</li>
-          <li><a href="https://www.wikidata.org/">Wikidata</a> (wikidata.org), manga artists' birthplaces and prefecture populations, <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>.</li>
-          <li><a href="https://myanimelist.net/">MyAnimeList</a>, top 5,000 manga by members, via a Kaggle export: Vall Hernàndez, A., <a href="https://www.kaggle.com/datasets/andreuvallhernndez/myanimelist">MyAnimeList Anime and Manga Datasets</a> (kaggle.com). Data as of August 2023.</li>
+          <li>Grand Comics Database (comics.org), <a href="https://www.comics.org/download/">data download page</a> (the full database, free account needed), licensed <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Comic issues, series, genres, reprints and creators.</li>
+          <li>Wikidata (wikidata.org), <a href="https://query.wikidata.org/#SELECT%20DISTINCT%20%3Fperson%20%3Fbirth%20%3Fcode%20WHERE%20%7B%0A%20%20%3Fperson%20wdt%3AP106%20wd%3AQ191633%20%3B%0A%20%20%20%20%20%20%20%20%20%20wdt%3AP19%20%3Fplace%20.%0A%20%20%3Fplace%20wdt%3AP131%2A%20%3Fpref%20.%0A%20%20%3Fpref%20wdt%3AP31%20wd%3AQ50337%20%3B%0A%20%20%20%20%20%20%20%20wdt%3AP300%20%3Fcode%20.%0A%20%20OPTIONAL%20%7B%20%3Fperson%20wdt%3AP569%20%3Fbirth%20.%20%7D%0A%7D">query for manga artists' birthplaces</a> and <a href="https://query.wikidata.org/#SELECT%20%3Fcode%20%3FprefLabel%20%3Fpop%20%3Fwhen%20WHERE%20%7B%0A%20%20%3Fpref%20wdt%3AP31%20wd%3AQ50337%20%3B%0A%20%20%20%20%20%20%20%20wdt%3AP300%20%3Fcode%20%3B%0A%20%20%20%20%20%20%20%20p%3AP1082%20%3Fst%20.%0A%20%20%3Fst%20ps%3AP1082%20%3Fpop%20.%0A%20%20OPTIONAL%20%7B%20%3Fst%20pq%3AP585%20%3Fwhen%20.%20%7D%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22en%22.%20%3Fpref%20rdfs%3Alabel%20%3FprefLabel%20.%20%7D%0A%7D">query for prefecture populations</a> (each opens in the Wikidata Query Service, press Run to see the results), <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>.</li>
+          <li>MyAnimeList, <a href="https://myanimelist.net/topmanga.php?type=bypopularity">top manga by members</a>, top 5,000 manga via a Kaggle export: Vall Hernàndez, A., <a href="https://www.kaggle.com/datasets/andreuvallhernndez/myanimelist">MyAnimeList Anime and Manga Datasets</a> (kaggle.com). Data as of August 2023.</li>
         </ul>
         <h4>Markets, sales and fans</h4>
         <ul class="sources">
-          <li>Research Institute for Publications, All Japan Magazine and Book Publishers' and Editors' Association (<a href="https://www.ajpea.or.jp/">AJPEA</a>), annual comic market reports 2016 to 2025 (<a href="https://shuppankagaku.com/">shuppankagaku.com</a>), as reported by <a href="https://hon.jp/">hon.jp</a> and <a href="https://www.nippon.com/">nippon.com</a>.</li>
-          <li><a href="https://www.circana.com/">Circana BookScan</a>, US graphic novel sales by category 2020 to 2023, and Brian Hibbs's 2023 BookScan analysis, both as published in Splatt (2024), below.</li>
-          <li>NielsenIQ BookScan figures as published in: Splatt, S. (2024). <a href="https://www.publishers.asn.au/common/Uploaded%20files/APA%20Resources/Research/BDEF/BDEF%202023-24%20Report%20-%20Sophie%20Splatt.pdf"><cite>Graphic Novels: Can We Grow Them at Home?</cite></a> Australian Publishers Association, 2023 to 24 Beatrice Davis Editorial Fellowship Report.</li>
+          <li>Research Institute for Publications, All Japan Magazine and Book Publishers' and Editors' Association (AJPEA), <a href="https://shuppankagaku.com/statistics/comic/">comic sales by year</a> and the <a href="https://shuppankagaku.com/wp/wp-content/uploads/2026/02/%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B92602.pdf">2025 comic market report</a> (shuppankagaku.com, PDF in Japanese), also reported in English by <a href="https://www.nippon.com/en/japan-data/h02328/">nippon.com</a> (2024 figures).</li>
+          <li>Circana BookScan, US graphic novel sales by category 2020 to 2023 (<a href="https://www.publishers.asn.au/common/Uploaded%20files/APA%20Resources/Research/BDEF/BDEF%202023-24%20Report%20-%20Sophie%20Splatt.pdf#page=27">chart on page 27 of Splatt, 2024</a>), and Brian Hibbs's 2023 BookScan analysis (<a href="https://www.comicsbeat.com/tilting-at-windmills-297-bookscan-2023-comics-sales-sag-but-scholastic-was-still-a-powerhouse/">Tilting at Windmills #297</a>, The Beat, also on <a href="https://www.publishers.asn.au/common/Uploaded%20files/APA%20Resources/Research/BDEF/BDEF%202023-24%20Report%20-%20Sophie%20Splatt.pdf#page=23">page 23 of Splatt</a>).</li>
+          <li>NielsenIQ BookScan Australian figures (<a href="https://www.publishers.asn.au/common/Uploaded%20files/APA%20Resources/Research/BDEF/BDEF%202023-24%20Report%20-%20Sophie%20Splatt.pdf#page=19">chart on page 19</a>) as published in: Splatt, S. (2024). <a href="https://www.publishers.asn.au/common/Uploaded%20files/APA%20Resources/Research/BDEF/BDEF%202023-24%20Report%20-%20Sophie%20Splatt.pdf"><cite>Graphic Novels: Can We Grow Them at Home?</cite></a> Australian Publishers Association, 2023 to 24 Beatrice Davis Editorial Fellowship Report.</li>
           <li><a href="https://trends.google.com/trends/explore?date=today%205-y&amp;geo=AU&amp;q=manga,comics">Google Trends</a> (trends.google.com), Australia, 'manga' compared with 'comics', past five years. Downloaded 11 October 2026.</li>
-          <li>SMASH! convention attendance, <a href="https://en.wikipedia.org/wiki/SMASH!_(convention)">Wikipedia</a> (en.wikipedia.org).</li>
+          <li>SMASH! convention attendance, <a href="https://en.wikipedia.org/wiki/SMASH!_(convention)">Wikipedia</a> (attendance column of the events table, 2007 to 2025) and <a href="https://www.sbs.com.au/language/japanese/en/podcast-episode/record-53-071-attendees-at-smash-2026/6ok796kwn">SBS Japanese, 13 July 2026</a> (2026 figure).</li>
         </ul>
         <h4>Population</h4>
         <ul class="sources">
           <li><a href="https://data.worldbank.org/indicator/SP.POP.TOTL">World Bank, population, total</a>. Used for per-person rates in the world map.</li>
-          <li>U.S. Census Bureau, <a href="https://www.census.gov/data/tables/time-series/demo/popest/2020s-state-total.html">Vintage 2024 state population estimates</a>, NST-EST2024 (census.gov).</li>
+          <li>U.S. Census Bureau, Vintage 2024 state population estimates, <a href="https://www2.census.gov/programs-surveys/popest/datasets/2020-2024/state/totals/">NST-EST2024-ALLDATA.csv</a> (census.gov).</li>
         </ul>
         <h4>Maps</h4>
         <ul class="sources">
-          <li>World boundaries: <a href="https://www.naturalearthdata.com/">Natural Earth</a>, via <a href="https://github.com/vega/vega-datasets">vega-datasets</a>.</li>
-          <li>Japan prefecture boundaries: Global Map Japan (<a href="https://www.gsi.go.jp/">Geospatial Information Authority of Japan</a>), via the <a href="https://github.com/dataofjapan/land">dataofjapan/land</a> GitHub repository.</li>
-          <li>Australian state boundaries: <a href="https://github.com/tonywr71/GeoJson-Data">tonywr71/GeoJson-Data</a> GitHub repository.</li>
-          <li>US state boundaries: <a href="https://github.com/vega/vega-datasets">vega-datasets</a> (us-10m).</li>
+          <li>World boundaries: <a href="https://www.naturalearthdata.com/downloads/110m-cultural-vectors/110m-admin-0-countries/">Natural Earth, 1:110m countries</a>, via <a href="https://github.com/vega/vega-datasets/blob/main/data/world-110m.json">vega-datasets world-110m.json</a>.</li>
+          <li>Japan prefecture boundaries: <a href="https://www.gsi.go.jp/kankyochiri/gm_jpn.html">Global Map Japan</a> (Geospatial Information Authority of Japan), via <a href="https://github.com/dataofjapan/land/blob/master/japan.topojson">dataofjapan/land japan.topojson</a> (GitHub).</li>
+          <li>Australian state boundaries: <a href="https://github.com/tonywr71/GeoJson-Data/blob/master/australian-states.json">tonywr71/GeoJson-Data australian-states.json</a> (GitHub).</li>
+          <li>US state boundaries: <a href="https://github.com/vega/vega-datasets/blob/main/data/us-10m.json">vega-datasets us-10m.json</a>.</li>
+        </ul>
+        <h4>Processed data</h4>
+        <ul class="sources">
+          <li>The cleaned CSV files behind every chart are in this site's repository, <a href="https://github.com/tale0008/FIT3179_DV2/tree/main/docs/data">docs/data</a>, and the scripts that made them are in <a href="https://github.com/tale0008/FIT3179_DV2/tree/main/scripts">scripts</a> (GitHub).</li>
         </ul>
         <h3>Notes on the data</h3>
         <p>Figures from the Grand Comics Database reflect volunteer indexing and are a lower bound. Series with uncertain start years are excluded from year-by-year charts.</p>
