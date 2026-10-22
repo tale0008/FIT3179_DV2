@@ -99,6 +99,319 @@
       },
       "transform": [
         {
+          "filter": "datum.state == 'New York'"
+        },
+        {
+          "lookup": "fips",
+          "from": {
+            "data": {
+              "values": [
+                {
+                  "fips": 1,
+                  "lon": -86.83,
+                  "lat": 32.78
+                },
+                {
+                  "fips": 2,
+                  "lon": -152.54,
+                  "lat": 64.3
+                },
+                {
+                  "fips": 4,
+                  "lon": -111.66,
+                  "lat": 34.28
+                },
+                {
+                  "fips": 5,
+                  "lon": -92.44,
+                  "lat": 34.9
+                },
+                {
+                  "fips": 6,
+                  "lon": -119.47,
+                  "lat": 37.19
+                },
+                {
+                  "fips": 8,
+                  "lon": -105.55,
+                  "lat": 39
+                },
+                {
+                  "fips": 9,
+                  "lon": -72.72,
+                  "lat": 41.62
+                },
+                {
+                  "fips": 10,
+                  "lon": -75.5,
+                  "lat": 38.98
+                },
+                {
+                  "fips": 11,
+                  "lon": -77.01,
+                  "lat": 38.9
+                },
+                {
+                  "fips": 12,
+                  "lon": -82.46,
+                  "lat": 28.65
+                },
+                {
+                  "fips": 13,
+                  "lon": -83.45,
+                  "lat": 32.65
+                },
+                {
+                  "fips": 15,
+                  "lon": -155.52,
+                  "lat": 19.6
+                },
+                {
+                  "fips": 16,
+                  "lon": -114.61,
+                  "lat": 44.35
+                },
+                {
+                  "fips": 17,
+                  "lon": -89.2,
+                  "lat": 40.04
+                },
+                {
+                  "fips": 18,
+                  "lon": -86.28,
+                  "lat": 39.9
+                },
+                {
+                  "fips": 19,
+                  "lon": -93.5,
+                  "lat": 42.07
+                },
+                {
+                  "fips": 20,
+                  "lon": -98.38,
+                  "lat": 38.49
+                },
+                {
+                  "fips": 21,
+                  "lon": -85.3,
+                  "lat": 37.54
+                },
+                {
+                  "fips": 22,
+                  "lon": -92,
+                  "lat": 31.08
+                },
+                {
+                  "fips": 23,
+                  "lon": -69.25,
+                  "lat": 45.38
+                },
+                {
+                  "fips": 24,
+                  "lon": -76.79,
+                  "lat": 39.06
+                },
+                {
+                  "fips": 25,
+                  "lon": -71.84,
+                  "lat": 42.27
+                },
+                {
+                  "fips": 26,
+                  "lon": -84.63,
+                  "lat": 43.47
+                },
+                {
+                  "fips": 27,
+                  "lon": -94.31,
+                  "lat": 46.28
+                },
+                {
+                  "fips": 28,
+                  "lon": -89.67,
+                  "lat": 32.74
+                },
+                {
+                  "fips": 29,
+                  "lon": -92.46,
+                  "lat": 38.36
+                },
+                {
+                  "fips": 30,
+                  "lon": -109.63,
+                  "lat": 47.05
+                },
+                {
+                  "fips": 31,
+                  "lon": -99.79,
+                  "lat": 41.54
+                },
+                {
+                  "fips": 32,
+                  "lon": -116.63,
+                  "lat": 39.33
+                },
+                {
+                  "fips": 33,
+                  "lon": -71.58,
+                  "lat": 43.68
+                },
+                {
+                  "fips": 34,
+                  "lon": -74.67,
+                  "lat": 40.19
+                },
+                {
+                  "fips": 35,
+                  "lon": -106.11,
+                  "lat": 34.41
+                },
+                {
+                  "fips": 36,
+                  "lon": -75.6,
+                  "lat": 43.02
+                },
+                {
+                  "fips": 37,
+                  "lon": -79.4,
+                  "lat": 35.55
+                },
+                {
+                  "fips": 38,
+                  "lon": -100.47,
+                  "lat": 47.45
+                },
+                {
+                  "fips": 39,
+                  "lon": -82.79,
+                  "lat": 40.29
+                },
+                {
+                  "fips": 40,
+                  "lon": -97.49,
+                  "lat": 35.59
+                },
+                {
+                  "fips": 41,
+                  "lon": -120.56,
+                  "lat": 43.93
+                },
+                {
+                  "fips": 42,
+                  "lon": -77.8,
+                  "lat": 40.88
+                },
+                {
+                  "fips": 44,
+                  "lon": -71.59,
+                  "lat": 41.69
+                },
+                {
+                  "fips": 45,
+                  "lon": -80.9,
+                  "lat": 33.93
+                },
+                {
+                  "fips": 46,
+                  "lon": -100.23,
+                  "lat": 44.45
+                },
+                {
+                  "fips": 47,
+                  "lon": -86.35,
+                  "lat": 35.86
+                },
+                {
+                  "fips": 48,
+                  "lon": -99.33,
+                  "lat": 31.48
+                },
+                {
+                  "fips": 49,
+                  "lon": -111.67,
+                  "lat": 39.31
+                },
+                {
+                  "fips": 50,
+                  "lon": -72.66,
+                  "lat": 44.07
+                },
+                {
+                  "fips": 51,
+                  "lon": -78.91,
+                  "lat": 37.52
+                },
+                {
+                  "fips": 53,
+                  "lon": -120.43,
+                  "lat": 47.38
+                },
+                {
+                  "fips": 54,
+                  "lon": -80.63,
+                  "lat": 38.64
+                },
+                {
+                  "fips": 55,
+                  "lon": -90,
+                  "lat": 44.62
+                },
+                {
+                  "fips": 56,
+                  "lon": -107.55,
+                  "lat": 43
+                }
+              ]
+            },
+            "key": "fips",
+            "fields": [
+              "lon",
+              "lat"
+            ]
+          }
+        },
+        {
+          "calculate": "datum.lat + 5.2",
+          "as": "label_lat"
+        }
+      ],
+      "mark": {
+        "type": "rule",
+        "color": "#555",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "longitude2": {
+          "field": "lon"
+        },
+        "latitude2": {
+          "field": "label_lat"
+        }
+      }
+    },
+    {
+      "data": {
+        "url": "data/us_creators_state_pc.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "fips": "number",
+            "creators": "number",
+            "population": "number",
+            "per_million": "number"
+          }
+        }
+      },
+      "transform": [
+        {
           "filter": "datum.creators > 0"
         },
         {
@@ -746,6 +1059,10 @@
           }
         },
         {
+          "calculate": "datum.lat + 5.2",
+          "as": "label_lat"
+        },
+        {
           "calculate": "datum.state + ' ' + format(datum.creators, ',')",
           "as": "label"
         }
@@ -754,10 +1071,10 @@
         "type": "text",
         "fontSize": 12,
         "fontWeight": 600,
-        "align": "right",
-        "baseline": "middle",
-        "dx": -24,
-        "dy": -14,
+        "align": "center",
+        "baseline": "bottom",
+        "dx": 0,
+        "dy": -3,
         "color": "#ffffff",
         "stroke": "#ffffff",
         "strokeWidth": 3,
@@ -769,7 +1086,7 @@
           "type": "quantitative"
         },
         "latitude": {
-          "field": "lat",
+          "field": "label_lat",
           "type": "quantitative"
         },
         "text": {
@@ -1064,6 +1381,10 @@
           }
         },
         {
+          "calculate": "datum.lat + 5.2",
+          "as": "label_lat"
+        },
+        {
           "calculate": "datum.state + ' ' + format(datum.creators, ',')",
           "as": "label"
         }
@@ -1072,10 +1393,10 @@
         "type": "text",
         "fontSize": 12,
         "fontWeight": 600,
-        "align": "right",
-        "baseline": "middle",
-        "dx": -24,
-        "dy": -14,
+        "align": "center",
+        "baseline": "bottom",
+        "dx": 0,
+        "dy": -3,
         "color": "#2b2b2b"
       },
       "encoding": {
@@ -1084,7 +1405,7 @@
           "type": "quantitative"
         },
         "latitude": {
-          "field": "lat",
+          "field": "label_lat",
           "type": "quantitative"
         },
         "text": {
