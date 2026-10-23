@@ -106,6 +106,23 @@
       "transform": [
         {
           "filter": "toNumber(datum.id) != 10"
+        },
+        {
+          "calculate": "toNumber(datum.id)",
+          "as": "iso_n3"
+        },
+        {
+          "lookup": "iso_n3",
+          "from": {
+            "data": {
+              "url": "data/country_meta.csv"
+            },
+            "key": "iso_n3",
+            "fields": [
+              "code",
+              "country"
+            ]
+          }
         }
       ]
     },
@@ -123,6 +140,14 @@
         },
         {
           "filter": "datum.id == '036' || datum.id == 36 || datum.id == '840' || datum.id == 840"
+        },
+        {
+          "calculate": "toNumber(datum.id) == 36 ? 'au' : 'us'",
+          "as": "code"
+        },
+        {
+          "calculate": "datum.code == 'au' ? 'Australia' : 'United States'",
+          "as": "country"
         }
       ],
       "mark": {
