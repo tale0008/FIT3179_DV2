@@ -137,6 +137,7 @@ The spec asks for interactivity "where it makes sense", not for its own sake. Ea
 | Follow a country | M1, C1, C2, C10, C7, C7b, M4 | "Where does my country (or this one) sit in each of these?" |
 | Count per million or in total | M1 | The M1 lead-in says the map changes depending on how you count. |
 | Zoom to Europe | M1, M4 | Europe's countries are small and its flow lines overlap. |
+| Zoom and pan freely | M1, M4 | Small countries and the flow lines into them overlap even at the Europe preset. Drag to pan; pinch, Ctrl + scroll or the Zoom in/out buttons to zoom; Reset returns to the preset. |
 | Click an audience in the legend | C4 | The middle layers of a streamgraph are hard to read on their own. |
 
 Rules:

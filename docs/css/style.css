@@ -360,6 +360,42 @@ a:hover {
   cursor: pointer;
 }
 
+/* Zoom and pan on a map (M1, M4). main.js adds the buttons to the row above. */
+.chart[data-zoom-pan] svg {
+  cursor: grab;
+  touch-action: none; /* a finger on the map pans it instead of scrolling the page */
+  user-select: none;  /* dragging would otherwise select the labels */
+}
+
+.chart.is-dragging svg {
+  cursor: grabbing;
+}
+
+.zoom-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px var(--s1);
+}
+
+.zoom-controls button {
+  font: inherit;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1.5px solid var(--ink-soft);
+  border-radius: 4px;
+  padding: 0 6px;
+  cursor: pointer;
+}
+
+.zoom-controls button[hidden] {
+  display: none;
+}
+
+.zoom-hint {
+  color: var(--muted);
+}
+
 /* Follow a country: the picker in the header and the tag shown while one is followed. */
 .focus-picker {
   font-family: var(--font-ui);
